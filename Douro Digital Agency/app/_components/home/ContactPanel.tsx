@@ -35,7 +35,7 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
   // Initialize Cal.com embed
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi();
+      const cal = await getCalApi({ namespace: "contact" });
       cal("ui", {
         theme: "dark",
         hideEventTypeDetails: false,
@@ -62,11 +62,14 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
         </p>
 
         <div className={styles.calEmbed}>
-          <Cal
-            calLink="dourodigital/discovery-call"
-            config={{ layout: "month_view", theme: "dark" }}
-            style={{ width: "100%", height: "100%", overflow: "auto" }}
-          />
+          {open && (
+            <Cal
+              namespace="contact"
+              calLink="josh-irizarry-axan3n/30min"
+              config={{ layout: "month_view", theme: "dark" }}
+              style={{ width: "100%", height: "100%", overflow: "auto" }}
+            />
+          )}
         </div>
 
         <p className={styles.phone}>

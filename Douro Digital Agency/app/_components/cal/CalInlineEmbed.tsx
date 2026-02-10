@@ -1,0 +1,35 @@
+"use client";
+
+import { useEffect } from "react";
+import Cal, { getCalApi } from "@calcom/embed-react";
+
+const CAL_LINK = "josh-irizarry-axan3n/30min";
+
+interface CalInlineEmbedProps {
+  className?: string;
+}
+
+export default function CalInlineEmbed({ className }: CalInlineEmbedProps) {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "inline" });
+      cal("ui", {
+        theme: "dark",
+        hideEventTypeDetails: false,
+        layout: "month_view",
+        styles: { branding: { brandColor: "#D42918" } },
+      });
+    })();
+  }, []);
+
+  return (
+    <div className={className}>
+      <Cal
+        namespace="inline"
+        calLink={CAL_LINK}
+        config={{ layout: "month_view", theme: "dark" }}
+        style={{ width: "100%", height: "100%", overflow: "auto" }}
+      />
+    </div>
+  );
+}

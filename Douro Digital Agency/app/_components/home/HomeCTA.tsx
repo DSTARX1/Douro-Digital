@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import MotionSection from "@/app/_components/animations/MotionSection";
-import MagneticCard from "@/app/_components/cursor/MagneticCard";
-import { PixelEnvelope } from "@/app/_components/icons/PixelIcons";
+import CalInlineEmbed from "@/app/_components/cal/CalInlineEmbed";
 import { teamMembers } from "@/app/_data/about";
 import RotatingText from "./RotatingText";
 import styles from "./HomeCTA.module.css";
@@ -36,14 +35,7 @@ export default function HomeCTA() {
       <h2 className={styles.heading}>
         Let&apos;s work on <RotatingText />
       </h2>
-      <MagneticCard maxMove={15}>
-        <a href="mailto:hello@dourodigital.com" className={styles.emailBtn}>
-          <span className={styles.emailIcon}>
-            <PixelEnvelope size={16} animate />
-          </span>
-          hello@dourodigital.com
-        </a>
-      </MagneticCard>
+      <CalInlineEmbed className={styles.calEmbed} />
     </MotionSection>
   );
 }

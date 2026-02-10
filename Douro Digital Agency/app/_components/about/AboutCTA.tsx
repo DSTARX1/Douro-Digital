@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import MotionSection from "@/app/_components/animations/MotionSection";
-import MagneticCard from "@/app/_components/cursor/MagneticCard";
-import { PixelEnvelope } from "@/app/_components/icons/PixelIcons";
+import CalInlineEmbed from "@/app/_components/cal/CalInlineEmbed";
 import { aboutCTA, teamMembers } from "@/app/_data/about";
 import styles from "./AboutCTA.module.css";
 
@@ -36,14 +35,7 @@ export default function AboutCTA() {
         ))}
       </div>
       <p className={styles.subtitle}>{aboutCTA.subtitle}</p>
-      <MagneticCard maxMove={15}>
-        <a href={`mailto:${aboutCTA.email}`} className={styles.emailBtn}>
-          <span className={styles.emailIcon}>
-            <PixelEnvelope size={16} animate />
-          </span>
-          {aboutCTA.email}
-        </a>
-      </MagneticCard>
+      <CalInlineEmbed className={styles.calEmbed} />
     </MotionSection>
   );
 }

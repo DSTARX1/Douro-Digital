@@ -18,21 +18,13 @@
   max-width: 700px;
 }
 
-.demoBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--accent);
-  color: var(--fg);
-  border-radius: 88px;
-  padding: 16px 48px;
-  font-size: 20px;
-  font-weight: 500;
-  transition: opacity 0.2s;
-}
-
-.demoBtn:hover {
-  opacity: 0.9;
+/* ─── Cal.com inline embed ────────────────── */
+.calEmbed {
+  width: 100%;
+  max-width: 700px;
+  height: 700px;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 @media (max-width: 1199px) {
@@ -50,9 +42,5 @@
   }
   .heading {
     font-size: 24px;
-  }
-  .demoBtn {
-    font-size: 17px;
-    padding: 14px 36px;
   }
 }

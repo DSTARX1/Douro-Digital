@@ -282,7 +282,7 @@
 .calEmbedInner {
   margin-top: 40px;
   width: 100%;
-  min-height: 700px;
+  height: 700px;
   border-radius: 16px;
   overflow: hidden;
 }

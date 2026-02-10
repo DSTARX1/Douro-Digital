@@ -1,14 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import MotionSection from "@/app/_components/animations/MotionSection";
+import CalInlineEmbed from "@/app/_components/cal/CalInlineEmbed";
 import { PixelPlay, PixelStar, PixelArrowTopRight } from "@/app/_components/icons/PixelIcons";
 import styles from "./BookACall.module.css";
-
-const CAL_LINK = "dourodigital";
-const CAL_URL = `https://cal.com/${CAL_LINK}`;
 
 function ArrowIcon() {
   return <PixelArrowTopRight size={14} color="currentColor" />;
@@ -21,51 +18,6 @@ function CheckIcon() {
 }
 
 export default function BookACall() {
-  useEffect(() => {
-    // Load Cal.com embed script
-    (function (C: any, A: string, L: string) {
-      const p = function (a: any, ar: any) { a.q.push(ar); };
-      const d = C.document;
-      C.Cal = C.Cal || function () {
-        const cal = C.Cal;
-        const ar = arguments;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          const s = d.head.appendChild(d.createElement("script"));
-          s.src = A;
-          cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          const api = function () { p(api, arguments); };
-          const namespace = ar[1];
-          (api as any).q = (api as any).q || [];
-          if (typeof namespace === "string") {
-            cal.ns[namespace] = cal.ns[namespace] || api;
-            p(cal.ns[namespace], ar);
-            p(cal, ["initNamespace", namespace]);
-          } else {
-            p(cal, ar);
-          }
-          return;
-        }
-        p(cal, ar);
-      };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-
-    const Cal = (window as any).Cal;
-    Cal("init", { origin: "https://cal.com" });
-    Cal("inline", {
-      elementOrSelector: "#cal-embed",
-      calLink: CAL_LINK,
-      layout: "month_view",
-    });
-    Cal("ui", {
-      styles: { branding: { brandColor: "#D42918" } },
-      hideEventTypeDetails: false,
-      layout: "month_view",
-    });
-  }, []);
 
   return (
     <div className={styles.page}>
@@ -254,7 +206,7 @@ export default function BookACall() {
           Choose a time that works for you
         </h2>
 
-        <div id="cal-embed" className={styles.calEmbedInner} />
+        <CalInlineEmbed className={styles.calEmbedInner} />
 
         <p className={styles.scarcity}>
           We only take on 5 new clinics per month. Book now to secure your spot.
