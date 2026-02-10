@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { PixelPlay } from "@/app/_components/icons/PixelIcons";
+import { useEffect, useRef, useState } from "react";
+import { PixelPlay, PixelPause } from "@/app/_components/icons/PixelIcons";
 import styles from "./CustomCursor.module.css";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const activeElRef = useRef<Element | null>(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -15,8 +17,18 @@ export default function CustomCursor() {
       cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     };
 
-    const onEnter = () => cursor.classList.add(styles.visible);
-    const onLeave = () => cursor.classList.remove(styles.visible);
+    const onEnter = (e: Event) => {
+      const el = e.currentTarget as Element;
+      activeElRef.current = el;
+      setPlaying(el.hasAttribute("data-cursor-playing"));
+      cursor.classList.add(styles.visible);
+    };
+
+    const onLeave = () => {
+      activeElRef.current = null;
+      cursor.classList.remove(styles.visible);
+      setPlaying(false);
+    };
 
     window.addEventListener("mousemove", move);
 
@@ -30,18 +42,43 @@ export default function CustomCursor() {
 
     attachToCards();
 
-    const observer = new MutationObserver(attachToCards);
-    observer.observe(document.body, { childList: true, subtree: true });
+    // Observe DOM for new [data-cursor-play] elements
+    const childObserver = new MutationObserver(attachToCards);
+    childObserver.observe(document.body, { childList: true, subtree: true });
+
+    // Observe attribute changes on [data-cursor-play] elements so
+    // the icon switches in real-time when data-cursor-playing is toggled
+    const attrObserver = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (
+          m.type === "attributes" &&
+          m.attributeName === "data-cursor-playing" &&
+          m.target === activeElRef.current
+        ) {
+          setPlaying((m.target as Element).hasAttribute("data-cursor-playing"));
+        }
+      }
+    });
+    attrObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["data-cursor-playing"],
+      subtree: true,
+    });
 
     return () => {
       window.removeEventListener("mousemove", move);
-      observer.disconnect();
+      childObserver.disconnect();
+      attrObserver.disconnect();
     };
   }, []);
 
   return (
     <div ref={cursorRef} className={styles.cursor}>
-      <PixelPlay size={24} color="white" className={styles.icon} />
+      {playing ? (
+        <PixelPause size={24} color="white" className={styles.pauseIcon} />
+      ) : (
+        <PixelPlay size={24} color="white" className={styles.icon} />
+      )}
     </div>
   );
 }

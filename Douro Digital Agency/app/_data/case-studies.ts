@@ -67,6 +67,7 @@ export interface CaseStudy {
     author: string;
     role: string;
   };
+  demoVideo?: string;
   approachImage?: string;
   galleryImages?: CaseStudyImage[];
 }
@@ -160,6 +161,7 @@ export const caseStudies: CaseStudy[] = [
       author: "Voice Noob",
       role: "Founding Team",
     },
+    demoVideo: "/videos/voice-noob-demo.mp4",
     approachImage: "/images/voice-noob-product.jpeg",
     galleryImages: [
       { src: "/images/voice-noob-product.jpeg", alt: "Voice Noob product interface" },
@@ -170,7 +172,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Pocket Agent",
     subtitle: "AI Assistant",
     color: "#1e3348",
-    image: "/images/pocket-agent-product.jpeg",
+    image: "/images/pocket-agent-home.png",
     tagline: "One AI assistant that handles what your front desk can't keep up with",
     projectDetails: {
       client: "Pocket Agent",
@@ -180,7 +182,9 @@ export const caseStudies: CaseStudy[] = [
       duration: "3 months",
     },
     imageGrid: [
-      { src: "/images/pocket-agent-product.jpeg", alt: "Pocket Agent product interface" },
+      { src: "/images/pocket-agent-chat.png", alt: "Pocket Agent chat interface" },
+      { src: "/images/pocket-agent-customize.png", alt: "Pocket Agent customization settings" },
+      { src: "/images/pocket-agent-skills.png", alt: "Pocket Agent superpowers and skills" },
     ],
     heroStats: [
       { label: "Hours Saved / Week", value: "18" },
@@ -246,9 +250,13 @@ export const caseStudies: CaseStudy[] = [
       author: "Douro Digital",
       role: "Case Insight",
     },
-    approachImage: "/images/pocket-agent-product.jpeg",
+    approachImage: "/images/pocket-agent-chat.png",
     galleryImages: [
-      { src: "/images/pocket-agent-product.jpeg", alt: "Pocket Agent product interface" },
+      { src: "/images/pocket-agent-home.png", alt: "Pocket Agent welcome screen" },
+      { src: "/images/pocket-agent-customize.png", alt: "Pocket Agent customization settings" },
+      { src: "/images/pocket-agent-graph.png", alt: "Pocket Agent knowledge graph" },
+      { src: "/images/pocket-agent-skills.png", alt: "Pocket Agent superpowers and skills" },
+      { src: "/images/pocket-agent-chat.png", alt: "Pocket Agent chat interface" },
     ],
   },
   {
@@ -333,6 +341,7 @@ export const caseStudies: CaseStudy[] = [
       author: "Douro Digital",
       role: "Case Insight",
     },
+    demoVideo: "/videos/social-bro-demo.mp4",
     approachImage: "/images/social-bro-product.jpeg",
     galleryImages: [
       { src: "/images/social-bro-product.jpeg", alt: "Social Bro product interface" },
@@ -442,6 +451,7 @@ export const caseStudies: CaseStudy[] = [
       author: "HVAC Pilot Customer",
       role: "Early Adopter",
     },
+    demoVideo: "/videos/viral-kid-demo.mp4",
     approachImage: "/images/viral-kid-product.jpeg",
     galleryImages: [
       { src: "/images/viral-kid-product.jpeg", alt: "Viral Kid product interface", objectFit: "contain" },

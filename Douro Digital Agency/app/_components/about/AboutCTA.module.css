@@ -28,10 +28,14 @@
 }
 
 .pfp {
+  position: relative;
   width: 64px;
   height: 64px;
   border-radius: 50%;
   border: 3px solid var(--bg);
+  overflow: hidden;
+  flex-shrink: 0;
+  filter: grayscale(100%);
 }
 
 .pfp + .pfp {

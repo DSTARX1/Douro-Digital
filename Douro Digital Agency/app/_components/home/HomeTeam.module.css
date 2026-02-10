@@ -26,6 +26,7 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  filter: grayscale(100%);
 }
 
 .imageWrap img {

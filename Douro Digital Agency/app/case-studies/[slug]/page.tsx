@@ -10,6 +10,7 @@ import CaseStudyApproachV2 from "@/app/_components/case-study/CaseStudyApproachV
 import CaseStudyResults from "@/app/_components/case-study/CaseStudyResults";
 import CaseStudyTestimonial from "@/app/_components/case-study/CaseStudyTestimonial";
 import CaseStudyGallery from "@/app/_components/case-study/CaseStudyGallery";
+import CaseStudyCTA from "@/app/_components/case-study/CaseStudyCTA";
 import CaseStudyMoreWork from "@/app/_components/case-study/CaseStudyMoreWork";
 
 export function generateStaticParams() {
@@ -67,6 +68,7 @@ export default async function CaseStudyPage({
               objectPosition={study.objectPosition}
             />
           )}
+          {study.cta && <CaseStudyCTA cta={study.cta} />}
           {study.results && <CaseStudyResults results={study.results} />}
           {study.testimonial && (
             <CaseStudyTestimonial

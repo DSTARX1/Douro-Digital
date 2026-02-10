@@ -27,6 +27,23 @@ export function PixelPlay({ size = 24, color = "currentColor", className = "", a
   );
 }
 
+/** 8-bit pause bars */
+export function PixelPause({ size = 24, color = "currentColor", className = "", animate = false }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill={color}
+      shapeRendering="crispEdges"
+      className={`${styles.pixelIcon} ${animate ? styles.pulse : ""} ${className}`}
+    >
+      <rect x="3" y="2" width="4" height="12" />
+      <rect x="9" y="2" width="4" height="12" />
+    </svg>
+  );
+}
+
 /** 8-bit envelope */
 export function PixelEnvelope({ size = 16, color = "currentColor", className = "", animate = false }: IconProps) {
   return (
