@@ -1,52 +1,123 @@
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 944px;
+  margin-bottom: 30px;
+}
+
+.heroInner {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 100px 48px 0;
-  overflow: visible;
+  padding: 100px 48px 6rem;
+}
+
+/* ─── Headline ───────────────────────────────────────────── */
+.headingWrap {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  text-align: center;
+  will-change: transform, opacity;
 }
 
 .heading {
-  font-size: 112px;
+  font-size: 104px;
   font-weight: 600;
-  line-height: 113px;
-  letter-spacing: -3.36px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   text-align: center;
   color: var(--fg);
-  z-index: 1;
+  text-wrap: balance;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .italic {
-  font-family: var(--font-playfair), serif;
-  font-size: 123.2px;
+  font-family: var(--font-serif-italic);
+  font-size: inherit;
   font-weight: 400;
   font-style: italic;
-  line-height: 113px;
-  letter-spacing: -3.36px;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+@media (min-width: 1920px) {
+  .heading {
+    font-size: 120px;
+    max-width: 1300px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .heading {
+    font-size: 64px;
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 759px) {
+  .heading {
+    font-size: 40px;
+    max-width: 360px;
+  }
+}
+
+/* ─── Video / media layer ────────────────────────────────── */
+.mediaContainer {
+  position: relative;
+  z-index: 1;
+  cursor: none;
+  margin-top: 24px;
 }
 
 .media {
   position: relative;
-  width: 720px;
-  max-width: 60vw;
-  height: 405px;
+  width: 42vw;
+  height: 24vw;
   border-radius: 16px;
   overflow: hidden;
-  margin-top: -20px;
-  z-index: 0;
+  will-change: transform;
+  transform-origin: center center;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.15);
 }
 
-.mediaImage {
+.mediaPlaceholder {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-color: #B0B0B0;
 }
 
-.headingWrap {
-  position: relative;
-  z-index: 2;
+/* ─── Mouse-following play cursor ────────────────────────── */
+.playCursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  scale: 0.8;
+  transition: opacity 0.2s ease, scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.playCursor.cursorVisible {
+  opacity: 1;
+  scale: 1;
+}
+
+.playCursorIcon {
+  width: 26px;
+  height: 26px;
+  margin-left: 3px;
 }

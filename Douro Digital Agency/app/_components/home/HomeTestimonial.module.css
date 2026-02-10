@@ -1,9 +1,15 @@
 .section {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: 48px;
+  padding: 80px 48px 60px;
+}
+
+/* ── Left column: text testimonials ── */
+.left {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 0 48px;
-  max-width: 913px;
 }
 
 .quoteIcon {
@@ -11,21 +17,25 @@
   gap: 4px;
 }
 
-.quarterCircle {
-  width: 24px;
-  height: 24px;
-  background: var(--accent);
-  border-radius: 0 0 24px 0;
+/* quarter-circle removed — replaced by PixelStar in JSX */
+
+/* ── Text slide carousel ── */
+.textSlides {
+  display: grid;
+  overflow: hidden;
 }
 
-.quarterCircle:last-child {
-  border-radius: 0 0 0 24px;
+.textSlide {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .quote {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 500;
-  line-height: 60px;
+  line-height: 52px;
 }
 
 .author {
@@ -42,4 +52,117 @@
 .authorRole {
   font-size: 16px;
   color: var(--muted);
+}
+
+/* ── Right column: video testimonials ── */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Video slide carousel ── */
+.videoSlides {
+  display: grid;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.videoSlide {
+  grid-area: 1 / 1;
+}
+
+.videoCard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.videoOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+.videoName {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.videoRole {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── Navigation row ── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  border: 2px solid var(--muted);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  padding: 0;
+  image-rendering: pixelated;
+}
+
+.arrow:hover {
+  border-color: var(--fg);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  border: 2px solid var(--muted);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.15s step-end, border-color 0.15s step-end;
+}
+
+.dotActive {
+  background: var(--fg);
+  border-color: var(--fg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    grid-template-columns: 1fr;
+    padding: 48px 24px 40px;
+  }
+
+  .quote {
+    font-size: 28px;
+    line-height: 38px;
+  }
 }

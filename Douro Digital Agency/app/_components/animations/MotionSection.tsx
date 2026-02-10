@@ -1,12 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { type ReactNode } from "react";
-import { fadeUp } from "@/app/_lib/motion";
+import { useEffect, useRef, type ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  variants?: Variants;
   className?: string;
   style?: React.CSSProperties;
   id?: string;
@@ -15,19 +12,33 @@ interface Props {
 
 export default function MotionSection({
   children,
-  variants = fadeUp,
   className,
   style,
   id,
-  as = "section",
+  as: Tag = "section",
 }: Props) {
-  const Tag = motion[as] as typeof motion.section;
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <Tag
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      variants={variants}
+      ref={ref as React.RefObject<HTMLElement & HTMLDivElement>}
+      data-animate=""
       className={className}
       style={style}
       id={id}

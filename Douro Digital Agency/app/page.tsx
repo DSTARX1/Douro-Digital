@@ -10,15 +10,17 @@ import Footer from "./_components/home/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <main style={{ padding: "0 48px 180px", display: "flex", flexDirection: "column", gap: 160 }}>
-        <MissionServices />
-        <WorkGrid />
-        <HomeTestimonial />
-        <ClientLogos />
-        <HomeCTA />
-      </main>
+      <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
+        <Navbar />
+        <Hero />
+        <main style={{ padding: "0 48px 180px", display: "flex", flexDirection: "column", gap: 0 }}>
+          <MissionServices />
+          <WorkGrid />
+          <HomeTestimonial />
+          <ClientLogos />
+          <HomeCTA />
+        </main>
+      </div>
       <Footer />
     </>
   );

@@ -8,6 +8,22 @@
   gap: 32px;
 }
 
+/* ─── PFP circles ─────────────────────────── */
+.pfpRow {
+  display: flex;
+}
+
+.pfp {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+}
+
+.pfp + .pfp {
+  margin-left: -12px;
+}
+
 .heading {
   font-size: 40px;
   font-weight: 500;
@@ -19,7 +35,7 @@
   align-items: center;
   gap: 12px;
   background: var(--accent);
-  color: #fff;
+  color: var(--fg);
   border-radius: 88px;
   padding: 8px 24px 8px 8px;
   height: 48px;

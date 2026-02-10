@@ -1,0 +1,40 @@
+.section {
+  padding: 140px 48px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.description {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--fg);
+  max-width: 1000px;
+}
+
+@media (max-width: 1199px) {
+  .section {
+    padding: 100px 48px;
+  }
+  .description {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 759px) {
+  .section {
+    padding: 80px 24px;
+  }
+  .description {
+    font-size: 22px;
+  }
+}

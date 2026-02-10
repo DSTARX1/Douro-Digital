@@ -1,38 +1,35 @@
 "use client";
 
 import MotionSection from "@/app/_components/animations/MotionSection";
+import MagneticCard from "@/app/_components/cursor/MagneticCard";
+import { PixelEnvelope } from "@/app/_components/icons/PixelIcons";
+import { teamMembers } from "@/app/_data/about";
 import RotatingText from "./RotatingText";
 import styles from "./HomeCTA.module.css";
 
 export default function HomeCTA() {
   return (
     <MotionSection className={styles.section} id="contact">
+      <div className={styles.pfpRow}>
+        {teamMembers.map((m) => (
+          <div
+            key={m.name}
+            className={styles.pfp}
+            style={{ backgroundColor: m.color }}
+          />
+        ))}
+      </div>
       <h2 className={styles.heading}>
         Let&apos;s work on <RotatingText />
       </h2>
-      <a href="mailto:hello@dourodigital.com" className={styles.emailBtn}>
-        <span className={styles.emailIcon}>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M2 4l6 4 6-4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <rect
-              x="1"
-              y="3"
-              width="14"
-              height="10"
-              rx="2"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            />
-          </svg>
-        </span>
-        hello@dourodigital.com
-      </a>
+      <MagneticCard maxMove={15}>
+        <a href="mailto:hello@dourodigital.com" className={styles.emailBtn}>
+          <span className={styles.emailIcon}>
+            <PixelEnvelope size={16} animate />
+          </span>
+          hello@dourodigital.com
+        </a>
+      </MagneticCard>
     </MotionSection>
   );
 }

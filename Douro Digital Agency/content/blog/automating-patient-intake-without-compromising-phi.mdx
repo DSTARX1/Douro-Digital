@@ -1,0 +1,27 @@
+---
+title: "Automating Patient Intake Without Compromising PHI"
+excerpt: "How to replace clipboard-and-pen workflows with AI-driven intake forms while keeping every data point HIPAA-safe."
+category: "ai-automation"
+date: "Dec 2024"
+isoDate: "2024-12-20"
+readingTime: "6 min read"
+featured: true
+gradientFrom: "#1e3a5f"
+gradientTo: "#1e40af"
+---
+
+Patient intake is the front door of every clinic — and it is usually the leakiest. Paper forms get lost, faxed copies sit in open trays, and manual data entry introduces errors that cascade through billing and treatment. AI-driven intake solves all of this, but only if you build it right.
+
+## The architecture that works
+
+The safest pattern is a three-tier system: a patient-facing form (web or tablet), a processing layer that extracts and validates data, and a direct write to your EHR. The critical rule is that PHI never lands in an intermediate store that is not covered by your BAA. That means no staging databases on general-purpose cloud accounts and absolutely no third-party form builders that lack HIPAA certification.
+
+## Smart pre-fill without exposure
+
+AI can pre-populate fields using historical visit data — name, insurance ID, medications — but the lookup must happen server-side within your secure environment. Never send PHI to the browser and let JavaScript fill in the blanks. Instead, generate a session token, perform the lookup behind your API gateway, and return only the fields that match the authenticated patient.
+
+## Consent and identity verification
+
+Automated intake must include a digital consent step before collecting any health information. Pair this with identity verification — even something as simple as date-of-birth plus last-four-of-SSN — to ensure the right record is being updated. For higher-assurance environments, integrate ID document scanning with a HIPAA-covered OCR provider.
+
+The goal is not just efficiency. It is building a workflow where compliance is invisible to the patient and automatic for your staff.

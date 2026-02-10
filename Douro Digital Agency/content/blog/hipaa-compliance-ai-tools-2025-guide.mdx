@@ -1,0 +1,29 @@
+---
+title: "The 2025 Guide to HIPAA-Compliant AI Tools"
+excerpt: "A practical framework for evaluating AI vendors, securing BAAs, and deploying machine-learning tools without putting your practice at risk."
+category: "compliance"
+date: "Jan 2025"
+isoDate: "2025-01-15"
+readingTime: "8 min read"
+featured: true
+gradientFrom: "#7f1d1d"
+gradientTo: "#991b1b"
+---
+
+The rush to adopt AI in healthcare has created a compliance minefield. Vendors promise HIPAA readiness while burying critical limitations in footnotes. This guide cuts through the noise and gives you a repeatable process for evaluating any AI tool against the HIPAA Security Rule.
+
+## Start with the BAA, not the demo
+
+Before you run a single patient record through a new platform, you need a signed Business Associate Agreement. A BAA is not a formality — it is a legal contract that shifts liability and defines exactly how protected health information will be handled. If a vendor hesitates to sign one, walk away.
+
+Look for specifics: the BAA should name the services covered, describe encryption standards, detail breach notification timelines, and define data retention and disposal procedures. Generic templates pulled from a legal blog are a red flag.
+
+## The three-layer audit
+
+We recommend evaluating every tool across three layers: data transit, data storage, and model inference. For transit, confirm TLS 1.2+ encryption for every API call. For storage, verify AES-256 encryption at rest and ask where data physically resides — multi-region cloud deployments can trigger international compliance issues. For inference, understand whether patient data is ever used in model training or fine-tuning. If the vendor cannot give you a clear "no," assume it is.
+
+## Logging and access controls
+
+HIPAA requires audit trails. Your AI tool should log every access event — who queried what data, when, and from which IP. Role-based access control is non-negotiable. Ensure the platform supports SSO integration with your existing identity provider so you are not managing yet another set of credentials.
+
+The tools that survive a compliance review are rarely the flashiest. They are the ones built by teams that understand healthcare is not a feature checkbox — it is an operating environment with real consequences for failure.

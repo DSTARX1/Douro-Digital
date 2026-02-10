@@ -1,0 +1,89 @@
+.section {
+  background: #0a0a0a;
+  padding: 100px 48px;
+}
+
+/* ─── Single Image ───────────────────────────────────────── */
+.singleWrap {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.singleWrap img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.blurBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(40px) saturate(1.2);
+  transform: scale(1.15);
+}
+
+/* ─── Collage Grid ───────────────────────────────────────── */
+.collage {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.collageItem {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.collageItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Position variants for collage overlap effect */
+.item0 {
+  grid-column: 1 / 8;
+  transform: translateY(20px);
+}
+
+.item1 {
+  grid-column: 8 / 13;
+  transform: translateY(-20px);
+}
+
+.item2 {
+  grid-column: 2 / 7;
+  transform: translateY(10px);
+}
+
+.item3 {
+  grid-column: 7 / 12;
+  transform: translateY(-10px);
+}
+
+@media (max-width: 759px) {
+  .section {
+    padding: 60px 24px;
+  }
+  .collage {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .item0,
+  .item1,
+  .item2,
+  .item3 {
+    grid-column: auto;
+    transform: none;
+  }
+}

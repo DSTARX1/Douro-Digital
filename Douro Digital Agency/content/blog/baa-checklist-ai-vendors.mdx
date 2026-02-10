@@ -1,0 +1,30 @@
+---
+title: "BAA Checklist: Vetting AI Vendors for Healthcare"
+excerpt: "The 12-point checklist we use before signing a Business Associate Agreement with any AI vendor touching patient data."
+category: "compliance"
+date: "Nov 2024"
+isoDate: "2024-11-10"
+readingTime: "5 min read"
+featured: false
+gradientFrom: "#4a1942"
+gradientTo: "#7f1d1d"
+---
+
+Not every vendor that claims HIPAA compliance can back it up. We have reviewed dozens of AI platforms for healthcare clients, and the gap between marketing copy and actual security posture is often staggering. Here is the checklist we use before any BAA gets signed.
+
+## The twelve questions
+
+1. **Is the BAA specific?** It should name exact services, not a blanket "all products." A generic BAA often means untested infrastructure.
+2. **Where is data stored?** Get the region, the cloud provider, and the tier. Multi-tenant environments need strict logical isolation.
+3. **Is data encrypted at rest and in transit?** AES-256 at rest, TLS 1.2+ in transit. No exceptions.
+4. **Is PHI used for model training?** If yes, that is a deal-breaker unless patients have explicitly opted in.
+5. **What are the breach notification timelines?** HIPAA requires notification within 60 days, but your BAA should demand faster — 72 hours is our benchmark.
+6. **Does the platform support RBAC and SSO?** You need role-based access and integration with your identity provider.
+7. **Are audit logs immutable and exportable?** Logs must be tamper-proof and available for your compliance team on demand.
+8. **What is the data retention and disposal policy?** Know exactly when and how PHI is deleted after the engagement ends.
+9. **Has the vendor completed a SOC 2 Type II audit?** This is the baseline third-party validation.
+10. **Is there a documented incident response plan?** Ask to see it. If they will not share it, that tells you everything.
+11. **Does the vendor carry cyber liability insurance?** This protects both parties in the event of a breach.
+12. **Can you run a penetration test?** Reputable vendors allow or even encourage third-party security testing.
+
+Any vendor that cannot answer all twelve clearly and quickly is not ready for production healthcare workloads.

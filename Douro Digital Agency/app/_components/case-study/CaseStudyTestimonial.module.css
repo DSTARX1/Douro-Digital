@@ -1,0 +1,78 @@
+.section {
+  padding: 120px 48px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quoteWrap {
+  position: relative;
+}
+
+.quoteWrap::before {
+  content: "\201C";
+  font-family: var(--font-serif-italic);
+  font-size: 120px;
+  line-height: 1;
+  color: var(--accent);
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.quote {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-size: 32px;
+  line-height: 1.5;
+  color: var(--fg);
+  margin: 0;
+  padding-top: 24px;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 32px;
+}
+
+.author {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.role {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 1199px) {
+  .section {
+    padding: 80px 48px;
+  }
+  .quote {
+    font-size: 26px;
+  }
+  .quoteWrap::before {
+    font-size: 90px;
+    top: -48px;
+  }
+}
+
+@media (max-width: 759px) {
+  .section {
+    padding: 60px 24px;
+  }
+  .quote {
+    font-size: 22px;
+  }
+  .quoteWrap::before {
+    font-size: 72px;
+    top: -36px;
+  }
+}
