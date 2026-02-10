@@ -60,9 +60,11 @@ export default function CaseStudyHero({ study }: Props) {
               ref={videoRef}
               className={styles.video}
               src={study.demoVideo}
+              autoPlay
+              loop
               muted
               playsInline
-              preload="metadata"
+              preload="auto"
               aria-label={`${study.title} product demo`}
             />
           </div>
