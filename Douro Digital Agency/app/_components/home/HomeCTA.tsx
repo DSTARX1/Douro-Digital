@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import MotionSection from "@/app/_components/animations/MotionSection";
 import MagneticCard from "@/app/_components/cursor/MagneticCard";
 import { PixelEnvelope } from "@/app/_components/icons/PixelIcons";
@@ -16,7 +17,20 @@ export default function HomeCTA() {
             key={m.name}
             className={styles.pfp}
             style={{ backgroundColor: m.color }}
-          />
+          >
+            <Image
+              src={m.image}
+              alt={m.name}
+              fill
+              sizes="64px"
+              style={{
+                objectFit: "cover",
+                objectPosition: m.objectPosition || "center",
+                transform: m.scale ? `scale(${m.scale})` : undefined,
+                transformOrigin: m.scale ? "center top" : undefined,
+              }}
+            />
+          </div>
         ))}
       </div>
       <h2 className={styles.heading}>

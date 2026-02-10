@@ -92,12 +92,14 @@ export interface TeamMember {
   role: string;
   color: string;
   image: string;
+  objectPosition?: string;
+  scale?: number;
 }
 
 export const teamMembers: TeamMember[] = [
-  { name: "Isaac Morgado", role: "Tech founder & software developer", color: "#D42918", image: "/images/team/isaac.jpg" },
-  { name: "Danny Isakov", role: "Product & Branding Designer", color: "#1a6b3c", image: "/images/team/danny.jpg" },
-  { name: "Josh Irizarry", role: "Consultant & Product Designer", color: "#1a3f6b", image: "/images/team/josh.jpg" },
+  { name: "Isaac Morgado", role: "Tech founder & software developer", color: "#D42918", image: "/images/team/isaac.jpg", objectPosition: "center 25%", scale: 1.3 },
+  { name: "Danny Isakov", role: "Product & Branding Designer", color: "#1a6b3c", image: "/images/team/danny.jpg", objectPosition: "center 10%", scale: 1.1 },
+  { name: "Josh Irizarry", role: "Consultant & Product Designer", color: "#1a3f6b", image: "/images/team/josh.jpg", objectPosition: "center 0%", scale: 1.8 },
 ];
 
 export interface HighlightItem {

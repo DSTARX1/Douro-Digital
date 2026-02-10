@@ -3,42 +3,53 @@ import MotionSection from "@/app/_components/animations/MotionSection";
 import { teamIntro, teamMembers, teamHighlights } from "@/app/_data/about";
 import styles from "./MeetTheTeam.module.css";
 
+// Local overrides for this section only
+const sectionOverrides: Record<string, { scale?: number; objectPosition?: string; transformOrigin?: string }> = {
+  "Isaac Morgado": { scale: 1.4, objectPosition: "30% 15%" },
+  "Danny Isakov": { scale: 1.1, objectPosition: "center 15%" },
+  "Josh Irizarry": { scale: 2.0, objectPosition: "center 10%" },
+};
+
 export default function MeetTheTeam() {
   return (
     <MotionSection className={styles.section}>
-      {/* Top: intro + circular PFPs */}
       <div className={styles.top}>
-        <div className={styles.topLeft}>
-          <p className={styles.label}>Meet the team</p>
-          <p className={styles.intro}>{teamIntro}</p>
-        </div>
-        <div className={styles.topRight}>
-          <div className={styles.pfpRow}>
-            {teamMembers.map((m) => (
-              <div
-                key={m.name}
-                className={styles.pfp}
-              >
-                <Image
-                  src={m.image}
-                  alt={m.name}
-                  fill
-                  sizes="120px"
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <p className={styles.label}>Meet the team</p>
+        <p className={styles.intro}>{teamIntro}</p>
       </div>
 
-      {/* Member rows */}
-      {teamMembers.map((m) => (
-        <div key={m.name} className={styles.memberRow}>
-          <span className={styles.memberName}>{m.name}</span>
-          <span className={styles.memberRole}>{m.role}</span>
-        </div>
-      ))}
+      {/* Portrait cards */}
+      <div className={styles.grid}>
+        {teamMembers.map((m) => {
+          const overrides = sectionOverrides[m.name];
+          const scale = overrides?.scale ?? m.scale;
+          const objectPosition = overrides?.objectPosition ?? m.objectPosition ?? "center";
+          return (
+          <div key={m.name} className={styles.card}>
+            <div
+              className={styles.imageWrap}
+              style={{
+                "--img-obj-pos": objectPosition,
+                "--img-scale": scale ? `scale(${scale})` : "none",
+                ...(overrides?.transformOrigin && { "--img-origin": overrides.transformOrigin }),
+              } as React.CSSProperties}
+            >
+              <Image
+                src={m.image}
+                alt={m.name}
+                fill
+                sizes="(max-width: 759px) 100vw, 33vw"
+                suppressHydrationWarning
+              />
+            </div>
+            <div className={styles.info}>
+              <p className={styles.name}>{m.name}</p>
+              <p className={styles.role}>{m.role}</p>
+            </div>
+          </div>
+          );
+        })}
+      </div>
 
       {/* Highlights grid */}
       <div className={styles.highlights}>

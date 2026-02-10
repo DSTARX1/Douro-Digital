@@ -2,22 +2,10 @@
   padding: 120px 48px 0;
 }
 
-/* ─── Top: intro + PFPs ─────────────────────── */
+/* ─── Top: intro ─────────────────────────── */
 .top {
-  display: flex;
-  gap: 96px;
-  margin-bottom: 64px;
-}
-
-.topLeft {
-  width: 62%;
-}
-
-.topRight {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  margin-bottom: 48px;
+  max-width: 62%;
 }
 
 .label {
@@ -35,44 +23,44 @@
   color: var(--muted);
 }
 
-/* ─── PFP circles ─────────────────────────── */
-.pfpRow {
-  display: flex;
+/* ─── Portrait card grid ─────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.pfp {
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrap {
   position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid var(--bg);
+  width: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  flex-shrink: 0;
+  filter: grayscale(100%);
 }
 
-.pfp + .pfp {
-  margin-left: -20px;
+.imageWrap img {
+  object-fit: cover;
+  object-position: var(--img-obj-pos, center);
+  transform: var(--img-scale, none);
+  transform-origin: var(--img-origin, center top);
 }
 
-/* ─── Team list ──────────────────────────── */
-.memberRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 20px 0;
-  border-top: 1px solid var(--border);
+.info {
+  padding: 16px 0 0;
 }
 
-.memberRow:last-child {
-  border-bottom: 1px solid var(--border);
-}
-
-.memberName {
+.name {
   font-size: 20px;
   font-weight: 500;
+  margin-bottom: 4px;
 }
 
-.memberRole {
+.role {
   font-size: 16px;
   color: var(--muted);
 }
@@ -99,12 +87,7 @@
 
 @media (max-width: 1199px) {
   .top {
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .topLeft {
-    width: 100%;
+    max-width: 100%;
   }
 
   .highlights {
@@ -122,16 +105,16 @@
     font-size: 20px;
   }
 
-  .pfp {
-    width: 80px;
-    height: 80px;
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .memberName {
+  .name {
     font-size: 17px;
   }
 
-  .memberRole {
+  .role {
     font-size: 14px;
   }
 }
