@@ -63,15 +63,15 @@ export default function CaseStudyHero({ study }: Props) {
       videoTag: video.tagName,
     });
 
-    if (customCursor && video.requestFullscreen) {
+    if (customCursor && typeof video.requestFullscreen === "function") {
       console.log("[CaseStudyHero] Moving cursor to video element");
       video.appendChild(customCursor);
       console.log("[CaseStudyHero] Cursor new parent:", (customCursor.parentNode as Element)?.tagName);
     }
 
-    if (video.requestFullscreen) {
+    if (typeof video.requestFullscreen === "function") {
       video.requestFullscreen();
-    } else if ((video as any).webkitEnterFullscreen) {
+    } else if (typeof (video as any).webkitEnterFullscreen === "function") {
       (video as any).webkitEnterFullscreen();
     }
   }, []);
