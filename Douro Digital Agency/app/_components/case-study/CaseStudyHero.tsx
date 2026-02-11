@@ -36,8 +36,8 @@ export default function CaseStudyHero({ study }: Props) {
         video.muted = true;
         // Move cursor back to original parent
         if (customCursor && originalParent) {
-          console.log("[CaseStudyHero] Moving cursor back to", originalParent.tagName);
-          originalParent.appendChild(customCursor);
+          console.log("[CaseStudyHero] Moving cursor back to", (originalParent as Element).tagName);
+          (originalParent as Element).appendChild(customCursor);
         }
       }
     };
