@@ -17,11 +17,28 @@ export default function CaseStudyHero({ study }: Props) {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    const customCursor = document.querySelector('[data-cursor-debug="true"]');
+    const originalParent = customCursor?.parentNode;
+
     const onFsChange = () => {
       const fsEl = document.fullscreenElement ?? (document as any).webkitFullscreenElement;
+      console.log("[CaseStudyHero] Fullscreen change", {
+        fullscreenElement: fsEl?.tagName,
+        videoPaused: video.paused,
+        videoMuted: video.muted,
+      });
+
       if (!fsEl) {
+        // Exiting fullscreen
+        console.log("[CaseStudyHero] Exiting fullscreen, moving cursor back");
         video.pause();
         video.muted = true;
+        // Move cursor back to original parent
+        if (customCursor && originalParent) {
+          console.log("[CaseStudyHero] Moving cursor back to", originalParent.tagName);
+          originalParent.appendChild(customCursor);
+        }
       }
     };
     document.addEventListener("fullscreenchange", onFsChange);
@@ -37,6 +54,21 @@ export default function CaseStudyHero({ study }: Props) {
     if (!video) return;
     video.muted = false;
     video.play();
+
+    // Append custom cursor to video element so it appears in fullscreen
+    const customCursor = document.querySelector('[data-cursor-debug="true"]');
+    console.log("[CaseStudyHero] Click to fullscreen", {
+      hasCursor: !!customCursor,
+      cursorParent: customCursor?.parentNode?.tagName,
+      videoTag: video.tagName,
+    });
+
+    if (customCursor && video.requestFullscreen) {
+      console.log("[CaseStudyHero] Moving cursor to video element");
+      video.appendChild(customCursor);
+      console.log("[CaseStudyHero] Cursor new parent:", customCursor.parentNode?.tagName);
+    }
+
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if ((video as any).webkitEnterFullscreen) {

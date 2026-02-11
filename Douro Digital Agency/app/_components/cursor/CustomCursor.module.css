@@ -7,14 +7,23 @@
   background: var(--accent);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 2147483647;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   scale: 0.5;
   transition: opacity 0.25s ease, scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform;
+  will-change: transform, opacity;
+}
+
+/* When cursor is inside a fullscreen video, use absolute positioning */
+video:fullscreen [data-cursor-debug],
+video:-webkit-full-screen [data-cursor-debug],
+video:-moz-full-screen [data-cursor-debug] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
 }
 
 .cursor.visible {
