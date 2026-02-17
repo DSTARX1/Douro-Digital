@@ -26,6 +26,7 @@ export default function HomeCTA() {
               alt={m.name}
               fill
               sizes="64px"
+              suppressHydrationWarning
             />
           </div>
         ))}

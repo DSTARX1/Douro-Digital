@@ -28,6 +28,7 @@ export default function AboutCTA() {
               alt={m.name}
               fill
               sizes="64px"
+              suppressHydrationWarning
             />
           </div>
         ))}
