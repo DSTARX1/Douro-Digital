@@ -24,6 +24,13 @@
   filter: grayscale(100%);
 }
 
+.pfp img {
+  object-fit: cover;
+  object-position: var(--img-pos, center);
+  transform: var(--img-scale, none);
+  transform-origin: center top;
+}
+
 .pfp + .pfp {
   margin-left: -12px;
 }

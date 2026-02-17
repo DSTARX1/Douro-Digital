@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
 import MotionSection from "@/app/_components/animations/MotionSection";
 import MagneticCard from "@/app/_components/cursor/MagneticCard";
+import { useAudio } from "@/app/_contexts/AudioContext";
 import styles from "./CaseStudyVideo.module.css";
 
 interface Props {
@@ -13,6 +14,16 @@ interface Props {
 export default function CaseStudyVideo({ src, title }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const { registerVideo, unregisterVideo } = useAudio();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    registerVideo(video);
+    return () => {
+      unregisterVideo(video);
+    };
+  }, [registerVideo, unregisterVideo]);
 
   const toggle = useCallback(() => {
     const video = videoRef.current;
@@ -41,7 +52,6 @@ export default function CaseStudyVideo({ src, title }: Props) {
             ref={videoRef}
             className={styles.video}
             src={src}
-            muted
             loop
             playsInline
             preload="metadata"

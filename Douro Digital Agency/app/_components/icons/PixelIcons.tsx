@@ -205,3 +205,58 @@ export function PixelArrowRight({ size = 16, color = "currentColor", className =
     </svg>
   );
 }
+
+/** 8-bit speaker with arc waves (unmuted) */
+export function PixelVolumeOn({ size = 16, color = "currentColor", className = "" }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill={color}
+      shapeRendering="crispEdges"
+      className={`${styles.pixelIcon} ${className}`}
+    >
+      {/* Speaker back */}
+      <rect x="1" y="6" width="3" height="4" />
+      {/* Cone */}
+      <rect x="4" y="5" width="1" height="6" />
+      <rect x="5" y="4" width="1" height="8" />
+      {/* Wave 1 — small arc */}
+      <rect x="8" y="5" width="1" height="1" />
+      <rect x="9" y="6" width="1" height="4" />
+      <rect x="8" y="10" width="1" height="1" />
+      {/* Wave 2 — large arc */}
+      <rect x="11" y="3" width="1" height="2" />
+      <rect x="12" y="5" width="1" height="6" />
+      <rect x="11" y="11" width="1" height="2" />
+    </svg>
+  );
+}
+
+/** 8-bit speaker with pixel X (muted) */
+export function PixelVolumeOff({ size = 16, color = "currentColor", className = "" }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill={color}
+      shapeRendering="crispEdges"
+      className={`${styles.pixelIcon} ${className}`}
+    >
+      {/* Speaker back */}
+      <rect x="1" y="6" width="3" height="4" />
+      {/* Cone */}
+      <rect x="4" y="5" width="1" height="6" />
+      <rect x="5" y="4" width="1" height="8" />
+      {/* X — top-left to bottom-right */}
+      <rect x="8" y="4" width="2" height="2" />
+      <rect x="10" y="6" width="2" height="2" />
+      <rect x="12" y="8" width="2" height="2" />
+      {/* X — bottom-left to top-right */}
+      <rect x="8" y="8" width="2" height="2" />
+      <rect x="12" y="4" width="2" height="2" />
+    </svg>
+  );
+}

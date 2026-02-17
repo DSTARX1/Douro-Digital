@@ -1,10 +1,12 @@
 "use client";
 
+import { useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import MotionSection from "@/app/_components/animations/MotionSection";
 import CalInlineEmbed from "@/app/_components/cal/CalInlineEmbed";
-import { PixelPlay, PixelStar, PixelArrowTopRight } from "@/app/_components/icons/PixelIcons";
+import { PixelStar, PixelArrowTopRight } from "@/app/_components/icons/PixelIcons";
+import { useAudio } from "@/app/_contexts/AudioContext";
 import styles from "./BookACall.module.css";
 
 function ArrowIcon() {
@@ -18,6 +20,65 @@ function CheckIcon() {
 }
 
 export default function BookACall() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
+
+  // Register video & attempt unmuted autoplay
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let cancelled = false;
+
+    registerVideo(video);
+
+    video.muted = false;
+    video.play().then(() => {
+      if (!cancelled) setMuted(false);
+    }).catch(() => {
+      if (cancelled) return;
+      video.muted = true;
+      setMuted(true);
+      video.play();
+    });
+
+    return () => {
+      cancelled = true;
+      unregisterVideo(video);
+    };
+  }, [registerVideo, unregisterVideo, setMuted]);
+
+  // Keep playing inline when exiting fullscreen, respect mute state
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const onFsChange = () => {
+      const fsEl = document.fullscreenElement ?? (document as any).webkitFullscreenElement;
+      if (!fsEl) {
+        // Respect global mute state, but keep current play/pause state
+        video.muted = isMuted;
+      }
+    };
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onFsChange);
+      document.removeEventListener("webkitfullscreenchange", onFsChange);
+    };
+  }, [isMuted]);
+
+  const handleVideoClick = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = false;
+    setMuted(false);
+    video.play();
+    if (typeof video.requestFullscreen === "function") {
+      video.requestFullscreen();
+    } else if (typeof (video as any).webkitEnterFullscreen === "function") {
+      (video as any).webkitEnterFullscreen();
+    }
+  }, [setMuted]);
 
   return (
     <div className={styles.page}>
@@ -50,12 +111,16 @@ export default function BookACall() {
           word-of-mouth and ready for a system that delivers.
         </p>
 
-        {/* VSL placeholder */}
+        {/* VSL video */}
         <div className={styles.videoWrap}>
-          <div className={styles.videoCard}>
-            <div className={styles.playBtn}>
-              <PixelPlay size={28} color="#fff" />
-            </div>
+          <div className={styles.videoCard} onClick={handleVideoClick}>
+            <video
+              ref={videoRef}
+              className={styles.video}
+              src="/videos/durolanding.mov"
+              loop
+              playsInline
+            />
           </div>
         </div>
 

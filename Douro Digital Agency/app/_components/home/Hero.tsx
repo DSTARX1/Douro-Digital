@@ -1,21 +1,50 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticCard from "@/app/_components/cursor/MagneticCard";
 import { PixelPlay } from "@/app/_components/icons/PixelIcons";
+import { useAudio } from "@/app/_contexts/AudioContext";
 import { heroHeadline } from "@/app/_data/home";
 import styles from "./Hero.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
+  const pinSpacerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
+
+  // Register video & attempt unmuted autoplay
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let cancelled = false;
+
+    registerVideo(video);
+
+    // Attempt unmuted autoplay; fall back to muted if browser blocks it
+    video.muted = false;
+    video.play().then(() => {
+      if (!cancelled) setMuted(false);
+    }).catch(() => {
+      if (cancelled) return;
+      video.muted = true;
+      setMuted(true);
+      video.play();
+    });
+
+    return () => {
+      cancelled = true;
+      unregisterVideo(video);
+    };
+  }, [registerVideo, unregisterVideo, setMuted]);
 
   useGSAP(() => {
     const section = sectionRef.current;
@@ -32,6 +61,7 @@ export default function Hero() {
         start: "top top",
         end: "+=800",
         pin: true,
+        pinSpacer: pinSpacerRef.current!,
         scrub: 1,
       },
     });
@@ -69,27 +99,70 @@ export default function Hero() {
     };
   }, []);
 
-  return (
-    <div ref={sectionRef} className={styles.hero} suppressHydrationWarning>
-      <div className={styles.heroInner}>
-        <div ref={headingRef} className={styles.headingWrap}>
-          <h1 className={styles.heading}>
-            {heroHeadline.prefix}{" "}
-            <em className={styles.italic}>{heroHeadline.italic}</em>{" "}
-            {heroHeadline.suffix}
-          </h1>
-        </div>
+  // Keep playing inline when exiting fullscreen, respect mute state
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-        <MagneticCard className={styles.mediaContainer} maxMove={70}>
-          <div ref={mediaRef} className={styles.media}>
-            <div className={styles.mediaPlaceholder} />
+    const onFsChange = () => {
+      const fsEl = document.fullscreenElement ?? (document as any).webkitFullscreenElement;
+      if (!fsEl) {
+        // Respect global mute state, but keep current play/pause state
+        video.muted = isMuted;
+      }
+    };
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onFsChange);
+      document.removeEventListener("webkitfullscreenchange", onFsChange);
+    };
+  }, [isMuted]);
+
+  const handleVideoClick = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = false;
+    setMuted(false);
+    video.play();
+    if (typeof video.requestFullscreen === "function") {
+      video.requestFullscreen();
+    } else if (typeof (video as any).webkitEnterFullscreen === "function") {
+      (video as any).webkitEnterFullscreen();
+    }
+  }, [setMuted]);
+
+  return (
+    <>
+      <div ref={pinSpacerRef}>
+        <div ref={sectionRef} className={styles.hero} suppressHydrationWarning>
+          <div className={styles.heroInner}>
+            <div ref={headingRef} className={styles.headingWrap}>
+              <h1 className={styles.heading}>
+                {heroHeadline.prefix}{" "}
+                <em className={styles.italic}>{heroHeadline.italic}</em>{" "}
+                {heroHeadline.suffix}
+              </h1>
+            </div>
+
+            <MagneticCard className={styles.mediaContainer} maxMove={70}>
+              <div ref={mediaRef} className={styles.media} onClick={handleVideoClick}>
+                <video
+                  ref={videoRef}
+                  className={styles.mediaVideo}
+                  src="/videos/durolanding.mov"
+                  loop
+                  playsInline
+                />
+              </div>
+            </MagneticCard>
           </div>
-        </MagneticCard>
+        </div>
       </div>
 
       <div ref={cursorRef} className={styles.playCursor}>
         <PixelPlay size={24} color="white" className={styles.playCursorIcon} animate />
       </div>
-    </div>
+    </>
   );
 }

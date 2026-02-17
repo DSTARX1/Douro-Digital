@@ -15,19 +15,17 @@ export default function HomeCTA() {
           <div
             key={m.name}
             className={styles.pfp}
-            style={{ backgroundColor: m.color }}
+            style={{
+              backgroundColor: m.color,
+              "--img-pos": m.objectPosition || "center",
+              "--img-scale": m.scale ? `scale(${m.scale})` : "none",
+            } as React.CSSProperties}
           >
             <Image
               src={m.image}
               alt={m.name}
               fill
               sizes="64px"
-              style={{
-                objectFit: "cover",
-                objectPosition: m.objectPosition || "center",
-                transform: m.scale ? `scale(${m.scale})` : undefined,
-                transformOrigin: m.scale ? "center top" : undefined,
-              }}
             />
           </div>
         ))}

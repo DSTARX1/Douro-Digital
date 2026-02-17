@@ -9,33 +9,11 @@ export default function CustomCursor() {
   const activeElRef = useRef<Element | null>(null);
   const [playing, setPlaying] = useState(false);
 
-
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
 
-
     const move = (e: MouseEvent) => {
-      // Check if we're in fullscreen mode - if so, always show cursor
-      const isInFullscreen = cursor.parentElement?.tagName === "VIDEO";
-      const fsElement = document.fullscreenElement ?? (document as any).webkitFullscreenElement;
-
-
-      if (isInFullscreen && fsElement) {
-        // In fullscreen: use top/left instead of transform (video blocks transform in fullscreen)
-        cursor.style.position = 'absolute';
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-        cursor.style.transform = 'translate(-50%, -50%)';
-        cursor.style.setProperty('left', `${e.clientX}px`, 'important');
-        cursor.style.setProperty('top', `${e.clientY}px`, 'important');
-        if (!cursor.classList.contains(styles.visible)) {
-          cursor.classList.add(styles.visible);
-        }
-        return;
-      }
-
-      // Normal mode: use original logic
       cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     };
 
@@ -47,14 +25,6 @@ export default function CustomCursor() {
     };
 
     const onLeave = () => {
-      // Don't hide cursor if we're in fullscreen
-      const isInFullscreen = cursor.parentElement?.tagName === "VIDEO";
-      const fsElement = document.fullscreenElement ?? (document as any).webkitFullscreenElement;
-
-      if (isInFullscreen && fsElement) {
-        return;
-      }
-
       activeElRef.current = null;
       cursor.classList.remove(styles.visible);
       setPlaying(false);

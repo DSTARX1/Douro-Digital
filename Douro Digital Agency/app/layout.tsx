@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import CustomCursor from "@/app/_components/cursor/CustomCursor";
+import { AudioProvider } from "@/app/_contexts/AudioContext";
+import MuteToggle from "@/app/_components/audio/MuteToggle";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,10 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <CustomCursor />
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <AudioProvider>
+          <CustomCursor />
+          <MuteToggle />
+          {children}
+        </AudioProvider>
       </body>
     </html>
   );

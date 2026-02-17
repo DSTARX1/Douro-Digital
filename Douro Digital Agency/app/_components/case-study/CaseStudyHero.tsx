@@ -3,6 +3,7 @@
 import { useRef, useCallback, useEffect } from "react";
 import MotionSection from "@/app/_components/animations/MotionSection";
 import MagneticCard from "@/app/_components/cursor/MagneticCard";
+import { useAudio } from "@/app/_contexts/AudioContext";
 import type { CaseStudy } from "@/app/_data/case-studies";
 import styles from "./CaseStudyHero.module.css";
 
@@ -12,33 +13,42 @@ interface Props {
 
 export default function CaseStudyHero({ study }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
 
-  // Pause when exiting fullscreen so it resumes from the same spot on next click
+  // Register video & attempt unmuted autoplay
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let cancelled = false;
+
+    registerVideo(video);
+
+    video.muted = false;
+    video.play().then(() => {
+      if (!cancelled) setMuted(false);
+    }).catch(() => {
+      if (cancelled) return;
+      video.muted = true;
+      setMuted(true);
+      video.play();
+    });
+
+    return () => {
+      cancelled = true;
+      unregisterVideo(video);
+    };
+  }, [registerVideo, unregisterVideo, setMuted]);
+
+  // Sync mute state on fullscreen exit, keep play/pause state
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const customCursor = document.querySelector('[data-cursor-debug="true"]');
-    const originalParent = customCursor?.parentNode;
-
     const onFsChange = () => {
       const fsEl = document.fullscreenElement ?? (document as any).webkitFullscreenElement;
-      console.log("[CaseStudyHero] Fullscreen change", {
-        fullscreenElement: fsEl?.tagName,
-        videoPaused: video.paused,
-        videoMuted: video.muted,
-      });
 
       if (!fsEl) {
-        // Exiting fullscreen
-        console.log("[CaseStudyHero] Exiting fullscreen, moving cursor back");
-        video.pause();
-        video.muted = true;
-        // Move cursor back to original parent
-        if (customCursor && originalParent) {
-          console.log("[CaseStudyHero] Moving cursor back to", (originalParent as Element).tagName);
-          (originalParent as Element).appendChild(customCursor);
-        }
+        video.muted = isMuted;
       }
     };
     document.addEventListener("fullscreenchange", onFsChange);
@@ -47,34 +57,21 @@ export default function CaseStudyHero({ study }: Props) {
       document.removeEventListener("fullscreenchange", onFsChange);
       document.removeEventListener("webkitfullscreenchange", onFsChange);
     };
-  }, []);
+  }, [isMuted]);
 
   const handleClick = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
     video.muted = false;
+    setMuted(false);
     video.play();
-
-    // Append custom cursor to video element so it appears in fullscreen
-    const customCursor = document.querySelector('[data-cursor-debug="true"]');
-    console.log("[CaseStudyHero] Click to fullscreen", {
-      hasCursor: !!customCursor,
-      cursorParent: (customCursor?.parentNode as Element)?.tagName,
-      videoTag: video.tagName,
-    });
-
-    if (customCursor && typeof video.requestFullscreen === "function") {
-      console.log("[CaseStudyHero] Moving cursor to video element");
-      video.appendChild(customCursor);
-      console.log("[CaseStudyHero] Cursor new parent:", (customCursor.parentNode as Element)?.tagName);
-    }
 
     if (typeof video.requestFullscreen === "function") {
       video.requestFullscreen();
     } else if (typeof (video as any).webkitEnterFullscreen === "function") {
       (video as any).webkitEnterFullscreen();
     }
-  }, []);
+  }, [setMuted]);
 
   return (
     <MotionSection className={styles.hero}>
@@ -92,9 +89,7 @@ export default function CaseStudyHero({ study }: Props) {
               ref={videoRef}
               className={styles.video}
               src={study.demoVideo}
-              autoPlay
               loop
-              muted
               playsInline
               preload="auto"
               aria-label={`${study.title} product demo`}
