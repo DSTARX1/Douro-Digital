@@ -9,11 +9,6 @@ export interface BeforeAfter {
   after: string;
 }
 
-export interface PracticeApplication {
-  title: string;
-  description: string;
-}
-
 export interface CaseStudyImage {
   src: string;
   alt: string;
@@ -52,11 +47,6 @@ export interface CaseStudy {
     heading: string;
     items: BeforeAfter[];
   };
-  practiceApplication?: {
-    heading: string;
-    scenarios: PracticeApplication[];
-    callout: string;
-  };
   cta?: {
     heading: string;
     buttonText: string;
@@ -79,17 +69,17 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "AI Reception Platform",
     color: "#2a2a4e",
     image: "/images/voice-noob-product.jpeg",
-    tagline: "Never miss another patient call. Turn missed calls into 60–75x ROI.",
+    tagline: "62% of your calls go unanswered. Every one is money walking out the door.",
     projectDetails: {
       client: "Voice Noob",
       year: "2026",
       services: [
-        "Product Strategy & Positioning",
-        "Pricing & Packaging Design",
-        "Go-to-Market Planning",
-        "Revenue Modeling & Unit Economics",
-        "Vertical Playbook Development",
-        "Competitive Analysis",
+        "Figured out who to sell to and why they'd care",
+        "Built the pricing so it actually makes money",
+        "Mapped out the launch — first 10 customers to scale",
+        "Ran the numbers on every revenue scenario",
+        "Created plug-and-play sales playbooks by industry",
+        "Tore apart every competitor to find the gaps",
       ],
       platform: "B2B SaaS",
       duration: "8 weeks",
@@ -98,61 +88,39 @@ export const caseStudies: CaseStudy[] = [
       { src: "/images/voice-noob-product.jpeg", alt: "Voice Noob product interface" },
     ],
     heroStats: [
-      { label: "New Patients/Month", value: "+9" },
+      { label: "New Customers/Month", value: "+9" },
       { label: "Customer ROI", value: "60–75x" },
       { label: "Gross Margin", value: ">60%" },
       { label: "Missed-Call Recovery", value: "100%" },
     ],
     challenge: {
-      heading: "The Challenge",
+      heading: "The Phone Was Ringing. Nobody Was Answering.",
       description:
-        "Dental clinics are bleeding revenue through their phone lines — 62% of calls go unanswered during peak hours, 85% of missed callers never call back, and 82% won't leave voicemail. Each missed new-patient call costs $2,000–$2,500 in lifetime value. Existing solutions force practices to choose between expensive human receptionists ($3,000–$5,600/mo) and developer-only API platforms ($400–$800/mo real cost) with no UI, no CRM, and no patient follow-up. The gap: clinics need 24/7 reception at predictable, budgetable prices — a complete system, not a developer toolkit.",
+        "Here's a stat that should make any business owner wince: 62% of calls go unanswered during peak hours. And 85% of those people? They never call back. They just call the next place on Google. Voicemail doesn't save you either — 82% won't bother leaving one. Every missed call from a potential customer is thousands in lifetime value, gone. The options on the market were garbage: either hire a human receptionist for $3,000–$5,600/mo, or wrestle with some developer-only API platform that costs $400–$800/mo and has no UI, no CRM, no follow-up system. Nothing for the business that just needs the damn phone answered, 24/7, at a price that makes sense.",
     },
     solution: {
-      heading: "The Solution",
+      heading: "We Built the Playbook to Launch It",
       description:
-        "We designed Voice Noob's complete go-to-market strategy for dental and clinic verticals: an open-source AI reception platform that helps practices recover $18K–$22.5K monthly in missed-patient revenue for just $299/mo — enterprise-grade AI phone agents at clinic-friendly prices.",
+        "We designed Voice Noob's entire go-to-market — an open-source AI reception platform that recovers $18K–$22.5K/mo in missed-call revenue for $299/mo. Enterprise-grade AI phone agents at prices a local business can actually stomach.",
       features: [
-        "4-tier pricing system optimized for 70% utilization and >60% gross margin",
-        "Dental-specific playbook with inbound scheduling, intake, and insurance FAQ handling",
-        "Outbound campaign system for recall reminders, post-op check-ins, and reactivation",
-        "Competitive positioning framework with 7 differentiators vs API platforms and human services",
-        "ROI calculators showing 60–75x return for dental practices",
-        "Sales enablement package with objection handling, demo scripts, and clinic-specific pitches",
+        "Pricing that works for solo shops AND multi-location chains — 4 tiers, >60% margins, no bill shock",
+        "Industry playbooks so a new sales rep can demo in 30 minutes flat",
+        "Outbound campaigns that chase reminders, follow-ups, and dormant customers automatically",
+        "7 clear differentiators vs the API platforms and the expensive human services",
+        "ROI calculators that make the pitch a no-brainer — 60–75x return, on paper, before the demo",
+        "Full sales toolkit: objection handling, demo scripts, industry-specific pitches ready to go",
       ],
     },
     results: {
       heading: "The Results",
       items: [
-        { label: "New Patients/Month", before: "Baseline (60% conversion)", after: "+9 patients (70% conversion)" },
+        { label: "New Customers/Month", before: "Baseline (60% conversion)", after: "+9 customers (70% conversion)" },
         { label: "Monthly Revenue Recovered", before: "$0 (62% calls missed)", after: "$18K–$22.5K/mo (60–75:1 ROI)" },
         { label: "CAC Payback Period", before: "Undefined", after: "<2 months" },
       ],
     },
-    practiceApplication: {
-      heading: "How This Applies to Your Practice",
-      scenarios: [
-        {
-          title: "Every Patient Call Answered, 24/7",
-          description:
-            "Your front desk is juggling phones, check-ins, and insurance verification simultaneously — and 62% of calls are going unanswered. After-hours and weekend calls go straight to voicemail, and patients dial the next clinic on their list. Voice Noob answers every call instantly, books appointments in real-time, and routes emergencies — even at 10pm on a Saturday.",
-        },
-        {
-          title: "Flat-Rate Pricing That Clinics Can Budget",
-          description:
-            "Practices budget in monthly line items, not variable costs. $299/mo is predictable — less than a single new-patient acquisition cost. Per-minute pricing from competitors creates anxiety and bill shock. We designed a 4-tier structure that works for solo practices and multi-location groups alike.",
-        },
-        {
-          title: "Recall & Reactivation on Autopilot",
-          description:
-            "The real revenue isn't just answering inbound calls — it's the outbound campaigns. Automated recall reminders, post-op check-in calls, dormant patient reactivation, and review requests run without your team lifting a finger. No competitor at clinic price points offers this, turning the phone from cost center into revenue engine.",
-        },
-      ],
-      callout:
-        "One recovered new-patient call ($2,000–$2,500 LTV) pays for 8 months of Voice Noob. Nine new patients a month means $18K–$22.5K in recovered revenue — for $299/mo.",
-    },
     cta: {
-      heading: "Your next patient is calling right now. Make sure someone answers — every time, 24/7.",
+      heading: "Your next customer is calling right now. Make sure someone answers — every time, 24/7.",
       buttonText: "Book a Strategy Sprint",
       buttonHref: "#",
     },
@@ -173,11 +141,11 @@ export const caseStudies: CaseStudy[] = [
     subtitle: "AI Assistant",
     color: "#1e3348",
     image: "/images/pocket-agent-home.png",
-    tagline: "One AI assistant that handles what your front desk can't keep up with",
+    tagline: "Your team is drowning in admin. This fixes that.",
     projectDetails: {
       client: "Pocket Agent",
       year: "2024",
-      services: ["Product Strategy", "AI Integration", "Full-Stack Development"],
+      services: ["Product strategy from scratch", "Wired in AI that actually does things", "Built the whole platform end-to-end"],
       platform: "Web App",
       duration: "3 months",
     },
@@ -193,21 +161,21 @@ export const caseStudies: CaseStudy[] = [
       { label: "Response Time", value: "<30s" },
     ],
     challenge: {
-      heading: "The Challenge",
+      heading: "18 Hours a Week, Gone on Admin",
       description:
-        "Small business owners were drowning in admin — scheduling, follow-ups, and reminders consuming 15–20 hours per week. Tools were fragmented across calendar apps, CRMs, and email platforms with no unified system to keep everything from falling through the cracks.",
+        "Small business owners were burning 15–20 hours a week on scheduling, follow-ups, and reminders. Not growing the business — just keeping it from falling apart. Tools were scattered across calendar apps, CRMs, and email platforms with zero connection between them. Things fell through the cracks constantly. Not because anyone was lazy — because nobody has 20 hours a week to spend on admin and still run a business.",
     },
     solution: {
-      heading: "The Solution",
+      heading: "One AI That Does What 3 Hires Can't Keep Up With",
       description:
-        "We built an AI assistant that consolidates scheduling, follow-up, and client communication into one intelligent system — handling the work that buries front desk teams.",
+        "We built an AI assistant that swallows scheduling, follow-up, and client communication into one system — handling the boring-but-critical work that buries teams.",
       features: [
-        "Automated follow-up sequences after every consultation",
-        "Smart cancellation recovery with waitlist management",
-        "Daily practice briefing with actionable insights",
-        "Two-way SMS and email patient communication",
-        "Integration with major EMR/PMS systems",
-        "Dormant patient reactivation campaigns",
+        "Every consultation gets a follow-up sequence — automatically, every time, no exceptions",
+        "Someone cancels? AI hits the waitlist instantly. Slot filled before you even knew it was empty",
+        "Morning briefing tells you exactly what's happening today — who's coming, who's ghosting, what needs attention",
+        "Two-way SMS and email so clients hear back in seconds, not hours",
+        "Plugs into whatever CRM and scheduling system you're already using",
+        "Dormant clients get reactivation campaigns — revenue you forgot you had",
       ],
     },
     results: {
@@ -218,35 +186,13 @@ export const caseStudies: CaseStudy[] = [
         { label: "Cancellation Fill Rate", before: "12%", after: "73%" },
       ],
     },
-    practiceApplication: {
-      heading: "How This Applies to Your Practice",
-      scenarios: [
-        {
-          title: "Zero Missed Follow-Ups, Ever",
-          description:
-            "The \"sticky note on the monitor\" problem: $380K+ in unscheduled treatment sitting in your EMR. Pocket Agent's automated follow-up means every consultation gets a personalized sequence — post-procedure check-ins, recall reminders, reactivation for dormant patients. No more printing lists that never get called.",
-        },
-        {
-          title: "Fill Every Cancellation in Minutes",
-          description:
-            "No-show rates hit 18–22% for new patients and 25–30% for high-ticket consultations. When someone cancels, AI instantly contacts the waitlist. No manual phone calls, no empty chairs, no lost revenue from slots that could have been filled.",
-        },
-        {
-          title: "Your Practice Briefing, Every Morning",
-          description:
-            "Start each day knowing: today's appointments, patients needing pre-visit forms, outstanding treatment follow-ups, at-risk patients who haven't rebooked. Your team walks in prepared instead of firefighting through the first two hours.",
-        },
-      ],
-      callout:
-        "Your front desk is juggling phones, check-ins, insurance, and 6 unreturned voicemails. One AI assistant recovers what's falling through the cracks — and it costs less than another hire.",
-    },
     cta: {
-      heading: "Every empty chair is revenue that walked out the door. AI fills the gaps your team can't get to.",
+      heading: "Every empty slot is revenue that walked out the door. AI fills the gaps your team can't get to.",
       buttonText: "Book a Call",
       buttonHref: "#",
     },
     testimonial: {
-      quote: "Your front desk is juggling phones, check-ins, insurance, and 6 unreturned voicemails. One AI assistant recovers what's falling through the cracks — and it costs less than another hire.",
+      quote: "Your team is juggling phones, check-ins, and unreturned messages. One AI assistant recovers what's falling through the cracks — and it costs less than another hire.",
       author: "Douro Digital",
       role: "Case Insight",
     },
@@ -266,11 +212,11 @@ export const caseStudies: CaseStudy[] = [
     color: "#2e1a4e",
     image: "/images/social-bro-product.jpeg",
     objectPosition: "0% 0%",
-    tagline: "AI-driven content that turns followers into patients",
+    tagline: "You're posting into the void. This makes sure someone's actually listening.",
     projectDetails: {
       client: "Social Bro",
       year: "2024",
-      services: ["Brand Strategy", "AI Content Engine", "Platform Development"],
+      services: ["Built the brand from the ground up", "AI content engine that writes posts that convert", "Full platform — design through deployment"],
       platform: "SaaS",
       duration: "5 months",
     },
@@ -284,21 +230,21 @@ export const caseStudies: CaseStudy[] = [
       { label: "Review Generation", value: "+340%" },
     ],
     challenge: {
-      heading: "The Challenge",
+      heading: "Thousands on Social Media. Nothing to Show for It.",
       description:
-        "Local businesses were spending thousands on social media with no strategy. Generic scheduling tools posted into the void with no conversion tracking — vanity metrics with zero connection to actual bookings or revenue.",
+        "Local businesses were throwing money at social media with zero strategy. Generic scheduling tools fired posts into the void — likes, maybe a comment from your aunt, but no connection to actual bookings or revenue. Vanity metrics everywhere, conversions nowhere.",
     },
     solution: {
-      heading: "The Solution",
+      heading: "AI That Posts With a Purpose",
       description:
-        "We built a social media platform powered by AI that generates, optimizes, and measures content specifically designed to drive real business outcomes — not just likes.",
+        "We built a social media platform where AI generates, optimizes, and measures content designed to drive bookings — not just engagement metrics that look good in a report nobody reads.",
       features: [
-        "AI-generated posts optimized for booking conversions",
-        "Before-and-after content creation from case photos",
-        "Automated review request sequences",
-        "Local SEO integration for Google Business Profile",
-        "Performance analytics tied to actual appointments",
-        "Multi-platform scheduling with platform-specific optimization",
+        "AI writes posts engineered to get DMs, calls, and bookings — not just likes",
+        "Snap a before-and-after photo, AI turns it into a lead-generating post",
+        "Happy customer? Automated review request hits their inbox at exactly the right moment",
+        "Google Business Profile stays fed — local SEO on autopilot",
+        "Analytics tied to actual revenue, not vanity metrics",
+        "Multi-platform scheduling that optimizes for each platform instead of copy-pasting everywhere",
       ],
     },
     results: {
@@ -309,30 +255,8 @@ export const caseStudies: CaseStudy[] = [
         { label: "Google Review Rating", before: "3.8 stars", after: "4.9 stars" },
       ],
     },
-    practiceApplication: {
-      heading: "How This Applies to Your Practice",
-      scenarios: [
-        {
-          title: "Stop Wasting Your $3K–$10K/Month Ad Spend",
-          description:
-            "Clinics spend $3K–$10K+ per month on ads, but 30–80% of resulting leads are mishandled or never contacted. Social Bro's AI-driven content means every post is optimized for the actions that matter: DMs, calls, bookings — not vanity likes that never convert.",
-        },
-        {
-          title: "Before-and-After Posts That Book Appointments",
-          description:
-            "For aesthetic practices, transformation content drives 4x more engagement. AI generates compliant, compelling posts from your case photos with captions optimized to drive appointment requests. Your smile gallery becomes your best salesperson.",
-        },
-        {
-          title: "5-Star Reviews on Autopilot",
-          description:
-            "Reputation is everything in local search. The same AI that drives social engagement automates review requests to satisfied patients at the perfect moment — right after a successful procedure. More reviews means higher Google ranking means more patients finding you first.",
-        },
-      ],
-      callout:
-        "You're already spending $3K–$10K a month getting people to call. Social Bro makes sure they actually want to — and that when they do, your brand is the one they trust.",
-    },
     cta: {
-      heading: "Your next patient is scrolling right now. Make sure they stop at your practice, not your competitor's.",
+      heading: "Your next customer is scrolling right now. Make sure they stop at your business, not your competitor's.",
       buttonText: "Book a Call",
       buttonHref: "#",
     },
@@ -355,17 +279,17 @@ export const caseStudies: CaseStudy[] = [
     image: "/images/viral-kid-product.jpeg",
     objectFit: "contain",
     tagline:
-      "Join every conversation where your customers already are. Automatically.",
+      "People are asking for recommendations right now. Your competitors are answering. You're not.",
     projectDetails: {
       client: "Viral Kid",
       year: "2026",
       services: [
-        "Product Strategy & Market Positioning",
-        "Pricing & Packaging Architecture",
-        "Go-to-Market Planning & Channel Strategy",
-        "Revenue Modeling & Unit Economics",
-        "Industry Playbook Development",
-        "Competitive Differentiation",
+        "Figured out the market positioning for a category that didn't exist yet",
+        "Designed pricing that undercuts agencies by 90% and still prints margin",
+        "Mapped the launch from first 10 customers to full scale",
+        "Ran every revenue model until the numbers stopped lying",
+        "Built sales playbooks for HVAC, dental, pizza, and real estate",
+        "Found every gap the competitors left wide open",
       ],
       platform: "B2B SaaS",
       duration: "8 weeks",
@@ -380,21 +304,21 @@ export const caseStudies: CaseStudy[] = [
       { label: "Verticals", value: "4" },
     ],
     challenge: {
-      heading: "The Challenge",
+      heading: "Invisible in Every Conversation That Matters",
       description:
-        "Local businesses are invisible in the viral social conversations happening around them every day — missing 99% of high-intent discussions where potential customers are actively asking for recommendations. Existing social tools only schedule posts to owned audiences or auto-reply to comments on owned content. No tool automates proactive engagement in organic conversations at SMB-friendly prices, leaving a massive gap between expensive agency services and DIY guesswork.",
+        "Hundreds of people in your city are asking for recommendations on Twitter, Reddit, and Instagram right now. \"Anyone know a good plumber?\" \"Best pizza in [your town]?\" And your business is nowhere in those threads. Existing social tools only schedule posts to your own followers or auto-reply to comments on your own content. Nobody was automating the part that actually matters — jumping into organic conversations where real people are actively looking for what you sell. The options were: hire an agency for $1,500–$3,000/mo to manually scroll Twitter, or just... miss all of it.",
     },
     solution: {
-      heading: "The Solution",
+      heading: "We Wrote the Playbook for a Brand New Category",
       description:
-        "We ran an 8-week strategy sprint to define the go-to-market for proactive social engagement automation — a new category where AI finds and joins real conversations on behalf of local businesses, turning social chatter into booked jobs.",
+        "8-week strategy sprint to define everything Viral Kid needed to launch proactive social engagement automation — AI that finds real conversations and joins them on behalf of local businesses, turning social chatter into booked jobs.",
       features: [
-        "4-tier pricing system optimized for SMB budgets with >59% gross margin",
-        "Vertical playbooks for HVAC, dental, pizza, and real estate with platform-specific engagement rules",
-        "Risk mitigation framework for platform compliance and rate limiting",
-        "Competitive positioning against agencies, schedulers, and manual engagement",
-        "Objection handling library for sales enablement across all verticals",
-        "Phased GTM roadmap from 10-customer pilot to scaled acquisition",
+        "Pricing that starts at $199/mo — 90% cheaper than agencies, with >59% gross margin baked in",
+        "Playbooks for HVAC, dental, pizza, and real estate with engagement rules tuned per platform",
+        "Compliance framework so the AI doesn't get accounts banned — rate limiting, reply variation, the works",
+        "Positioning that makes agencies, schedulers, and manual engagement look prehistoric",
+        "Objection handling scripts for every vertical — sales team picks up and goes",
+        "Launch roadmap: 10-customer pilot → validate → scale. No guesswork.",
       ],
     },
     results: {
@@ -416,28 +340,6 @@ export const caseStudies: CaseStudy[] = [
           after: "$199–$499/mo (60–90% cheaper)",
         },
       ],
-    },
-    practiceApplication: {
-      heading: "How This Applies to Your Business",
-      scenarios: [
-        {
-          title: "Find Customers Already Looking for You",
-          description:
-            "Hundreds of people in your city are asking for HVAC repair, pizza recommendations, or dentist referrals on Twitter, Reddit, and Instagram every month. Right now, you're invisible in those conversations. Viral Kid's AI finds them automatically and gets you in front of people who are actively looking for your service — before your competitors even know the conversation exists.",
-        },
-        {
-          title: "Authentic Engagement, Not Corporate Spam",
-          description:
-            "Auto-replies that sound like marketing get ignored or flagged. Viral Kid generates context-aware, natural-sounding responses with built-in reply variation and rate limiting to stay compliant. The result: engagement that feels like a real recommendation, not a bot.",
-        },
-        {
-          title: "Agency Results at a Fraction of the Cost",
-          description:
-            "Marketing agencies charge $1,500–$3,000/mo and still rely on manual scrolling to find engagement opportunities. Viral Kid automates what takes an agency team 15+ hours a week — for $199–$499/mo. Better coverage, faster response times, and ROI that pays for itself from the first booked job.",
-        },
-      ],
-      callout:
-        "One HVAC job from a Twitter conversation pays for 6+ months of Viral Kid. Three booked jobs a month means $8,400+ in revenue for $299.",
     },
     cta: {
       heading:

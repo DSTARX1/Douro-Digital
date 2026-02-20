@@ -11,7 +11,7 @@ export default function WorkGrid() {
   return (
     <section className={styles.section} id="work">
       <div className={styles.sectionHeader}>
-        <h2 className={styles.sectionTitle}>Selected work</h2>
+        <h2 className={styles.sectionTitle}>Shit we&apos;ve built that actually makes money</h2>
         <Link href="/work" className={styles.viewAll}>
           View all projects →
         </Link>

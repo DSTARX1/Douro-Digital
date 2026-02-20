@@ -7,9 +7,9 @@ import AboutCTA from "../_components/about/AboutCTA";
 import Footer from "../_components/home/Footer";
 
 export const metadata = {
-  title: "About — Douro Digital | AI Systems for Dental & Aesthetic Clinics",
+  title: "About \u2014 Douro Digital | AI Agents & Custom Software",
   description:
-    "We build AI systems for dental and aesthetic clinics that capture every lead, book every appointment, and reactivate dormant revenue — HIPAA-compliant by design.",
+    "We build AI agents and custom software for businesses tired of paying for tools that don\u2019t do anything. Four people. No layers. No hand-offs. Just systems that work.",
 };
 
 export default function AboutPage() {

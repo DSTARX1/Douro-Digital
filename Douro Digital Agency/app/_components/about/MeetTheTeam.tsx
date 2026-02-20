@@ -6,6 +6,7 @@ import styles from "./MeetTheTeam.module.css";
 // Local overrides for this section only
 const sectionOverrides: Record<string, { scale?: number; objectPosition?: string; transformOrigin?: string }> = {
   "Isaac Morgado": { scale: 1.4, objectPosition: "30% 15%" },
+  "Mario Funez": { scale: 1.15, objectPosition: "center 15%" },
   "Danny Isakov": { scale: 1.1, objectPosition: "center 15%" },
   "Josh Irizarry": { scale: 2.0, objectPosition: "center 10%" },
 };
@@ -14,7 +15,7 @@ export default function MeetTheTeam() {
   return (
     <MotionSection className={styles.section}>
       <div className={styles.top}>
-        <p className={styles.label}>Meet the team</p>
+        <p className={styles.label}>No Layers. No Bullshit.</p>
         <p className={styles.intro}>{teamIntro}</p>
       </div>
 

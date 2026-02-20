@@ -33,7 +33,20 @@ export default function AboutCTA() {
           </div>
         ))}
       </div>
-      <p className={styles.subtitle}>{aboutCTA.subtitle}</p>
+      <p className={styles.subtitle} style={{ whiteSpace: "pre-line" }}>
+        {aboutCTA.subtitle}
+      </p>
+      {aboutCTA.email && (
+        <p style={{ fontSize: "16px", color: "var(--muted)", marginTop: "16px" }}>
+          Not a call person? Email us:{" "}
+          <a
+            href={`mailto:${aboutCTA.email}`}
+            style={{ color: "var(--fg)", textDecoration: "underline" }}
+          >
+            {aboutCTA.email}
+          </a>
+        </p>
+      )}
       <CalInlineEmbed className={styles.calEmbed} />
     </MotionSection>
   );

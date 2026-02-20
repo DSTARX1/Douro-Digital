@@ -16,31 +16,31 @@ export const blogCategories: BlogCategoryMeta[] = [
   {
     slug: "compliance",
     label: "Compliance",
-    description: "HIPAA regulations, audits, and staying compliant with AI tools",
+    description: "GDPR, data privacy, and how not to get sued",
     color: "#D42918",
   },
   {
     slug: "ai-automation",
     label: "AI Automation",
-    description: "Workflow automation, AI agents, and intelligent process design",
+    description: "What works, what\u2019s hype, and what\u2019ll actually save you time",
     color: "#3B82F6",
   },
   {
     slug: "data-security",
     label: "Data Security",
-    description: "Encryption, access controls, and protecting patient data",
+    description: "Encryption, access controls, and not getting hacked",
     color: "#22C55E",
   },
   {
     slug: "healthcare-ops",
-    label: "Healthcare Ops",
-    description: "Scheduling, intake, billing, and operational efficiency",
+    label: "Operations",
+    description: "Systems, workflows, and killing inefficiency",
     color: "#EAB308",
   },
   {
     slug: "industry-trends",
     label: "Industry Trends",
-    description: "Regulatory changes, market shifts, and emerging technology",
+    description: "What\u2019s real vs what\u2019s VC-funded vaporware",
     color: "#A855F7",
   },
 ];

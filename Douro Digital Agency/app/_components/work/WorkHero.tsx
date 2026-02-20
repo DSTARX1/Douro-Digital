@@ -9,7 +9,9 @@ export default function WorkHero() {
     <MotionSection className={styles.hero}>
       <div className={styles.grid}>
         <h1 className={styles.headline}>{workHero.headline}</h1>
-        <p className={styles.subtitle}>{workHero.subtitle}</p>
+        <p className={styles.subtitle} style={{ whiteSpace: "pre-line" }}>
+          {workHero.subtitle}
+        </p>
       </div>
     </MotionSection>
   );

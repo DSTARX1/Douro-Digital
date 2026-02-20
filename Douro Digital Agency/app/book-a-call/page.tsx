@@ -4,7 +4,7 @@ import BookACall from "./BookACall";
 export const metadata: Metadata = {
   title: "Book a Free Strategy Call — Douro Digital",
   description:
-    "Get a custom patient acquisition roadmap for your dental or aesthetic clinic. Book a free 30-minute strategy session with our team.",
+    "30-minute call. No pitch deck. We\u2019ll look at where you\u2019re bleeding revenue and whether AI agents or custom software can fix it.",
 };
 
 export default function BookACallPage() {

@@ -13,7 +13,7 @@ import type { BlogCategory } from "@/app/_data/blog";
 export const metadata: Metadata = {
   title: "Resources — Douro Digital",
   description:
-    "Insights, guides, and case studies for HIPAA-compliant AI in healthcare.",
+    "AI breakdowns, compliance deep-dives, and the occasional rant about why your tech stack is a dumpster fire.",
 };
 
 export default async function ResourcesPage({

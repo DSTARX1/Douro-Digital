@@ -65,6 +65,35 @@
   line-height: 22px;
 }
 
+.statAside {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.body {
+  margin-bottom: 32px;
+}
+
+.body p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
+}
+
+.closing {
+  font-weight: 600;
+  color: var(--fg);
+}
+
 .link {
   display: inline-flex;
   align-items: center;

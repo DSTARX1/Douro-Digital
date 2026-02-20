@@ -18,17 +18,28 @@ export default function RotatingText() {
     return () => clearInterval(interval);
   }, []);
 
+  const current = ctaTexts[index];
+  const text = typeof current === "string" ? current : current.text;
+  const description = typeof current === "string" ? null : current.description;
+
+  // For sizing, use the longest text
+  const longestText = ctaTexts.reduce((a, b) => {
+    const aText = typeof a === "string" ? a : a.text;
+    const bText = typeof b === "string" ? b : b.text;
+    return aText.length > bText.length ? a : b;
+  });
+  const longestStr = typeof longestText === "string" ? longestText : longestText.text;
+
   return (
     <span
       style={{
         position: "relative",
         display: "inline-block",
-        height: "1.2em",
         verticalAlign: "bottom",
       }}
     >
       <span style={{ visibility: "hidden", whiteSpace: "nowrap" }}>
-        {ctaTexts.reduce((a, b) => (a.length > b.length ? a : b))}
+        {longestStr}
       </span>
       <span
         style={{
@@ -42,8 +53,27 @@ export default function RotatingText() {
           transition: "opacity 0.3s ease, transform 0.3s ease",
         }}
       >
-        {ctaTexts[index]}
+        {text}
       </span>
+      {description && (
+        <span
+          style={{
+            display: "block",
+            fontSize: "0.4em",
+            lineHeight: 1.4,
+            color: "var(--muted)",
+            fontWeight: 400,
+            fontStyle: "normal",
+            marginTop: "0.3em",
+            opacity: visible ? 1 : 0,
+            transform: `translateY(${visible ? 0 : 10}px)`,
+            transition: "opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s",
+            whiteSpace: "normal",
+          }}
+        >
+          {description}
+        </span>
+      )}
     </span>
   );
 }

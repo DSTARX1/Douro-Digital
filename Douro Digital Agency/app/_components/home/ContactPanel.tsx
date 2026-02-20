@@ -55,10 +55,17 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
           ✕
         </button>
 
-        <h2 className={styles.heading}>Book a free call</h2>
-        <p className={styles.subtitle}>
-          Pick a time that works for you and we&rsquo;ll chat about growing your
-          practice.
+        <h2 className={styles.heading}>Let&rsquo;s talk (no pressure, we promise)</h2>
+        <p className={styles.subtitle}>This call covers:</p>
+        <ul className={styles.bullets}>
+          <li>Where you&rsquo;re losing revenue (missed leads, slow follow-up, broken systems)</li>
+          <li>What AI or custom software could fix (realistically, not in a perfect world)</li>
+          <li>Whether we&rsquo;re a good fit (if we&rsquo;re not, we&rsquo;ll tell you)</li>
+        </ul>
+        <p className={styles.antiPressure}>
+          No pitch deck. No &ldquo;sign today&rdquo; pressure. Just a conversation. If it makes sense,
+          we&rsquo;ll send a proposal. If it doesn&rsquo;t, we&rsquo;ll shake hands (virtually) and
+          you&rsquo;ll have learned something useful.
         </p>
 
         <div className={styles.calEmbed}>
@@ -73,10 +80,11 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
         </div>
 
         <p className={styles.phone}>
-          Or email us at{" "}
+          Not a phone person? Email us:{" "}
           <a href="mailto:hello@dourodigital.com" className={styles.phoneLink}>
             hello@dourodigital.com
-          </a>
+          </a>{" "}
+          (we get it, some people prefer typing)
         </p>
       </aside>
     </>

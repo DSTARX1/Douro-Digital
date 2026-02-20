@@ -27,6 +27,7 @@
   font-size: 32px;
   font-weight: 500;
   line-height: 1.3;
+  white-space: pre-line;
 }
 
 @media (max-width: 1199px) {

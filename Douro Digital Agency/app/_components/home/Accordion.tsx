@@ -65,7 +65,7 @@ export default function Accordion({ items, defaultOpen = 0 }: Props) {
           <div
             style={{
               overflow: "hidden",
-              maxHeight: open === i ? "200px" : "0",
+              maxHeight: open === i ? "500px" : "0",
               opacity: open === i ? 1 : 0,
               transition: "max-height 0.3s ease, opacity 0.3s ease",
             }}

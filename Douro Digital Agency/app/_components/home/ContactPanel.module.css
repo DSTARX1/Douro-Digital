@@ -79,6 +79,41 @@
   margin-bottom: 20px;
 }
 
+/* ─── Bullets ──────────────────────────────────────────── */
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  max-width: 360px;
+  text-align: left;
+}
+
+.bullets li {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.bullets li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ─── Anti-pressure ────────────────────────────────────── */
+.antiPressure {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 360px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
 /* ─── Cal.com Embed ───────────────────────────────────── */
 .calEmbed {
   flex: 1;

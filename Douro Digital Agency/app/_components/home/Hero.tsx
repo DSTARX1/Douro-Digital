@@ -143,6 +143,18 @@ export default function Hero() {
                 <em className={styles.italic}>{heroHeadline.italic}</em>{" "}
                 {heroHeadline.suffix}
               </h1>
+              <p
+                style={{
+                  fontSize: "18px",
+                  color: "var(--muted)",
+                  marginTop: "16px",
+                  lineHeight: 1.6,
+                  fontWeight: 400,
+                }}
+              >
+                (Not chatbots. Not dashboards. Not &quot;insights.&quot; Just AI
+                that picks up the phone, books the call, and makes you money.)
+              </p>
             </div>
 
             <MagneticCard className={styles.mediaContainer} maxMove={70}>

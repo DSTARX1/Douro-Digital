@@ -9,7 +9,7 @@ import styles from "./ClientLogos.module.css";
 export default function ClientLogos() {
   return (
     <MotionSection className={styles.section}>
-      <h2 className={styles.heading}>Trusted by innovative companies</h2>
+      <h2 className={styles.heading}>Businesses that stopped paying for tools and started making money</h2>
       <div className={styles.grid}>
         {clients.map((c) => (
           <div key={c.name} className={styles.cell}>

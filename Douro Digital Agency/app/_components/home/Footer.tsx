@@ -61,7 +61,7 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <span>&copy; {new Date().getFullYear()} Douro Digital. All rights reserved.</span>
-        <span>Available worldwide</span>
+        <span>{footerContact.address}</span>
       </div>
     </footer>
   );

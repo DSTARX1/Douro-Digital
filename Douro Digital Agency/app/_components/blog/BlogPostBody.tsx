@@ -14,10 +14,10 @@ export default function BlogPostBody({ content }: Props) {
         <MDXRemote source={content} />
       </div>
       <div className={styles.cta}>
-        <h3 className={styles.ctaHeading}>Want help with HIPAA compliance?</h3>
+        <h3 className={styles.ctaHeading}>Want help building systems that actually work?</h3>
         <p className={styles.ctaSub}>
-          We help healthcare teams build AI-powered workflows that are secure,
-          compliant, and actually useful.
+          We build AI agents and custom software for businesses tired of paying
+          for tools that don&apos;t do anything.
         </p>
         <Link href="/book-a-call" className={styles.ctaBtn}>
           Book a call <PixelArrowRight size={14} color="currentColor" />

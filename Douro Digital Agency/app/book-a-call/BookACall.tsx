@@ -99,16 +99,18 @@ export default function BookACall() {
       {/* ── Hero ── */}
       <MotionSection as="section" className={styles.hero}>
         <p className={styles.trustBar}>
-          Trusted by dental &amp; aesthetic clinics worldwide
+          Trusted by businesses that got tired of bleeding money
         </p>
 
         <h1 className={styles.headline}>
-          Get 30+ new high-value patients every month &mdash; predictably
+          Stop bleeding revenue through missed calls, broken systems, and tools
+          that don&rsquo;t talk to each other
         </h1>
 
         <p className={styles.subheadline}>
-          For dental and aesthetic clinic owners who are done relying on
-          word-of-mouth and ready for a system that delivers.
+          30-minute call. No pitch deck. No &ldquo;sign today&rdquo; pressure.
+          Just a conversation about where you&rsquo;re losing money and what
+          we&rsquo;d build to fix it.
         </p>
 
         {/* VSL video */}
@@ -139,7 +141,7 @@ export default function BookACall() {
       <MotionSection as="section" className={styles.stats}>
         <div className={styles.stat}>
           <p className={styles.statValue}>50+</p>
-          <p className={styles.statLabel}>Clinics served</p>
+          <p className={styles.statLabel}>Businesses served</p>
         </div>
         <div className={styles.stat}>
           <p className={styles.statValue}>3x</p>
@@ -147,7 +149,7 @@ export default function BookACall() {
         </div>
         <div className={styles.stat}>
           <p className={styles.statValue}>10,000+</p>
-          <p className={styles.statLabel}>Patients generated</p>
+          <p className={styles.statLabel}>Leads converted</p>
         </div>
       </MotionSection>
 
@@ -155,7 +157,7 @@ export default function BookACall() {
       <MotionSection as="section" className={styles.painPoints}>
         <p className={styles.sectionLabel}>Sound familiar?</p>
         <h2 className={styles.sectionHeading}>
-          The challenges holding your clinic back
+          The challenges holding your business back
         </h2>
 
         <div className={styles.painGrid}>
@@ -163,11 +165,11 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>Inconsistent patient flow</h3>
+            <h3 className={styles.painTitle}>Leads that vanish into the void</h3>
             <p className={styles.painDesc}>
-              Some months are packed, others are painfully quiet. You can&rsquo;t
-              plan growth when you don&rsquo;t know where next month&rsquo;s
-              patients are coming from.
+              You&rsquo;re spending on ads, traffic is coming in, forms are
+              getting filled &mdash; and then nothing. 78% of leads go to
+              whoever responds first. Your average response time? 30 minutes.
             </p>
           </div>
 
@@ -175,11 +177,11 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>Wasted ad spend</h3>
+            <h3 className={styles.painTitle}>A tool graveyard</h3>
             <p className={styles.painDesc}>
-              You&rsquo;ve tried agencies, Google Ads, social media &mdash; but
-              nothing seems to stick. Leads come in but they don&rsquo;t
-              convert, or worse, they never show up.
+              CRM. Email platform. Scheduler. Zapier. Analytics dashboard.
+              Fourteen subscriptions, zero integrations, and you&rsquo;re still
+              copying data between them manually. Sounds exhausting.
             </p>
           </div>
 
@@ -187,11 +189,11 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>Competing on price</h3>
+            <h3 className={styles.painTitle}>40% of business happens after hours</h3>
             <p className={styles.painDesc}>
-              Instead of attracting patients who value quality, you&rsquo;re
-              stuck in a race to the bottom. Your expertise deserves premium
-              positioning.
+              Evenings. Weekends. Holidays. While you&rsquo;re asleep or with
+              your family, your phone&rsquo;s going straight to voicemail
+              &mdash; and those leads are calling your competitor instead.
             </p>
           </div>
         </div>
@@ -211,12 +213,12 @@ export default function BookACall() {
             </span>
             <p className={styles.learnText}>
               <span className={styles.learnTextStrong}>
-                Your clinic&rsquo;s growth bottleneck
+                Where you&rsquo;re bleeding revenue
               </span>
               <br />
               <span className={styles.learnTextMuted}>
-                We&rsquo;ll identify the #1 thing holding you back from
-                predictable patient flow.
+                Missed leads, slow follow-up, broken systems &mdash;
+                we&rsquo;ll find the #1 thing costing you money.
               </span>
             </p>
           </div>
@@ -227,11 +229,12 @@ export default function BookACall() {
             </span>
             <p className={styles.learnText}>
               <span className={styles.learnTextStrong}>
-                A custom patient acquisition roadmap
+                What AI or custom software could fix
               </span>
               <br />
               <span className={styles.learnTextMuted}>
-                A step-by-step plan tailored to your clinic, market, and goals.
+                Realistically, not in a perfect world. We&rsquo;ll tell you
+                exactly what we&rsquo;d build and how long it&rsquo;d take.
               </span>
             </p>
           </div>
@@ -242,12 +245,13 @@ export default function BookACall() {
             </span>
             <p className={styles.learnText}>
               <span className={styles.learnTextStrong}>
-                Expected ROI within 90 days
+                Whether we&rsquo;re a good fit
               </span>
               <br />
               <span className={styles.learnTextMuted}>
-                Realistic projections based on your current numbers and what
-                we&rsquo;ve achieved for similar clinics.
+                If we&rsquo;re not, we&rsquo;ll tell you. If we are,
+                you&rsquo;ll get realistic projections based on what
+                we&rsquo;ve built for similar businesses.
               </span>
             </p>
           </div>
@@ -274,18 +278,18 @@ export default function BookACall() {
         <CalInlineEmbed className={styles.calEmbedInner} />
 
         <p className={styles.scarcity}>
-          We only take on 5 new clinics per month. Book now to secure your spot.
+          We only take on 5 new clients per month. Book now to secure your spot.
         </p>
       </MotionSection>
 
       {/* ── Final CTA ── */}
       <MotionSection as="section" className={styles.finalCta}>
         <h2 className={styles.finalHeading}>
-          Ready to grow your practice?
+          Ready to stop leaking revenue?
         </h2>
         <p className={styles.finalSub}>
-          Stop losing patients to competitors who invest in their growth.
-          Let&rsquo;s build a system that works for your clinic.
+          Stop losing customers to competitors who respond faster.
+          Let&rsquo;s build a system that actually makes you money.
         </p>
         <a
           href="#book"

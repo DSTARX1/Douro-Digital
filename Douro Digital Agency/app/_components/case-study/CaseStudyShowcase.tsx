@@ -1,9 +1,8 @@
 import MotionSection from "@/app/_components/animations/MotionSection";
-import type { PracticeApplication } from "@/app/_data/case-studies";
 import styles from "./CaseStudyShowcase.module.css";
 
 interface Props {
-  scenarios: PracticeApplication[];
+  scenarios: { title: string; description: string }[];
   image?: string;
   imageAlt?: string;
   objectPosition?: string;
