@@ -2,8 +2,34 @@ import Link from "next/link";
 import { getContent } from "@/lib/content";
 import { notFound } from "next/navigation";
 import ContentEditor from "./ContentEditor";
+import styles from "../../../admin.module.css";
 
 export const dynamic = "force-dynamic";
+
+const contentNames: Record<string, string> = {
+  "about.hero": "About Hero",
+  "about.intro": "About Intro",
+  "about.values": "Our Values",
+  "about.team.intro": "Team Intro",
+  "about.team.members": "Team Members",
+  "about.team.highlights": "Team Highlights",
+  "about.cta": "About CTA",
+  "home.hero": "Home Hero",
+  "home.mission": "Mission Text",
+  "home.aboutTopics": "About Topics",
+  "home.cta": "Rotating CTA",
+  "home.testimonials": "Testimonials",
+  "home.videoTestimonials": "Video Testimonials",
+  "home.nav": "Navigation Links",
+  "home.footer.description": "Footer Description",
+  "home.footer.contact": "Footer Contact",
+  "home.footer.nav": "Footer Navigation",
+  services: "Services",
+  clients: "Client Logos",
+  "work.hero": "Work Hero",
+  "case-studies": "Case Studies",
+  "blog.categories": "Blog Categories",
+};
 
 export default async function ContentEditPage({
   params,
@@ -16,17 +42,20 @@ export default async function ContentEditPage({
 
   if (value === null) notFound();
 
+  const name = contentNames[decodedKey] || decodedKey;
+
   return (
     <>
-      <div style={{ marginBottom: 24 }}>
-        <Link href="/admin/content" style={{ color: "#3b82f6", fontSize: 14 }}>
-          &larr; Back to Content
-        </Link>
+      <div className={styles.breadcrumb}>
+        <Link href="/admin/content">Content</Link>
+        <span className={styles.breadcrumbSep}>/</span>
+        <span style={{ color: "#ccc" }}>{name}</span>
       </div>
-      <h1>Edit Content</h1>
-      <p style={{ color: "#888", marginBottom: 24 }}>
-        Key: <code style={{ color: "#fafafa", background: "#1a1a1a", padding: "2px 8px", borderRadius: 4 }}>{decodedKey}</code>
-      </p>
+
+      <div className={styles.pageHeader}>
+        <h1 className={styles.pageTitle}>{name}</h1>
+      </div>
+
       <ContentEditor contentKey={decodedKey} initialValue={value} />
     </>
   );
