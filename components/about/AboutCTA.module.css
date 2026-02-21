@@ -58,15 +58,22 @@
 }
 
 /* ─── Cal.com inline embed ────────────────── */
+@keyframes gradientSpin {
+  to { --gradient-angle: 360deg; }
+}
+
 .calEmbed {
   width: 100%;
   max-width: 700px;
   height: 700px;
   border-radius: 16px;
   overflow: hidden;
+  padding: 2px;
+  background: conic-gradient(from var(--gradient-angle), #D42918, #E8652C, #D42918);
+  animation: gradientSpin 4s linear infinite;
 }
 
-@media (max-width: 759px) {
+@media (max-width: 768px) {
   .section {
     padding: 80px 24px;
   }

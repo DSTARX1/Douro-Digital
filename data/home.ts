@@ -82,9 +82,9 @@ export const videoTestimonials = [
 ];
 
 export const navLinks = [
-  { label: "Work", href: "/work" },
-  { label: "Resources", href: "/resources" },
-  { label: "About", href: "/about" },
+  { label: "Work", href: "/work", index: "01" },
+  { label: "Resources", href: "/resources", index: "02" },
+  { label: "About", href: "/about", index: "03" },
 ];
 
 export const footerDescription =

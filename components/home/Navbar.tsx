@@ -32,6 +32,7 @@ export default function Navbar() {
               <span className={styles.star}>
                 <PixelStar size={10} color="var(--accent)" />
               </span>
+              <span className={styles.linkIndex}>{link.index}</span>
               {link.label}
             </a>
           ))}

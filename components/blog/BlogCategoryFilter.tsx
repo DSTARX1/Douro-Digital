@@ -22,6 +22,7 @@ export default function BlogCategoryFilter() {
       <button
         className={`${styles.pill} ${active === "all" ? styles.active : ""}`}
         onClick={() => handleClick("all")}
+        aria-pressed={active === "all"}
       >
         All
       </button>
@@ -30,6 +31,7 @@ export default function BlogCategoryFilter() {
           key={cat.slug}
           className={`${styles.pill} ${active === cat.slug ? styles.active : ""}`}
           onClick={() => handleClick(cat.slug)}
+          aria-pressed={active === cat.slug}
         >
           {cat.label}
         </button>

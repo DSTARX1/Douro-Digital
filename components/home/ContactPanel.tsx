@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import styles from "./ContactPanel.module.css";
+
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 interface ContactPanelProps {
   open: boolean;
@@ -10,6 +12,8 @@ interface ContactPanelProps {
 }
 
 export default function ContactPanel({ open, onClose }: ContactPanelProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
   // Lock body scroll when open
   useEffect(() => {
     if (open) {
@@ -22,15 +26,40 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
     };
   }, [open]);
 
-  // Close on Escape
+  // Close on Escape + focus trap
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      onClose();
+      return;
+    }
+    if (e.key === "Tab" && panelRef.current) {
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }, [onClose]);
+
   useEffect(() => {
     if (!open) return;
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+    window.addEventListener("keydown", handleKeyDown);
+    // Focus the first focusable element in the panel
+    const timer = setTimeout(() => {
+      const focusable = panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE);
+      focusable?.[0]?.focus();
+    }, 100);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      clearTimeout(timer);
     };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [open, onClose]);
+  }, [open, handleKeyDown]);
 
   // Initialize Cal.com embed
   useEffect(() => {
@@ -50,8 +79,14 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
         className={`${styles.overlay} ${open ? styles.open : ""}`}
         onClick={onClose}
       />
-      <aside className={`${styles.panel} ${open ? styles.open : ""}`}>
-        <button className={styles.close} onClick={onClose}>
+      <aside
+        ref={panelRef}
+        className={`${styles.panel} ${open ? styles.open : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Book a call"
+      >
+        <button className={styles.close} onClick={onClose} aria-label="Close dialog">
           ✕
         </button>
 

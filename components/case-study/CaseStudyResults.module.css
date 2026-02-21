@@ -1,6 +1,23 @@
 .section {
+  position: relative;
   padding: 100px 48px;
-  border-top: 1px solid var(--border);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 48px;
+  right: 48px;
+  height: 1px;
+  background: var(--border);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+:global([data-animate].is-visible).section::before {
+  transform: scaleX(1);
 }
 
 .label {
@@ -56,9 +73,13 @@
   }
 }
 
-@media (max-width: 759px) {
+@media (max-width: 768px) {
   .section {
     padding: 60px 24px;
+  }
+  .section::before {
+    left: 24px;
+    right: 24px;
   }
   .grid {
     grid-template-columns: 1fr;

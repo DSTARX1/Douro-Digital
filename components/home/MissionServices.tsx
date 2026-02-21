@@ -1,6 +1,7 @@
 "use client";
 
 import MotionSection from "@/components/animations/MotionSection";
+import TextScramble from "@/components/effects/TextScramble";
 import { PixelStar } from "@/components/icons/PixelIcons";
 import ServiceAccordion from "./ServiceAccordion";
 import styles from "./MissionServices.module.css";
@@ -27,7 +28,7 @@ export default function MissionServices() {
         <div className={styles.stats}>
           {stats.map((s) => (
             <div key={s.label} className={styles.stat}>
-              <span className={styles.statValue}>{s.value}</span>
+              <TextScramble text={s.value} className={styles.statValue} />
               <span className={styles.statLabel}>{s.label}</span>
               <span className={styles.statAside}>{s.aside}</span>
             </div>

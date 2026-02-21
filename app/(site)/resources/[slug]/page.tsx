@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { articleSchema } from "@/lib/jsonld";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import BlogPostHero from "@/components/blog/BlogPostHero";
@@ -22,6 +23,15 @@ export async function generateMetadata({
   return {
     title: `${post.meta.title} — Douro Digital`,
     description: post.meta.excerpt,
+    openGraph: {
+      title: `${post.meta.title} — Douro Digital`,
+      description: post.meta.excerpt,
+      type: "article",
+      url: `/resources/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
   };
 }
 
@@ -39,11 +49,22 @@ export default async function BlogPostPage({
     .filter((p) => p.category === post.meta.category && p.slug !== slug)
     .slice(0, 3);
 
+  const jsonLd = articleSchema({
+    headline: post.meta.title,
+    description: post.meta.excerpt,
+    datePublished: post.meta.isoDate,
+    url: `/resources/${slug}`,
+  });
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
         <Navbar />
-        <main style={{ padding: "0 48px 0", display: "flex", flexDirection: "column" }}>
+        <main id="main-content" style={{ padding: "0 48px 0", display: "flex", flexDirection: "column" }}>
           <BlogPostHero meta={post.meta} />
           <BlogPostBody content={post.content} />
           <BlogRelated posts={related} />

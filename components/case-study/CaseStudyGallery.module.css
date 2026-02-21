@@ -71,7 +71,7 @@
   transform: translateY(-10px);
 }
 
-@media (max-width: 759px) {
+@media (max-width: 768px) {
   .section {
     padding: 60px 24px;
   }

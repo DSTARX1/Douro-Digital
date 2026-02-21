@@ -73,7 +73,7 @@
   transform: scale(1.03);
 }
 
-@media (max-width: 759px) {
+@media (max-width: 768px) {
   .section {
     padding: 0 24px 60px;
   }

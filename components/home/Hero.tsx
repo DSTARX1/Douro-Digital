@@ -5,7 +5,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticCard from "@/components/cursor/MagneticCard";
-import { PixelPlay } from "@/components/icons/PixelIcons";
+import MagneticButton from "@/components/ui/MagneticButton";
+import { PixelPlay, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
 import { heroHeadline } from "@/data/home";
 import styles from "./Hero.module.css";
@@ -155,6 +156,14 @@ export default function Hero() {
                 (Not chatbots. Not dashboards. Not &quot;insights.&quot; Just AI
                 that picks up the phone, books the call, and makes you money.)
               </p>
+              <MagneticButton className={styles.ctaWrap} strength={0.4}>
+                <a href="#contact" className={styles.cta}>
+                  Book a free call
+                  <span className={styles.ctaArrow}>
+                    <PixelArrowTopRight size={14} color="currentColor" />
+                  </span>
+                </a>
+              </MagneticButton>
             </div>
 
             <MagneticCard className={styles.mediaContainer} maxMove={70}>

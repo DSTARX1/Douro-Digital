@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
 import CalInlineEmbed from "@/components/cal/CalInlineEmbed";
+import TextScramble from "@/components/effects/TextScramble";
 import { PixelStar, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
 import styles from "./BookACall.module.css";
@@ -81,7 +82,7 @@ export default function BookACall() {
   }, [setMuted]);
 
   return (
-    <div className={styles.page}>
+    <div id="main-content" className={styles.page}>
       {/* ── Minimal nav ── */}
       <nav className={styles.nav}>
         <Link href="/" className={styles.logoLink}>
@@ -140,15 +141,15 @@ export default function BookACall() {
       {/* ── Social proof stats ── */}
       <MotionSection as="section" className={styles.stats}>
         <div className={styles.stat}>
-          <p className={styles.statValue}>50+</p>
+          <TextScramble text="50+" className={styles.statValue} as="p" />
           <p className={styles.statLabel}>Businesses served</p>
         </div>
         <div className={styles.stat}>
-          <p className={styles.statValue}>3x</p>
+          <TextScramble text="3x" className={styles.statValue} as="p" />
           <p className={styles.statLabel}>Average ROI</p>
         </div>
         <div className={styles.stat}>
-          <p className={styles.statValue}>10,000+</p>
+          <TextScramble text="10,000+" className={styles.statValue} as="p" />
           <p className={styles.statLabel}>Leads converted</p>
         </div>
       </MotionSection>

@@ -11,12 +11,33 @@
 }
 
 .stepRow {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 48px;
   padding: 32px 0;
-  border-top: 1px solid var(--border);
 }
+
+.stepRow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+:global([data-animate].is-visible) .stepRow::before {
+  transform: scaleX(1);
+}
+
+.stepRow:nth-child(3)::before { transition-delay: 0.1s; }
+.stepRow:nth-child(4)::before { transition-delay: 0.2s; }
+.stepRow:nth-child(5)::before { transition-delay: 0.3s; }
 
 .stepTitle {
   font-size: 20px;
@@ -32,15 +53,32 @@
 }
 
 .closing {
+  position: relative;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.6;
   color: var(--fg);
   padding-top: 32px;
-  border-top: 1px solid var(--border);
 }
 
-@media (max-width: 759px) {
+.closing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+:global([data-animate].is-visible) .closing::before {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
   .section {
     padding: 80px 24px 0;
   }

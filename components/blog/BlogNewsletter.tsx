@@ -26,6 +26,7 @@ export default function BlogNewsletter() {
           type="email"
           placeholder="you@company.com"
           className={styles.input}
+          aria-label="Email address"
           required
         />
         <button type="submit" className={styles.btn}>

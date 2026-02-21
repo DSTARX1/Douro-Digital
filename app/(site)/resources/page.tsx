@@ -14,6 +14,16 @@ export const metadata: Metadata = {
   title: "Resources — Douro Digital",
   description:
     "AI breakdowns, compliance deep-dives, and the occasional rant about why your tech stack is a dumpster fire.",
+  openGraph: {
+    title: "Resources — Douro Digital",
+    description:
+      "AI breakdowns, compliance deep-dives, and the occasional rant about why your tech stack is a dumpster fire.",
+    type: "website",
+    url: "/resources",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default async function ResourcesPage({
@@ -33,7 +43,7 @@ export default async function ResourcesPage({
     <>
       <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
         <Navbar />
-        <main style={{ padding: "0 48px 0", display: "flex", flexDirection: "column" }}>
+        <main id="main-content" style={{ padding: "0 48px 0", display: "flex", flexDirection: "column" }}>
           <BlogHero />
           <BlogFeatured posts={featuredPosts} />
           <Suspense fallback={null}>

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies } from "@/data/case-studies";
+import { webPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
@@ -28,6 +29,15 @@ export async function generateMetadata({
   return {
     title: `${study.title} — Douro Digital | Case Study`,
     description: study.tagline ?? study.subtitle,
+    openGraph: {
+      title: `${study.title} — Douro Digital | Case Study`,
+      description: study.tagline ?? study.subtitle,
+      type: "website",
+      url: `/case-studies/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
   };
 }
 
@@ -42,12 +52,32 @@ export default async function CaseStudyPage({
   const study = caseStudies[studyIndex];
   const otherProjects = caseStudies.filter((_, i) => i !== studyIndex);
 
+  const pageJsonLd = webPageSchema({
+    name: `${study.title} — Douro Digital | Case Study`,
+    description: study.tagline ?? study.subtitle,
+    url: `/case-studies/${slug}`,
+  });
+
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Case Studies", url: "/work" },
+    { name: study.title, url: `/case-studies/${slug}` },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
         <Navbar />
         <CaseStudyHero study={study} />
-        <main>
+        <main id="main-content">
           {study.challenge && (
             <CaseStudyDescription
               description={study.challenge.description}

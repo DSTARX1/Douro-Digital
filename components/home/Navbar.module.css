@@ -85,6 +85,15 @@
   100% { transform: translateY(0); }
 }
 
+/* ─── Nav link index number ─────────────────────────────── */
+.linkIndex {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0.4;
+  margin-right: 6px;
+  letter-spacing: 0.05em;
+}
+
 /* ─── CTA button ────────────────────────────────────────── */
 .cta {
   display: inline-flex;

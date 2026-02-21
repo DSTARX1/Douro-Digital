@@ -48,11 +48,27 @@ const arrowStyle: React.CSSProperties = {
 export default function Accordion({ items, defaultOpen = 0 }: Props) {
   const [open, setOpen] = useState<number>(defaultOpen);
 
+  function toggle(i: number) {
+    setOpen(open === i ? -1 : i);
+  }
+
   return (
     <div>
       {items.map((item, i) => (
-        <div key={item.title} style={itemStyle} onClick={() => setOpen(open === i ? -1 : i)}>
-          <div style={headerStyle}>
+        <div key={item.title} style={itemStyle}>
+          <div
+            style={headerStyle}
+            role="button"
+            tabIndex={0}
+            aria-expanded={open === i}
+            onClick={() => toggle(i)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggle(i);
+              }
+            }}
+          >
             <span style={titleStyle}>{item.title}</span>
             <span style={{
               ...arrowStyle,

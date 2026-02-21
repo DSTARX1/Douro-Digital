@@ -4,6 +4,7 @@ import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
 import CalInlineEmbed from "@/components/cal/CalInlineEmbed";
 import { teamMembers } from "@/data/about";
+import MagneticButton from "@/components/ui/MagneticButton";
 import RotatingText from "./RotatingText";
 import styles from "./HomeCTA.module.css";
 
@@ -34,6 +35,11 @@ export default function HomeCTA() {
       <h2 className={styles.heading}>
         Let&apos;s work on <RotatingText />
       </h2>
+      <MagneticButton className={styles.ctaWrap} strength={0.3}>
+        <a href="mailto:hello@dourodigital.com" className={styles.cta}>
+          Or just say hello
+        </a>
+      </MagneticButton>
       <CalInlineEmbed className={styles.calEmbed} />
     </MotionSection>
   );

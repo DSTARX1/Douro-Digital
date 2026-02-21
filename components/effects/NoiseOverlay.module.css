@@ -1,0 +1,24 @@
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0.03;
+}
+
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  background-image: url("/images/noise.png");
+  background-repeat: repeat;
+  animation: noise 0.5s steps(8) infinite;
+}
+
+@keyframes noise {
+  to {
+    transform: translate(-10%, -10%);
+  }
+}

@@ -115,7 +115,13 @@
 }
 
 /* ─── CTA button (reused across sections) ─────────────── */
+@keyframes gradientSpin {
+  to { --gradient-angle: 360deg; }
+}
+
 .ctaBtn {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -129,8 +135,23 @@
   transition: transform 0.3s ease;
 }
 
+.ctaBtn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 102px;
+  background: conic-gradient(from var(--gradient-angle), #D42918, #E8652C, #D42918);
+  z-index: -1;
+  animation: gradientSpin 4s linear infinite;
+}
+
 .ctaBtn:hover {
   transform: scale(0.96);
+}
+
+.ctaBtn:active {
+  transform: scale(0.94);
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .ctaArrow {
@@ -291,6 +312,9 @@
   height: 700px;
   border-radius: 16px;
   overflow: hidden;
+  padding: 2px;
+  background: conic-gradient(from var(--gradient-angle), #D42918, #E8652C, #D42918);
+  animation: gradientSpin 4s linear infinite;
 }
 
 .scarcity {
