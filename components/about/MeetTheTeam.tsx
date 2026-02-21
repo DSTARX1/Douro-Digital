@@ -1,6 +1,13 @@
 import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
-import { teamIntro, teamMembers, teamHighlights } from "@/data/about";
+import { getContentWithFallback } from "@/lib/content";
+import {
+  teamIntro as staticTeamIntro,
+  teamMembers as staticTeamMembers,
+  teamHighlights as staticTeamHighlights,
+  type TeamMember,
+  type HighlightItem,
+} from "@/data/about";
 import styles from "./MeetTheTeam.module.css";
 
 // Local overrides for this section only
@@ -11,7 +18,10 @@ const sectionOverrides: Record<string, { scale?: number; objectPosition?: string
   "Josh Irizarry": { scale: 2.0, objectPosition: "center 10%" },
 };
 
-export default function MeetTheTeam() {
+export default async function MeetTheTeam() {
+  const teamIntro = await getContentWithFallback<string>("about.team.intro", staticTeamIntro);
+  const teamMembers = await getContentWithFallback<TeamMember[]>("about.team.members", staticTeamMembers);
+  const teamHighlights = await getContentWithFallback<HighlightItem[]>("about.team.highlights", staticTeamHighlights);
   return (
     <MotionSection className={styles.section}>
       <div className={styles.top}>
