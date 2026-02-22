@@ -1,4 +1,3 @@
-import { ViewTransition } from "react";
 import CustomCursor from "@/components/cursor/CustomCursor";
 import { AudioProvider } from "@/lib/contexts/AudioContext";
 import MuteToggle from "@/components/audio/MuteToggle";
@@ -23,9 +22,7 @@ export default function SiteLayout({
       <CustomCursor />
       <MuteToggle />
       <SmoothScroll>
-        <ViewTransition default="page-transition">
-          {children}
-        </ViewTransition>
+        {children}
       </SmoothScroll>
     </AudioProvider>
   );

@@ -1,10 +1,10 @@
-import { cookies } from "next/headers";
 import crypto from "crypto";
+import { cookies } from "next/headers";
 
 const SESSION_COOKIE = "dd_admin_session";
 
 function signToken(payload: string): string {
-  const secret = process.env.ADMIN_PASSWORD!;
+  const secret = process.env.SESSION_SECRET ?? process.env.ADMIN_PASSWORD!;
   return crypto.createHmac("sha256", secret).update(payload).digest("hex");
 }
 
@@ -20,7 +20,7 @@ export async function verifySession(): Promise<boolean> {
   const sig = session.value.slice(dotIdx + 1);
   if (!payload || !sig) return false;
 
-  const secret = process.env.ADMIN_PASSWORD;
+  const secret = process.env.SESSION_SECRET ?? process.env.ADMIN_PASSWORD;
   if (!secret) return false;
 
   const expected = signToken(payload);

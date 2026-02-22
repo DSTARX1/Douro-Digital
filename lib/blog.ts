@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
-import { cache } from "react";
-import matter from "gray-matter";
 import type { BlogCategory } from "@/data/blog";
+import matter from "gray-matter";
+import { cache } from "react";
 
 export interface BlogPostMeta {
   slug: string;
@@ -41,35 +41,35 @@ export const getAllPosts = cache((): BlogPostMeta[] => {
     } satisfies BlogPostMeta;
   });
   return posts.sort(
-    (a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime()
+    (a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime(),
   );
 });
 
-export function getPostBySlug(
-  slug: string
-): { meta: BlogPostMeta; content: string } | null {
-  if (!/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(slug)) return null;
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
-  const raw = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(raw);
-  return {
-    meta: {
-      slug,
-      title: data.title ?? "",
-      excerpt: data.excerpt ?? "",
-      category: data.category as BlogCategory,
-      date: data.date ?? "",
-      isoDate: data.isoDate ?? "",
-      readingTime: data.readingTime ?? "",
-      featured: data.featured === true,
-      gradientFrom: data.gradientFrom ?? "#1a1a2e",
-      gradientTo: data.gradientTo ?? "#16213e",
-      ...(data.image ? { image: data.image as string } : {}),
-    },
-    content,
-  };
-}
+export const getPostBySlug = cache(
+  (slug: string): { meta: BlogPostMeta; content: string } | null => {
+    if (!/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(slug)) return null;
+    const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+    if (!fs.existsSync(filePath)) return null;
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const { data, content } = matter(raw);
+    return {
+      meta: {
+        slug,
+        title: data.title ?? "",
+        excerpt: data.excerpt ?? "",
+        category: data.category as BlogCategory,
+        date: data.date ?? "",
+        isoDate: data.isoDate ?? "",
+        readingTime: data.readingTime ?? "",
+        featured: data.featured === true,
+        gradientFrom: data.gradientFrom ?? "#1a1a2e",
+        gradientTo: data.gradientTo ?? "#16213e",
+        ...(data.image ? { image: data.image as string } : {}),
+      },
+      content,
+    };
+  },
+);
 
 export function getFeaturedPosts(): BlogPostMeta[] {
   return getAllPosts().filter((p) => p.featured);

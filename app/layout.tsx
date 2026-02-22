@@ -30,11 +30,11 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()).replace(/</g, '\\u003c') }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema()).replace(/</g, '\\u003c') }}
         />
         {children}
         <Analytics />

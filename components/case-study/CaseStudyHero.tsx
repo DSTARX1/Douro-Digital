@@ -46,7 +46,7 @@ export default function CaseStudyHero({ study }: Props) {
     if (!video) return;
 
     const onFsChange = () => {
-      const fsEl = document.fullscreenElement ?? (document as any).webkitFullscreenElement;
+      const fsEl = document.fullscreenElement ?? document.webkitFullscreenElement;
 
       if (!fsEl) {
         video.muted = isMuted;
@@ -69,8 +69,8 @@ export default function CaseStudyHero({ study }: Props) {
 
     if (typeof video.requestFullscreen === "function") {
       video.requestFullscreen();
-    } else if (typeof (video as any).webkitEnterFullscreen === "function") {
-      (video as any).webkitEnterFullscreen();
+    } else if (typeof video.webkitEnterFullscreen === "function") {
+      video.webkitEnterFullscreen();
     }
   }, [setMuted]);
 

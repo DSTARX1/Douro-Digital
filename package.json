@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "biome check ."
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
@@ -19,7 +20,7 @@
     "gsap": "^3.14.2",
     "lenis": "^1.3.17",
     "next": "16.1.6",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "pg": "^8.18.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -27,8 +28,9 @@
     "shiki": "^3.22.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/pg": "^8.16.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",

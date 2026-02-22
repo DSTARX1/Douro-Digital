@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { pageViews } from "@/lib/schema";
+import { type NextRequest, NextResponse } from "next/server";
 
 function parseUserAgent(ua: string) {
   let device = "desktop";
@@ -18,6 +19,15 @@ function parseUserAgent(ua: string) {
 
 export async function POST(request: NextRequest) {
   try {
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+      request.headers.get("x-real-ip") ??
+      "unknown";
+
+    if (!checkRateLimit(`track:${ip}`, 30, 60_000)) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const body = await request.json();
     const { path, referrer, utmSource, utmMedium, utmCampaign } = body;
 
