@@ -1,7 +1,8 @@
 export const heroHeadline = {
   prefix: "Build a Business That Runs Itself So Well,",
   italic: "You Forget You Own It",
-  suffix: "(Until You Check Your Bank Account and Remember Why You Started This Thing)",
+  suffix:
+    "(Until You Check Your Bank Account and Remember Why You Started This Thing)",
 };
 
 export const missionText =
@@ -16,7 +17,7 @@ export const aboutTopics: AboutTopic[] = [
   {
     title: "Why We Only Work With Four People",
     description:
-      "You know why most projects fail? Too many cooks.\n\nAccount managers who \"manage\" but don't build. Junior devs who copy-paste and hope for the best. \"Strategists\" who've never shipped a product.\n\nIsaac builds backend systems that don't shit the bed at 2am. Mario builds products that convert. Danny makes it look professional enough that people trust it and BUY. Josh makes sure we build the RIGHT thing.\n\nFour people. Zero bullshit.\n\nYou tell us what you need. We build it. It works. No games of telephone. No \"let me check with the team.\" Direct access. Real answers. Actual progress.",
+      'You know why most projects fail? Too many cooks.\n\nAccount managers who "manage" but don\'t build. Junior devs who copy-paste and hope for the best. "Strategists" who\'ve never shipped a product.\n\nIsaac builds backend systems that don\'t shit the bed at 2am. Mario builds products that convert. Danny makes it look professional enough that people trust it and BUY. Josh makes sure we build the RIGHT thing.\n\nFour people. Zero bullshit.\n\nYou tell us what you need. We build it. It works. No games of telephone. No "let me check with the team." Direct access. Real answers. Actual progress.',
   },
   {
     title: "What Happens When You Work With Us",
@@ -26,7 +27,7 @@ export const aboutTopics: AboutTopic[] = [
   {
     title: "Products That Work, Not Promises That Don't",
     description:
-      "We've built Voice Noob. Pocket Agent. Social Bro. Viral Kid.\n\nReal products. Real users. Real revenue.\n\nNot case studies where we \"consulted\" and took credit. Not white-labeled solutions we slapped your logo on. Actual products we built from scratch, shipped, and people paid money for.\n\nAnyone can TALK about building software. Anyone can sell you a \"roadmap\" and a \"comprehensive digital transformation strategy.\"\n\nWe just build the damn thing. And it works.\n\nThat's our whole pitch.",
+      'We\'ve built Voice Noob. Pocket Agent. Social Bro. Viral Kid.\n\nReal products. Real users. Real revenue.\n\nNot case studies where we "consulted" and took credit. Not white-labeled solutions we slapped your logo on. Actual products we built from scratch, shipped, and people paid money for.\n\nAnyone can TALK about building software. Anyone can sell you a "roadmap" and a "comprehensive digital transformation strategy."\n\nWe just build the damn thing. And it works.\n\nThat\'s our whole pitch.',
   },
 ];
 
@@ -99,7 +100,7 @@ export const videoTestimonials = [
 
 export const navLinks = [
   { label: "Work", href: "/work", index: "01" },
-  { label: "Resources", href: "/resources", index: "02" },
+  { label: "Blog", href: "/resources", index: "02" },
   { label: "About", href: "/about", index: "03" },
 ];
 
@@ -114,7 +115,7 @@ export const footerContact = {
 
 export const footerNav = [
   { label: "Work", href: "/work" },
-  { label: "Resources", href: "/resources" },
+  { label: "Blog", href: "/resources" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/book-a-call" },
 ];
