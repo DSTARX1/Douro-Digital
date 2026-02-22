@@ -71,7 +71,7 @@ export const caseStudies: CaseStudy[] = [
     color: "#2a2a4e",
     image: "/images/voice-noob-product.jpeg",
     tagline:
-      "Voice automation tools were either too technical or too limited. Small businesses needed something in between. So we built it.",
+      "Voice automation was either too technical or too limited. Small businesses needed something in between.",
     projectDetails: {
       client: "Voice Noob",
       year: "2026",
@@ -99,22 +99,20 @@ export const caseStudies: CaseStudy[] = [
       { label: "Missed-Call Recovery", value: "100%" },
     ],
     challenge: {
-      heading:
-        "Voice Automation Was Either Too Technical or Too Limited",
+      heading: "Voice Automation Was Either Too Technical or Too Limited",
       description:
-        "Voice automation tools were either too technical (required coding and looked like the Matrix) or too limited (could barely handle 'press 1 for sales'). Small businesses needed something in between\u2014powerful enough to handle real logic but simple enough that a non-technical person could build workflows.\n\nVoice recognition had to work with different accents and speech patterns (because real people don't talk like robots reading a script). The system needed to handle edge cases without breaking\u2014customers say unexpected things, like asking about refunds when booking an appointment. And non-technical users needed to build complex workflows with multi-step logic and conditional branching without writing a single line of code.",
+        "Voice automation tools were either too technical (required coding and looked like the Matrix) or too limited (could barely handle 'press 1 for sales'). Small businesses needed something in between \u2014 powerful enough to handle real logic but simple enough that a non-technical person could build workflows.\n\nThe system had to handle different accents, unexpected customer requests, and let non-technical users build complex multi-step logic. All without writing code.",
     },
     solution: {
-      heading:
-        "A Platform Non-Technical Users Can Actually Use",
+      heading: "A Platform Non-Technical Users Can Actually Use",
       description:
-        "Built Voice Noob. A platform that lets non-technical users build voice automation workflows without writing code, but with enough flexibility to handle complex business logic. The kind of thing you can set up in an afternoon and it just works.\n\nAdaptive recognition that learns from usage and improves over time. Fallback logic that routes to human support gracefully instead of crashing or looping forever. Visual builder that makes logic flows obvious without requiring programming knowledge.",
+        "Built Voice Noob. Non-technical users build voice automation workflows without code, with enough flexibility for complex business logic.\n\nAdaptive recognition that learns from usage. Fallback logic that routes to humans gracefully. Visual builder that makes if-then logic obvious without programming. Set it up in an afternoon and it just works.",
       features: [
-        "Voice workflow builder (drag and drop, no coding required, no PhD needed)",
-        "Handles appointment booking automatically (syncs with calendars, sends confirmations, the whole thing)",
-        "Customer intake that captures info without human involvement (name, email, issue, preferences)",
-        "Routes complex queries to humans when needed (gracefully, not like a broken robot)",
-        "Works 24/7 (no staffing costs, no missed calls at 11pm)",
+        "Voice workflow builder (drag and drop, no coding required)",
+        "Automatic appointment booking (syncs with calendars, sends confirmations)",
+        "Customer intake without human involvement",
+        "Graceful human handoff when needed",
+        "Works 24/7 (no staffing costs, no missed calls)",
       ],
     },
     results: {
@@ -145,7 +143,7 @@ export const caseStudies: CaseStudy[] = [
     },
     testimonial: {
       quote:
-        "Before this strategy work, we had a great product but no clear path to market. Now we know exactly who to target first, what to charge, and how to pitch it. The vertical playbooks are gold \u2014 we can hand them to a sales rep and they're ready to demo in 30 minutes.",
+        "Before this strategy work, we had a great product but no clear path to market. Now we know exactly who to target first, what to charge, and how to pitch it. The vertical playbooks are gold.",
       author: "Voice Noob",
       role: "Founding Team",
     },
@@ -166,15 +164,15 @@ export const caseStudies: CaseStudy[] = [
     color: "#1e3348",
     image: "/images/pocket-agent-home.png",
     tagline:
-      "Small businesses can't afford 24/7 support staff, but customers expect immediate responses. Miss a question at 9pm and you lose the sale.",
+      "Customers expect instant answers. You can't be available 24/7. Miss a question at 9pm and you lose the sale.",
     projectDetails: {
       client: "Pocket Agent",
       year: "2024",
       services: [
         "Built automated customer service system from scratch",
-        "Dynamic response system that adapts tone and detail",
+        "Dynamic response system that adapts tone",
         "Confidence scoring for intelligent escalation",
-        "Multi-channel support (email, chat, social media)",
+        "Multi-channel support (email, chat, social)",
         "Customizable routing logic per business",
         "Full conversation context for human handoff",
       ],
@@ -202,22 +200,20 @@ export const caseStudies: CaseStudy[] = [
       { label: "Response Time", value: "<30s" },
     ],
     challenge: {
-      heading:
-        "Customers Expect Instant Answers. You Can't Be Available 24/7.",
+      heading: "Customers Expect Instant Answers. You Can't Be Available 24/7.",
       description:
-        "Small businesses can't afford 24/7 customer support staff (hiring round-the-clock support costs more than most businesses make), but customers expect immediate responses. Miss a question at 9pm and you lose the sale to a competitor who answered in five minutes.\n\nThe system had to sound human, not like a robot spitting canned responses that make customers want to throw their phone. It needed to know when it couldn't help and hand off gracefully instead of frustrating customers with loops. And different businesses have different support workflows\u2014e-commerce handles returns differently than service businesses handle scheduling.",
+        "Small businesses can't afford 24/7 support staff, but customers expect immediate responses. Miss a question at 9pm and you lose the sale to a competitor who answered in five minutes.\n\nThe system had to sound human, know when it couldn't help and hand off gracefully, and handle different support workflows across different business types.",
     },
     solution: {
-      heading:
-        "Automated Support That Sounds Human and Knows Its Limits",
+      heading: "Automated Support That Sounds Human and Knows Its Limits",
       description:
-        "Built Pocket Agent. Automated customer service that handles common questions instantly, escalates complex issues intelligently, and never sleeps. Like hiring a support team that works for free and never calls in sick.\n\nDynamic response system that adapts tone and detail based on the customer's question. Confidence scoring system that asks clarifying questions or routes to human when uncertain. Customizable routing logic so each business defines their own escalation rules.",
+        "Built Pocket Agent. Handles common questions instantly, escalates complex issues intelligently, never sleeps.\n\nDynamic response system that adapts tone based on the question. Confidence scoring that routes to human when uncertain. Customizable routing so each business defines their own escalation rules.",
       features: [
-        "Instant responses to common questions (pricing, shipping, returns, hours, all the basics)",
-        "Smart escalation (knows when it can't help and hands off to human)",
-        "Full conversation context (human picks up exactly where automation left off, no customer repeating themselves)",
-        "Works across email, chat, and social media (one system, all channels)",
-        "Learns from responses (gets smarter over time, not dumber like some systems that seem to forget everything)",
+        "Instant responses to common questions (pricing, shipping, returns, hours)",
+        "Smart escalation (knows when to hand off to human)",
+        "Full conversation context (no customer repeating themselves)",
+        "Works across email, chat, and social media",
+        "Learns from responses (gets smarter over time)",
       ],
     },
     results: {
@@ -288,7 +284,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/images/social-bro-product.jpeg",
     objectPosition: "0% 0%",
     tagline:
-      "Social media tools are either too basic or too bloated. Small businesses needed something that actually helps them post consistently without turning it into a full-time job.",
+      "Social media tools are either too basic or too bloated. Small businesses needed something that actually helps without becoming a full-time job.",
     projectDetails: {
       client: "Social Bro",
       year: "2024",
@@ -317,22 +313,20 @@ export const caseStudies: CaseStudy[] = [
       { label: "Review Generation", value: "+340%" },
     ],
     challenge: {
-      heading:
-        "Social Media Tools Are Either Too Basic or Too Bloated",
+      heading: "Social Media Tools Are Either Too Basic or Too Bloated",
       description:
-        "Social media management tools are either too basic (just scheduling, like a glorified calendar) or too bloated (need a manual to use them, cost $300/month, and have features you'll never touch). Small businesses needed something that actually helps them post consistently without turning it into a full-time job.\n\nEach platform has different content requirements\u2014character limits, image sizes, hashtag rules, all the annoying details. Managing engagement across platforms means checking five different apps. And small businesses don't have time to create different content for each platform because they're running a business, not a content factory.",
+        "Social media tools are either too basic (just scheduling, like a glorified calendar) or too bloated (need a manual, cost $300/month, features you'll never touch). Small businesses needed something that helps them post consistently without turning it into a full-time job.\n\nEach platform has different requirements. Managing engagement means checking five apps. And nobody has time to create different content for each platform.",
     },
     solution: {
-      heading:
-        "One Platform That Makes Social Media Simple Again",
+      heading: "One Platform That Makes Social Media Simple Again",
       description:
-        "Built Social Bro. Schedule content, repurpose posts across platforms, and manage engagement without needing seven browser tabs open and a degree in social media management. Simple enough to use daily. Powerful enough to actually matter.\n\nAutomatic adaptation\u2014write once, system reformats for each platform's requirements. Unified inbox that aggregates comments and messages from all platforms. Repurposing engine that adapts tone and format for each platform automatically.",
+        "Built Social Bro. Schedule, repurpose, and manage engagement without seven browser tabs. Simple enough to use daily. Powerful enough to matter.\n\nWrite once, system reformats for each platform. Unified inbox for all comments and messages. Repurposing engine that adapts tone per platform automatically.",
       features: [
-        "Schedule posts across multiple platforms (one interface, not seven tabs making your computer sound like a helicopter)",
-        "Content repurposing (turn one piece of content into platform-specific posts that don't look copy-pasted)",
-        "Engagement dashboard (see and respond to comments and messages in one place, not juggling apps)",
-        "Analytics that actually matter (what's working, what's not, no vanity metrics)",
-        "Bulk scheduling (plan your month in one sitting, then forget about it)",
+        "Schedule posts across multiple platforms from one interface",
+        "Content repurposing (one piece becomes platform-specific posts)",
+        "Engagement dashboard (comments and messages in one place)",
+        "Analytics that matter (what's working, no vanity metrics)",
+        "Bulk scheduling (plan your month in one sitting)",
       ],
     },
     results: {
@@ -379,13 +373,12 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "viral-kid",
     title: "Viral Kid",
-    subtitle:
-      "Content Distribution System That Actually Gets Your Stuff Seen",
+    subtitle: "Content Distribution That Actually Gets Your Stuff Seen",
     color: "#1b131e",
     image: "/images/viral-kid-product.jpeg",
     objectFit: "contain",
     tagline:
-      "Creating content is hard. Getting it seen is harder. Most content dies with zero reach because distribution is an afterthought.",
+      "Creating content is hard. Getting it seen is harder. Most content dies because distribution is an afterthought.",
     projectDetails: {
       client: "Viral Kid",
       year: "2026",
@@ -393,7 +386,7 @@ export const caseStudies: CaseStudy[] = [
         "Built content distribution platform from scratch",
         "Multi-platform distribution engine",
         "Platform-specific optimization per algorithm",
-        "Scheduling intelligence for optimal posting times",
+        "Scheduling intelligence for optimal posting",
         "Cross-promotion automation",
         "Unified analytics across all platforms",
       ],
@@ -414,22 +407,20 @@ export const caseStudies: CaseStudy[] = [
       { label: "Verticals", value: "4" },
     ],
     challenge: {
-      heading:
-        "Great Content, Zero Distribution",
+      heading: "Great Content, Zero Distribution",
       description:
-        "Creating content is hard. Getting it seen is harder. Most content dies with zero reach because distribution is an afterthought\u2014everyone focuses on making great content, nobody focuses on getting it in front of people. It's like cooking a gourmet meal and eating it alone in your kitchen while the restaurant is empty.\n\nDifferent platforms reward different content formats and posting patterns\u2014TikTok wants vertical video posted three times daily, YouTube wants long-form weekly, LinkedIn wants professional text with occasional video. Manual distribution takes hours and most creators don't do it consistently. And tracking what's working means juggling seven different analytics dashboards.",
+        "Creating content is hard. Getting it seen is harder. Most content dies with zero reach because distribution is an afterthought. It's like cooking a gourmet meal and eating it alone.\n\nDifferent platforms reward different formats. Manual distribution takes hours. And tracking performance means juggling seven analytics dashboards.",
     },
     solution: {
-      heading:
-        "One Upload. Every Platform. Smart Distribution.",
+      heading: "One Upload. Every Platform. Smart Distribution.",
       description:
-        "Built Viral Kid. A distribution system that takes one piece of content and gets it in front of the right people across multiple platforms without manual posting everywhere. Smart distribution that actually works.\n\nPlatform-specific optimization adapts content for each platform's preferences. Upload once, system handles distribution automatically while maintaining quality. Unified analytics showing performance across all platforms in one view.",
+        "Built Viral Kid. Takes one piece of content and gets it in front of the right people across platforms without manual posting.\n\nPlatform-specific optimization for each algorithm. Upload once, distribution happens automatically. Unified analytics across all platforms in one view.",
       features: [
-        "Multi-platform distribution (one upload, posts everywhere automatically)",
-        "Platform-specific optimization (adapts content for each platform's algorithm because what works on TikTok dies on LinkedIn)",
-        "Scheduling intelligence (posts at optimal times per platform, not just whenever)",
-        "Cross-promotion automation (links content together strategically for maximum reach)",
-        "Performance tracking (what's working where, so you double down on winners)",
+        "Multi-platform distribution (one upload, posts everywhere)",
+        "Platform-specific optimization (adapts for each algorithm)",
+        "Scheduling intelligence (optimal times per platform)",
+        "Cross-promotion automation (strategic content linking)",
+        "Performance tracking (what's working where)",
       ],
     },
     results: {
@@ -460,7 +451,7 @@ export const caseStudies: CaseStudy[] = [
     },
     testimonial: {
       quote:
-        "We were spending $1,200/month on a social media agency that posted 3 times a week and replied to our comments. They never once engaged with the hundreds of people asking for HVAC recommendations on Twitter every month. Viral-Kid found those conversations automatically and got us in front of thousands of people who were actively looking for service. First month: 8 profile visits turned into 3 booked jobs. That's $8,400 in revenue for $299. The ROI math is insane.",
+        "We were spending $1,200/month on a social media agency that posted 3 times a week. They never engaged with people asking for HVAC recommendations on Twitter. Viral-Kid found those conversations automatically. First month: 3 booked jobs. $8,400 in revenue for $299.",
       author: "HVAC Pilot Customer",
       role: "Early Adopter",
     },
@@ -477,7 +468,7 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const caseStudiesIntro =
-  "These are products we've built. Not consulting projects where we made a roadmap and bailed. Not white-labeled platforms with our client's logo slapped on like a bumper sticker. Real products that we built from scratch, shipped, and real people use (and pay for). This is what we know how to do. This is our track record. Not case studies. Not testimonials. Products.";
+  "These are products we built. Not consulting projects. Not white-labeled platforms with a logo slapped on. Real products built from scratch that real people use and pay for. This is our track record. Not case studies. Not testimonials. Products.";
 
 export const caseStudiesFooter =
-  "Want to build something like this for your business? Something custom that does exactly what you need instead of forcing you into someone else's limitations? Let's talk about what that looks like. No pitch. No pressure. Just an honest conversation about whether custom software makes sense for where you are right now.";
+  "Want to build something like this for your business? Something custom that does exactly what you need? Let's talk. No pitch. No pressure. Just an honest conversation about whether custom software makes sense for where you are.";
