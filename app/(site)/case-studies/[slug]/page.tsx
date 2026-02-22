@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies } from "@/data/case-studies";
+import { getAllPosts } from "@/lib/blog";
 import { webPageSchema, breadcrumbSchema } from "@/lib/jsonld";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
@@ -96,6 +97,16 @@ export default async function CaseStudyPage({
               color={study.color}
               objectFit={study.objectFit}
               objectPosition={study.objectPosition}
+              blogLinks={
+                study.relatedBlogSlugs
+                  ? study.relatedBlogSlugs
+                      .map((blogSlug) => {
+                        const post = getAllPosts().find((p) => p.slug === blogSlug);
+                        return post ? { slug: post.slug, title: post.title } : null;
+                      })
+                      .filter((link): link is { slug: string; title: string } => link !== null)
+                  : undefined
+              }
             />
           )}
           {study.cta && <CaseStudyCTA cta={study.cta} />}

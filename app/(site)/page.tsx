@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { webPageSchema } from "@/lib/jsonld";
+import { webPageSchema, faqSchema } from "@/lib/jsonld";
+import { homeFAQ } from "@/data/faq";
 import Navbar from "@/components/home/Navbar";
 import Hero from "@/components/home/Hero";
 import Marquee from "@/components/effects/Marquee";
@@ -8,6 +9,7 @@ import WorkGrid from "@/components/home/WorkGrid";
 import HomeTestimonial from "@/components/home/HomeTestimonial";
 import ClientLogos from "@/components/home/ClientLogos";
 import HomeCTA from "@/components/home/HomeCTA";
+import FAQ from "@/components/faq/FAQ";
 import Footer from "@/components/home/Footer";
 
 export const metadata: Metadata = {
@@ -34,11 +36,17 @@ export default function Home() {
     url: "/",
   });
 
+  const faqJsonLd = faqSchema(homeFAQ);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
         <Navbar />
@@ -49,6 +57,7 @@ export default function Home() {
           <WorkGrid />
           <HomeTestimonial />
           <ClientLogos />
+          <FAQ items={homeFAQ} heading="Questions we hear all the time" />
           <HomeCTA />
         </main>
       </div>

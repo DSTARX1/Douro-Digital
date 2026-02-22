@@ -4,7 +4,12 @@ import { useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
-import CalInlineEmbed from "@/components/cal/CalInlineEmbed";
+import dynamic from "next/dynamic";
+
+const CalInlineEmbed = dynamic(() => import("@/components/cal/CalInlineEmbed"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: 700 }} />,
+});
 import TextScramble from "@/components/effects/TextScramble";
 import { PixelStar, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
@@ -121,6 +126,7 @@ export default function BookACall() {
               ref={videoRef}
               className={styles.video}
               src="/videos/durolanding.mov"
+              preload="metadata"
               loop
               playsInline
             />

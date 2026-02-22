@@ -63,6 +63,35 @@
   background: var(--accent);
 }
 
+/* ─── Blog Links ────────────────────────────────────────── */
+.blogLinks {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.blogLinksLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.blogLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+
+.blogLink:hover {
+  opacity: 0.8;
+}
+
 /* ─── Image Column ───────────────────────────────────────── */
 .imageContainer {
   background: var(--project-color);

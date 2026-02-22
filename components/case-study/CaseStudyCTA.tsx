@@ -1,7 +1,12 @@
 "use client";
 
 import MotionSection from "@/components/animations/MotionSection";
-import CalInlineEmbed from "@/components/cal/CalInlineEmbed";
+import dynamic from "next/dynamic";
+
+const CalInlineEmbed = dynamic(() => import("@/components/cal/CalInlineEmbed"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: 700 }} />,
+});
 import type { CaseStudy } from "@/data/case-studies";
 import styles from "./CaseStudyCTA.module.css";
 

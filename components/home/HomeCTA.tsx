@@ -2,15 +2,22 @@
 
 import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
-import CalInlineEmbed from "@/components/cal/CalInlineEmbed";
+import dynamic from "next/dynamic";
+
+const CalInlineEmbed = dynamic(() => import("@/components/cal/CalInlineEmbed"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: 700 }} />,
+});
 import { teamMembers } from "@/data/about";
 import MagneticButton from "@/components/ui/MagneticButton";
+import ParallaxContainer from "@/components/animations/ParallaxContainer";
 import RotatingText from "./RotatingText";
 import styles from "./HomeCTA.module.css";
 
 export default function HomeCTA() {
   return (
     <MotionSection className={styles.section} id="contact">
+      <ParallaxContainer speed={0.06}>
       <div className={styles.pfpRow}>
         {teamMembers.map((m) => (
           <div
@@ -40,6 +47,7 @@ export default function HomeCTA() {
           Or just say hello
         </a>
       </MagneticButton>
+      </ParallaxContainer>
       <CalInlineEmbed className={styles.calEmbed} />
     </MotionSection>
   );

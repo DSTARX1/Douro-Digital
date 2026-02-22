@@ -60,6 +60,7 @@ export interface CaseStudy {
   demoVideo?: string;
   approachImage?: string;
   galleryImages?: CaseStudyImage[];
+  relatedBlogSlugs?: string[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -134,6 +135,7 @@ export const caseStudies: CaseStudy[] = [
     galleryImages: [
       { src: "/images/voice-noob-product.jpeg", alt: "Voice Noob product interface" },
     ],
+    relatedBlogSlugs: ["ai-voice-agents-hipaa-call-handling"],
   },
   {
     slug: "pocket-agent",
@@ -203,6 +205,10 @@ export const caseStudies: CaseStudy[] = [
       { src: "/images/pocket-agent-graph.png", alt: "Pocket Agent knowledge graph" },
       { src: "/images/pocket-agent-skills.png", alt: "Pocket Agent superpowers and skills" },
       { src: "/images/pocket-agent-chat.png", alt: "Pocket Agent chat interface" },
+    ],
+    relatedBlogSlugs: [
+      "automating-patient-intake-without-compromising-phi",
+      "reducing-no-shows-ai-scheduling",
     ],
   },
   {

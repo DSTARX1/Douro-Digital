@@ -8,19 +8,20 @@ readingTime: "7 min read"
 featured: false
 gradientFrom: "#1a2e05"
 gradientTo: "#365314"
+image: "/images/blog/llm-healthcare-privacy-risks.jpg"
 ---
 
 Large language models are powerful, but they carry a privacy risk that most healthcare organizations have not fully confronted: memorization. LLMs do not just learn patterns — they memorize specific sequences from their training data. If patient records were in the training set, those records can be extracted through adversarial prompting.
 
-## Training data leakage
+## How does training data leakage expose patient records?
 
 Research has shown that GPT-class models can regurgitate verbatim passages from their training data when prompted with the right prefix. In a healthcare context, this means a model trained on clinical notes could reproduce a patient's name, diagnosis, and treatment plan if an attacker crafts the right query. The risk scales with model size — larger models memorize more.
 
-## The fine-tuning trap
+## Why does fine-tuning make the privacy problem worse?
 
 Many healthcare AI projects fine-tune a base model on institution-specific data to improve accuracy. This dramatically increases memorization risk because the fine-tuning dataset is small and gets repeated many times during training. A model fine-tuned on 10,000 patient records is far more likely to memorize individual records than a model pre-trained on billions of web pages. If you fine-tune on PHI, you must treat the model weights themselves as PHI — with all the storage, access, and disposal requirements that implies.
 
-## Mitigation strategies
+## What are the best mitigation strategies for LLM privacy risks?
 
 Differential privacy during training adds calibrated noise that limits what any single record can contribute to the model. It is the gold standard but comes with an accuracy trade-off. Alternatively, federated learning keeps data on-premises and only shares model gradients — though recent research has shown gradient inversion attacks can partially reconstruct training data. The safest approach for most clinics is to avoid training on PHI entirely and instead use retrieval-augmented generation (RAG), where the model queries a secure database at inference time without ever incorporating patient data into its weights.
 

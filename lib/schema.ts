@@ -29,6 +29,14 @@ export const pageViews = pgTable(
   ]
 );
 
+export const newsletterSubscribers = pgTable("newsletter_subscribers", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  subscribedAt: timestamp("subscribed_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
 export const contentBlocks = pgTable("content_blocks", {
   id: serial("id").primaryKey(),
   key: text("key").notNull().unique(),

@@ -14,6 +14,7 @@ export interface BlogPostMeta {
   featured: boolean;
   gradientFrom: string;
   gradientTo: string;
+  image?: string;
 }
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
@@ -35,6 +36,7 @@ export function getAllPosts(): BlogPostMeta[] {
       featured: data.featured === true,
       gradientFrom: data.gradientFrom ?? "#1a1a2e",
       gradientTo: data.gradientTo ?? "#16213e",
+      ...(data.image ? { image: data.image as string } : {}),
     } satisfies BlogPostMeta;
   });
   return posts.sort(
@@ -61,6 +63,7 @@ export function getPostBySlug(
       featured: data.featured === true,
       gradientFrom: data.gradientFrom ?? "#1a1a2e",
       gradientTo: data.gradientTo ?? "#16213e",
+      ...(data.image ? { image: data.image as string } : {}),
     },
     content,
   };

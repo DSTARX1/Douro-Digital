@@ -70,6 +70,21 @@
   opacity: 0.9;
 }
 
+.error {
+  font-size: 14px;
+  color: #f87171;
+  margin-top: 12px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input:disabled {
+  opacity: 0.6;
+}
+
 .privacy {
   font-size: 13px;
   color: var(--muted);

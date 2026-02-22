@@ -1,4 +1,11 @@
-import { type ReactNode } from "react";
+"use client";
+
+import { useRef, type ReactNode } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   children: ReactNode;
@@ -7,10 +14,43 @@ interface Props {
   style?: React.CSSProperties;
 }
 
-export default function ParallaxContainer({ children, className, style }: Props) {
+export default function ParallaxContainer({
+  children,
+  speed = 0.15,
+  className,
+  style,
+}: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const inner = innerRef.current;
+      if (!inner) return;
+
+      const distance = 100 * speed;
+
+      gsap.fromTo(
+        inner,
+        { y: -distance },
+        {
+          y: distance,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <div className={className} style={style}>
-      {children}
+    <div ref={containerRef} className={className} style={style}>
+      <div ref={innerRef}>{children}</div>
     </div>
   );
 }

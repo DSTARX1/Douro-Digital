@@ -2,13 +2,20 @@
 
 import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
-import CalInlineEmbed from "@/components/cal/CalInlineEmbed";
+import dynamic from "next/dynamic";
+
+const CalInlineEmbed = dynamic(() => import("@/components/cal/CalInlineEmbed"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: 700 }} />,
+});
+import ParallaxContainer from "@/components/animations/ParallaxContainer";
 import { aboutCTA, teamMembers } from "@/data/about";
 import styles from "./AboutCTA.module.css";
 
 export default function AboutCTA() {
   return (
     <MotionSection className={styles.section}>
+      <ParallaxContainer speed={0.06}>
       <h2 className={styles.heading}>
         {aboutCTA.heading} <span className={styles.accent}>{aboutCTA.accentPhrase}</span>
       </h2>
@@ -33,6 +40,7 @@ export default function AboutCTA() {
           </div>
         ))}
       </div>
+      </ParallaxContainer>
       <p className={styles.subtitle} style={{ whiteSpace: "pre-line" }}>
         {aboutCTA.subtitle}
       </p>

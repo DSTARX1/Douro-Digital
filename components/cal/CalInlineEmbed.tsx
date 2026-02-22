@@ -23,7 +23,7 @@ export default function CalInlineEmbed({ className }: CalInlineEmbedProps) {
   }, []);
 
   return (
-    <div className={className}>
+    <div className={className} style={{ minHeight: 700 }}>
       <Cal
         namespace="inline"
         calLink={CAL_LINK}

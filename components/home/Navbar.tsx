@@ -28,13 +28,13 @@ export default function Navbar() {
 
         <div className={styles.navRight}>
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className={styles.link}>
+            <Link key={link.href} href={link.href} className={styles.link}>
               <span className={styles.star}>
                 <PixelStar size={10} color="var(--accent)" />
               </span>
               <span className={styles.linkIndex}>{link.index}</span>
               {link.label}
-            </a>
+            </Link>
           ))}
           <button
             className={styles.cta}

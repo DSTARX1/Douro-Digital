@@ -7,6 +7,7 @@ import BlogPostHero from "@/components/blog/BlogPostHero";
 import BlogPostBody from "@/components/blog/BlogPostBody";
 import BlogRelated from "@/components/blog/BlogRelated";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { caseStudies } from "@/data/case-studies";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -49,6 +50,10 @@ export default async function BlogPostPage({
     .filter((p) => p.category === post.meta.category && p.slug !== slug)
     .slice(0, 3);
 
+  const linkedCaseStudy = caseStudies.find((cs) =>
+    cs.relatedBlogSlugs?.includes(slug)
+  );
+
   const jsonLd = articleSchema({
     headline: post.meta.title,
     description: post.meta.excerpt,
@@ -66,7 +71,18 @@ export default async function BlogPostPage({
         <Navbar />
         <main id="main-content" style={{ padding: "0 48px 0", display: "flex", flexDirection: "column" }}>
           <BlogPostHero meta={post.meta} />
-          <BlogPostBody content={post.content} />
+          <BlogPostBody
+            content={post.content}
+            relatedCaseStudy={
+              linkedCaseStudy
+                ? {
+                    slug: linkedCaseStudy.slug,
+                    title: linkedCaseStudy.title,
+                    subtitle: linkedCaseStudy.subtitle,
+                  }
+                : undefined
+            }
+          />
           <BlogRelated posts={related} />
         </main>
       </div>

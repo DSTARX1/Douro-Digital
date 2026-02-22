@@ -8,19 +8,20 @@ readingTime: "6 min read"
 featured: false
 gradientFrom: "#14532d"
 gradientTo: "#166534"
+image: "/images/blog/encryption-at-rest-patient-records.jpg"
 ---
 
 Encryption at rest is the single most effective control for protecting patient records from data breaches. If an attacker gains access to your storage — through a misconfigured S3 bucket, a stolen backup drive, or a compromised database — encryption renders the data unreadable without the key. Yet many healthcare organizations still treat it as optional.
 
-## Database-level vs. application-level encryption
+## Should you use database-level or application-level encryption?
 
 Database-level encryption (TDE — Transparent Data Encryption) encrypts the entire data file on disk. It protects against physical theft and offline attacks, but it does not help if an attacker gains a valid database connection — queries return plain text. Application-level encryption encrypts individual fields before they reach the database. This means even a database administrator with full access sees ciphertext. For PHI, application-level encryption on sensitive columns (SSN, diagnosis codes, medication lists) is the stronger choice.
 
-## Key management is the hard part
+## Why is key management the hardest part of encryption?
 
 The encryption algorithm matters less than how you manage keys. Never store encryption keys alongside the data they protect. Use a dedicated key management service — AWS KMS, Azure Key Vault, or HashiCorp Vault — with hardware security modules (HSMs) backing the root keys. Rotate keys on a defined schedule (annually at minimum) and maintain key version history so you can decrypt older records during the transition.
 
-## Backup encryption
+## How should you encrypt your backups?
 
 Your backups are copies of PHI. They must be encrypted with the same rigor as production data, and the backup encryption keys should be stored separately from the backup files themselves. Test your restore process regularly — encrypted backups are useless if you cannot decrypt them when you need to.
 

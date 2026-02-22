@@ -1,10 +1,12 @@
-import { aboutPageSchema } from "@/lib/jsonld";
+import { aboutPageSchema, faqSchema } from "@/lib/jsonld";
+import { aboutFAQ } from "@/data/faq";
 import Navbar from "@/components/home/Navbar";
 import AboutHero from "@/components/about/AboutHero";
 import AboutIntro from "@/components/about/AboutIntro";
 import AboutServices from "@/components/about/AboutServices";
 import MeetTheTeam from "@/components/about/MeetTheTeam";
 import AboutCTA from "@/components/about/AboutCTA";
+import FAQ from "@/components/faq/FAQ";
 import Footer from "@/components/home/Footer";
 
 export const metadata = {
@@ -30,11 +32,17 @@ export default function AboutPage() {
       "We build AI agents and custom software for businesses tired of paying for tools that don\u2019t do anything. Four people. No layers. No hand-offs. Just systems that work.",
   });
 
+  const faqJsonLd = faqSchema(aboutFAQ);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
         <Navbar />
@@ -43,6 +51,11 @@ export default function AboutPage() {
           <AboutIntro />
           <AboutServices />
           <MeetTheTeam />
+          <FAQ
+            items={aboutFAQ}
+            label="About Us"
+            heading="Things people ask before working with us"
+          />
           <AboutCTA />
         </main>
       </div>

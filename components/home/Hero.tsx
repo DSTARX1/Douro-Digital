@@ -172,6 +172,7 @@ export default function Hero() {
                   ref={videoRef}
                   className={styles.mediaVideo}
                   src="/videos/durolanding.mov"
+                  preload="metadata"
                   loop
                   playsInline
                 />

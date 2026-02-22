@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import MotionSection from "@/components/animations/MotionSection";
 import { getCategoryMeta } from "@/data/blog";
@@ -27,7 +28,17 @@ export default function BlogFeatured({ posts }: Props) {
                 style={{
                   background: `linear-gradient(135deg, ${post.gradientFrom}, ${post.gradientTo})`,
                 }}
-              />
+              >
+                {post.image && (
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
+              </div>
               <div className={styles.body}>
                 <span
                   className={styles.badge}

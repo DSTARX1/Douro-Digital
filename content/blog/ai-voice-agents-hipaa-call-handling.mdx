@@ -8,22 +8,23 @@ readingTime: "7 min read"
 featured: false
 gradientFrom: "#0c4a6e"
 gradientTo: "#1e3a5f"
+image: "/images/blog/ai-voice-agents-hipaa-call-handling.jpg"
 ---
 
 Voice AI is transforming how clinics handle phone traffic. Instead of hold queues and missed calls, an AI agent can book appointments, answer insurance questions, and route urgent cases — all without a human picking up. But voice introduces unique HIPAA risks that chat-based tools do not face.
 
-## The recording problem
+## Why are call recordings a HIPAA risk?
 
 Most voice AI platforms record calls for quality assurance and model improvement. In healthcare, that recording is PHI the moment a patient mentions a symptom, medication, or provider name. Your platform must either disable recording entirely or store recordings in a HIPAA-covered environment with encryption, access controls, and defined retention periods.
 
-## Real-time transcription safeguards
+## How do you safeguard real-time transcription?
 
 Transcription engines convert speech to text in milliseconds. That text is PHI and must be processed within your secure boundary. Avoid architectures that send audio to a general-purpose speech-to-text API and receive plain text back over a non-BAA-covered connection. Instead, use a transcription service that operates under your BAA and writes directly to your compliant data store.
 
-## Caller identity verification
+## How should a voice agent verify caller identity?
 
 A phone call lacks the authentication context of a logged-in web session. Before your voice agent accesses or confirms any patient information, it must verify the caller. The most practical approach is a knowledge-based challenge — date of birth plus a second factor like the last four digits of a phone number on file. Only after verification should the agent surface scheduling details or clinical information.
 
-## Escalation paths
+## When should a voice agent escalate to a human?
 
 No voice agent should attempt to handle clinical emergencies. Build hard guardrails: if the caller describes chest pain, difficulty breathing, or any acute symptom, the agent must immediately transfer to a human or instruct the caller to dial 911. This is not just good design — it is a liability requirement.
