@@ -8,6 +8,8 @@ interface Props {
   style?: React.CSSProperties;
   id?: string;
   as?: "section" | "div" | "footer";
+  /** When true, child elements stagger in one by one (CSS-only, 0.1s increments). */
+  stagger?: boolean;
 }
 
 export default function MotionSection({
@@ -16,6 +18,7 @@ export default function MotionSection({
   style,
   id,
   as: Tag = "section",
+  stagger = false,
 }: Props) {
   const ref = useRef<HTMLElement>(null);
 
@@ -39,6 +42,7 @@ export default function MotionSection({
     <Tag
       ref={ref as React.RefObject<HTMLElement & HTMLDivElement>}
       data-animate=""
+      data-stagger={stagger ? "" : undefined}
       className={className}
       style={style}
       id={id}

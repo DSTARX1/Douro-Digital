@@ -6,9 +6,10 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticCard from "@/components/cursor/MagneticCard";
 import MagneticButton from "@/components/ui/MagneticButton";
-import { PixelPlay, PixelArrowTopRight } from "@/components/icons/PixelIcons";
+import { PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
 import { heroHeadline } from "@/data/home";
+import TextReveal from "@/components/animations/TextReveal";
 import styles from "./Hero.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,7 +19,6 @@ export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
 
@@ -71,35 +71,6 @@ export default function Hero() {
     tl.to(media, { scale: 2.3, ease: "none" }, 0);
   }, { scope: sectionRef });
 
-  // GSAP quickTo cursor follower
-  useEffect(() => {
-    const media = mediaRef.current;
-    const cursor = cursorRef.current;
-    if (!media || !cursor) return;
-
-    const xTo = gsap.quickTo(cursor, "x", { duration: 0.4, ease: "power3.out" });
-    const yTo = gsap.quickTo(cursor, "y", { duration: 0.4, ease: "power3.out" });
-
-    const onMove = (e: MouseEvent) => {
-      xTo(e.clientX - 32);
-      yTo(e.clientY - 32);
-    };
-
-    const onEnter = () => cursor.classList.add(styles.cursorVisible);
-    const onLeave = () => cursor.classList.remove(styles.cursorVisible);
-
-    const container = media.closest(`.${styles.mediaContainer}`) || media;
-    container.addEventListener("mousemove", onMove as EventListener);
-    container.addEventListener("mouseenter", onEnter);
-    container.addEventListener("mouseleave", onLeave);
-
-    return () => {
-      container.removeEventListener("mousemove", onMove as EventListener);
-      container.removeEventListener("mouseenter", onEnter);
-      container.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
-
   // Keep playing inline when exiting fullscreen, respect mute state
   useEffect(() => {
     const video = videoRef.current;
@@ -139,11 +110,15 @@ export default function Hero() {
         <div ref={sectionRef} className={styles.hero} suppressHydrationWarning>
           <div className={styles.heroInner}>
             <div ref={headingRef} className={styles.headingWrap}>
-              <h1 className={styles.heading}>
-                {heroHeadline.prefix}{" "}
-                <em className={styles.italic}>{heroHeadline.italic}</em>{" "}
-                {heroHeadline.suffix}
-              </h1>
+              <TextReveal
+                text={heroHeadline.prefix}
+                as="h1"
+                className={styles.heading}
+                delay={0.2}
+              />
+              {heroHeadline.italic && (
+                <em className={styles.italic}>{heroHeadline.italic}</em>
+              )}
               <p
                 style={{
                   fontSize: "18px",
@@ -182,9 +157,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <div ref={cursorRef} className={styles.playCursor}>
-        <PixelPlay size={24} color="white" className={styles.playCursorIcon} animate />
-      </div>
     </>
   );
 }

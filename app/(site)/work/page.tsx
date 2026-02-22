@@ -1,6 +1,6 @@
 import Navbar from "@/components/home/Navbar";
 import WorkHero from "@/components/work/WorkHero";
-import WorkBentoGrid from "@/components/work/WorkBentoGrid";
+import WorkShowcase from "@/components/work/WorkShowcase";
 import Footer from "@/components/home/Footer";
 
 export const metadata = {
@@ -30,14 +30,16 @@ export default function WorkPage() {
         <main
           id="main-content"
           style={{
-            padding: "0 48px 180px",
+            padding: "0 0 180px",
             display: "flex",
             flexDirection: "column" as const,
             gap: 0,
           }}
         >
-          <WorkHero />
-          <WorkBentoGrid />
+          <div style={{ padding: "0 48px", position: "relative", zIndex: 10 }}>
+            <WorkHero />
+          </div>
+          <WorkShowcase />
         </main>
       </div>
       <Footer />

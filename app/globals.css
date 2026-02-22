@@ -36,6 +36,19 @@
   --font-mono: 'Fragment Mono', monospace;
 }
 
+/* ─── Custom Cursor: hide native pointer on pointer devices ─── */
+@media (hover: hover) {
+  html {
+    cursor: none;
+  }
+}
+
+@media (hover: none) {
+  html {
+    cursor: auto;
+  }
+}
+
 /* ─── Reset ──────────────────────────────────────────────── */
 * {
   box-sizing: border-box;
@@ -101,6 +114,32 @@ html {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+
+/* ─── Stagger variant: child elements reveal with cascading delay ── */
+/* Children start hidden (same as parent) and transition in once      */
+/* the parent receives is-visible. Each nth-child adds 0.1s delay.   */
+[data-animate][data-stagger] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+[data-animate][data-stagger].is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate][data-stagger].is-visible > *:nth-child(1)  { transition-delay: 0.00s; }
+[data-animate][data-stagger].is-visible > *:nth-child(2)  { transition-delay: 0.10s; }
+[data-animate][data-stagger].is-visible > *:nth-child(3)  { transition-delay: 0.20s; }
+[data-animate][data-stagger].is-visible > *:nth-child(4)  { transition-delay: 0.30s; }
+[data-animate][data-stagger].is-visible > *:nth-child(5)  { transition-delay: 0.40s; }
+[data-animate][data-stagger].is-visible > *:nth-child(6)  { transition-delay: 0.50s; }
+[data-animate][data-stagger].is-visible > *:nth-child(7)  { transition-delay: 0.60s; }
+[data-animate][data-stagger].is-visible > *:nth-child(8)  { transition-delay: 0.70s; }
+[data-animate][data-stagger].is-visible > *:nth-child(9)  { transition-delay: 0.80s; }
+[data-animate][data-stagger].is-visible > *:nth-child(10) { transition-delay: 0.90s; }
 
 .glass {
   background: rgba(255, 255, 255, 0.05);
@@ -338,35 +377,33 @@ html {
   top: 0;
 }
 
+/* ─── Initial Page Load ─────────────────────────────────────── */
+@keyframes initialFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body {
+  animation: initialFadeIn 0.5s ease-out;
+}
+
 /* ─── Page Transitions (View Transitions API) ──────────────── */
 ::view-transition-old(.page-transition) {
-  animation: page-exit 250ms ease-out forwards;
+  animation: pageOut 0.3s ease-in forwards;
 }
 
 ::view-transition-new(.page-transition) {
-  animation: page-enter 250ms ease-out forwards;
+  animation: pageIn 0.4s ease-out 0.1s both;
 }
 
-@keyframes page-exit {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+@keyframes pageOut {
+  from { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  to   { opacity: 0; transform: translateY(-20px); filter: blur(4px); }
 }
 
-@keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
 }
 
 /* ── Fullscreen cursor fix ───────────────────────────────────── */

@@ -1,6 +1,6 @@
 # Douro Digital
 
-**Phase:** Frontend Polish & UX Overhaul - COMPLETE (all 21 chunks done)
+**Phase:** Implementation — Card Polish + Cursor Fix
 
 ## Stack
 - Next.js 16 App Router, React 19, TypeScript
@@ -42,3 +42,11 @@
 
 ## Branch
 - `copywriting-updates` — restructure + Raw & Real copy integration
+
+## Recent Changes (uncommitted)
+- **WorkShowcase** (`components/work/WorkShowcase.tsx` + `.module.css`): Full-bleed stacked pin cards with MagneticCard, hover effects (image zoom, overlay gradient shift, content lift, hover pill, service tags, arrow fill, image filter, focus-visible)
+- **Z-index fix**: Changed `totalCards - i` → `i + 1` so later cards stack ON TOP of earlier ones
+- **ScrollPrompt** (`components/effects/ScrollPrompt.tsx`): "Scroll to explore" / "Keep scrolling" bouncing chevron — added to WorkShowcase (first card) and WorkGrid (home page)
+- **ProjectCard** (`components/home/ProjectCard.tsx` + `.module.css`): Converted from inline styles to CSS Modules. Added matching hover effects (overlay shift, image filter, pill, content lift, arrow icon)
+- **CustomCursor** (`components/cursor/CustomCursor.tsx` + `.module.css`): Fixed `revealed` class being wiped by React re-renders (now uses React state). Added SVG trailing red line (lerp 0.12 factor) + center dot anchor on expanded modes
+- **Deleted dead code**: WorkBentoGrid.tsx/css, WorkProjectCard.tsx/css

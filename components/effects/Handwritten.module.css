@@ -1,0 +1,44 @@
+.handwritten {
+  font-family: var(--font-handwritten), cursive;
+  font-weight: 700;
+  position: relative;
+  display: inline;
+}
+
+/* Arrow SVG: positioned absolutely relative to the handwritten span */
+.arrow {
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow--down {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 2px;
+}
+
+.arrow--up {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2px;
+}
+
+.arrow--right {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 4px;
+}
+
+.arrow--left {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  margin-right: 4px;
+}
+
+.arrowPath {
+  transition: stroke-dashoffset 0.8s ease-out 0.3s;
+}

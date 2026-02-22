@@ -18,8 +18,16 @@ export default function AboutHero() {
     const heading = headingRef.current;
     if (!section || !heading) return;
 
-    gsap.set(heading, { opacity: 1, y: 0 });
+    // Reveal animation: fade up the heading block
+    gsap.from(heading, {
+      opacity: 0,
+      y: 40,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.1,
+    });
 
+    // Pin + scroll-fade
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
@@ -38,9 +46,17 @@ export default function AboutHero() {
       <div className={styles.heroInner}>
         <div ref={headingRef} className={styles.headingWrap}>
           <h1 className={styles.heading}>
-            {aboutHero.prefix}{" "}
-            <em className={styles.italic}>{aboutHero.italic}</em>{" "}
-            {aboutHero.suffix}
+            {aboutHero.prefix}
+            {aboutHero.italic && (
+              <>
+                {" "}<em className={styles.italic}>{aboutHero.italic}</em>
+              </>
+            )}
+            {aboutHero.suffix && (
+              <>
+                {" "}{aboutHero.suffix}
+              </>
+            )}
           </h1>
           <p className={styles.subtitle}>{aboutHero.subtitle}</p>
         </div>

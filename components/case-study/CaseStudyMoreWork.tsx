@@ -25,7 +25,7 @@ export default function CaseStudyMoreWork({ projects }: Props) {
             className={styles.card}
             maxMove={10}
           >
-            <Link href={`/case-studies/${project.slug}`} className={styles.cardLink}>
+            <Link href={`/case-studies/${project.slug}`} className={styles.cardLink} data-cursor-view>
               {project.image && (
                 <div className={styles.cardImage}>
                   <img

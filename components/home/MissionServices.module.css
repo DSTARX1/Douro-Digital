@@ -39,6 +39,12 @@
   font-style: italic;
 }
 
+/* Handwritten treatment for the H2 heading */
+.headingHandwritten {
+  font-family: var(--font-handwritten), cursive;
+  font-weight: 700;
+}
+
 .stats {
   display: flex;
   gap: 48px;

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
+import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
 import dynamic from "next/dynamic";
 
 const CalInlineEmbed = dynamic(() => import("@/components/cal/CalInlineEmbed"), {
@@ -17,7 +18,7 @@ export default function AboutCTA() {
     <MotionSection className={styles.section}>
       <ParallaxContainer speed={0.06}>
       <h2 className={styles.heading}>
-        {aboutCTA.heading} <span className={styles.accent}>{aboutCTA.accentPhrase}</span>
+        {aboutCTA.heading} <span className={styles.accent}><AnimatedUnderline>{aboutCTA.accentPhrase}</AnimatedUnderline></span>
       </h2>
       <div className={styles.pfpRow}>
         {teamMembers.map((m) => (

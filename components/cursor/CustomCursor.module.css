@@ -1,44 +1,161 @@
+/* ── Trail line SVG ─────────────────────────────────────────── */
+.trailSvg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2147483646;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.trailRevealed {
+  opacity: 1;
+}
+
+.trailLine {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.4;
+}
+
+/* ── Base cursor ─────────────────────────────────────────────── */
 .cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 60px;
-  height: 60px;
-  background: var(--accent);
-  border-radius: 50%;
   pointer-events: none;
   z-index: 2147483647;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform;
+
+  /* Size driven by --size; centering via negative margin */
+  width: var(--size);
+  height: var(--size);
+  margin-top: calc(var(--size) / -2);
+  margin-left: calc(var(--size) / -2);
+
+  /* All visual properties transition together */
+  transition:
+    width  0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    margin 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.3s ease;
+
+  /* Hidden until first mousemove */
   opacity: 0;
-  scale: 0.5;
-  transition: opacity 0.25s ease, scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform, opacity;
 }
 
-/* When cursor is inside a fullscreen video, use absolute positioning */
-video:fullscreen [data-cursor-debug],
-video:-webkit-full-screen [data-cursor-debug],
-video:-moz-full-screen [data-cursor-debug] {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-}
-
-.cursor.visible {
+/* Reveal after first mouse movement */
+.cursor.revealed {
   opacity: 1;
-  scale: 1;
 }
 
+/* ── Center reticle dot (always visible) ─────────────────────── */
+.cursor::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 1;
+  transition: background 0.3s, opacity 0.3s;
+}
+
+/* Accent dot on transparent ring (no blend conflict) */
+.modeLink::after {
+  background: var(--accent);
+}
+
+/* Accent dot on text ring */
+.modeText::after {
+  background: var(--accent);
+}
+
+/* ── Mode: Default — 40px hollow ring ─────────────────────── */
+.modeDefault {
+  --size: 40px;
+  background: transparent;
+  border: 1.5px solid var(--fg);
+  mix-blend-mode: difference;
+}
+
+/* ── Mode: Link/button hover — 50px hollow ring ─────────────── */
+.modeLink {
+  --size: 50px;
+  background: transparent;
+  border: 1.5px solid var(--fg);
+  mix-blend-mode: difference;
+}
+
+/* ── Mode: Video hover — 64px solid accent + icon ───────────── */
+.modeVideo {
+  --size: 64px;
+  background: var(--accent);
+  border: none;
+  mix-blend-mode: normal;
+}
+
+/* ── Mode: Card hover — 80px solid accent + "View" label ────── */
+.modeCard {
+  --size: 80px;
+  background: var(--accent);
+  border: none;
+  mix-blend-mode: normal;
+}
+
+/* ── Mode: Text hover — 32px hollow ring (smaller) ─────────── */
+.modeText {
+  --size: 32px;
+  background: transparent;
+  border: 1.5px solid var(--fg);
+  mix-blend-mode: difference;
+}
+
+/* ── Icons inside video cursor ───────────────────────────────── */
 .icon {
   width: 20px;
   height: 20px;
-  margin-left: 3px;
+  margin-left: 3px; /* optical centre for play triangle */
+  flex-shrink: 0;
 }
 
 .pauseIcon {
   width: 20px;
   height: 20px;
   margin-left: 0;
+  flex-shrink: 0;
+}
+
+/* ── "View" text label inside card cursor ────────────────────── */
+.viewLabel {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Fullscreen cursor fix ─────────────────────────────────── */
+video:fullscreen [data-cursor-debug],
+video:-webkit-full-screen [data-cursor-debug],
+video:-moz-full-screen [data-cursor-debug] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
 }

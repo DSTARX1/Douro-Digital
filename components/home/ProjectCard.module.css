@@ -1,0 +1,187 @@
+.link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.link:is(:hover, :focus-visible) .card {
+  transform: scale(1.02);
+}
+
+/* ── Image wrap (fixed height) ──────────────────────────────── */
+.imageWrap {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ── Image wrap (auto height — image determines card size) ─── */
+.imageWrapAuto {
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.link:is(:hover, :focus-visible) .imageWrap,
+.link:is(:hover, :focus-visible) .imageWrapAuto {
+  transform: scale(1.05);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  filter: saturate(0.8) brightness(0.9);
+  transition: filter 0.6s ease;
+}
+
+.link:is(:hover, :focus-visible) .image {
+  filter: saturate(1.1) brightness(1);
+}
+
+.blurBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(40px) saturate(1.2);
+  transform: scale(1.15);
+}
+
+/* ── Gradient overlay ───────────────────────────────────────── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+.link:is(:hover, :focus-visible) .overlay {
+  background: linear-gradient(
+    to top,
+    rgba(212, 41, 24, 0.3) 0%,
+    rgba(0, 0, 0, 0.3) 30%,
+    transparent 60%
+  );
+}
+
+/* ── "View project" pill ────────────────────────────────────── */
+.hoverPill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  z-index: 3;
+  background: var(--accent);
+  color: var(--fg);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 100px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.link:is(:hover, :focus-visible) .hoverPill {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ── Info bar at bottom ─────────────────────────────────────── */
+.info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.link:is(:hover, :focus-visible) .info {
+  transform: translateY(-8px);
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--fg);
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+/* ── Arrow icon ─────────────────────────────────────────────── */
+.arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.link:is(:hover, :focus-visible) .arrow {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 15px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .hoverPill {
+    display: none;
+  }
+
+  .arrow {
+    width: 32px;
+    height: 32px;
+  }
+}

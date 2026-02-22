@@ -2,6 +2,10 @@
 
 import MotionSection from "@/components/animations/MotionSection";
 import TextScramble from "@/components/effects/TextScramble";
+import Highlight from "@/components/effects/Highlight";
+import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
+import Handwritten from "@/components/effects/Handwritten";
+import TextReveal from "@/components/animations/TextReveal";
 import { PixelStar } from "@/components/icons/PixelIcons";
 import ServiceAccordion from "./ServiceAccordion";
 import styles from "./MissionServices.module.css";
@@ -17,13 +21,18 @@ export default function MissionServices() {
     <MotionSection className={styles.section} id="services">
       <div className={styles.left}>
         <p className={styles.label}>The Leak</p>
-        <h2 className={styles.heading}>Walk with me here.</h2>
+        <TextReveal
+          text="Walk with me here."
+          as="h2"
+          className={`${styles.heading} ${styles.headingHandwritten}`}
+          delay={0.1}
+        />
         <div className={styles.body}>
           <p>
             You&apos;re running ads. Traffic is coming in. Leads are filling out
             forms.
           </p>
-          <p>And then... nothing.</p>
+          <p><Handwritten arrow="down">And then... nothing.</Handwritten></p>
         </div>
         <div className={styles.stats}>
           {stats.map((s) => (
@@ -38,13 +47,13 @@ export default function MissionServices() {
           <p>Here&apos;s the thing nobody tells you...</p>
           <p>
             You&apos;re not losing leads because your offer sucks. You&apos;re
-            losing them because your <strong>SYSTEM</strong> can&apos;t keep up.
+            losing them because your <strong><Highlight>SYSTEM</Highlight></strong> can&apos;t keep up.
             Manual follow-up. Missed calls. Leads sitting in your CRM for 30
             minutes (the average response time, by the way — might as well be 30
             days).
           </p>
           <p className={styles.closing}>
-            Your business is bleeding revenue through holes you didn&apos;t even
+            Your business is <AnimatedUnderline>bleeding revenue</AnimatedUnderline> through holes you didn&apos;t even
             know existed.
           </p>
         </div>

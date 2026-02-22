@@ -1,3 +1,6 @@
+"use client";
+
+import Highlight from "@/components/effects/Highlight";
 import styles from "./BlogHero.module.css";
 
 export default function BlogHero() {
@@ -8,7 +11,7 @@ export default function BlogHero() {
       </span>
       <h1 className={styles.heading}>
         Breakdowns, deep-dives, and the occasional rant about why your tech
-        stack is a <em className={styles.italic}>dumpster fire</em>
+        stack is a <em className={styles.italic}><Highlight>dumpster fire</Highlight></em>
       </h1>
       <p className={styles.sub}>
         (We don&apos;t do LinkedIn-style &quot;10 tips to scale your

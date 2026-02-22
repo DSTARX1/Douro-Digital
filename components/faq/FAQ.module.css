@@ -63,14 +63,28 @@
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .item[open] .icon {
   transform: rotate(180deg);
 }
 
-/* ─── Answer Panel ─── */
+/* ─── Answer Panel (animated open/close) ─── */
+
+.answerGrid {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.item[open] .answerGrid {
+  grid-template-rows: 1fr;
+}
+
+.answerInner {
+  overflow: hidden;
+}
 
 .answer {
   font-size: 17px;

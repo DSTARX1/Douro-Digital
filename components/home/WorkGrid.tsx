@@ -3,13 +3,15 @@ import { caseStudies } from "@/data/case-studies";
 import { getRecentPosts } from "@/lib/blog";
 import ProjectCard from "./ProjectCard";
 import StudioStories from "./StudioStories";
+import MotionSection from "@/components/animations/MotionSection";
+import ScrollPrompt from "@/components/effects/ScrollPrompt";
 import styles from "./WorkGrid.module.css";
 
 export default function WorkGrid() {
   const recentPosts = getRecentPosts(3);
 
   return (
-    <section className={styles.section} id="work">
+    <MotionSection className={styles.section} id="work">
       <div className={styles.sectionHeader}>
         <h2 className={styles.sectionTitle}>Shit we&apos;ve built that actually makes money</h2>
         <Link href="/work" className={styles.viewAll}>
@@ -23,6 +25,7 @@ export default function WorkGrid() {
         <StudioStories posts={recentPosts} />
         <ProjectCard project={caseStudies[3]} />
       </div>
-    </section>
+      <ScrollPrompt className={styles.scrollPrompt} text="Keep scrolling" />
+    </MotionSection>
   );
 }

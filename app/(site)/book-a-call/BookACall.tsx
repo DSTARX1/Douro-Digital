@@ -11,6 +11,8 @@ const CalInlineEmbed = dynamic(() => import("@/components/cal/CalInlineEmbed"), 
   loading: () => <div style={{ minHeight: 700 }} />,
 });
 import TextScramble from "@/components/effects/TextScramble";
+import Highlight from "@/components/effects/Highlight";
+import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
 import { PixelStar, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
 import styles from "./BookACall.module.css";
@@ -109,8 +111,9 @@ export default function BookACall() {
         </p>
 
         <h1 className={styles.headline}>
-          Stop bleeding revenue through missed calls, broken systems, and tools
-          that don&rsquo;t talk to each other
+          Stop <AnimatedUnderline>bleeding revenue</AnimatedUnderline> through
+          missed calls, broken systems, and tools that don&rsquo;t talk to each
+          other
         </h1>
 
         <p className={styles.subheadline}>
@@ -172,7 +175,7 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>Leads that vanish into the void</h3>
+            <h3 className={styles.painTitle}>Leads that <Highlight>vanish into the void</Highlight></h3>
             <p className={styles.painDesc}>
               You&rsquo;re spending on ads, traffic is coming in, forms are
               getting filled &mdash; and then nothing. 78% of leads go to
@@ -184,7 +187,7 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>A tool graveyard</h3>
+            <h3 className={styles.painTitle}>A <Highlight>tool graveyard</Highlight></h3>
             <p className={styles.painDesc}>
               CRM. Email platform. Scheduler. Zapier. Analytics dashboard.
               Fourteen subscriptions, zero integrations, and you&rsquo;re still
@@ -285,14 +288,14 @@ export default function BookACall() {
         <CalInlineEmbed className={styles.calEmbedInner} />
 
         <p className={styles.scarcity}>
-          We only take on 5 new clients per month. Book now to secure your spot.
+          We only take on <Highlight>5 new clients per month</Highlight>. Book now to secure your spot.
         </p>
       </MotionSection>
 
       {/* ── Final CTA ── */}
       <MotionSection as="section" className={styles.finalCta}>
         <h2 className={styles.finalHeading}>
-          Ready to stop leaking revenue?
+          Ready to stop <AnimatedUnderline>leaking revenue</AnimatedUnderline>?
         </h2>
         <p className={styles.finalSub}>
           Stop losing customers to competitors who respond faster.

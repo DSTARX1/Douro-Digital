@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Caveat } from "next/font/google";
 import Analytics from "@/components/Analytics";
 import { organizationSchema, webSiteSchema } from "@/lib/jsonld";
 import "./globals.css";
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-handwritten",
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dourodigital.com"),
@@ -19,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={caveat.variable}>
       <body suppressHydrationWarning>
         <script
           type="application/ld+json"

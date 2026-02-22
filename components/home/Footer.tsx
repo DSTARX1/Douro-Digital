@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { footerDescription, footerContact, footerNav } from "@/data/home";
+import Handwritten from "@/components/effects/Handwritten";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -61,7 +62,10 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <span>&copy; {new Date().getFullYear()} Douro Digital. All rights reserved.</span>
-        <span>{footerContact.address}</span>
+        <span>
+          Available worldwide{" "}
+          <Handwritten>(yes, even if you&apos;re in a timezone we have to Google)</Handwritten>
+        </span>
       </div>
     </footer>
   );

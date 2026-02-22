@@ -3,6 +3,7 @@
 import { useRef, useCallback, useEffect } from "react";
 import MotionSection from "@/components/animations/MotionSection";
 import MagneticCard from "@/components/cursor/MagneticCard";
+import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
 import { useAudio } from "@/lib/contexts/AudioContext";
 import type { CaseStudy } from "@/data/case-studies";
 import styles from "./CaseStudyHero.module.css";
@@ -77,7 +78,11 @@ export default function CaseStudyHero({ study }: Props) {
     <MotionSection className={styles.hero}>
       <span className={styles.subtitle}>{study.subtitle}</span>
       <h1 className={styles.title}>{study.title}</h1>
-      {study.tagline && <p className={styles.tagline}>{study.tagline}</p>}
+      {study.tagline && (
+        <p className={styles.tagline}>
+          <AnimatedUnderline>{study.tagline}</AnimatedUnderline>
+        </p>
+      )}
       {study.demoVideo && (
         <MagneticCard
           className={styles.videoWrap}

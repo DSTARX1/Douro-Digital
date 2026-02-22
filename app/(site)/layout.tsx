@@ -3,6 +3,7 @@ import CustomCursor from "@/components/cursor/CustomCursor";
 import { AudioProvider } from "@/lib/contexts/AudioContext";
 import MuteToggle from "@/components/audio/MuteToggle";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
+import RouteProgress from "@/components/effects/RouteProgress";
 import ScrollProgress from "@/components/effects/ScrollProgress";
 import SmoothScroll from "@/components/effects/SmoothScroll";
 
@@ -17,6 +18,7 @@ export default function SiteLayout({
         Skip to content
       </a>
       <NoiseOverlay />
+      <RouteProgress />
       <ScrollProgress />
       <CustomCursor />
       <MuteToggle />

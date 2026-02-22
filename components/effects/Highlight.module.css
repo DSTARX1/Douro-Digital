@@ -1,0 +1,19 @@
+.highlight {
+  /* Reset browser mark styles */
+  background: linear-gradient(
+    to right,
+    var(--highlight-color) 50%,
+    transparent 50%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  color: inherit;
+  padding: 2px 4px;
+  border-radius: 3px 2px 4px 2px / 2px 3px 2px 4px;
+  /* Slight hand-drawn feel via asymmetric border-radius */
+  transition: background-position 0.6s ease-out;
+}
+
+.highlight.visible {
+  background-position: 0 0;
+}

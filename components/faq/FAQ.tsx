@@ -33,7 +33,11 @@ export default function FAQ({
                 <PixelChevronDown size={24} />
               </span>
             </summary>
-            <p className={styles.answer}>{item.answer}</p>
+            <div className={styles.answerGrid}>
+              <div className={styles.answerInner}>
+                <p className={styles.answer}>{item.answer}</p>
+              </div>
+            </div>
           </details>
         ))}
       </div>
