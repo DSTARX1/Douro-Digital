@@ -14,77 +14,82 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AnalyticsPage() {
-  const dailyViews = await db
-    .select({
-      date: sql<string>`DATE(${pageViews.createdAt})`.as("date"),
-      views: count(),
-    })
-    .from(pageViews)
-    .where(sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '30 days'`)
-    .groupBy(sql`DATE(${pageViews.createdAt})`)
-    .orderBy(sql`DATE(${pageViews.createdAt})`);
+  const [
+    dailyViews,
+    todayResults,
+    topPages,
+    topReferrers,
+    devices,
+    browsers,
+    countries,
+    utmBreakdown,
+  ] = await Promise.all([
+    db
+      .select({
+        date: sql<string>`DATE(${pageViews.createdAt})`.as("date"),
+        views: count(),
+      })
+      .from(pageViews)
+      .where(sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '30 days'`)
+      .groupBy(sql`DATE(${pageViews.createdAt})`)
+      .orderBy(sql`DATE(${pageViews.createdAt})`),
+    db
+      .select({ count: count() })
+      .from(pageViews)
+      .where(sql`${pageViews.createdAt} >= CURRENT_DATE`),
+    db
+      .select({ path: pageViews.path, views: count() })
+      .from(pageViews)
+      .groupBy(pageViews.path)
+      .orderBy(desc(count()))
+      .limit(20),
+    db
+      .select({ referrer: pageViews.referrer, views: count() })
+      .from(pageViews)
+      .where(
+        sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`
+      )
+      .groupBy(pageViews.referrer)
+      .orderBy(desc(count()))
+      .limit(15),
+    db
+      .select({ device: pageViews.device, views: count() })
+      .from(pageViews)
+      .groupBy(pageViews.device)
+      .orderBy(desc(count())),
+    db
+      .select({ browser: pageViews.browser, views: count() })
+      .from(pageViews)
+      .groupBy(pageViews.browser)
+      .orderBy(desc(count())),
+    db
+      .select({ country: pageViews.country, views: count() })
+      .from(pageViews)
+      .where(sql`${pageViews.country} IS NOT NULL`)
+      .groupBy(pageViews.country)
+      .orderBy(desc(count()))
+      .limit(20),
+    db
+      .select({
+        source: pageViews.utmSource,
+        medium: pageViews.utmMedium,
+        campaign: pageViews.utmCampaign,
+        views: count(),
+      })
+      .from(pageViews)
+      .where(sql`${pageViews.utmSource} IS NOT NULL`)
+      .groupBy(pageViews.utmSource, pageViews.utmMedium, pageViews.utmCampaign)
+      .orderBy(desc(count()))
+      .limit(15),
+  ]);
 
-  const [todayResult] = await db
-    .select({ count: count() })
-    .from(pageViews)
-    .where(sql`${pageViews.createdAt} >= CURRENT_DATE`);
-
+  const [todayResult] = todayResults;
   const total30d = dailyViews.reduce((sum, d) => sum + d.views, 0);
   const avgDaily = dailyViews.length > 0 ? Math.round(total30d / 30) : 0;
   const peakDay = dailyViews.reduce(
     (best, d) => (d.views > best.views ? d : best),
     { date: "—", views: 0 }
   );
-
-  const topPages = await db
-    .select({ path: pageViews.path, views: count() })
-    .from(pageViews)
-    .groupBy(pageViews.path)
-    .orderBy(desc(count()))
-    .limit(20);
-
-  const topReferrers = await db
-    .select({ referrer: pageViews.referrer, views: count() })
-    .from(pageViews)
-    .where(
-      sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`
-    )
-    .groupBy(pageViews.referrer)
-    .orderBy(desc(count()))
-    .limit(15);
-
-  const devices = await db
-    .select({ device: pageViews.device, views: count() })
-    .from(pageViews)
-    .groupBy(pageViews.device)
-    .orderBy(desc(count()));
-
-  const browsers = await db
-    .select({ browser: pageViews.browser, views: count() })
-    .from(pageViews)
-    .groupBy(pageViews.browser)
-    .orderBy(desc(count()));
-
-  const countries = await db
-    .select({ country: pageViews.country, views: count() })
-    .from(pageViews)
-    .where(sql`${pageViews.country} IS NOT NULL`)
-    .groupBy(pageViews.country)
-    .orderBy(desc(count()))
-    .limit(20);
-
-  const utmBreakdown = await db
-    .select({
-      source: pageViews.utmSource,
-      medium: pageViews.utmMedium,
-      campaign: pageViews.utmCampaign,
-      views: count(),
-    })
-    .from(pageViews)
-    .where(sql`${pageViews.utmSource} IS NOT NULL`)
-    .groupBy(pageViews.utmSource, pageViews.utmMedium, pageViews.utmCampaign)
-    .orderBy(desc(count()))
-    .limit(15);
 
   return (
     <>

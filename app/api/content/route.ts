@@ -5,6 +5,10 @@ import { listContent, setContent } from "@/lib/content";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const authenticated = await verifySession();
+  if (!authenticated) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const blocks = await listContent();
   return NextResponse.json(blocks);
 }

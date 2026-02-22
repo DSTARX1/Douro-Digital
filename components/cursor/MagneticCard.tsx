@@ -33,7 +33,22 @@ export default function MagneticCard({
       s.x = lerp(s.x, s.tx, 0.1);
       s.y = lerp(s.y, s.ty, 0.1);
       inner.style.transform = `translate(${s.x}px, ${s.y}px)`;
-      s.raf = requestAnimationFrame(tick);
+
+      // Stop animating when settled close enough to target
+      if (Math.abs(s.x - s.tx) > 0.1 || Math.abs(s.y - s.ty) > 0.1) {
+        s.raf = requestAnimationFrame(tick);
+      } else {
+        s.x = s.tx;
+        s.y = s.ty;
+        inner.style.transform = `translate(${s.x}px, ${s.y}px)`;
+        s.raf = 0;
+      }
+    };
+
+    const startTicking = () => {
+      if (!stateRef.current.raf) {
+        stateRef.current.raf = requestAnimationFrame(tick);
+      }
     };
 
     const onMove = (e: MouseEvent) => {
@@ -42,16 +57,17 @@ export default function MagneticCard({
       const dy = e.clientY - (rect.top + rect.height / 2);
       stateRef.current.tx = Math.max(-maxMove, Math.min(maxMove, dx * 0.35));
       stateRef.current.ty = Math.max(-maxMove, Math.min(maxMove, dy * 0.35));
+      startTicking();
     };
 
     const onLeave = () => {
       stateRef.current.tx = 0;
       stateRef.current.ty = 0;
+      startTicking();
     };
 
     outer.addEventListener("mousemove", onMove as EventListener);
     outer.addEventListener("mouseleave", onLeave);
-    stateRef.current.raf = requestAnimationFrame(tick);
 
     return () => {
       outer.removeEventListener("mousemove", onMove as EventListener);

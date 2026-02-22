@@ -13,71 +13,75 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  const [totalResult] = await db.select({ count: count() }).from(pageViews);
+  const [
+    totalResults,
+    todayResults,
+    uniquePagesResults,
+    topReferrers,
+    thisWeekResults,
+    lastWeekResults,
+    dailyViews,
+    topPages,
+    devices,
+  ] = await Promise.all([
+    db.select({ count: count() }).from(pageViews),
+    db
+      .select({ count: count() })
+      .from(pageViews)
+      .where(sql`${pageViews.createdAt} >= CURRENT_DATE`),
+    db
+      .select({ count: sql<number>`COUNT(DISTINCT ${pageViews.path})` })
+      .from(pageViews),
+    db
+      .select({ referrer: pageViews.referrer, views: count() })
+      .from(pageViews)
+      .where(sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`)
+      .groupBy(pageViews.referrer)
+      .orderBy(desc(count()))
+      .limit(1),
+    db
+      .select({ count: count() })
+      .from(pageViews)
+      .where(sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '7 days'`),
+    db
+      .select({ count: count() })
+      .from(pageViews)
+      .where(
+        sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '14 days' AND ${pageViews.createdAt} < CURRENT_DATE - INTERVAL '7 days'`
+      ),
+    db
+      .select({
+        date: sql<string>`DATE(${pageViews.createdAt})`.as("date"),
+        views: count(),
+      })
+      .from(pageViews)
+      .where(sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '30 days'`)
+      .groupBy(sql`DATE(${pageViews.createdAt})`)
+      .orderBy(sql`DATE(${pageViews.createdAt})`),
+    db
+      .select({ path: pageViews.path, views: count() })
+      .from(pageViews)
+      .groupBy(pageViews.path)
+      .orderBy(desc(count()))
+      .limit(10),
+    db
+      .select({ device: pageViews.device, views: count() })
+      .from(pageViews)
+      .groupBy(pageViews.device)
+      .orderBy(desc(count())),
+  ]);
 
-  const [todayResult] = await db
-    .select({ count: count() })
-    .from(pageViews)
-    .where(sql`${pageViews.createdAt} >= CURRENT_DATE`);
-
-  const [uniquePagesResult] = await db
-    .select({ count: sql<number>`COUNT(DISTINCT ${pageViews.path})` })
-    .from(pageViews);
-
-  const [topReferrer] = await db
-    .select({
-      referrer: pageViews.referrer,
-      views: count(),
-    })
-    .from(pageViews)
-    .where(sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`)
-    .groupBy(pageViews.referrer)
-    .orderBy(desc(count()))
-    .limit(1);
-
-  // 7-day trend: this week vs last week
-  const [thisWeek] = await db
-    .select({ count: count() })
-    .from(pageViews)
-    .where(sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '7 days'`);
-
-  const [lastWeek] = await db
-    .select({ count: count() })
-    .from(pageViews)
-    .where(
-      sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '14 days' AND ${pageViews.createdAt} < CURRENT_DATE - INTERVAL '7 days'`
-    );
+  const [totalResult] = totalResults;
+  const [todayResult] = todayResults;
+  const [uniquePagesResult] = uniquePagesResults;
+  const [topReferrer] = topReferrers;
+  const [thisWeek] = thisWeekResults;
+  const [lastWeek] = lastWeekResults;
 
   const trendPct =
     lastWeek.count > 0
       ? Math.round(((thisWeek.count - lastWeek.count) / lastWeek.count) * 100)
       : null;
-
-  // Daily views (last 30 days) for line chart
-  const dailyViews = await db
-    .select({
-      date: sql<string>`DATE(${pageViews.createdAt})`.as("date"),
-      views: count(),
-    })
-    .from(pageViews)
-    .where(sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '30 days'`)
-    .groupBy(sql`DATE(${pageViews.createdAt})`)
-    .orderBy(sql`DATE(${pageViews.createdAt})`);
-
-  // Top pages for bar chart
-  const topPages = await db
-    .select({ path: pageViews.path, views: count() })
-    .from(pageViews)
-    .groupBy(pageViews.path)
-    .orderBy(desc(count()))
-    .limit(10);
-
-  // Devices for donut chart
-  const devices = await db
-    .select({ device: pageViews.device, views: count() })
-    .from(pageViews)
-    .groupBy(pageViews.device)
-    .orderBy(desc(count()));
 
   return (
     <>

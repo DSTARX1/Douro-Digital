@@ -392,15 +392,6 @@
   border-bottom: 1px solid #1a1a1a;
 }
 
-.bar {
-  display: inline-block;
-  height: 6px;
-  background: #3b82f6;
-  border-radius: 3px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
 /* Form Elements */
 .formField {
   margin-bottom: 20px;
@@ -566,33 +557,3 @@
   color: #22c55e;
 }
 
-/* Toast */
-.toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  padding: 12px 20px;
-  background: #141414;
-  border: 1px solid #262626;
-  border-radius: 10px;
-  font-size: 14px;
-  z-index: 100;
-  animation: slideUp 0.2s ease;
-}
-
-.toastSuccess {
-  composes: toast;
-  border-color: #166534;
-  color: #22c55e;
-}
-
-.toastError {
-  composes: toast;
-  border-color: #5c2020;
-  color: #f87171;
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}

@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { path, referrer, utmSource, utmMedium, utmCampaign } = body;
 
-    if (!path || typeof path !== "string") {
+    if (!path || typeof path !== "string" || path.length > 2048) {
       return NextResponse.json({ error: "path required" }, { status: 400 });
     }
 
@@ -30,11 +30,11 @@ export async function POST(request: NextRequest) {
     const country = request.headers.get("x-vercel-ip-country") || null;
 
     await db.insert(pageViews).values({
-      path,
-      referrer: referrer || null,
-      utmSource: utmSource || null,
-      utmMedium: utmMedium || null,
-      utmCampaign: utmCampaign || null,
+      path: path.slice(0, 2048),
+      referrer: referrer?.slice(0, 2048) || null,
+      utmSource: utmSource?.slice(0, 256) || null,
+      utmMedium: utmMedium?.slice(0, 256) || null,
+      utmCampaign: utmCampaign?.slice(0, 256) || null,
       country,
       device,
       browser,

@@ -8,14 +8,18 @@ export default function RotatingText() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
       setVisible(false);
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setIndex((prev) => (prev + 1) % ctaTexts.length);
         setVisible(true);
       }, 300);
     }, 2500);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const current = ctaTexts[index];

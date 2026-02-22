@@ -44,26 +44,6 @@ export function PixelPause({ size = 24, color = "currentColor", className = "", 
   );
 }
 
-/** 8-bit envelope */
-export function PixelEnvelope({ size = 16, color = "currentColor", className = "", animate = false }: IconProps) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke={color}
-      shapeRendering="crispEdges"
-      className={`${styles.pixelIcon} ${animate ? styles.blink : ""} ${className}`}
-    >
-      {/* Outer box */}
-      <rect x="1" y="3" width="14" height="10" strokeWidth="1.5" />
-      {/* V-flap: stepped diagonal */}
-      <path d="M1 3 L4 6 L6 7 L8 8 L10 7 L12 6 L15 3" strokeWidth="1.5" fill="none" strokeLinejoin="miter" />
-    </svg>
-  );
-}
-
 /** 8-bit left chevron */
 export function PixelChevronLeft({ size = 20, color = "currentColor", className = "", animate = false }: IconProps) {
   return (

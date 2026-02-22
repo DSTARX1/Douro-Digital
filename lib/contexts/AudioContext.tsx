@@ -15,6 +15,16 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const [isMuted, setIsMuted] = useState(true);
   const videosRef = useRef<Set<HTMLVideoElement>>(new Set());
 
+  // Keep a ref in sync so registerVideo always applies the latest muted state
+  const isMutedRef = useRef(isMuted);
+  useEffect(() => {
+    isMutedRef.current = isMuted;
+    // Safety net: re-sync all videos whenever isMuted changes
+    videosRef.current.forEach((v) => {
+      v.muted = isMuted;
+    });
+  }, [isMuted]);
+
   const syncMuted = useCallback((muted: boolean) => {
     videosRef.current.forEach((v) => {
       v.muted = muted;
@@ -34,16 +44,6 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const unregisterVideo = useCallback((video: HTMLVideoElement) => {
     videosRef.current.delete(video);
   }, []);
-
-  // Keep a ref in sync so registerVideo always applies the latest muted state
-  const isMutedRef = useRef(isMuted);
-  useEffect(() => {
-    isMutedRef.current = isMuted;
-    // Safety net: re-sync all videos whenever isMuted changes
-    videosRef.current.forEach((v) => {
-      v.muted = isMuted;
-    });
-  }, [isMuted]);
 
   const value = useMemo(
     () => ({ isMuted, setMuted, registerVideo, unregisterVideo }),

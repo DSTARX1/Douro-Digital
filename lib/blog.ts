@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { cache } from "react";
 import matter from "gray-matter";
 import type { BlogCategory } from "@/data/blog";
 
@@ -19,7 +20,7 @@ export interface BlogPostMeta {
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
-export function getAllPosts(): BlogPostMeta[] {
+export const getAllPosts = cache((): BlogPostMeta[] => {
   if (!fs.existsSync(BLOG_DIR)) return [];
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
   const posts = files.map((file) => {
@@ -42,11 +43,12 @@ export function getAllPosts(): BlogPostMeta[] {
   return posts.sort(
     (a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime()
   );
-}
+});
 
 export function getPostBySlug(
   slug: string
 ): { meta: BlogPostMeta; content: string } | null {
+  if (!/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(slug)) return null;
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
@@ -67,10 +69,6 @@ export function getPostBySlug(
     },
     content,
   };
-}
-
-export function getBlogPostsByCategory(category: BlogCategory): BlogPostMeta[] {
-  return getAllPosts().filter((p) => p.category === category);
 }
 
 export function getFeaturedPosts(): BlogPostMeta[] {

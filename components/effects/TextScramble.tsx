@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const PIXEL_CHARS = "█▓▒░▪▫●○◆◇■□▲△";
+const PIXEL_CHARS = "\u2588\u2593\u2592\u2591\u25aa\u25ab\u25cf\u25cb\u25c6\u25c7\u25a0\u25a1\u25b2\u25b3";
 const RESOLVE_MS = 600;
 const TICK_MS = 30;
 
@@ -16,6 +16,7 @@ export default function TextScramble({ text, className, as: Tag = "span" }: Prop
   const ref = useRef<HTMLElement>(null);
   const [display, setDisplay] = useState(text);
   const triggered = useRef(false);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
   const scramble = useCallback(() => {
     const chars = text.split("");
@@ -68,7 +69,7 @@ export default function TextScramble({ text, className, as: Tag = "span" }: Prop
               )
               .join("")
           );
-          scramble();
+          cleanupRef.current = scramble();
           obs.disconnect();
         }
       },
@@ -76,7 +77,10 @@ export default function TextScramble({ text, className, as: Tag = "span" }: Prop
     );
 
     obs.observe(el);
-    return () => obs.disconnect();
+    return () => {
+      obs.disconnect();
+      cleanupRef.current?.();
+    };
   }, [text, scramble]);
 
   return (
