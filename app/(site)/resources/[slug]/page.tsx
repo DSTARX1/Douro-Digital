@@ -24,6 +24,9 @@ export async function generateMetadata({
   return {
     title: `${post.meta.title} — Douro Digital`,
     description: post.meta.excerpt,
+    alternates: {
+      canonical: `/resources/${slug}`,
+    },
     openGraph: {
       title: `${post.meta.title} — Douro Digital`,
       description: post.meta.excerpt,

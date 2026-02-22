@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Book a Free Strategy Call \u2014 Douro Digital",
   description:
     "30-minute call. No pitch deck. We\u2019ll look at where you\u2019re bleeding revenue and whether AI agents or custom software can fix it.",
+  alternates: {
+    canonical: "/book-a-call",
+  },
   openGraph: {
     title: "Book a Free Strategy Call \u2014 Douro Digital",
     description:

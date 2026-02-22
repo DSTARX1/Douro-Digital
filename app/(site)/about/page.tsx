@@ -13,6 +13,9 @@ export const metadata = {
   title: "About \u2014 Douro Digital | AI Agents & Custom Software",
   description:
     "We build AI agents and custom software for businesses tired of paying for tools that don\u2019t do anything. Four people. No layers. No hand-offs. Just systems that work.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "About \u2014 Douro Digital | AI Agents & Custom Software",
     description:

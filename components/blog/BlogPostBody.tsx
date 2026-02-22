@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import { PixelArrowRight, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import styles from "./BlogPostBody.module.css";
+
+import type { Options as PrettyCodeOptions } from "rehype-pretty-code";
+
+const prettyCodeOptions: PrettyCodeOptions = {
+  theme: "github-dark",
+  keepBackground: false,
+};
 
 interface Props {
   content: string;
@@ -16,7 +24,14 @@ export default function BlogPostBody({ content, relatedCaseStudy }: Props) {
   return (
     <section className={styles.body}>
       <div className="prose">
-        <MDXRemote source={content} />
+        <MDXRemote
+          source={content}
+          options={{
+            mdxOptions: {
+              rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+            },
+          }}
+        />
       </div>
       {relatedCaseStudy && (
         <Link

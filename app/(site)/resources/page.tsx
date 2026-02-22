@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Resources — Douro Digital",
   description:
     "AI breakdowns, compliance deep-dives, and the occasional rant about why your tech stack is a dumpster fire.",
+  alternates: {
+    canonical: "/resources",
+  },
   openGraph: {
     title: "Resources — Douro Digital",
     description:

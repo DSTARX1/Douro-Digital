@@ -30,6 +30,9 @@ export async function generateMetadata({
   return {
     title: `${study.title} — Douro Digital | Case Study`,
     description: study.tagline ?? study.subtitle,
+    alternates: {
+      canonical: `/case-studies/${slug}`,
+    },
     openGraph: {
       title: `${study.title} — Douro Digital | Case Study`,
       description: study.tagline ?? study.subtitle,

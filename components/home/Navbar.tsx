@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/home";
 import { PixelStar, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import ContactPanel from "./ContactPanel";
@@ -10,6 +11,29 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (drawerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [drawerOpen]);
+
+  function isActive(href: string) {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  }
+
+  function handleDrawerLinkClick() {
+    setDrawerOpen(false);
+  }
 
   return (
     <>
@@ -26,9 +50,14 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* Desktop nav */}
         <div className={styles.navRight}>
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className={styles.link}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.link} ${isActive(link.href) ? styles.linkActive : ""}`}
+            >
               <span className={styles.star}>
                 <PixelStar size={10} color="var(--accent)" />
               </span>
@@ -46,7 +75,57 @@ export default function Navbar() {
             </span>
           </button>
         </div>
+
+        {/* Hamburger button (mobile only) */}
+        <button
+          className={`${styles.hamburger} ${drawerOpen ? styles.hamburgerOpen : ""}`}
+          onClick={() => setDrawerOpen((v) => !v)}
+          aria-label={drawerOpen ? "Close menu" : "Open menu"}
+          aria-expanded={drawerOpen}
+        >
+          <span className={styles.hamburgerBar} />
+          <span className={styles.hamburgerBar} />
+          <span className={styles.hamburgerBar} />
+        </button>
       </nav>
+
+      {/* Mobile drawer overlay */}
+      {drawerOpen && (
+        <div
+          className={styles.drawerOverlay}
+          onClick={() => setDrawerOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile drawer */}
+      <div className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ""}`}>
+        <nav className={styles.drawerNav}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.drawerLink} ${isActive(link.href) ? styles.drawerLinkActive : ""}`}
+              onClick={handleDrawerLinkClick}
+            >
+              <span className={styles.drawerLinkIndex}>{link.index}</span>
+              {link.label}
+            </Link>
+          ))}
+          <button
+            className={styles.drawerCta}
+            onClick={() => {
+              setDrawerOpen(false);
+              setContactOpen(true);
+            }}
+          >
+            Contact us
+            <span className={styles.ctaArrow}>
+              <PixelArrowTopRight size={14} color="currentColor" />
+            </span>
+          </button>
+        </nav>
+      </div>
 
       <ContactPanel
         open={contactOpen}

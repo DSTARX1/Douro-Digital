@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Douro Digital — AI Agents & Custom Software for Revenue Growth",
   description:
     "We build AI agents, custom software, and go-to-market strategies that turn missed calls into booked jobs, automate admin, and drive measurable revenue growth.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Douro Digital — AI Agents & Custom Software for Revenue Growth",
     description:

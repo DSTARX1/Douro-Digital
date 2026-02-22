@@ -156,7 +156,75 @@ html {
   border-radius: 4px;
 }
 
-.prose pre {
+/* ─── rehype-pretty-code: fenced code blocks ─────────────────
+   rehype-pretty-code wraps blocks in <figure data-rehype-pretty-code-figure>.
+   We scope all overrides to that attribute so inline <code> is untouched.   */
+
+.prose figure[data-rehype-pretty-code-figure] {
+  margin: 0 0 1.5rem;
+}
+
+/* Language label shown above the block */
+.prose figure[data-rehype-pretty-code-figure] > figcaption[data-rehype-pretty-code-title] {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 0.4rem 1rem;
+  display: inline-block;
+  width: 100%;
+}
+
+.prose figure[data-rehype-pretty-code-figure] > pre {
+  background: #0d1117; /* github-dark canvas */
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* When a title caption is present, square the top corners */
+.prose figure[data-rehype-pretty-code-figure] > figcaption + pre {
+  border-radius: 0 0 8px 8px;
+}
+
+.prose figure[data-rehype-pretty-code-figure] > pre > code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  /* shiki emits color via CSS vars; let them through */
+  color: var(--shiki-dark, inherit);
+}
+
+/* Individual token spans */
+.prose figure[data-rehype-pretty-code-figure] [data-line] {
+  display: block;
+  padding: 0 0.25rem;
+  border-left: 2px solid transparent;
+}
+
+/* Highlighted lines (```js {2} syntax) */
+.prose figure[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  background: rgba(255, 255, 255, 0.06);
+  border-left-color: var(--accent);
+}
+
+/* Highlighted word/chars (```js /word/ syntax) */
+.prose figure[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+  background: rgba(212, 41, 24, 0.18);
+  border-radius: 3px;
+  padding: 1px 3px;
+}
+
+/* Keep bare <pre> blocks (non-shiki) working the same */
+.prose pre:not([data-language]) {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   border-radius: 8px;

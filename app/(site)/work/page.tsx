@@ -7,6 +7,9 @@ export const metadata = {
   title: "Work — Douro Digital | AI-Powered Digital Products",
   description:
     "Explore our portfolio of AI-powered digital products. From voice coaching to social media platforms, we build solutions that drive real business impact.",
+  alternates: {
+    canonical: "/work",
+  },
   openGraph: {
     title: "Work — Douro Digital | AI-Powered Digital Products",
     description:

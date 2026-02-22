@@ -11,32 +11,91 @@
   letter-spacing: 0.6px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
+/* ── Marquee container ─────────────────────────────────────────── */
+
+.marqueeWrapper {
+  overflow: hidden;
+  /* Fade edges so logos don't hard-clip at the viewport edge */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 
-.cell {
+.marqueeWrapper:hover .track {
+  animation-play-state: paused;
+}
+
+/* ── Scrolling track ───────────────────────────────────────────── */
+
+.track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: logoScroll 28s linear infinite;
+}
+
+/* ── Individual logo slot ──────────────────────────────────────── */
+
+.item {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 160px;
-  border: 1px solid var(--border);
-  padding: 32px;
+  /* Generous padding so logos breathe and the separator line has room */
+  padding: 28px 48px;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
 }
+
+.item:first-of-type,
+/* Also remove left border on the very first item */
+.track > .item:first-child {
+  border-left: 1px solid var(--border);
+}
+
+/* ── Logo image ────────────────────────────────────────────────── */
 
 .logo {
-  max-width: 120px;
-  max-height: 48px;
+  width: 120px;
+  height: 48px;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  opacity: 0.55;
+  transition: opacity 0.25s ease;
+  /* Prevent the image from shrinking inside the flex item */
+  flex-shrink: 0;
 }
 
-.logo:hover {
+.item:hover .logo {
   opacity: 1;
+}
+
+/* ── Keyframe ──────────────────────────────────────────────────── */
+
+@keyframes logoScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Move exactly half the track width (one full copy of the logo list) */
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation-play-state: paused;
+  }
 }
