@@ -16,10 +16,10 @@ import styles from "./MeetTheTeam.module.css";
 
 // Local overrides for this section only
 const sectionOverrides: Record<string, { scale?: number; objectPosition?: string; transformOrigin?: string }> = {
-  "Isaac Morgado": { scale: 1.6, objectPosition: "80% 50%" },
+  "Isaac Morgado": { scale: 1.6, objectPosition: "center 60%" },
   "Mario Funez": { scale: 1.5, objectPosition: "center 0%" },
-  "Danny Isakov": { scale: 1.0, objectPosition: "center 15%" },
-  "Josh Irizarry": { scale: 2.5, objectPosition: "center 15%" },
+  "Danny Isakov": { scale: 2.0, objectPosition: "20% 90%" },
+  "Josh Irizarry": { scale: 2.5, objectPosition: "center 23%" },
 };
 
 export default async function MeetTheTeam() {

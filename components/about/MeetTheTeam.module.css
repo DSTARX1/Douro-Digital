@@ -41,6 +41,7 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
   filter: grayscale(100%);
+  border-radius: 12px;
 }
 
 .imageWrap img {

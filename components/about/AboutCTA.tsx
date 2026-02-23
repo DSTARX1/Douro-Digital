@@ -35,7 +35,8 @@ export default function AboutCTA() {
               src={m.image}
               alt={m.name}
               fill
-              sizes="64px"
+              sizes="128px"
+              quality={90}
               suppressHydrationWarning
             />
           </div>

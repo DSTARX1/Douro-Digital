@@ -10,6 +10,7 @@ import styles from "./AboutHero.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutHero() {
+  const pinSpacerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
 
@@ -18,22 +19,16 @@ export default function AboutHero() {
     const heading = headingRef.current;
     if (!section || !heading) return;
 
-    // Reveal animation: fade up the heading block
-    gsap.from(heading, {
-      opacity: 0,
-      y: 40,
-      duration: 1.2,
-      ease: "power3.out",
-      delay: 0.1,
-    });
+    gsap.set(heading, { opacity: 1, y: 0 });
 
     // Pin + scroll-fade
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=600",
+        end: "+=800",
         pin: true,
+        pinSpacer: pinSpacerRef.current!,
         scrub: 1,
       },
     });
@@ -42,23 +37,25 @@ export default function AboutHero() {
   }, { scope: sectionRef });
 
   return (
-    <div ref={sectionRef} className={styles.hero} suppressHydrationWarning>
-      <div className={styles.heroInner}>
-        <div ref={headingRef} className={styles.headingWrap}>
-          <h1 className={styles.heading}>
-            {aboutHero.prefix}
-            {aboutHero.italic && (
-              <>
-                {" "}<em className={styles.italic}>{aboutHero.italic}</em>
-              </>
-            )}
-            {aboutHero.suffix && (
-              <>
-                {" "}{aboutHero.suffix}
-              </>
-            )}
-          </h1>
-          <p className={styles.subtitle}>{aboutHero.subtitle}</p>
+    <div ref={pinSpacerRef}>
+      <div ref={sectionRef} className={styles.hero} suppressHydrationWarning>
+        <div className={styles.heroInner}>
+          <div ref={headingRef} className={styles.headingWrap}>
+            <h1 className={styles.heading}>
+              {aboutHero.prefix}
+              {aboutHero.italic && (
+                <>
+                  {" "}<em className={styles.italic}>{aboutHero.italic}</em>
+                </>
+              )}
+              {aboutHero.suffix && (
+                <>
+                  {" "}{aboutHero.suffix}
+                </>
+              )}
+            </h1>
+            <p className={styles.subtitle}>{aboutHero.subtitle}</p>
+          </div>
         </div>
       </div>
     </div>
