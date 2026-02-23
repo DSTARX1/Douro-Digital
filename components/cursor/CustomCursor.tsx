@@ -18,10 +18,19 @@ export default function CustomCursor() {
   const [mode, setMode] = useState<CursorMode>("default");
   const [revealed, setRevealed] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [hasHover, setHasHover] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
+  // Detect hover capability once on mount
   useEffect(() => {
-    // Hide on touch-only devices
-    if (window.matchMedia("(hover: none)").matches) return;
+    if (!window.matchMedia("(hover: none)").matches) {
+      setHasHover(true);
+    }
+  }, []);
+
+  // Attach cursor tracking after DOM is rendered (hasHover triggers re-render with DOM)
+  useEffect(() => {
+    if (!hasHover) return;
 
     const dot = dotRef.current;
     const trail = trailRef.current;
@@ -64,57 +73,52 @@ export default function CustomCursor() {
     rafRef.current = requestAnimationFrame(tick);
 
     // ── Event delegation on body ─────────────────────────────────
+    const resolveMode = (el: Element | null): { mode: CursorMode; target: Element | null } => {
+      if (!el) return { mode: "default", target: null };
+
+      const videoEl = el.closest("[data-cursor-play]");
+      const cardEl = el.closest("[data-cursor-view]");
+      const linkEl = el.closest("a, button, [role='button']");
+      const textEl = el.closest("p, span, li");
+
+      if (videoEl) return { mode: "video", target: videoEl };
+      if (cardEl) return { mode: "card", target: cardEl };
+      if (linkEl) return { mode: "link", target: linkEl };
+      if (textEl) return { mode: "text", target: textEl };
+      return { mode: "default", target: null };
+    };
+
     const onMouseOver = (e: MouseEvent) => {
       const target = e.target as Element;
 
-      const videoEl = target.closest("[data-cursor-play]");
-      const cardEl = target.closest("[data-cursor-view]");
-      const linkEl = target.closest("a, button, [role='button']");
-      const textEl = target.closest("p, span, li");
-
-      if (videoEl) {
-        activeElRef.current = videoEl;
-        setPlaying(videoEl.hasAttribute("data-cursor-playing"));
-        setMode("video");
-      } else if (cardEl) {
-        activeElRef.current = cardEl;
-        setMode("card");
-      } else if (linkEl) {
-        activeElRef.current = linkEl;
-        setMode("link");
-      } else if (textEl) {
-        activeElRef.current = textEl;
-        setMode("text");
-      } else {
-        activeElRef.current = null;
-        setMode("default");
+      // Hide cursor over iframes and [data-cursor-hide] zones
+      if (target.closest("[data-cursor-hide]") || target.tagName === "IFRAME") {
+        setHidden(true);
+        return;
       }
+      setHidden(false);
+
+      const resolved = resolveMode(target);
+      activeElRef.current = resolved.target;
+      if (resolved.mode === "video" && resolved.target) {
+        setPlaying(resolved.target.hasAttribute("data-cursor-playing"));
+      }
+      setMode(resolved.mode);
     };
 
     const onMouseOut = (e: MouseEvent) => {
       const relatedTarget = e.relatedTarget as Element | null;
-      if (!relatedTarget || !activeElRef.current?.contains(relatedTarget)) {
-        const videoEl = relatedTarget?.closest?.("[data-cursor-play]");
-        const cardEl = relatedTarget?.closest?.("[data-cursor-view]");
-        const linkEl = relatedTarget?.closest?.("a, button, [role='button']");
-        const textEl = relatedTarget?.closest?.("p, span, li");
 
-        if (videoEl) {
-          activeElRef.current = videoEl;
-          setMode("video");
-        } else if (cardEl) {
-          activeElRef.current = cardEl;
-          setMode("card");
-        } else if (linkEl) {
-          activeElRef.current = linkEl;
-          setMode("link");
-        } else if (textEl) {
-          activeElRef.current = textEl;
-          setMode("text");
-        } else {
-          activeElRef.current = null;
-          setMode("default");
-        }
+      // Leaving a hide-zone or iframe — restore cursor
+      const leftHideZone = (e.target as Element).closest?.("[data-cursor-hide]") || (e.target as Element).tagName === "IFRAME";
+      if (leftHideZone && (!relatedTarget || !relatedTarget.closest?.("[data-cursor-hide]"))) {
+        setHidden(false);
+      }
+
+      if (!relatedTarget || !activeElRef.current?.contains(relatedTarget)) {
+        const resolved = resolveMode(relatedTarget);
+        activeElRef.current = resolved.target;
+        setMode(resolved.mode);
       }
     };
 
@@ -147,7 +151,9 @@ export default function CustomCursor() {
       attrObserver.disconnect();
       cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [hasHover]);
+
+  if (!hasHover) return null;
 
   const modeClass = {
     default: styles.modeDefault,
@@ -160,13 +166,13 @@ export default function CustomCursor() {
   return (
     <>
       <svg
-        className={`${styles.trailSvg} ${revealed ? styles.trailRevealed : ""}`}
+        className={`${styles.trailSvg} ${revealed && !hidden ? styles.trailRevealed : ""}`}
       >
         <line ref={trailRef} className={styles.trailLine} />
       </svg>
       <div
         ref={dotRef}
-        className={`${styles.cursor} ${modeClass} ${revealed ? styles.revealed : ""}`}
+        className={`${styles.cursor} ${modeClass} ${revealed && !hidden ? styles.revealed : ""}`}
         data-cursor-debug="true"
       >
         {mode === "video" && (

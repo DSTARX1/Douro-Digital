@@ -36,7 +36,7 @@ export default function WorkPage() {
             gap: 0,
           }}
         >
-          <div style={{ padding: "0 48px", position: "relative", zIndex: 10 }}>
+          <div className="page-padding" style={{ position: "relative", zIndex: 10 }}>
             <WorkHero />
           </div>
           <WorkShowcase />

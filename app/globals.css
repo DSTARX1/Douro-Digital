@@ -36,10 +36,32 @@
   --font-mono: 'Fragment Mono', monospace;
 }
 
+/* ─── Page-level responsive padding ────────────────────────── */
+.page-padding {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+@media (max-width: 768px) {
+  .page-padding {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 /* ─── Custom Cursor: hide native pointer on pointer devices ─── */
 @media (hover: hover) {
-  html {
-    cursor: none;
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+
+  /* Restore native cursor inside iframes / embeds that need it */
+  [data-cursor-hide] *,
+  [data-cursor-hide] *::before,
+  [data-cursor-hide] *::after {
+    cursor: auto !important;
   }
 }
 
@@ -146,6 +168,14 @@ html {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
 /* ─── Prose (MDX content) ───────────────────────────────── */

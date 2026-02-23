@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import MotionSection from "@/components/animations/MotionSection";
 import MagneticCard from "@/components/cursor/MagneticCard";
 import type { CaseStudy } from "@/data/case-studies";
 import styles from "./CaseStudyMoreWork.module.css";
@@ -13,7 +14,7 @@ export default function CaseStudyMoreWork({ projects }: Props) {
   if (projects.length === 0) return null;
 
   return (
-    <section className={styles.section}>
+    <MotionSection className={styles.section}>
       <div className={styles.header}>
         <h2 className={styles.heading}>More work.</h2>
         <p className={styles.subheading}>In case you want to see more.</p>
@@ -45,6 +46,6 @@ export default function CaseStudyMoreWork({ projects }: Props) {
           </MagneticCard>
         ))}
       </div>
-    </section>
+    </MotionSection>
   );
 }

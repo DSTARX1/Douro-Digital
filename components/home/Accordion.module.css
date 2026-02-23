@@ -1,0 +1,49 @@
+.item {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  transition: transform 0.3s;
+}
+
+.body {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.desc {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  color: var(--muted);
+  padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  .desc {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}

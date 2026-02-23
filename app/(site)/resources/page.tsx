@@ -46,7 +46,7 @@ export default async function ResourcesPage({
     <>
       <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
         <Navbar />
-        <main id="main-content" style={{ padding: "0 48px 0", display: "flex", flexDirection: "column" }}>
+        <main id="main-content" className="page-padding" style={{ display: "flex", flexDirection: "column" }}>
           <BlogHero />
           <BlogFeatured posts={featuredPosts} />
           <Suspense fallback={null}>

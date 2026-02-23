@@ -384,4 +384,10 @@
   .footer {
     padding: 24px;
   }
+
+  .calEmbedInner {
+    height: auto;
+    min-height: 580px;
+    animation: none;
+  }
 }

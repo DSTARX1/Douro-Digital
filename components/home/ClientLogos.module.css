@@ -94,6 +94,17 @@
 
 /* ── Reduced motion ────────────────────────────────────────────── */
 
+@media (max-width: 768px) {
+  .item {
+    padding: 20px 28px;
+  }
+
+  .logo {
+    width: 90px;
+    height: 36px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .track {
     animation-play-state: paused;

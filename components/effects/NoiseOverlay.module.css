@@ -22,3 +22,9 @@
     transform: translate(-10%, -10%);
   }
 }
+
+@media (max-width: 768px) {
+  .noise {
+    display: none;
+  }
+}

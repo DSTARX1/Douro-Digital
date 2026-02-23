@@ -1,11 +1,12 @@
 "use client";
 
+import MotionSection from "@/components/animations/MotionSection";
 import Highlight from "@/components/effects/Highlight";
 import styles from "./BlogHero.module.css";
 
 export default function BlogHero() {
   return (
-    <section className={styles.hero}>
+    <MotionSection className={styles.hero}>
       <span className={styles.label}>
         The Blog (not &quot;thought leadership&quot;)
       </span>
@@ -13,7 +14,7 @@ export default function BlogHero() {
         Breakdowns, deep-dives, and the occasional rant about why your tech
         stack is a <em className={styles.italic}><Highlight>dumpster fire</Highlight></em>
       </h1>
-      <p className={styles.sub}>
+      <p className={styles.intro}>
         (We don&apos;t do LinkedIn-style &quot;10 tips to scale your
         business&quot; nonsense. If we&apos;re writing it, it&apos;s because we
         actually built it or learned it the expensive way.)
@@ -26,6 +27,6 @@ export default function BlogHero() {
         No fluff. No AI-generated &quot;content.&quot; Just the shit we know
         because we do this every day.
       </p>
-    </section>
+    </MotionSection>
   );
 }

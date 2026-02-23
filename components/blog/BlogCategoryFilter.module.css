@@ -1,21 +1,22 @@
 .wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 40px 0;
+  gap: 8px;
+  margin: 48px 0;
 }
 
 .pill {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 8px 18px;
   border-radius: 100px;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--muted);
   cursor: pointer;
   transition: all 0.2s;
+  letter-spacing: 0.3px;
 }
 
 .pill:hover {

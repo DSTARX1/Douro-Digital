@@ -16,7 +16,7 @@ import styles from "./AboutCTA.module.css";
 export default function AboutCTA() {
   return (
     <MotionSection className={styles.section}>
-      <ParallaxContainer speed={0.06}>
+      <ParallaxContainer speed={0.06} innerClassName={styles.parallaxInner}>
       <h2 className={styles.heading}>
         {aboutCTA.heading} <span className={styles.accent}><AnimatedUnderline>{aboutCTA.accentPhrase}</AnimatedUnderline></span>
       </h2>

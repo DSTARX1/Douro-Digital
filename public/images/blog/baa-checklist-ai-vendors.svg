@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a1942"/>
+      <stop offset="100%" style="stop-color:#7f1d1d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:white;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="315" r="300" fill="url(#glow)"/>
+  <!-- Grid -->
+  <g opacity="0.08" stroke="white" stroke-width="0.5">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Shield background -->
+  <g transform="translate(600,300)" opacity="0.15">
+    <path d="M0 -180 L160 -130 L160 40 Q160 160 0 210 Q-160 160 -160 40 L-160 -130 Z" fill="#D42918"/>
+  </g>
+  <!-- Checklist -->
+  <g transform="translate(520,140)">
+    <g transform="translate(0,0)">
+      <rect x="0" y="0" width="28" height="28" rx="5" fill="none" stroke="white" stroke-width="2.5"/>
+      <path d="M6 14 L12 20 L22 8" fill="none" stroke="#D42918" stroke-width="3" stroke-linecap="round"/>
+      <line x1="44" y1="14" x2="210" y2="14" stroke="white" stroke-width="2" opacity="0.7"/>
+    </g>
+    <g transform="translate(0,55)">
+      <rect x="0" y="0" width="28" height="28" rx="5" fill="none" stroke="white" stroke-width="2.5"/>
+      <path d="M6 14 L12 20 L22 8" fill="none" stroke="#D42918" stroke-width="3" stroke-linecap="round"/>
+      <line x1="44" y1="14" x2="180" y2="14" stroke="white" stroke-width="2" opacity="0.7"/>
+    </g>
+    <g transform="translate(0,110)">
+      <rect x="0" y="0" width="28" height="28" rx="5" fill="none" stroke="white" stroke-width="2.5"/>
+      <path d="M6 14 L12 20 L22 8" fill="none" stroke="#D42918" stroke-width="3" stroke-linecap="round"/>
+      <line x1="44" y1="14" x2="240" y2="14" stroke="white" stroke-width="2" opacity="0.7"/>
+    </g>
+    <g transform="translate(0,165)">
+      <rect x="0" y="0" width="28" height="28" rx="5" fill="none" stroke="white" stroke-width="2.5"/>
+      <path d="M6 14 L12 20 L22 8" fill="none" stroke="#D42918" stroke-width="3" stroke-linecap="round"/>
+      <line x1="44" y1="14" x2="190" y2="14" stroke="white" stroke-width="2" opacity="0.7"/>
+    </g>
+    <g transform="translate(0,220)">
+      <rect x="0" y="0" width="28" height="28" rx="5" fill="none" stroke="white" stroke-width="2.5" opacity="0.5"/>
+      <line x1="44" y1="14" x2="220" y2="14" stroke="white" stroke-width="2" opacity="0.35"/>
+    </g>
+    <g transform="translate(0,275)">
+      <rect x="0" y="0" width="28" height="28" rx="5" fill="none" stroke="white" stroke-width="2.5" opacity="0.5"/>
+      <line x1="44" y1="14" x2="160" y2="14" stroke="white" stroke-width="2" opacity="0.35"/>
+    </g>
+  </g>
+  <rect x="0" y="0" width="5" height="630" fill="#D42918"/>
+</svg>

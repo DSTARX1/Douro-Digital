@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import MotionSection from "@/components/animations/MotionSection";
 import { blogCategories } from "@/data/blog";
 import styles from "./BlogCategoryFilter.module.css";
 
@@ -18,7 +19,7 @@ export default function BlogCategoryFilter() {
   }
 
   return (
-    <div className={styles.wrap}>
+    <MotionSection as="div" className={styles.wrap}>
       <button
         className={`${styles.pill} ${active === "all" ? styles.active : ""}`}
         onClick={() => handleClick("all")}
@@ -36,6 +37,6 @@ export default function BlogCategoryFilter() {
           {cat.label}
         </button>
       ))}
-    </div>
+    </MotionSection>
   );
 }

@@ -51,6 +51,8 @@ export default function MagneticCard({
       }
     };
 
+    if (window.matchMedia("(hover: none)").matches) return;
+
     const onMove = (e: MouseEvent) => {
       const rect = outer.getBoundingClientRect();
       const dx = e.clientX - (rect.left + rect.width / 2);

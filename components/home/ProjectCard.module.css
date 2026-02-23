@@ -299,4 +299,33 @@
     width: 40px;
     height: 40px;
   }
+
+  .imageWrap,
+  .imageWrapAuto {
+    transition: none;
+  }
+
+  .blurBg {
+    display: none;
+  }
+
+  .image {
+    filter: none;
+    transition: none;
+  }
+
+  .card {
+    transition: none;
+    height: 360px !important;
+    border-radius: 12px;
+  }
+
+  .content {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
 }

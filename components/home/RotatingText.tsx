@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ctaTexts } from "@/data/home";
+import styles from "./RotatingText.module.css";
 
 export default function RotatingText() {
   const [index, setIndex] = useState(0);
@@ -40,16 +41,10 @@ export default function RotatingText() {
   }, "");
 
   return (
-    <span
-      style={{
-        position: "relative",
-        display: "inline-block",
-        verticalAlign: "bottom",
-      }}
-    >
+    <span className={styles.wrapper}>
       {/* Ghost layer — invisible, determines box size */}
       <span aria-hidden="true" style={{ visibility: "hidden" }}>
-        <span style={{ display: "block", whiteSpace: "nowrap" }}>
+        <span className={styles.textLine}>
           {longestStr}
         </span>
         {longestDesc && (
@@ -70,10 +65,9 @@ export default function RotatingText() {
       {/* Visible overlay — absolute, mirrors ghost structure */}
       <span style={{ position: "absolute", inset: 0 }}>
         <span
+          className={styles.textLine}
           style={{
-            display: "block",
             color: "var(--accent)",
-            whiteSpace: "nowrap",
             opacity: visible ? 1 : 0,
             transform: `translateY(${visible ? 0 : -20}px)`,
             transition: "opacity 0.3s ease, transform 0.3s ease",

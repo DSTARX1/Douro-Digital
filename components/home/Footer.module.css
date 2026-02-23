@@ -3,11 +3,14 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 100vh;
   z-index: 0;
   padding: 0;
   overflow: hidden;
   box-sizing: border-box;
   background: var(--bg);
+  display: flex;
+  flex-direction: column;
 }
 
 .top {
@@ -67,14 +70,37 @@
 }
 
 .imageWrap {
+  position: relative;
   width: 100%;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 23px,
+      rgba(180, 0, 0, 0.25) 23px,
+      rgba(180, 0, 0, 0.25) 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 23px,
+      rgba(180, 0, 0, 0.25) 23px,
+      rgba(180, 0, 0, 0.25) 24px
+    );
 }
 
 .footerImg {
+  position: relative;
   width: 100%;
   height: auto;
   display: block;
+  flex-shrink: 0;
 }
 
 .bottom {
@@ -89,25 +115,46 @@
 @media (max-width: 768px) {
   .top {
     flex-direction: column;
-    padding: 0 24px 40px;
+    padding: 32px 24px;
+    gap: 32px;
   }
 
   .desc {
     max-width: 100%;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .columns {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 16px;
   }
 
   .column {
-    max-width: 100%;
+    flex: 1;
+    max-width: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 1.25rem;
+  }
+
+  .colLabel {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .column a,
+  .colLink {
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .bottom {
     flex-direction: column;
     gap: 8px;
-    padding: 24px;
+    padding: 20px 24px;
     text-align: center;
+    font-size: 13px;
   }
 }

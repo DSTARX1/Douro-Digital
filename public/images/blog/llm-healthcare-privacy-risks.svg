@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2e05"/>
+      <stop offset="100%" style="stop-color:#365314"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="47%" r="35%">
+      <stop offset="0%" style="stop-color:#D42918;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#D42918;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="300" r="250" fill="url(#glow)"/>
+  <!-- Grid -->
+  <g opacity="0.08" stroke="white" stroke-width="0.5">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Eye -->
+  <g transform="translate(600,300)">
+    <path d="M-140 0 Q-70 -85 0 -85 Q70 -85 140 0 Q70 85 0 85 Q-70 85 -140 0 Z" fill="white" opacity="0.05"/>
+    <path d="M-140 0 Q-70 -85 0 -85 Q70 -85 140 0 Q70 85 0 85 Q-70 85 -140 0 Z" fill="none" stroke="white" stroke-width="3" opacity="0.8"/>
+    <circle cx="0" cy="0" r="38" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+    <circle cx="0" cy="0" r="16" fill="#D42918" opacity="0.9"/>
+    <circle cx="6" cy="-6" r="5" fill="white" opacity="0.4"/>
+  </g>
+  <!-- Warning triangle above -->
+  <g transform="translate(600,170)">
+    <path d="M0 -35 L32 20 L-32 20 Z" fill="#D42918" opacity="0.3"/>
+    <path d="M0 -35 L32 20 L-32 20 Z" fill="none" stroke="white" stroke-width="2.5"/>
+    <line x1="0" y1="-18" x2="0" y2="4" stroke="white" stroke-width="3"/>
+    <circle cx="0" cy="12" r="3" fill="white"/>
+  </g>
+  <!-- Data scatter -->
+  <g opacity="0.15">
+    <circle cx="180" cy="150" r="3" fill="#D42918"/>
+    <circle cx="320" cy="480" r="2.5" fill="#D42918"/>
+    <circle cx="850" cy="120" r="3" fill="#D42918"/>
+    <circle cx="950" cy="400" r="2" fill="#D42918"/>
+    <circle cx="420" cy="530" r="2.5" fill="#D42918"/>
+    <circle cx="780" cy="510" r="3" fill="#D42918"/>
+    <circle cx="150" cy="350" r="2" fill="#D42918"/>
+    <circle cx="1050" cy="250" r="2.5" fill="#D42918"/>
+    <circle cx="250" cy="90" r="2" fill="#D42918"/>
+    <circle cx="1000" cy="550" r="3" fill="#D42918"/>
+  </g>
+  <rect x="0" y="0" width="5" height="630" fill="#D42918"/>
+</svg>

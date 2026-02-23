@@ -49,7 +49,8 @@ export default function BlogNewsletter() {
   if (status === "success") {
     return (
       <MotionSection className={styles.section}>
-        <h2 className={styles.heading}>You&apos;re in.</h2>
+        <span className={styles.label}>Confirmed</span>
+        <h2 className={styles.heading}>You&apos;re <em>in.</em></h2>
         <p className={styles.sub}>
           Check your inbox (or spam, we won&apos;t judge). First issue drops
           soon.
@@ -60,20 +61,18 @@ export default function BlogNewsletter() {
 
   return (
     <MotionSection className={styles.section}>
+      <span className={styles.label}>Newsletter</span>
       <h2 className={styles.heading}>
-        Get the breakdowns before everyone else does
+        Get the breakdowns <em>before everyone else does</em>
       </h2>
       <p className={styles.sub}>
         Every two weeks: one deep-dive on AI, automation, or building systems
         that don&apos;t suck.
       </p>
-      <p className={styles.sub}>
+      <p className={styles.detail}>
         No &quot;5 tips to optimize your funnel.&quot; No motivational quotes.
         Just technical breakdowns, real examples, and the occasional story about
         how we f*cked something up so you don&apos;t have to.
-      </p>
-      <p className={styles.sub}>
-        We hate spam more than you do. Unsubscribe whenever. No hard feelings.
       </p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
@@ -96,8 +95,7 @@ export default function BlogNewsletter() {
       </form>
       {status === "error" && <p className={styles.error}>{errorMsg}</p>}
       <p className={styles.privacy}>
-        We take data privacy seriously. Mostly because GDPR fines are
-        terrifying, but also because it&apos;s the right thing to do.
+        We hate spam more than you do. Unsubscribe whenever. No hard feelings.
       </p>
     </MotionSection>
   );

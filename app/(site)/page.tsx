@@ -55,7 +55,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <Marquee />
-        <main id="main-content" style={{ padding: "0 48px 180px", display: "flex", flexDirection: "column", gap: 0 }}>
+        <main id="main-content" className="page-padding" style={{ paddingBottom: 180, display: "flex", flexDirection: "column", gap: 0 }}>
           <MissionServices />
           <WorkGrid />
           <HomeTestimonial />

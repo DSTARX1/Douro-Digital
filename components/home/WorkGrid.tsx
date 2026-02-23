@@ -17,10 +17,18 @@ export default function WorkGrid() {
         </Link>
       </div>
       <div className={styles.grid}>
-        <ProjectCard project={caseStudies[0]} height={520} />
-        <ProjectCard project={caseStudies[2]} height={520} />
-        <ProjectCard project={caseStudies[1]} height={520} />
-        <ProjectCard project={caseStudies[3]} height={520} />
+        <MotionSection as="div" className={styles.gridItem}>
+          <ProjectCard project={caseStudies[0]} height={520} />
+        </MotionSection>
+        <MotionSection as="div" className={styles.gridItem}>
+          <ProjectCard project={caseStudies[2]} height={520} />
+        </MotionSection>
+        <MotionSection as="div" className={styles.gridItem}>
+          <ProjectCard project={caseStudies[1]} height={520} />
+        </MotionSection>
+        <MotionSection as="div" className={styles.gridItem}>
+          <ProjectCard project={caseStudies[3]} height={520} />
+        </MotionSection>
       </div>
       <ScrollPrompt className={styles.scrollPrompt} text="Keep scrolling" />
     </MotionSection>

@@ -1,3 +1,4 @@
+import MotionSection from "@/components/animations/MotionSection";
 import styles from "./Marquee.module.css";
 
 const DEFAULT_ITEMS = [
@@ -14,12 +15,12 @@ export default function Marquee({ items = DEFAULT_ITEMS }: { items?: string[] })
   const repeated = [...items, ...items];
 
   return (
-    <div className={styles.wrapper} aria-hidden="true">
+    <MotionSection as="div" className={styles.wrapper}>
       <div className={styles.track}>
         {repeated.map((item, i) => (
           <span key={i}>{item}</span>
         ))}
       </div>
-    </div>
+    </MotionSection>
   );
 }

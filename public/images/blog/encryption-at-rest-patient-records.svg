@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#14532d"/>
+      <stop offset="100%" style="stop-color:#166534"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" style="stop-color:#D42918;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#D42918;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="315" r="280" fill="url(#glow)"/>
+  <!-- Binary columns (visible but atmospheric) -->
+  <g fill="white" font-family="monospace" font-size="16" opacity="0.12">
+    <text x="100" y="40">01101</text><text x="100" y="70">10010</text><text x="100" y="100">11001</text>
+    <text x="100" y="130">00110</text><text x="100" y="160">10101</text><text x="100" y="190">01110</text>
+    <text x="100" y="220">11010</text><text x="100" y="250">00101</text><text x="100" y="280">10011</text>
+    <text x="100" y="310">01100</text><text x="100" y="340">11001</text><text x="100" y="370">00110</text>
+    <text x="100" y="400">10010</text><text x="100" y="430">01101</text><text x="100" y="460">11000</text>
+    <text x="100" y="490">00111</text><text x="100" y="520">10100</text><text x="100" y="550">01011</text>
+    <text x="100" y="580">11110</text><text x="100" y="610">00001</text>
+    <text x="250" y="55">10110</text><text x="250" y="85">01001</text><text x="250" y="115">11100</text>
+    <text x="250" y="145">00011</text><text x="250" y="175">10000</text><text x="250" y="205">01111</text>
+    <text x="250" y="235">11010</text><text x="250" y="265">00101</text><text x="250" y="295">10011</text>
+    <text x="250" y="325">01100</text><text x="250" y="355">11001</text><text x="250" y="385">00110</text>
+    <text x="250" y="415">10010</text><text x="250" y="445">01101</text><text x="250" y="475">11000</text>
+    <text x="250" y="505">00111</text><text x="250" y="535">10100</text><text x="250" y="565">01011</text>
+    <text x="880" y="40">01101</text><text x="880" y="70">10010</text><text x="880" y="100">11001</text>
+    <text x="880" y="130">00110</text><text x="880" y="160">10101</text><text x="880" y="190">01110</text>
+    <text x="880" y="220">11010</text><text x="880" y="250">00101</text><text x="880" y="280">10011</text>
+    <text x="880" y="310">01100</text><text x="880" y="340">11001</text><text x="880" y="370">00110</text>
+    <text x="880" y="400">10010</text><text x="880" y="430">01101</text><text x="880" y="460">11000</text>
+    <text x="880" y="490">00111</text><text x="880" y="520">10100</text><text x="880" y="550">01011</text>
+    <text x="880" y="580">11110</text><text x="880" y="610">00001</text>
+    <text x="1030" y="55">10110</text><text x="1030" y="85">01001</text><text x="1030" y="115">11100</text>
+    <text x="1030" y="145">00011</text><text x="1030" y="175">10000</text><text x="1030" y="205">01111</text>
+    <text x="1030" y="235">11010</text><text x="1030" y="265">00101</text><text x="1030" y="295">10011</text>
+    <text x="1030" y="325">01100</text><text x="1030" y="355">11001</text><text x="1030" y="385">00110</text>
+    <text x="1030" y="415">10010</text><text x="1030" y="445">01101</text><text x="1030" y="475">11000</text>
+    <text x="1030" y="505">00111</text><text x="1030" y="535">10100</text><text x="1030" y="565">01011</text>
+  </g>
+  <!-- Large lock -->
+  <g transform="translate(600,290)">
+    <rect x="-55" y="5" width="110" height="80" rx="10" fill="#D42918" opacity="0.25"/>
+    <rect x="-55" y="5" width="110" height="80" rx="10" fill="none" stroke="white" stroke-width="3"/>
+    <path d="M-32 5 L-32 -25 Q-32 -62 0 -62 Q32 -62 32 -25 L32 5" fill="none" stroke="white" stroke-width="3"/>
+    <circle cx="0" cy="38" r="10" fill="white" opacity="0.9"/>
+    <rect x="-4" y="38" width="8" height="20" rx="3" fill="white" opacity="0.9"/>
+  </g>
+  <rect x="0" y="0" width="5" height="630" fill="#D42918"/>
+</svg>

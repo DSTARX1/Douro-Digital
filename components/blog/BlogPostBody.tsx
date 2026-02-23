@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
+import MotionSection from "@/components/animations/MotionSection";
 import { PixelArrowRight, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import styles from "./BlogPostBody.module.css";
 
@@ -22,7 +23,7 @@ interface Props {
 
 export default function BlogPostBody({ content, relatedCaseStudy }: Props) {
   return (
-    <section className={styles.body}>
+    <MotionSection as="section" className={styles.body}>
       <div className="prose">
         <MDXRemote
           source={content}
@@ -57,6 +58,6 @@ export default function BlogPostBody({ content, relatedCaseStudy }: Props) {
           Book a call <PixelArrowRight size={14} color="currentColor" />
         </Link>
       </div>
-    </section>
+    </MotionSection>
   );
 }

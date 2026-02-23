@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7f1d1d"/>
+      <stop offset="100%" style="stop-color:#991b1b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" style="stop-color:white;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:white;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="285" r="280" fill="url(#glow)"/>
+  <!-- Grid -->
+  <g opacity="0.08" stroke="white" stroke-width="0.5">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Shield -->
+  <g transform="translate(600,280)">
+    <path d="M0 -170 L150 -120 L150 35 Q150 150 0 200 Q-150 150 -150 35 L-150 -120 Z" fill="white" opacity="0.05"/>
+    <path d="M0 -170 L150 -120 L150 35 Q150 150 0 200 Q-150 150 -150 35 L-150 -120 Z" fill="none" stroke="white" stroke-width="3" opacity="0.7"/>
+  </g>
+  <!-- AI brain circuit inside shield -->
+  <g transform="translate(600,265)">
+    <!-- Brain outline -->
+    <circle cx="0" cy="0" r="50" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+    <!-- Circuit paths -->
+    <path d="M-25 -15 Q-10 -35 0 -15 Q10 5 25 -15" fill="none" stroke="white" stroke-width="2" opacity="0.7"/>
+    <path d="M-25 15 Q-10 -5 0 15 Q10 35 25 15" fill="none" stroke="white" stroke-width="2" opacity="0.7"/>
+    <!-- Circuit nodes -->
+    <circle cx="-25" cy="-15" r="4" fill="white" opacity="0.9"/>
+    <circle cx="25" cy="-15" r="4" fill="white" opacity="0.9"/>
+    <circle cx="0" cy="-15" r="4" fill="white" opacity="0.9"/>
+    <circle cx="-25" cy="15" r="4" fill="white" opacity="0.9"/>
+    <circle cx="25" cy="15" r="4" fill="white" opacity="0.9"/>
+    <circle cx="0" cy="15" r="4" fill="white" opacity="0.9"/>
+    <!-- Radiating lines -->
+    <line x1="-50" y1="0" x2="-75" y2="0" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="50" y1="0" x2="75" y2="0" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="0" y1="-50" x2="0" y2="-75" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="0" y1="50" x2="0" y2="75" stroke="white" stroke-width="2" opacity="0.5"/>
+    <!-- Outer dots -->
+    <circle cx="-80" cy="0" r="3" fill="white" opacity="0.5"/>
+    <circle cx="80" cy="0" r="3" fill="white" opacity="0.5"/>
+    <circle cx="0" cy="-80" r="3" fill="white" opacity="0.5"/>
+    <circle cx="0" cy="80" r="3" fill="white" opacity="0.5"/>
+  </g>
+  <rect x="0" y="0" width="5" height="630" fill="white" opacity="0.8"/>
+</svg>

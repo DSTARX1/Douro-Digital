@@ -23,7 +23,7 @@ export default function CalInlineEmbed({ className }: CalInlineEmbedProps) {
   }, []);
 
   return (
-    <div className={className} style={{ minHeight: 700 }}>
+    <div className={className} style={{ minHeight: "min(700px, 85vh)" }} data-cursor-hide>
       <Cal
         namespace="inline"
         calLink={CAL_LINK}

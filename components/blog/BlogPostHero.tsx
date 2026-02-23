@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MotionSection from "@/components/animations/MotionSection";
 import { getCategoryMeta } from "@/data/blog";
 import { PixelChevronLeft } from "@/components/icons/PixelIcons";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -12,7 +13,7 @@ export default function BlogPostHero({ meta }: Props) {
   const cat = getCategoryMeta(meta.category);
 
   return (
-    <section className={styles.hero}>
+    <MotionSection className={styles.hero}>
       <Link href="/resources" className={styles.back}>
         <PixelChevronLeft size={14} color="currentColor" /> Back to Resources
       </Link>
@@ -37,6 +38,6 @@ export default function BlogPostHero({ meta }: Props) {
           background: `linear-gradient(135deg, ${meta.gradientFrom}, ${meta.gradientTo})`,
         }}
       />
-    </section>
+    </MotionSection>
   );
 }

@@ -1,23 +1,26 @@
 .hero {
   padding-top: 160px;
-  margin-bottom: 60px;
+  margin-bottom: 72px;
 }
 
 .label {
-  font-size: 14px;
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   color: var(--muted);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: block;
 }
 
 .heading {
-  font-size: 36px;
+  font-size: clamp(36px, 5vw, 56px);
   font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  max-width: 720px;
 }
 
 .italic {
@@ -26,9 +29,42 @@
   font-weight: 400;
 }
 
+.intro {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 520px;
+  margin-bottom: 24px;
+}
+
 .sub {
   font-size: 17px;
   line-height: 1.6;
   color: var(--muted);
   max-width: 560px;
+}
+
+.sub + .sub {
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 120px;
+    margin-bottom: 48px;
+  }
+
+  .heading {
+    font-size: 32px;
+    letter-spacing: -0.01em;
+  }
+
+  .intro {
+    font-size: 14px;
+  }
+
+  .sub {
+    font-size: 15px;
+    max-width: 100%;
+  }
 }

@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.textLine {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: block;
+    max-width: 100%;
+  }
+
+  .textLine {
+    white-space: normal;
+  }
+}

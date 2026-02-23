@@ -1,12 +1,14 @@
 .hero {
   position: relative;
   height: 100vh;
+  height: 100dvh;
   margin-bottom: 30px;
 }
 
 .heroInner {
   position: relative;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -60,9 +62,19 @@
 }
 
 @media (max-width: 768px) {
+  .heroInner {
+    padding: 100px 24px 6rem;
+  }
+
   .heading {
     font-size: 40px;
     max-width: 360px;
+  }
+
+  .media {
+    width: 80vw;
+    height: 45vw;
+    border-radius: 12px;
   }
 }
 

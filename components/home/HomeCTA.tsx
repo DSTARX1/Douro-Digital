@@ -17,7 +17,7 @@ import styles from "./HomeCTA.module.css";
 export default function HomeCTA() {
   return (
     <MotionSection className={styles.section} id="contact">
-      <ParallaxContainer speed={0.06}>
+      <ParallaxContainer speed={0.06} innerClassName={styles.parallaxInner}>
       <div className={styles.pfpRow}>
         {teamMembers.map((m) => (
           <div

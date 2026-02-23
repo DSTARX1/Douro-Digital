@@ -11,6 +11,7 @@ interface Props {
   children: ReactNode;
   speed?: number;
   className?: string;
+  innerClassName?: string;
   style?: React.CSSProperties;
 }
 
@@ -18,6 +19,7 @@ export default function ParallaxContainer({
   children,
   speed = 0.15,
   className,
+  innerClassName,
   style,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,29 +30,32 @@ export default function ParallaxContainer({
       const inner = innerRef.current;
       if (!inner) return;
 
-      const distance = 100 * speed;
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 769px)", () => {
+        const distance = 100 * speed;
 
-      gsap.fromTo(
-        inner,
-        { y: -distance },
-        {
-          y: distance,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
+        gsap.fromTo(
+          inner,
+          { y: -distance },
+          {
+            y: distance,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
     },
     { scope: containerRef }
   );
 
   return (
     <div ref={containerRef} className={className} style={style}>
-      <div ref={innerRef}>{children}</div>
+      <div ref={innerRef} className={innerClassName}>{children}</div>
     </div>
   );
 }

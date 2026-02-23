@@ -240,7 +240,7 @@
 @media (max-width: 768px) {
   .section {
     height: auto;
-    min-height: 80vh;
+    min-height: 60vh;
   }
 
   .content {
@@ -286,5 +286,18 @@
   .arrow {
     width: 40px;
     height: 40px;
+  }
+
+  .imageWrap {
+    transition: none;
+  }
+
+  .blurBg {
+    display: none;
+  }
+
+  .image {
+    filter: none;
+    transition: none;
   }
 }
