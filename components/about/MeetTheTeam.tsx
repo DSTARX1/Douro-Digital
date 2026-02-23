@@ -1,27 +1,32 @@
 import Image from "next/image";
+import Link from "next/link";
 import MotionSection from "@/components/animations/MotionSection";
+import { PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import { getContentWithFallback } from "@/lib/content";
 import {
   teamIntro as staticTeamIntro,
   teamMembers as staticTeamMembers,
   teamHighlights as staticTeamHighlights,
+  teamProjects as staticTeamProjects,
   type TeamMember,
   type HighlightItem,
+  type ProjectHighlight,
 } from "@/data/about";
 import styles from "./MeetTheTeam.module.css";
 
 // Local overrides for this section only
 const sectionOverrides: Record<string, { scale?: number; objectPosition?: string; transformOrigin?: string }> = {
-  "Isaac Morgado": { scale: 1.4, objectPosition: "30% 15%" },
-  "Mario Funez": { scale: 1.15, objectPosition: "center 15%" },
-  "Danny Isakov": { scale: 1.1, objectPosition: "center 15%" },
-  "Josh Irizarry": { scale: 2.0, objectPosition: "center 10%" },
+  "Isaac Morgado": { scale: 1.6, objectPosition: "80% 50%" },
+  "Mario Funez": { scale: 1.5, objectPosition: "center 0%" },
+  "Danny Isakov": { scale: 1.0, objectPosition: "center 15%" },
+  "Josh Irizarry": { scale: 2.5, objectPosition: "center 15%" },
 };
 
 export default async function MeetTheTeam() {
   const teamIntro = await getContentWithFallback<string>("about.team.intro", staticTeamIntro);
   const teamMembers = await getContentWithFallback<TeamMember[]>("about.team.members", staticTeamMembers);
   const teamHighlights = await getContentWithFallback<HighlightItem[]>("about.team.highlights", staticTeamHighlights);
+  const teamProjects = await getContentWithFallback<ProjectHighlight[]>("about.team.projects", staticTeamProjects);
   return (
     <MotionSection className={styles.section}>
       <div className={styles.top}>
@@ -62,7 +67,33 @@ export default async function MeetTheTeam() {
         })}
       </div>
 
-      {/* Highlights grid */}
+      {/* Project cards */}
+      <p className={styles.projectsLabel}>What We&apos;ve Built</p>
+      <div className={styles.projects}>
+        {teamProjects.map((p) => (
+          <Link key={p.title} href={p.link} className={styles.projectCard}>
+            <div className={styles.projectImageWrap}>
+              <Image
+                src={p.image}
+                alt={p.title}
+                fill
+                sizes="(max-width: 768px) 45vw, 25vw"
+              />
+            </div>
+            <div className={styles.projectInfo}>
+              <div>
+                <p className={styles.projectTitle}>{p.title}</p>
+                <p className={styles.projectDesc}>{p.description}</p>
+              </div>
+              <span className={styles.projectArrow}>
+                <PixelArrowTopRight size={14} color="currentColor" />
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Stat highlights */}
       <div className={styles.highlights}>
         {teamHighlights.map((h) => (
           <div key={h.title}>

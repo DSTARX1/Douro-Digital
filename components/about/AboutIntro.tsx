@@ -14,14 +14,12 @@ export default function AboutIntro() {
       <div className={styles.columns}>
         <div className={styles.left}>
           <p className={styles.label}>About us</p>
-          <div className={styles.intro}>
-            <p>Lemme guess...</p>
+          <h2 className={styles.leadIn}>Lemme guess...</h2>
+          <div className={styles.body}>
             <p>
               You&apos;re running traffic. Ads are performing (ish). Leads are
-              coming in.
-            </p>
-            <p>
-              <Handwritten arrow="down">And then they vanish into the void.</Handwritten>
+              coming in.{" "}
+              <Handwritten>And then they vanish into the void.</Handwritten>
             </p>
             <p>
               Because you didn&apos;t respond in 5 minutes. Because your CRM
@@ -40,7 +38,10 @@ export default function AboutIntro() {
               you ask your agency for help, you get a deck full of
               &ldquo;insights&rdquo; and zero actual solutions.
             </p>
-            <p>Here&apos;s what we do:</p>
+          </div>
+
+          <h3 className={styles.subheading}>Here&apos;s what we do:</h3>
+          <div className={styles.body}>
             <p>
               We build <AnimatedUnderline>AI agents</AnimatedUnderline> that pick
               up the phone, qualify leads, book appointments, and follow
@@ -57,17 +58,13 @@ export default function AboutIntro() {
               We audit your stack, kill the bloat, and build a{" "}
               <Highlight>revenue system</Highlight> instead of a cost center.
             </p>
-            <p>
-              No Figma files you&apos;ll never use. No &ldquo;Phase 2&rdquo;
-              that never comes. No account managers who disappear when you
-              actually need them.
-            </p>
-            <p>
-              Just Isaac, Mario, Danny, and Josh &mdash; building the thing you
-              need so your business stops{" "}
-              <AnimatedUnderline>bleeding money</AnimatedUnderline>.
-            </p>
           </div>
+
+          <p className={styles.closer}>
+            Just Isaac, Mario, Danny, and Josh &mdash; building the thing you
+            need so your business stops{" "}
+            <AnimatedUnderline>bleeding money</AnimatedUnderline>.
+          </p>
         </div>
         <div className={styles.right}>
           <Accordion items={aboutValues} defaultOpen={0} />

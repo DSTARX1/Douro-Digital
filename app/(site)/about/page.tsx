@@ -54,11 +54,13 @@ export default function AboutPage() {
           <AboutIntro />
           <AboutServices />
           <MeetTheTeam />
-          <FAQ
-            items={aboutFAQ}
-            label="About Us"
-            heading="Things people ask before working with us"
-          />
+          <div className="page-padding">
+            <FAQ
+              items={aboutFAQ}
+              label="About Us"
+              heading="Things people ask before working with us"
+            />
+          </div>
           <AboutCTA />
         </main>
       </div>

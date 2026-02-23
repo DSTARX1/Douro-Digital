@@ -80,19 +80,30 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 80px 24px 0;
+    padding: 64px 24px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .label {
+    margin-bottom: 28px;
   }
 
   .stepRow {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 8px;
+    padding: 24px 0;
   }
 
   .stepTitle {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .stepText {
+    font-size: 15px;
+  }
+
+  .closing {
     font-size: 16px;
+    padding-top: 24px;
   }
 }

@@ -53,32 +53,32 @@ export const teamMembers: TeamMember[] = [
     role: "The reason your software won't shit the bed at 2am on a Saturday. Obsessed with things ACTUALLY working in the real world, not just demos that look pretty in pitch decks. If something breaks, he's already fixing it before you notice. Traffic spikes, edge cases, the unglamorous behind-the-scenes magic that keeps your business running while you sleep. Like a really good plumber \u2014 nothing goes wrong.",
     color: "#D42918",
     image: "/images/team/isaac.jpg",
-    objectPosition: "center 25%",
-    scale: 1.3,
+    objectPosition: "center 45%",
+    scale: 1.7,
   },
   {
     name: "Mario Funez",
     role: "Marketing brain that builds software \u2014 dangerous combo because everything he touches actually CONVERTS instead of just looking cool. He's seen too many beautiful products that don't make a dime, so he builds stuff that looks good AND makes money. His motto? \"Just another Tuesday, mate.\" The rare person who understands both the technical side AND the business side. Builds things people actually pay for.",
     color: "#4a2c1a",
     image: "/images/team/mario.jpg",
-    objectPosition: "center 15%",
-    scale: 1.15,
+    objectPosition: "center 2%",
+    scale: 1.5,
   },
   {
     name: "Danny Isakov",
     role: "Makes your product look professional enough that people trust it with their credit card. No diva energy. No \"let me explain my creative vision\" monologues. Just clean design that converts. Your checkout button won't be the wrong shade of blue. Your landing page won't scream \"built in 2003.\" Think Apple Store clean, not Craigslist from 2007. Professional. Trustworthy. Higher bar than you'd think.",
     color: "#1a6b3c",
     image: "/images/team/danny.jpg",
-    objectPosition: "center 10%",
-    scale: 1.1,
+    objectPosition: "center 15%",
+    scale: 1,
   },
   {
     name: "Josh Irizarry",
     role: "Makes sure you build the RIGHT thing, not just the thing you THINK you want at 2am after three coffees and a YouTube video about passive income. Honest about timelines, keeps scope creep from turning your project into a three-year odyssey. That friend who tells you the truth \u2014 \"No, adding blockchain won't help. It'll just add three months and $50k for something nobody wants.\" That level of honesty. Rare. Valuable.",
     color: "#1a3f6b",
     image: "/images/team/josh.jpg",
-    objectPosition: "center 0%",
-    scale: 1.8,
+    objectPosition: "center 15%",
+    scale: 2.5,
   },
 ];
 
@@ -87,23 +87,41 @@ export interface HighlightItem {
   description: string;
 }
 
-export const teamHighlights: HighlightItem[] = [
+export interface ProjectHighlight {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+export const teamProjects: ProjectHighlight[] = [
   {
     title: "Voice Noob",
-    description: "Built and shipped voice automation platform",
+    description: "Voice automation platform",
+    image: "/images/voice-noob-product.jpeg",
+    link: "/case-studies/voice-noob",
   },
   {
     title: "Pocket Agent",
-    description: "Customer service system that runs 24/7",
+    description: "24/7 customer service system",
+    image: "/images/pocket-agent-home.png",
+    link: "/case-studies/pocket-agent",
   },
   {
     title: "Social Bro",
-    description: "Social media management product",
+    description: "Social media management",
+    image: "/images/social-bro-product.jpeg",
+    link: "/case-studies/social-bro",
   },
   {
     title: "Viral Kid",
     description: "Content distribution system",
+    image: "/images/viral-kid-product.jpeg",
+    link: "/case-studies/viral-kid",
   },
+];
+
+export const teamHighlights: HighlightItem[] = [
   {
     title: "15+ years combined",
     description:

@@ -23,13 +23,46 @@
   margin-bottom: 24px;
 }
 
-.intro {
+/* ─── Lead-in heading ─────────────────────── */
+.leadIn {
   font-size: 32px;
   font-weight: 500;
   line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+/* ─── Body paragraphs ─────────────────────── */
+.body {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+
+/* ─── Subheading divider ──────────────────── */
+.subheading {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--fg);
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Closing statement ───────────────────── */
+.closer {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--fg);
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
 }
 
 @media (max-width: 1199px) {
@@ -45,10 +78,29 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 60px 24px 0;
+    padding: 48px 24px 0;
   }
 
-  .intro {
+  .leadIn {
     font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .body {
+    font-size: 16px;
+    gap: 0.85em;
+  }
+
+  .subheading {
+    font-size: 20px;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    padding-top: 28px;
+  }
+
+  .closer {
+    font-size: 17px;
+    margin-top: 24px;
+    padding-top: 24px;
   }
 }
