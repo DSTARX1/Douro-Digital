@@ -236,6 +236,7 @@
   .highlights {
     margin-top: 32px;
     padding-top: 32px;
+    padding-bottom: 16px;
     gap: 24px;
   }
 
