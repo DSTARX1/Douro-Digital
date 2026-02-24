@@ -159,3 +159,11 @@ video:-moz-full-screen [data-cursor-debug] {
   top: 0 !important;
   left: 0 !important;
 }
+
+/* ── Hide custom cursor on mobile/touch ──────────────────── */
+@media (max-width: 768px) {
+  .cursor,
+  .trailSvg {
+    display: none !important;
+  }
+}

@@ -217,10 +217,21 @@
 
   .ctaBelow {
     margin-top: 16px;
+    padding: 0 16px;
   }
 
   .subtitle {
-    font-size: 13px;
+    font-size: 12px;
     margin-bottom: 12px;
+    max-width: 320px;
+  }
+
+  .videoCta {
+    bottom: 12px;
+  }
+
+  .cta {
+    padding: 10px 22px;
+    font-size: 13px;
   }
 }

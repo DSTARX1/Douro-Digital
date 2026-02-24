@@ -50,3 +50,27 @@
     transform: scale(1);
   }
 }
+
+/* ─── Attention pulse on load ─────────────────────────── */
+.toggle {
+  animation: attention 1.5s ease 2s 3;
+}
+
+.toggle.bouncing {
+  animation: bounce 0.3s ease;
+}
+
+@keyframes attention {
+  0%, 100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  30% {
+    transform: scale(0.95);
+  }
+  45% {
+    transform: scale(1.1);
+  }
+}

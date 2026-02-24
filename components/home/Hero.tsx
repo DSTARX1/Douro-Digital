@@ -24,27 +24,17 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
 
-  // Register video & attempt unmuted autoplay
+  // Register video & autoplay muted
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    let cancelled = false;
 
     registerVideo(video);
-
-    // Attempt unmuted autoplay; fall back to muted if browser blocks it
-    video.muted = false;
-    video.play().then(() => {
-      if (!cancelled) setMuted(false);
-    }).catch(() => {
-      if (cancelled) return;
-      video.muted = true;
-      setMuted(true);
-      video.play();
-    });
+    video.muted = true;
+    setMuted(true);
+    video.play();
 
     return () => {
-      cancelled = true;
       unregisterVideo(video);
     };
   }, [registerVideo, unregisterVideo, setMuted]);
@@ -152,8 +142,10 @@ export default function Hero() {
                   ref={videoRef}
                   className={styles.mediaVideo}
                   src="/videos/durolanding.mov"
+                  poster="/videos/durolanding-poster.jpg"
                   preload="metadata"
                   loop
+                  muted
                   playsInline
                 />
                 <div ref={videoCtaRef} className={styles.videoCta}>
