@@ -18,6 +18,8 @@ export default function Hero() {
   const pinSpacerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const videoCtaRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
@@ -50,25 +52,49 @@ export default function Hero() {
   useGSAP(() => {
     const section = sectionRef.current;
     const heading = headingRef.current;
+    const cta = ctaRef.current;
+    const videoCta = videoCtaRef.current;
     const media = mediaRef.current;
-    if (!section || !heading || !media) return;
+    if (!section || !heading || !cta || !videoCta || !media) return;
 
     gsap.set(heading, { opacity: 1, y: 0 });
     gsap.from(media, { opacity: 0, duration: 1.2, delay: 0.3 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: "+=800",
-        pin: true,
-        pinSpacer: pinSpacerRef.current!,
-        scrub: 1,
-      },
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 769px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "+=800",
+          pin: true,
+          pinSpacer: pinSpacerRef.current!,
+          scrub: 1,
+        },
+      });
+      tl.to(heading, { y: -200, opacity: 0, ease: "none" }, 0);
+      tl.to(cta, { opacity: 0, ease: "none" }, 0);
+      tl.to(videoCta, { opacity: 0, ease: "none" }, 0);
+      tl.to(media, { scale: 1.8, y: -120, ease: "none" }, 0);
     });
 
-    tl.to(heading, { y: -200, opacity: 0, ease: "none" }, 0);
-    tl.to(media, { scale: 2.3, ease: "none" }, 0);
+    mm.add("(max-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "+=800",
+          pin: true,
+          pinSpacer: pinSpacerRef.current!,
+          scrub: 1,
+        },
+      });
+      tl.to(heading, { y: -200, opacity: 0, ease: "none" }, 0);
+      tl.to(cta, { opacity: 0, ease: "none" }, 0);
+      tl.to(videoCta, { opacity: 0, ease: "none" }, 0);
+      tl.to(media, { scale: 1.84, ease: "none" }, 0);
+    });
   }, { scope: sectionRef });
 
   // Keep playing inline when exiting fullscreen, respect mute state
@@ -79,7 +105,6 @@ export default function Hero() {
     const onFsChange = () => {
       const fsEl = document.fullscreenElement ?? document.webkitFullscreenElement;
       if (!fsEl) {
-        // Respect global mute state, but keep current play/pause state
         video.muted = isMuted;
       }
     };
@@ -119,26 +144,6 @@ export default function Hero() {
               {heroHeadline.italic && (
                 <em className={styles.italic}>{heroHeadline.italic}</em>
               )}
-              <p
-                style={{
-                  fontSize: "18px",
-                  color: "var(--muted)",
-                  marginTop: "16px",
-                  lineHeight: 1.6,
-                  fontWeight: 400,
-                }}
-              >
-                (Not chatbots. Not dashboards. Not &quot;insights.&quot; Just AI
-                that picks up the phone, books the call, and makes you money.)
-              </p>
-              <MagneticButton className={styles.ctaWrap} strength={0.4}>
-                <a href="#contact" className={styles.cta}>
-                  Book a free call
-                  <span className={styles.ctaArrow}>
-                    <PixelArrowTopRight size={14} color="currentColor" />
-                  </span>
-                </a>
-              </MagneticButton>
             </div>
 
             <MagneticCard className={styles.mediaContainer} maxMove={70}>
@@ -151,12 +156,28 @@ export default function Hero() {
                   loop
                   playsInline
                 />
+                <div ref={videoCtaRef} className={styles.videoCta}>
+                  <MagneticButton strength={0.4}>
+                    <a href="#contact" className={styles.cta}>
+                      Book a free call
+                      <span className={styles.ctaArrow}>
+                        <PixelArrowTopRight size={14} color="currentColor" />
+                      </span>
+                    </a>
+                  </MagneticButton>
+                </div>
               </div>
             </MagneticCard>
+
+            <div ref={ctaRef} className={styles.ctaBelow}>
+              <p className={styles.subtitle}>
+                (Not chatbots. Not dashboards. Not &quot;insights.&quot; Just AI
+                that picks up the phone, books the call, and makes you money.)
+              </p>
+            </div>
           </div>
         </div>
       </div>
-
     </>
   );
 }
