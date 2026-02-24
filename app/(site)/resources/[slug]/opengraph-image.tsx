@@ -1,6 +1,4 @@
 import { ImageResponse } from "next/og";
-import { readFile } from "fs/promises";
-import { join } from "path";
 import { getPostBySlug, getAllPosts } from "@/lib/blog";
 import { blogCategories } from "@/data/blog";
 
@@ -26,9 +24,9 @@ export default async function Image({
   const categoryLabel = category?.label ?? "Resources";
   const categoryColor = category?.color ?? "#D42918";
 
-  const fontData = await readFile(
-    join(process.cwd(), "public/fonts/space-grotesk.woff2")
-  );
+  const fontData = await fetch(
+    "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf"
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (

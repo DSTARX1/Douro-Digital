@@ -1,15 +1,13 @@
 import { ImageResponse } from "next/og";
-import { readFile } from "fs/promises";
-import { join } from "path";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "Douro Digital — AI Agents & Custom Software";
 
 export default async function Image() {
-  const fontData = await readFile(
-    join(process.cwd(), "public/fonts/space-grotesk.woff2")
-  );
+  const fontData = await fetch(
+    "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf"
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
