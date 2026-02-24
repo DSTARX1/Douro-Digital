@@ -27,19 +27,21 @@ export function PixelPlay({ size = 24, color = "currentColor", className = "", a
   );
 }
 
-/** 8-bit pause bars */
+/** 8-bit pause — two pixel columns built from individual squares */
 export function PixelPause({ size = 24, color = "currentColor", className = "", animate = false }: IconProps) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 16 16"
+      viewBox="0 0 24 24"
       fill={color}
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.pulse : ""} ${className}`}
     >
-      <rect x="3" y="2" width="4" height="12" />
-      <rect x="9" y="2" width="4" height="12" />
+      {/* Left bar */}
+      <rect x="6" y="4" width="4" height="16" />
+      {/* Right bar */}
+      <rect x="14" y="4" width="4" height="16" />
     </svg>
   );
 }
@@ -210,6 +212,53 @@ export function PixelVolumeOn({ size = 16, color = "currentColor", className = "
       <rect x="11" y="3" width="1" height="2" />
       <rect x="12" y="5" width="1" height="6" />
       <rect x="11" y="11" width="1" height="2" />
+    </svg>
+  );
+}
+
+/** 8-bit hamburger menu (3 horizontal bars) */
+export function PixelHamburger({ size = 24, color = "currentColor", className = "" }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill={color}
+      shapeRendering="crispEdges"
+      className={`${styles.pixelIcon} ${className}`}
+    >
+      {/* Top bar */}
+      <rect x="2" y="3" width="12" height="2" />
+      {/* Middle bar */}
+      <rect x="2" y="7" width="12" height="2" />
+      {/* Bottom bar */}
+      <rect x="2" y="11" width="12" height="2" />
+    </svg>
+  );
+}
+
+/** 8-bit X / close icon */
+export function PixelClose({ size = 24, color = "currentColor", className = "" }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill={color}
+      shapeRendering="crispEdges"
+      className={`${styles.pixelIcon} ${className}`}
+    >
+      {/* Top-left to bottom-right diagonal */}
+      <rect x="2" y="2" width="2" height="2" />
+      <rect x="4" y="4" width="2" height="2" />
+      <rect x="6" y="6" width="4" height="4" />
+      <rect x="10" y="10" width="2" height="2" />
+      <rect x="12" y="12" width="2" height="2" />
+      {/* Bottom-left to top-right diagonal */}
+      <rect x="2" y="12" width="2" height="2" />
+      <rect x="4" y="10" width="2" height="2" />
+      <rect x="10" y="4" width="2" height="2" />
+      <rect x="12" y="2" width="2" height="2" />
     </svg>
   );
 }

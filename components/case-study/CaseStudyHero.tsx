@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import MotionSection from "@/components/animations/MotionSection";
 import MagneticCard from "@/components/cursor/MagneticCard";
 import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
 import { useAudio } from "@/lib/contexts/AudioContext";
+import MobilePauseOverlay from "@/components/video/MobilePauseOverlay";
 import type { CaseStudy } from "@/data/case-studies";
 import styles from "./CaseStudyHero.module.css";
 
@@ -14,65 +15,40 @@ interface Props {
 
 export default function CaseStudyHero({ study }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const { setMuted, registerVideo, unregisterVideo } = useAudio();
 
-  // Register video & attempt unmuted autoplay
+  // Register video & autoplay muted
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    let cancelled = false;
 
     registerVideo(video);
+    video.muted = true;
+    setMuted(true);
+    video.play();
 
-    video.muted = false;
-    video.play().then(() => {
-      if (!cancelled) setMuted(false);
-    }).catch(() => {
-      if (cancelled) return;
-      video.muted = true;
-      setMuted(true);
-      video.play();
-    });
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
 
     return () => {
-      cancelled = true;
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
       unregisterVideo(video);
     };
   }, [registerVideo, unregisterVideo, setMuted]);
 
-  // Sync mute state on fullscreen exit, keep play/pause state
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const onFsChange = () => {
-      const fsEl = document.fullscreenElement ?? document.webkitFullscreenElement;
-
-      if (!fsEl) {
-        video.muted = isMuted;
-      }
-    };
-    document.addEventListener("fullscreenchange", onFsChange);
-    document.addEventListener("webkitfullscreenchange", onFsChange);
-    return () => {
-      document.removeEventListener("fullscreenchange", onFsChange);
-      document.removeEventListener("webkitfullscreenchange", onFsChange);
-    };
-  }, [isMuted]);
-
   const handleClick = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
-    video.muted = false;
-    setMuted(false);
-    video.play();
-
-    if (typeof video.requestFullscreen === "function") {
-      video.requestFullscreen();
-    } else if (typeof video.webkitEnterFullscreen === "function") {
-      video.webkitEnterFullscreen();
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
     }
-  }, [setMuted]);
+  }, []);
 
   return (
     <MotionSection className={styles.hero}>
@@ -89,7 +65,7 @@ export default function CaseStudyHero({ study }: Props) {
           maxMove={20}
           showCursor
         >
-          <div className={styles.videoInner} onClick={handleClick}>
+          <div className={styles.videoInner} onClick={handleClick} data-cursor-play {...(isPlaying ? { "data-cursor-playing": "" } : {})}>
             <video
               ref={videoRef}
               className={styles.video}
@@ -97,9 +73,11 @@ export default function CaseStudyHero({ study }: Props) {
               poster={study.image}
               preload="metadata"
               loop
+              muted
               playsInline
               aria-label={`${study.title} product demo`}
             />
+            <MobilePauseOverlay isPlaying={isPlaying} />
           </div>
         </MagneticCard>
       )}

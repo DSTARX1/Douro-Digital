@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
@@ -15,6 +15,7 @@ import Highlight from "@/components/effects/Highlight";
 import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
 import { PixelStar, PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
+import MobilePauseOverlay from "@/components/video/MobilePauseOverlay";
 import styles from "./BookACall.module.css";
 
 function ArrowIcon() {
@@ -29,9 +30,10 @@ function CheckIcon() {
 
 export default function BookACall() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const { setMuted, registerVideo, unregisterVideo } = useAudio();
 
-  // Register video & attempt unmuted autoplay
+  // Register video & autoplay, then unmute once playing
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -39,54 +41,36 @@ export default function BookACall() {
 
     registerVideo(video);
 
-    video.muted = false;
+    // Start muted (browsers require this), then unmute after playback starts
+    video.muted = true;
     video.play().then(() => {
-      if (!cancelled) setMuted(false);
-    }).catch(() => {
       if (cancelled) return;
-      video.muted = true;
-      setMuted(true);
-      video.play();
+      video.muted = false;
+      setMuted(false);
     });
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
 
     return () => {
       cancelled = true;
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
       unregisterVideo(video);
     };
   }, [registerVideo, unregisterVideo, setMuted]);
 
-  // Keep playing inline when exiting fullscreen, respect mute state
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const onFsChange = () => {
-      const fsEl = document.fullscreenElement ?? document.webkitFullscreenElement;
-      if (!fsEl) {
-        // Respect global mute state, but keep current play/pause state
-        video.muted = isMuted;
-      }
-    };
-    document.addEventListener("fullscreenchange", onFsChange);
-    document.addEventListener("webkitfullscreenchange", onFsChange);
-    return () => {
-      document.removeEventListener("fullscreenchange", onFsChange);
-      document.removeEventListener("webkitfullscreenchange", onFsChange);
-    };
-  }, [isMuted]);
-
   const handleVideoClick = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
-    video.muted = false;
-    setMuted(false);
-    video.play();
-    if (typeof video.requestFullscreen === "function") {
-      video.requestFullscreen();
-    } else if (typeof video.webkitEnterFullscreen === "function") {
-      video.webkitEnterFullscreen();
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
     }
-  }, [setMuted]);
+  }, []);
 
   return (
     <div id="main-content" className={styles.page}>
@@ -124,15 +108,17 @@ export default function BookACall() {
 
         {/* VSL video */}
         <div className={styles.videoWrap}>
-          <div className={styles.videoCard} onClick={handleVideoClick}>
+          <div className={styles.videoCard} onClick={handleVideoClick} data-cursor-play {...(isPlaying ? { "data-cursor-playing": "" } : {})}>
             <video
               ref={videoRef}
               className={styles.video}
               src="/videos/durolanding.mov"
               preload="metadata"
               loop
+              muted
               playsInline
             />
+            <MobilePauseOverlay isPlaying={isPlaying} />
           </div>
         </div>
 

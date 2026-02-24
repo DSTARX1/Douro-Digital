@@ -18,59 +18,52 @@
   transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   padding: 0;
   color: var(--fg);
+  animation: attention 1s steps(4) 2s infinite;
 }
 
 .toggle:hover {
   opacity: 1;
 }
 
-/* ─── Muted state — red accent ────────────────────────── */
+/* ─── Muted state — bright red ───────────────────────── */
 .muted {
-  background: rgba(212, 41, 24, 0.25);
-  border-color: rgba(212, 41, 24, 0.5);
-  color: var(--accent);
+  background: rgba(212, 41, 24, 0.5);
+  border-color: rgba(212, 41, 24, 0.8);
+  color: #ff4433;
 }
 
-/* ─── Bounce on click ──────────────────────────────────── */
+/* ─── Bounce on click (choppy 8-bit) ─────────────────── */
 .bouncing {
-  animation: bounce 0.3s ease;
+  animation: bounce 0.3s steps(3) !important;
 }
 
 @keyframes bounce {
   0% {
     transform: scale(1);
   }
-  30% {
-    transform: scale(0.85);
+  33% {
+    transform: scale(0.8);
   }
-  60% {
-    transform: scale(1.1);
+  66% {
+    transform: scale(1.15);
   }
   100% {
     transform: scale(1);
   }
 }
 
-/* ─── Attention pulse on load ─────────────────────────── */
-.toggle {
-  animation: attention 1.5s ease 2s 3;
-}
-
-.toggle.bouncing {
-  animation: bounce 0.3s ease;
-}
-
+/* ─── Attention pulse on load (choppy 8-bit) ─────────── */
 @keyframes attention {
   0%, 100% {
     transform: scale(1);
   }
-  15% {
-    transform: scale(1.2);
+  25% {
+    transform: scale(1.25);
   }
-  30% {
-    transform: scale(0.95);
+  50% {
+    transform: scale(0.9);
   }
-  45% {
-    transform: scale(1.1);
+  75% {
+    transform: scale(1.15);
   }
 }

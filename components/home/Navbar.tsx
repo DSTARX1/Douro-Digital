@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/home";
-import { PixelStar, PixelArrowTopRight } from "@/components/icons/PixelIcons";
+import { PixelStar, PixelArrowTopRight, PixelHamburger, PixelClose } from "@/components/icons/PixelIcons";
 import ContactPanel from "./ContactPanel";
 import styles from "./Navbar.module.css";
 
@@ -78,14 +78,16 @@ export default function Navbar() {
 
         {/* Hamburger button (mobile only) */}
         <button
-          className={`${styles.hamburger} ${drawerOpen ? styles.hamburgerOpen : ""}`}
+          className={styles.hamburger}
           onClick={() => setDrawerOpen((v) => !v)}
           aria-label={drawerOpen ? "Close menu" : "Open menu"}
           aria-expanded={drawerOpen}
         >
-          <span className={styles.hamburgerBar} />
-          <span className={styles.hamburgerBar} />
-          <span className={styles.hamburgerBar} />
+          {drawerOpen ? (
+            <PixelClose size={20} color="var(--accent)" />
+          ) : (
+            <PixelHamburger size={20} color="var(--accent)" />
+          )}
         </button>
       </nav>
 

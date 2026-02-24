@@ -177,9 +177,9 @@ export default function CustomCursor() {
       >
         {mode === "video" && (
           playing ? (
-            <PixelPause size={24} color="white" className={styles.pauseIcon} />
-          ) : (
             <PixelPlay size={24} color="white" className={styles.icon} />
+          ) : (
+            <PixelPause size={24} color="white" className={styles.pauseIcon} />
           )
         )}
         {mode === "card" && (

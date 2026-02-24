@@ -128,6 +128,7 @@
 }
 
 .cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0;
@@ -140,6 +141,8 @@
   line-height: 1;
   transition: gap 0.3s ease;
 }
+
+
 
 .ctaArrow {
   display: inline-block;
@@ -215,23 +218,40 @@
     border-radius: 12px;
   }
 
+  .mediaContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .videoCta {
+    position: static;
+    transform: none;
+    margin-top: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .ctaBelow {
-    margin-top: 16px;
+    margin-top: 8px;
     padding: 0 16px;
   }
 
   .subtitle {
     font-size: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     max-width: 320px;
-  }
-
-  .videoCta {
-    bottom: 12px;
   }
 
   .cta {
     padding: 10px 22px;
     font-size: 13px;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
   }
 }

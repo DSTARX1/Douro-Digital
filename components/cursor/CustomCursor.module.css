@@ -84,6 +84,12 @@
   background: var(--accent);
 }
 
+/* Hide dot on video/card cursors (icon replaces it) */
+.modeVideo::after,
+.modeCard::after {
+  display: none;
+}
+
 /* ── Mode: Default — 40px hollow ring ─────────────────────── */
 .modeDefault {
   --size: 40px;

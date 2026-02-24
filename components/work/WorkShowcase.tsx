@@ -19,6 +19,7 @@ export default function WorkShowcase() {
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
+    /* ── Desktop: pinned stacking cards ─────────────────────── */
     mm.add(
       {
         isDesktop: "(min-width: 769px)",
@@ -62,6 +63,44 @@ export default function WorkShowcase() {
               },
             });
           }
+        });
+      }
+    );
+
+    /* ── Mobile: fade-in + slide-up on scroll ────────────── */
+    mm.add(
+      {
+        isMobile: "(max-width: 768px)",
+        isReducedMotion: "(prefers-reduced-motion: reduce)",
+      },
+      (context) => {
+        const { isMobile, isReducedMotion } = context.conditions!;
+        if (!isMobile || isReducedMotion) return;
+
+        const sections =
+          containerRef.current?.querySelectorAll<HTMLElement>(
+            `.${styles.section}`
+          );
+        if (!sections?.length) return;
+
+        sections.forEach((section, i) => {
+          gsap.fromTo(
+            section,
+            { opacity: 0, y: 60, scale: 0.94 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.7,
+              ease: "power2.out",
+              delay: i === 0 ? 0.1 : 0,
+              scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
         });
       }
     );

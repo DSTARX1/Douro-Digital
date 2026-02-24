@@ -144,46 +144,28 @@
 /* ─── Hamburger button ──────────────────────────────────── */
 .hamburger {
   display: none;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0;
   cursor: pointer;
   transition: background 0.2s ease;
   z-index: 101;
+  clip-path: polygon(
+    6px 0%, calc(100% - 6px) 0%,
+    calc(100% - 3px) 3px, 100% 6px,
+    100% calc(100% - 6px), calc(100% - 3px) calc(100% - 3px),
+    calc(100% - 6px) 100%, 6px 100%,
+    3px calc(100% - 3px), 0% calc(100% - 6px),
+    0% 6px, 3px 3px
+  );
 }
 
 .hamburger:hover {
   background: rgba(255, 255, 255, 0.14);
-}
-
-.hamburgerBar {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--fg);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
-  transform-origin: center;
-}
-
-/* Animate bars into an X when open */
-.hamburgerOpen .hamburgerBar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.hamburgerOpen .hamburgerBar:nth-child(2) {
-  opacity: 0;
-  width: 0;
-}
-
-.hamburgerOpen .hamburgerBar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ─── Mobile drawer overlay ─────────────────────────────── */
@@ -293,11 +275,24 @@
 
 /* ─── Responsive breakpoint ─────────────────────────────── */
 @media (max-width: 768px) {
+  .nav {
+    justify-content: center;
+    height: 102px;
+  }
+
   .navRight {
     display: none;
   }
 
   .hamburger {
     display: flex;
+    position: absolute;
+    right: 28px;
+  }
+
+  .logoLink {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

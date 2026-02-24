@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticCard from "@/components/cursor/MagneticCard";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { PixelArrowTopRight } from "@/components/icons/PixelIcons";
+import MobilePauseOverlay from "@/components/video/MobilePauseOverlay";
 import { useAudio } from "@/lib/contexts/AudioContext";
 import { heroHeadline } from "@/data/home";
 import TextReveal from "@/components/animations/TextReveal";
@@ -22,7 +23,8 @@ export default function Hero() {
   const videoCtaRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { isMuted, setMuted, registerVideo, unregisterVideo } = useAudio();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const { setMuted, registerVideo, unregisterVideo } = useAudio();
 
   // Register video & autoplay muted
   useEffect(() => {
@@ -34,7 +36,14 @@ export default function Hero() {
     setMuted(true);
     video.play();
 
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+
     return () => {
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
       unregisterVideo(video);
     };
   }, [registerVideo, unregisterVideo, setMuted]);
@@ -87,37 +96,15 @@ export default function Hero() {
     });
   }, { scope: sectionRef });
 
-  // Keep playing inline when exiting fullscreen, respect mute state
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const onFsChange = () => {
-      const fsEl = document.fullscreenElement ?? document.webkitFullscreenElement;
-      if (!fsEl) {
-        video.muted = isMuted;
-      }
-    };
-    document.addEventListener("fullscreenchange", onFsChange);
-    document.addEventListener("webkitfullscreenchange", onFsChange);
-    return () => {
-      document.removeEventListener("fullscreenchange", onFsChange);
-      document.removeEventListener("webkitfullscreenchange", onFsChange);
-    };
-  }, [isMuted]);
-
   const handleVideoClick = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
-    video.muted = false;
-    setMuted(false);
-    video.play();
-    if (typeof video.requestFullscreen === "function") {
-      video.requestFullscreen();
-    } else if (typeof video.webkitEnterFullscreen === "function") {
-      video.webkitEnterFullscreen();
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
     }
-  }, [setMuted]);
+  }, []);
 
   return (
     <>
@@ -137,7 +124,7 @@ export default function Hero() {
             </div>
 
             <MagneticCard className={styles.mediaContainer} maxMove={70}>
-              <div ref={mediaRef} className={styles.media} onClick={handleVideoClick}>
+              <div ref={mediaRef} className={styles.media} onClick={handleVideoClick} data-cursor-play {...(isPlaying ? { "data-cursor-playing": "" } : {})}>
                 <video
                   ref={videoRef}
                   className={styles.mediaVideo}
@@ -148,16 +135,17 @@ export default function Hero() {
                   muted
                   playsInline
                 />
-                <div ref={videoCtaRef} className={styles.videoCta}>
-                  <MagneticButton strength={0.4}>
-                    <a href="#contact" className={styles.cta}>
-                      Book a free call
-                      <span className={styles.ctaArrow}>
-                        <PixelArrowTopRight size={14} color="currentColor" />
-                      </span>
-                    </a>
-                  </MagneticButton>
-                </div>
+                <MobilePauseOverlay isPlaying={isPlaying} />
+              </div>
+              <div ref={videoCtaRef} className={styles.videoCta}>
+                <MagneticButton strength={0.4}>
+                  <a href="#contact" className={styles.cta}>
+                    Book a free call
+                    <span className={styles.ctaArrow}>
+                      <PixelArrowTopRight size={14} color="currentColor" />
+                    </span>
+                  </a>
+                </MagneticButton>
               </div>
             </MagneticCard>
 

@@ -40,6 +40,7 @@
 }
 
 .videoInner {
+  position: relative;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
