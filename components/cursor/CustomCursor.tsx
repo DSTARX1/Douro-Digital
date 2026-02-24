@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  PixelArrowTopRight,
+  PixelPause,
+  PixelPlay,
+} from "@/components/icons/PixelIcons";
 import gsap from "gsap";
-import { PixelPlay, PixelPause } from "@/components/icons/PixelIcons";
+import { useEffect, useRef, useState } from "react";
 import styles from "./CustomCursor.module.css";
 
 type CursorMode = "default" | "link" | "video" | "card" | "text";
@@ -73,7 +77,9 @@ export default function CustomCursor() {
     rafRef.current = requestAnimationFrame(tick);
 
     // ── Event delegation on body ─────────────────────────────────
-    const resolveMode = (el: Element | null): { mode: CursorMode; target: Element | null } => {
+    const resolveMode = (
+      el: Element | null,
+    ): { mode: CursorMode; target: Element | null } => {
       if (!el) return { mode: "default", target: null };
 
       const videoEl = el.closest("[data-cursor-play]");
@@ -110,8 +116,13 @@ export default function CustomCursor() {
       const relatedTarget = e.relatedTarget as Element | null;
 
       // Leaving a hide-zone or iframe — restore cursor
-      const leftHideZone = (e.target as Element).closest?.("[data-cursor-hide]") || (e.target as Element).tagName === "IFRAME";
-      if (leftHideZone && (!relatedTarget || !relatedTarget.closest?.("[data-cursor-hide]"))) {
+      const leftHideZone =
+        (e.target as Element).closest?.("[data-cursor-hide]") ||
+        (e.target as Element).tagName === "IFRAME";
+      if (
+        leftHideZone &&
+        (!relatedTarget || !relatedTarget.closest?.("[data-cursor-hide]"))
+      ) {
         setHidden(false);
       }
 
@@ -166,6 +177,7 @@ export default function CustomCursor() {
   return (
     <>
       <svg
+        aria-hidden="true"
         className={`${styles.trailSvg} ${revealed && !hidden ? styles.trailRevealed : ""}`}
       >
         <line ref={trailRef} className={styles.trailLine} />
@@ -175,16 +187,13 @@ export default function CustomCursor() {
         className={`${styles.cursor} ${modeClass} ${revealed && !hidden ? styles.revealed : ""}`}
         data-cursor-debug="true"
       >
-        {mode === "video" && (
-          playing ? (
+        {mode === "video" &&
+          (playing ? (
             <PixelPlay size={24} color="white" className={styles.icon} />
           ) : (
             <PixelPause size={24} color="white" className={styles.pauseIcon} />
-          )
-        )}
-        {mode === "card" && (
-          <span className={styles.viewLabel}>View</span>
-        )}
+          ))}
+        {mode === "card" && <PixelArrowTopRight size={28} color="white" />}
       </div>
     </>
   );

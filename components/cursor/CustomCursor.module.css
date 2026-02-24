@@ -42,7 +42,7 @@
 
   /* All visual properties transition together */
   transition:
-    width  0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
     height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
     margin 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
     background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -60,7 +60,7 @@
 
 /* ── Center reticle dot (always visible) ─────────────────────── */
 .cursor::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 6px;
   height: 6px;
@@ -106,20 +106,58 @@
   mix-blend-mode: difference;
 }
 
-/* ── Mode: Video hover — 64px solid accent + icon ───────────── */
+/* ── Mode: Video hover — 64px pixelated accent + icon ────────── */
 .modeVideo {
   --size: 64px;
   background: var(--accent);
   border: none;
+  border-radius: 0;
   mix-blend-mode: normal;
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    87.5% 6.25%,
+    93.75% 12.5%,
+    100% 18.75%,
+    100% 81.25%,
+    93.75% 87.5%,
+    87.5% 93.75%,
+    75% 100%,
+    25% 100%,
+    12.5% 93.75%,
+    6.25% 87.5%,
+    0% 81.25%,
+    0% 18.75%,
+    6.25% 12.5%,
+    12.5% 6.25%
+  );
 }
 
-/* ── Mode: Card hover — 80px solid accent + "View" label ────── */
+/* ── Mode: Card hover — 80px pixelated accent + icon ─────────── */
 .modeCard {
   --size: 80px;
   background: var(--accent);
   border: none;
+  border-radius: 0;
   mix-blend-mode: normal;
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    87.5% 6.25%,
+    93.75% 12.5%,
+    100% 18.75%,
+    100% 81.25%,
+    93.75% 87.5%,
+    87.5% 93.75%,
+    75% 100%,
+    25% 100%,
+    12.5% 93.75%,
+    6.25% 87.5%,
+    0% 81.25%,
+    0% 18.75%,
+    6.25% 12.5%,
+    12.5% 6.25%
+  );
 }
 
 /* ── Mode: Text hover — 32px hollow ring (smaller) ─────────── */
@@ -145,16 +183,11 @@
   flex-shrink: 0;
 }
 
-/* ── "View" text label inside card cursor ────────────────────── */
-.viewLabel {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #fff;
-  text-transform: uppercase;
-  pointer-events: none;
-  user-select: none;
+/* ── Arrow icon inside card cursor ────────────────────────────── */
+.cardIcon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 /* ── Fullscreen cursor fix ─────────────────────────────────── */
