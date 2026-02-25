@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { PixelChevronDown } from "@/components/icons/PixelIcons";
 import s from "./Accordion.module.css";
 
@@ -16,6 +16,7 @@ interface Props {
 
 export default function Accordion({ items, defaultOpen = 0 }: Props) {
   const [open, setOpen] = useState<number>(defaultOpen);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   function toggle(i: number) {
     setOpen(open === i ? -1 : i);
@@ -23,40 +24,46 @@ export default function Accordion({ items, defaultOpen = 0 }: Props) {
 
   return (
     <div>
-      {items.map((item, i) => (
-        <div key={item.title} className={s.item}>
-          <div
-            className={s.header}
-            role="button"
-            tabIndex={0}
-            aria-expanded={open === i}
-            onClick={() => toggle(i)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                toggle(i);
-              }
-            }}
-          >
-            <span className={s.title}>{item.title}</span>
-            <span
-              className={s.arrow}
-              style={{ transform: open === i ? "rotate(180deg)" : "rotate(0)" }}
+      {items.map((item, i) => {
+        const isOpen = open === i;
+        const scrollH = contentRefs.current[i]?.scrollHeight ?? 0;
+
+        return (
+          <div key={item.title} className={s.item}>
+            <div
+              className={s.header}
+              role="button"
+              tabIndex={0}
+              aria-expanded={isOpen}
+              onClick={() => toggle(i)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  toggle(i);
+                }
+              }}
             >
-              <PixelChevronDown size={24} />
-            </span>
+              <span className={s.title}>{item.title}</span>
+              <span
+                className={s.arrow}
+                style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}
+              >
+                <PixelChevronDown size={24} />
+              </span>
+            </div>
+            <div
+              ref={(el) => { contentRefs.current[i] = el; }}
+              className={s.body}
+              style={{
+                maxHeight: isOpen ? `${scrollH}px` : "0",
+                opacity: isOpen ? 1 : 0,
+              }}
+            >
+              <p className={s.desc}>{item.description}</p>
+            </div>
           </div>
-          <div
-            className={s.body}
-            style={{
-              maxHeight: open === i ? "500px" : "0",
-              opacity: open === i ? 1 : 0,
-            }}
-          >
-            <p className={s.desc}>{item.description}</p>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
