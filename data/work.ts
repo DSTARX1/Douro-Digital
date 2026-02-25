@@ -5,7 +5,7 @@ export const workHero = {
 };
 
 export const workIntro =
-  "Most agencies show you \"case studies\" where they consulted on strategy and took credit for results. Or white-labeled platforms with the client's logo slapped on. Or projects that never actually launched.\n\nWe don't do that.\n\nThese are products WE built. From scratch. Shipped to real users. Making real money.\n\nVoice Noob. Pocket Agent. Social Bro. Viral Kid.\n\nEach one solves a specific problem. Each one handles complexity without breaking. Each one runs 24/7 without babysitting.\n\nVoice Noob taught us voice automation breaks at scale because of edge cases nobody thinks about. That's why Pocket Agent has fallback logic from day one.\n\nSocial Bro showed us scheduling is the easy part \u2014 the hard part is making posts not look like they came from a bot.\n\nViral Kid taught us distribution matters more than creation. Best content with zero distribution equals zero results.\n\nReal products. Real lessons. Real battle scars.\n\nYou tell us what you need. We build it. It works. On time. On budget. Without breaking.";
+  "Most agencies show you \"case studies\" where they consulted on strategy and took credit. Or white-labeled platforms with the client's logo slapped on.\n\nWe don't do that.\n\nThese are products WE built. From scratch. Shipped to real users. Making real money.\n\nVoice Noob. Pocket Agent. Social Bro. Viral Kid.\n\nEach one solves a specific problem. Each one handles complexity without breaking. Each one runs 24/7 without babysitting.";
 
 export const workCategories = [
   {
@@ -72,10 +72,10 @@ export const workProjects = [
 export const workCTA = {
   headline: "Want to Build Something Like This?",
   description:
-    "These products prove we know how to build systems that work. Systems that handle complexity without breaking. Systems that run 24/7 without babysitting. If you're ready to build something custom for YOUR business, let's talk. No pitch. No pressure. Just clarity.",
+    "We build systems that work, handle complexity, and run 24/7 without babysitting. Ready to build something custom for YOUR business? Let's talk.",
   buttonText: "Let's Talk About Your Project",
   buttonLink: "/contact",
 };
 
 export const workFooter =
-  "Every product here started the same way yours will. A conversation about what you actually need. A clear scope. A fixed timeline. Then we build it. The difference between software that works and software that doesn't isn't magic \u2014 it's giving a damn. Four people who care. Simple as that.";
+  "Every product here started the same way yours will. A conversation. A clear scope. A fixed timeline. Then we build it. Four people who give a damn. Simple as that.";
