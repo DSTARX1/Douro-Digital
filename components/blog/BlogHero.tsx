@@ -12,7 +12,10 @@ export default function BlogHero() {
       </span>
       <h1 className={styles.heading}>
         Breakdowns, deep-dives, and the occasional rant about why your tech
-        stack is a <em className={styles.italic}><Highlight>dumpster fire</Highlight></em>
+        stack is a{" "}
+        <em className={styles.italic}>
+          <Highlight>dumpster fire</Highlight>
+        </em>
       </h1>
       <p className={styles.intro}>
         (We don&apos;t do LinkedIn-style &quot;10 tips to scale your

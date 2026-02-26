@@ -1,10 +1,10 @@
 "use client";
 
 import MotionSection from "@/components/animations/MotionSection";
-import Accordion from "@/components/home/Accordion";
-import Highlight from "@/components/effects/Highlight";
 import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
 import Handwritten from "@/components/effects/Handwritten";
+import Highlight from "@/components/effects/Highlight";
+import Accordion from "@/components/home/Accordion";
 import { aboutValues } from "@/data/about";
 import styles from "./AboutIntro.module.css";
 
@@ -34,8 +34,8 @@ export default function AboutIntro() {
               it&apos;s a punishment from the gods.
             </p>
             <p>
-              Your team is burned out. Your margins are shrinking. And every time
-              you ask your agency for help, you get a deck full of
+              Your team is burned out. Your margins are shrinking. And every
+              time you ask your agency for help, you get a deck full of
               &ldquo;insights&rdquo; and zero actual solutions.
             </p>
           </div>
@@ -43,14 +43,13 @@ export default function AboutIntro() {
           <h3 className={styles.subheading}>Here&apos;s what we do:</h3>
           <div className={styles.body}>
             <p>
-              We build <AnimatedUnderline>AI agents</AnimatedUnderline> that pick
-              up the phone, qualify leads, book appointments, and follow
-              up &mdash; 24/7, no sick days, no vacation requests.
+              We build <AnimatedUnderline>AI agents</AnimatedUnderline> that
+              pick up the phone, qualify leads, book appointments, and follow up
+              &mdash; 24/7, no sick days, no vacation requests.
             </p>
             <p>
-              We build{" "}
-              <AnimatedUnderline>custom software</AnimatedUnderline> that
-              replaces your <Highlight>SaaS graveyard</Highlight> with one
+              We build <AnimatedUnderline>custom software</AnimatedUnderline>{" "}
+              that replaces your <Highlight>SaaS graveyard</Highlight> with one
               system that actually does what you need (not what some VC-funded
               startup THINKS you need).
             </p>

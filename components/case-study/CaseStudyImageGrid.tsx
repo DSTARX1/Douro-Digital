@@ -14,7 +14,10 @@ export default function CaseStudyImageGrid({ images }: Props) {
   return (
     <MotionSection className={styles.section}>
       {isSingle ? (
-        <div className={styles.single} style={{ position: "relative", overflow: "hidden" }}>
+        <div
+          className={styles.single}
+          style={{ position: "relative", overflow: "hidden" }}
+        >
           {images[0].objectFit === "contain" && (
             <img
               src={images[0].src}
@@ -28,8 +31,12 @@ export default function CaseStudyImageGrid({ images }: Props) {
             alt={images[0].alt}
             style={{
               position: "relative",
-              ...(images[0].objectFit ? { objectFit: images[0].objectFit } : {}),
-              ...(images[0].objectPosition ? { objectPosition: images[0].objectPosition } : {}),
+              ...(images[0].objectFit
+                ? { objectFit: images[0].objectFit }
+                : {}),
+              ...(images[0].objectPosition
+                ? { objectPosition: images[0].objectPosition }
+                : {}),
             }}
           />
         </div>
@@ -39,21 +46,33 @@ export default function CaseStudyImageGrid({ images }: Props) {
             <img
               src={images[0].src}
               alt={images[0].alt}
-              style={images[0].objectPosition ? { objectPosition: images[0].objectPosition } : undefined}
+              style={
+                images[0].objectPosition
+                  ? { objectPosition: images[0].objectPosition }
+                  : undefined
+              }
             />
           </div>
           <div className={styles.small}>
             <img
               src={images[1].src}
               alt={images[1].alt}
-              style={images[1].objectPosition ? { objectPosition: images[1].objectPosition } : undefined}
+              style={
+                images[1].objectPosition
+                  ? { objectPosition: images[1].objectPosition }
+                  : undefined
+              }
             />
           </div>
           <div className={styles.small}>
             <img
               src={images[2].src}
               alt={images[2].alt}
-              style={images[2].objectPosition ? { objectPosition: images[2].objectPosition } : undefined}
+              style={
+                images[2].objectPosition
+                  ? { objectPosition: images[2].objectPosition }
+                  : undefined
+              }
             />
           </div>
         </div>

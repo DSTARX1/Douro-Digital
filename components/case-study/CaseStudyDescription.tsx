@@ -1,7 +1,7 @@
 import MotionSection from "@/components/animations/MotionSection";
-import ProjectDetailsToggle from "./ProjectDetailsToggle";
 import type { CaseStudy } from "@/data/case-studies";
 import styles from "./CaseStudyDescription.module.css";
+import ProjectDetailsToggle from "./ProjectDetailsToggle";
 
 interface Props {
   description: string;

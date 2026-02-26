@@ -1,8 +1,8 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
 import MotionSection from "@/components/animations/MotionSection";
 import { blogCategories } from "@/data/blog";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./BlogCategoryFilter.module.css";
 
 export default function BlogCategoryFilter() {
@@ -21,6 +21,7 @@ export default function BlogCategoryFilter() {
   return (
     <MotionSection as="div" className={styles.wrap}>
       <button
+        type="button"
         className={`${styles.pill} ${active === "all" ? styles.active : ""}`}
         onClick={() => handleClick("all")}
         aria-pressed={active === "all"}
@@ -29,6 +30,7 @@ export default function BlogCategoryFilter() {
       </button>
       {blogCategories.map((cat) => (
         <button
+          type="button"
           key={cat.slug}
           className={`${styles.pill} ${active === cat.slug ? styles.active : ""}`}
           onClick={() => handleClick(cat.slug)}

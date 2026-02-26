@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { type ReactNode, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,16 +46,18 @@ export default function ParallaxContainer({
               end: "bottom top",
               scrub: true,
             },
-          }
+          },
         );
       });
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
     <div ref={containerRef} className={className} style={style}>
-      <div ref={innerRef} className={innerClassName}>{children}</div>
+      <div ref={innerRef} className={innerClassName}>
+        {children}
+      </div>
     </div>
   );
 }

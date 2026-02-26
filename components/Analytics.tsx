@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useRef, Suspense } from "react";
+import { Suspense, useEffect, useRef } from "react";
 
 function AnalyticsTracker() {
   const pathname = usePathname();
@@ -24,7 +24,7 @@ function AnalyticsTracker() {
     if (navigator.sendBeacon) {
       navigator.sendBeacon(
         "/api/track",
-        new Blob([payload], { type: "application/json" })
+        new Blob([payload], { type: "application/json" }),
       );
     } else {
       fetch("/api/track", {

@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
-import type { EChartsOption } from "echarts";
+import styles from "@/app/(admin)/admin.module.css";
 import { echarts } from "@/lib/echarts-theme";
 import { useEChart } from "@/lib/use-echart";
-import styles from "@/app/(admin)/admin.module.css";
+import type { EChartsOption } from "echarts";
+import { useMemo } from "react";
 
 interface Props {
   data: { date: string; views: number }[];
@@ -16,7 +16,10 @@ export default function ViewsLineChart({ data, height = 320 }: Props) {
     return {
       tooltip: {
         trigger: "axis",
-        axisPointer: { type: "cross", lineStyle: { color: "rgba(99,102,241,0.3)" } },
+        axisPointer: {
+          type: "cross",
+          lineStyle: { color: "rgba(99,102,241,0.3)" },
+        },
       },
       grid: { left: 48, right: 16, top: 16, bottom: 32 },
       xAxis: {

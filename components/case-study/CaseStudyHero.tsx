@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
 import MotionSection from "@/components/animations/MotionSection";
 import MagneticCard from "@/components/cursor/MagneticCard";
 import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
-import { useAudio } from "@/lib/contexts/AudioContext";
 import MobilePauseOverlay from "@/components/video/MobilePauseOverlay";
 import type { CaseStudy } from "@/data/case-studies";
+import { useAudio } from "@/lib/contexts/AudioContext";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./CaseStudyHero.module.css";
 
 interface Props {
@@ -60,12 +60,13 @@ export default function CaseStudyHero({ study }: Props) {
         </p>
       )}
       {study.demoVideo && (
-        <MagneticCard
-          className={styles.videoWrap}
-          maxMove={20}
-          showCursor
-        >
-          <div className={styles.videoInner} onClick={handleClick} data-cursor-play {...(isPlaying ? { "data-cursor-playing": "" } : {})}>
+        <MagneticCard className={styles.videoWrap} maxMove={20} showCursor>
+          <div
+            className={styles.videoInner}
+            onClick={handleClick}
+            data-cursor-play
+            {...(isPlaying ? { "data-cursor-playing": "" } : {})}
+          >
             <video
               ref={videoRef}
               className={styles.video}

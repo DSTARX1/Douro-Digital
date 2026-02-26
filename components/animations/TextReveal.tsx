@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./TextReveal.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -58,15 +58,15 @@ export default function TextReveal({
         },
         onStart() {
           // Activate GPU compositing layer during animation
-          inners.forEach((w) => {
+          for (const w of inners) {
             w.style.willChange = "transform, opacity";
-          });
+          }
         },
         onComplete() {
           // Release the compositing layer once animation is done
-          inners.forEach((w) => {
+          for (const w of inners) {
             w.style.willChange = "auto";
-          });
+          }
         },
       });
 
@@ -75,14 +75,17 @@ export default function TextReveal({
       };
     },
     // Re-run when mount state changes so GSAP picks up the split DOM
-    { scope: containerRef, dependencies: [isMounted] }
+    { scope: containerRef, dependencies: [isMounted] },
   );
 
   // Server render (and pre-hydration): plain text inside the tag so crawlers
   // see the full heading content and there's no layout shift.
   if (!isMounted) {
     return (
-      <Tag ref={containerRef as React.RefObject<any>} className={className}>
+      <Tag
+        ref={containerRef as React.RefObject<HTMLElement>}
+        className={className}
+      >
         {text}
       </Tag>
     );
@@ -90,8 +93,12 @@ export default function TextReveal({
 
   // Client render: split into per-word clip containers
   return (
-    <Tag ref={containerRef as React.RefObject<any>} className={className}>
+    <Tag
+      ref={containerRef as React.RefObject<HTMLElement>}
+      className={className}
+    >
       {words.map((word, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: stable word order from split
         <span key={i} className={styles.word}>
           <span className={styles.wordInner}>{word}</span>
         </span>

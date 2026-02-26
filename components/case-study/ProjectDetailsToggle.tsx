@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import type { CaseStudy, CaseStudyStat } from "@/data/case-studies";
+import { useState } from "react";
 import styles from "./CaseStudyDescription.module.css";
 
 interface Props {
@@ -15,6 +15,7 @@ export default function ProjectDetailsToggle({ projectDetails, stats }: Props) {
   return (
     <div className={styles.toggle}>
       <button
+        type="button"
         className={styles.toggleButton}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
@@ -35,7 +36,9 @@ export default function ProjectDetailsToggle({ projectDetails, stats }: Props) {
           {projectDetails.client && (
             <div className={styles.detailItem}>
               <span className={styles.detailLabel}>Client</span>
-              <span className={styles.detailValue}>{projectDetails.client}</span>
+              <span className={styles.detailValue}>
+                {projectDetails.client}
+              </span>
             </div>
           )}
           {projectDetails.year && (
@@ -47,13 +50,17 @@ export default function ProjectDetailsToggle({ projectDetails, stats }: Props) {
           {projectDetails.platform && (
             <div className={styles.detailItem}>
               <span className={styles.detailLabel}>Platform</span>
-              <span className={styles.detailValue}>{projectDetails.platform}</span>
+              <span className={styles.detailValue}>
+                {projectDetails.platform}
+              </span>
             </div>
           )}
           {projectDetails.duration && (
             <div className={styles.detailItem}>
               <span className={styles.detailLabel}>Duration</span>
-              <span className={styles.detailValue}>{projectDetails.duration}</span>
+              <span className={styles.detailValue}>
+                {projectDetails.duration}
+              </span>
             </div>
           )}
           {projectDetails.services && projectDetails.services.length > 0 && (

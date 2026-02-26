@@ -1,7 +1,7 @@
 "use client";
 
-import { PixelChevronDown } from "@/components/icons/PixelIcons";
 import MotionSection from "@/components/animations/MotionSection";
+import { PixelChevronDown } from "@/components/icons/PixelIcons";
 import styles from "./FAQ.module.css";
 
 export interface FAQItem {

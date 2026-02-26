@@ -11,7 +11,10 @@ export async function getContent<T = unknown>(key: string): Promise<T | null> {
   return (row?.value as T) ?? null;
 }
 
-export async function getContentWithFallback<T>(key: string, fallback: T): Promise<T> {
+export async function getContentWithFallback<T>(
+  key: string,
+  fallback: T,
+): Promise<T> {
   try {
     const value = await getContent<T>(key);
     return value ?? fallback;

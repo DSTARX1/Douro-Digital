@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
-import type { EChartsOption } from "echarts";
-import { useEChart } from "@/lib/use-echart";
 import styles from "@/app/(admin)/admin.module.css";
+import { useEChart } from "@/lib/use-echart";
+import type { EChartsOption } from "echarts";
+import { useMemo } from "react";
 
 interface Props {
   data: { name: string; value: number }[];
@@ -11,7 +11,10 @@ interface Props {
 }
 
 export default function BrowserDonutChart({ data, height = 320 }: Props) {
-  const total = useMemo(() => data.reduce((sum, d) => sum + d.value, 0), [data]);
+  const total = useMemo(
+    () => data.reduce((sum, d) => sum + d.value, 0),
+    [data],
+  );
 
   const option = useMemo<EChartsOption>(() => {
     return {

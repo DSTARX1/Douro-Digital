@@ -54,7 +54,8 @@
 
 /* ─── Attention pulse on load (choppy 8-bit) ─────────── */
 @keyframes attention {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   25% {

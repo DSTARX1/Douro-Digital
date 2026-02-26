@@ -8,7 +8,12 @@ interface IconProps {
 }
 
 /** 8-bit play triangle */
-export function PixelPlay({ size = 24, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelPlay({
+  size = 24,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -18,6 +23,7 @@ export function PixelPlay({ size = 24, color = "currentColor", className = "", a
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.pulse : ""} ${className}`}
     >
+      <title>Pixel Play</title>
       <rect x="4" y="2" width="2" height="12" />
       <rect x="6" y="3" width="2" height="10" />
       <rect x="8" y="4" width="2" height="8" />
@@ -28,7 +34,12 @@ export function PixelPlay({ size = 24, color = "currentColor", className = "", a
 }
 
 /** 8-bit pause — two pixel columns built from individual squares */
-export function PixelPause({ size = 24, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelPause({
+  size = 24,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -38,6 +49,7 @@ export function PixelPause({ size = 24, color = "currentColor", className = "", 
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.pulse : ""} ${className}`}
     >
+      <title>Pixel Pause</title>
       {/* Left bar */}
       <rect x="6" y="4" width="4" height="16" />
       {/* Right bar */}
@@ -47,7 +59,12 @@ export function PixelPause({ size = 24, color = "currentColor", className = "", 
 }
 
 /** 8-bit left chevron */
-export function PixelChevronLeft({ size = 20, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelChevronLeft({
+  size = 20,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -57,6 +74,7 @@ export function PixelChevronLeft({ size = 20, color = "currentColor", className 
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.bounce : ""} ${className}`}
     >
+      <title>Pixel Chevron Left</title>
       <rect x="8" y="2" width="2" height="2" />
       <rect x="6" y="4" width="2" height="2" />
       <rect x="4" y="6" width="2" height="2" />
@@ -69,7 +87,12 @@ export function PixelChevronLeft({ size = 20, color = "currentColor", className 
 }
 
 /** 8-bit right chevron */
-export function PixelChevronRight({ size = 20, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelChevronRight({
+  size = 20,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -79,6 +102,7 @@ export function PixelChevronRight({ size = 20, color = "currentColor", className
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.bounce : ""} ${className}`}
     >
+      <title>Pixel Chevron Right</title>
       <rect x="6" y="2" width="2" height="2" />
       <rect x="8" y="4" width="2" height="2" />
       <rect x="10" y="6" width="2" height="2" />
@@ -90,7 +114,12 @@ export function PixelChevronRight({ size = 20, color = "currentColor", className
 }
 
 /** 8-bit chevron down */
-export function PixelChevronDown({ size = 24, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelChevronDown({
+  size = 24,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -100,6 +129,7 @@ export function PixelChevronDown({ size = 24, color = "currentColor", className 
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.bounce : ""} ${className}`}
     >
+      <title>Pixel Chevron Down</title>
       <rect x="2" y="4" width="2" height="2" />
       <rect x="4" y="6" width="2" height="2" />
       <rect x="6" y="8" width="2" height="2" />
@@ -111,7 +141,12 @@ export function PixelChevronDown({ size = 24, color = "currentColor", className 
 }
 
 /** 8-bit star / sparkle */
-export function PixelStar({ size = 14, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelStar({
+  size = 14,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -121,6 +156,7 @@ export function PixelStar({ size = 14, color = "currentColor", className = "", a
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.sparkle : ""} ${className}`}
     >
+      <title>Pixel Star</title>
       {/* Vertical beam */}
       <rect x="7" y="0" width="2" height="4" />
       <rect x="7" y="12" width="2" height="4" />
@@ -139,7 +175,12 @@ export function PixelStar({ size = 14, color = "currentColor", className = "", a
 }
 
 /** 8-bit top-right diagonal arrow */
-export function PixelArrowTopRight({ size = 14, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelArrowTopRight({
+  size = 14,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -149,6 +190,7 @@ export function PixelArrowTopRight({ size = 14, color = "currentColor", classNam
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.slide : ""} ${className}`}
     >
+      <title>Pixel Arrow Top Right</title>
       {/* Diagonal shaft */}
       <rect x="4" y="10" width="2" height="2" />
       <rect x="6" y="8" width="2" height="2" />
@@ -168,7 +210,12 @@ export function PixelArrowTopRight({ size = 14, color = "currentColor", classNam
 }
 
 /** 8-bit right arrow */
-export function PixelArrowRight({ size = 16, color = "currentColor", className = "", animate = false }: IconProps) {
+export function PixelArrowRight({
+  size = 16,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -178,6 +225,7 @@ export function PixelArrowRight({ size = 16, color = "currentColor", className =
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${animate ? styles.slide : ""} ${className}`}
     >
+      <title>Pixel Arrow Right</title>
       {/* Shaft */}
       <rect x="2" y="7" width="8" height="2" />
       {/* Arrowhead */}
@@ -189,7 +237,11 @@ export function PixelArrowRight({ size = 16, color = "currentColor", className =
 }
 
 /** 8-bit speaker with arc waves (unmuted) */
-export function PixelVolumeOn({ size = 16, color = "currentColor", className = "" }: IconProps) {
+export function PixelVolumeOn({
+  size = 16,
+  color = "currentColor",
+  className = "",
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -199,6 +251,7 @@ export function PixelVolumeOn({ size = 16, color = "currentColor", className = "
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${className}`}
     >
+      <title>Pixel Volume On</title>
       {/* Speaker back */}
       <rect x="1" y="6" width="3" height="4" />
       {/* Cone */}
@@ -217,7 +270,11 @@ export function PixelVolumeOn({ size = 16, color = "currentColor", className = "
 }
 
 /** 8-bit hamburger menu (3 horizontal bars) */
-export function PixelHamburger({ size = 24, color = "currentColor", className = "" }: IconProps) {
+export function PixelHamburger({
+  size = 24,
+  color = "currentColor",
+  className = "",
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -227,6 +284,7 @@ export function PixelHamburger({ size = 24, color = "currentColor", className = 
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${className}`}
     >
+      <title>Pixel Hamburger</title>
       {/* Top bar */}
       <rect x="2" y="3" width="12" height="2" />
       {/* Middle bar */}
@@ -238,7 +296,11 @@ export function PixelHamburger({ size = 24, color = "currentColor", className = 
 }
 
 /** 8-bit X / close icon */
-export function PixelClose({ size = 24, color = "currentColor", className = "" }: IconProps) {
+export function PixelClose({
+  size = 24,
+  color = "currentColor",
+  className = "",
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -248,6 +310,7 @@ export function PixelClose({ size = 24, color = "currentColor", className = "" }
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${className}`}
     >
+      <title>Pixel Close</title>
       {/* Top-left to bottom-right diagonal */}
       <rect x="2" y="2" width="2" height="2" />
       <rect x="4" y="4" width="2" height="2" />
@@ -264,7 +327,11 @@ export function PixelClose({ size = 24, color = "currentColor", className = "" }
 }
 
 /** 8-bit speaker with pixel X (muted) */
-export function PixelVolumeOff({ size = 16, color = "currentColor", className = "" }: IconProps) {
+export function PixelVolumeOff({
+  size = 16,
+  color = "currentColor",
+  className = "",
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -274,6 +341,7 @@ export function PixelVolumeOff({ size = 16, color = "currentColor", className = 
       shapeRendering="crispEdges"
       className={`${styles.pixelIcon} ${className}`}
     >
+      <title>Pixel Volume Off</title>
       {/* Speaker back */}
       <rect x="1" y="6" width="3" height="4" />
       {/* Cone */}

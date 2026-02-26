@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { Caveat } from "next/font/google";
 import Analytics from "@/components/Analytics";
 import { organizationSchema, webSiteSchema } from "@/lib/jsonld";
+import type { Metadata } from "next";
+import { Caveat } from "next/font/google";
 import "./globals.css";
 
 const caveat = Caveat({
@@ -30,11 +30,20 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()).replace(/</g, '\\u003c') }}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema()).replace(
+              /</g,
+              "\\u003c",
+            ),
+          }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema()).replace(/</g, '\\u003c') }}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(webSiteSchema()).replace(/</g, "\\u003c"),
+          }}
         />
         {children}
         <Analytics />

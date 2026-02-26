@@ -1,8 +1,11 @@
-import Link from "next/link";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import rehypePrettyCode from "rehype-pretty-code";
 import MotionSection from "@/components/animations/MotionSection";
-import { PixelArrowRight, PixelArrowTopRight } from "@/components/icons/PixelIcons";
+import {
+  PixelArrowRight,
+  PixelArrowTopRight,
+} from "@/components/icons/PixelIcons";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
+import rehypePrettyCode from "rehype-pretty-code";
 import styles from "./BlogPostBody.module.css";
 
 import type { Options as PrettyCodeOptions } from "rehype-pretty-code";
@@ -44,12 +47,15 @@ export default function BlogPostBody({ content, relatedCaseStudy }: Props) {
             {relatedCaseStudy.title}: {relatedCaseStudy.subtitle}
           </span>
           <span className={styles.calloutLink}>
-            View case study <PixelArrowTopRight size={12} color="currentColor" />
+            View case study{" "}
+            <PixelArrowTopRight size={12} color="currentColor" />
           </span>
         </Link>
       )}
       <div className={styles.cta}>
-        <h3 className={styles.ctaHeading}>Want help building systems that actually work?</h3>
+        <h3 className={styles.ctaHeading}>
+          Want help building systems that actually work?
+        </h3>
         <p className={styles.ctaSub}>
           We build AI agents and custom software for businesses tired of paying
           for tools that don&apos;t do anything.

@@ -1,19 +1,19 @@
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import { caseStudies } from "@/data/case-studies";
-import { getAllPosts } from "@/lib/blog";
-import { webPageSchema, breadcrumbSchema } from "@/lib/jsonld";
-import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
-import CaseStudyHero from "@/components/case-study/CaseStudyHero";
-import CaseStudyDescription from "@/components/case-study/CaseStudyDescription";
-import CaseStudyImageGrid from "@/components/case-study/CaseStudyImageGrid";
 import CaseStudyApproachV2 from "@/components/case-study/CaseStudyApproachV2";
+import CaseStudyCTA from "@/components/case-study/CaseStudyCTA";
+import CaseStudyDescription from "@/components/case-study/CaseStudyDescription";
+import CaseStudyGallery from "@/components/case-study/CaseStudyGallery";
+import CaseStudyHero from "@/components/case-study/CaseStudyHero";
+import CaseStudyImageGrid from "@/components/case-study/CaseStudyImageGrid";
+import CaseStudyMoreWork from "@/components/case-study/CaseStudyMoreWork";
 import CaseStudyResults from "@/components/case-study/CaseStudyResults";
 import CaseStudyTestimonial from "@/components/case-study/CaseStudyTestimonial";
-import CaseStudyGallery from "@/components/case-study/CaseStudyGallery";
-import CaseStudyCTA from "@/components/case-study/CaseStudyCTA";
-import CaseStudyMoreWork from "@/components/case-study/CaseStudyMoreWork";
+import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
+import { caseStudies } from "@/data/case-studies";
+import { getAllPosts } from "@/lib/blog";
+import { breadcrumbSchema, webPageSchema } from "@/lib/jsonld";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -72,13 +72,26 @@ export default async function CaseStudyPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd).replace(/</g, '\\u003c') }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pageJsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, '\\u003c') }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
+        }}
       />
-      <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          background: "var(--bg)",
+          marginBottom: "var(--footer-h, 600px)",
+        }}
+      >
         <Navbar />
         <CaseStudyHero study={study} />
         <main id="main-content">
@@ -104,10 +117,17 @@ export default async function CaseStudyPage({
                 study.relatedBlogSlugs
                   ? study.relatedBlogSlugs
                       .map((blogSlug) => {
-                        const post = getAllPosts().find((p) => p.slug === blogSlug);
-                        return post ? { slug: post.slug, title: post.title } : null;
+                        const post = getAllPosts().find(
+                          (p) => p.slug === blogSlug,
+                        );
+                        return post
+                          ? { slug: post.slug, title: post.title }
+                          : null;
                       })
-                      .filter((link): link is { slug: string; title: string } => link !== null)
+                      .filter(
+                        (link): link is { slug: string; title: string } =>
+                          link !== null,
+                      )
                   : undefined
               }
             />

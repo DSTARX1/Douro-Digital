@@ -1,11 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import {
+  PixelArrowTopRight,
+  PixelClose,
+  PixelHamburger,
+  PixelStar,
+} from "@/components/icons/PixelIcons";
+import { navLinks } from "@/data/home";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks } from "@/data/home";
-import { PixelStar, PixelArrowTopRight, PixelHamburger, PixelClose } from "@/components/icons/PixelIcons";
+import { useEffect, useState } from "react";
 import ContactPanel from "./ContactPanel";
 import styles from "./Navbar.module.css";
 
@@ -66,6 +71,7 @@ export default function Navbar() {
             </Link>
           ))}
           <button
+            type="button"
             className={styles.cta}
             onClick={() => setContactOpen(true)}
           >
@@ -78,6 +84,7 @@ export default function Navbar() {
 
         {/* Hamburger button (mobile only) */}
         <button
+          type="button"
           className={styles.hamburger}
           onClick={() => setDrawerOpen((v) => !v)}
           aria-label={drawerOpen ? "Close menu" : "Open menu"}
@@ -93,6 +100,7 @@ export default function Navbar() {
 
       {/* Mobile drawer overlay */}
       {drawerOpen && (
+        // biome-ignore lint/a11y/useKeyWithClickEvents: keyboard close via Escape in drawer
         <div
           className={styles.drawerOverlay}
           onClick={() => setDrawerOpen(false)}
@@ -101,7 +109,9 @@ export default function Navbar() {
       )}
 
       {/* Mobile drawer */}
-      <div className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ""}`}>
+      <div
+        className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ""}`}
+      >
         <nav className={styles.drawerNav}>
           {navLinks.map((link) => (
             <Link
@@ -115,6 +125,7 @@ export default function Navbar() {
             </Link>
           ))}
           <button
+            type="button"
             className={styles.drawerCta}
             onClick={() => {
               setDrawerOpen(false);
@@ -129,10 +140,7 @@ export default function Navbar() {
         </nav>
       </div>
 
-      <ContactPanel
-        open={contactOpen}
-        onClose={() => setContactOpen(false)}
-      />
+      <ContactPanel open={contactOpen} onClose={() => setContactOpen(false)} />
     </>
   );
 }

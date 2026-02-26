@@ -9,31 +9,31 @@ import * as schema from "../lib/schema";
 
 // Static data imports
 import {
+  aboutCTA,
   aboutHero,
   aboutIntro,
   aboutValues,
+  teamHighlights,
   teamIntro,
   teamMembers,
-  teamHighlights,
-  aboutCTA,
 } from "../data/about";
+import { blogCategories } from "../data/blog";
+import { caseStudies } from "../data/case-studies";
+import { clients } from "../data/clients";
 import {
-  heroHeadline,
-  missionText,
   aboutTopics,
   ctaTexts,
+  footerContact,
+  footerDescription,
+  footerNav,
+  heroHeadline,
+  missionText,
+  navLinks,
   testimonials,
   videoTestimonials,
-  navLinks,
-  footerDescription,
-  footerContact,
-  footerNav,
 } from "../data/home";
 import { services } from "../data/services";
-import { clients } from "../data/clients";
 import { workHero } from "../data/work";
-import { caseStudies } from "../data/case-studies";
-import { blogCategories } from "../data/blog";
 
 const db = drizzle({
   connection: { connectionString: process.env.DATABASE_URL! },

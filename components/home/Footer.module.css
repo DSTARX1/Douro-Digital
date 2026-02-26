@@ -78,8 +78,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background:
-    repeating-linear-gradient(
+  background: repeating-linear-gradient(
       0deg,
       transparent,
       transparent 23px,

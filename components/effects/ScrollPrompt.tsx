@@ -13,7 +13,11 @@ export default function ScrollPrompt({
   return (
     <div className={`${styles.prompt} ${className || ""}`}>
       <span className={styles.text}>{text}</span>
-      <PixelChevronDown size={14} color="currentColor" className={styles.chevron} />
+      <PixelChevronDown
+        size={14}
+        color="currentColor"
+        className={styles.chevron}
+      />
     </div>
   );
 }

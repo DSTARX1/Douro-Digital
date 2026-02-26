@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-const PIXEL_CHARS = "\u2588\u2593\u2592\u2591\u25aa\u25ab\u25cf\u25cb\u25c6\u25c7\u25a0\u25a1\u25b2\u25b3";
+const PIXEL_CHARS =
+  "\u2588\u2593\u2592\u2591\u25aa\u25ab\u25cf\u25cb\u25c6\u25c7\u25a0\u25a1\u25b2\u25b3";
 const RESOLVE_MS = 600;
 const TICK_MS = 30;
 
@@ -12,7 +13,11 @@ interface Props {
   as?: "span" | "p";
 }
 
-export default function TextScramble({ text, className, as: Tag = "span" }: Props) {
+export default function TextScramble({
+  text,
+  className,
+  as: Tag = "span",
+}: Props) {
   const ref = useRef<HTMLElement>(null);
   const [display, setDisplay] = useState(text);
   const triggered = useRef(false);
@@ -36,7 +41,7 @@ export default function TextScramble({ text, className, as: Tag = "span" }: Prop
             if (i < resolved) return ch;
             return PIXEL_CHARS[Math.floor(Math.random() * PIXEL_CHARS.length)];
           })
-          .join("")
+          .join(""),
       );
 
       if (tick >= totalTicks) {
@@ -63,17 +68,15 @@ export default function TextScramble({ text, className, as: Tag = "span" }: Prop
               .map((ch) =>
                 ch === " "
                   ? " "
-                  : PIXEL_CHARS[
-                      Math.floor(Math.random() * PIXEL_CHARS.length)
-                    ]
+                  : PIXEL_CHARS[Math.floor(Math.random() * PIXEL_CHARS.length)],
               )
-              .join("")
+              .join(""),
           );
           cleanupRef.current = scramble();
           obs.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     obs.observe(el);
@@ -84,7 +87,10 @@ export default function TextScramble({ text, className, as: Tag = "span" }: Prop
   }, [text, scramble]);
 
   return (
-    <Tag ref={ref as React.RefObject<HTMLSpanElement & HTMLParagraphElement>} className={className}>
+    <Tag
+      ref={ref as React.RefObject<HTMLSpanElement & HTMLParagraphElement>}
+      className={className}
+    >
       {display}
     </Tag>
   );

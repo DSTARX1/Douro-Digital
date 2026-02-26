@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { PixelVolumeOff, PixelVolumeOn } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
-import { PixelVolumeOn, PixelVolumeOff } from "@/components/icons/PixelIcons";
+import { useCallback, useState } from "react";
 import styles from "./MuteToggle.module.css";
 
 export default function MuteToggle() {
@@ -20,6 +20,7 @@ export default function MuteToggle() {
 
   return (
     <button
+      type="button"
       className={`${styles.toggle} ${bouncing ? styles.bouncing : ""} ${isMuted ? styles.muted : ""}`}
       onClick={handleClick}
       onAnimationEnd={handleAnimationEnd}

@@ -1,6 +1,15 @@
 "use client";
 
-import { createContext, useContext, useRef, useState, useCallback, useEffect, useMemo, type ReactNode } from "react";
+import {
+  type ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 interface AudioContextValue {
   isMuted: boolean;
@@ -20,21 +29,24 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     isMutedRef.current = isMuted;
     // Safety net: re-sync all videos whenever isMuted changes
-    videosRef.current.forEach((v) => {
+    for (const v of videosRef.current) {
       v.muted = isMuted;
-    });
+    }
   }, [isMuted]);
 
   const syncMuted = useCallback((muted: boolean) => {
-    videosRef.current.forEach((v) => {
+    for (const v of videosRef.current) {
       v.muted = muted;
-    });
+    }
   }, []);
 
-  const setMuted = useCallback((muted: boolean) => {
-    setIsMuted(muted);
-    syncMuted(muted);
-  }, [syncMuted]);
+  const setMuted = useCallback(
+    (muted: boolean) => {
+      setIsMuted(muted);
+      syncMuted(muted);
+    },
+    [syncMuted],
+  );
 
   const registerVideo = useCallback((video: HTMLVideoElement) => {
     videosRef.current.add(video);
@@ -50,11 +62,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     [isMuted, setMuted, registerVideo, unregisterVideo],
   );
 
-  return (
-    <AudioCtx.Provider value={value}>
-      {children}
-    </AudioCtx.Provider>
-  );
+  return <AudioCtx.Provider value={value}>{children}</AudioCtx.Provider>;
 }
 
 export function useAudio() {

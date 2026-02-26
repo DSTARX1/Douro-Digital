@@ -17,7 +17,7 @@ export const aboutTopics: AboutTopic[] = [
   {
     title: "Why We Only Work With Four People",
     description:
-      'Most projects fail because of too many cooks. Account managers who don\'t build. Junior devs who copy-paste. "Strategists" who\'ve never shipped a product.\n\nIsaac builds backend systems that don\'t shit the bed at 2am. Mario builds products that convert. Danny makes it look professional enough that people trust it and BUY. Josh makes sure we build the RIGHT thing.\n\nFour people. Zero bullshit. Direct access. Actual progress.',
+      "Most projects fail because of too many cooks. Account managers who don't build. Junior devs who copy-paste. \"Strategists\" who've never shipped a product.\n\nIsaac builds backend systems that don't shit the bed at 2am. Mario builds products that convert. Danny makes it look professional enough that people trust it and BUY. Josh makes sure we build the RIGHT thing.\n\nFour people. Zero bullshit. Direct access. Actual progress.",
   },
   {
     title: "What Happens When You Work With Us",
@@ -27,7 +27,7 @@ export const aboutTopics: AboutTopic[] = [
   {
     title: "Products That Work, Not Promises That Don't",
     description:
-      'We\'ve built Voice Noob. Pocket Agent. Social Bro. Viral Kid.\n\nReal products. Real users. Real revenue. Not case studies where we "consulted" and took credit. Actual products we built from scratch, shipped, and people paid money for.\n\nWe just build the damn thing. And it works. That\'s our whole pitch.',
+      "We've built Voice Noob. Pocket Agent. Social Bro. Viral Kid.\n\nReal products. Real users. Real revenue. Not case studies where we \"consulted\" and took credit. Actual products we built from scratch, shipped, and people paid money for.\n\nWe just build the damn thing. And it works. That's our whole pitch.",
   },
 ];
 

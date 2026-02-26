@@ -21,7 +21,6 @@ export default function LoginForm() {
           placeholder="Password"
           required
           className={styles.loginInput}
-          autoFocus
         />
 
         <button type="submit" disabled={pending} className={styles.loginButton}>

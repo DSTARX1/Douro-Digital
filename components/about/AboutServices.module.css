@@ -35,9 +35,15 @@
   transform: scaleX(1);
 }
 
-.stepRow:nth-child(3)::before { transition-delay: 0.1s; }
-.stepRow:nth-child(4)::before { transition-delay: 0.2s; }
-.stepRow:nth-child(5)::before { transition-delay: 0.3s; }
+.stepRow:nth-child(3)::before {
+  transition-delay: 0.1s;
+}
+.stepRow:nth-child(4)::before {
+  transition-delay: 0.2s;
+}
+.stepRow:nth-child(5)::before {
+  transition-delay: 0.3s;
+}
 
 .stepTitle {
   font-size: 20px;

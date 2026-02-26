@@ -1,10 +1,10 @@
 import {
+  index,
+  jsonb,
   pgTable,
   serial,
   text,
   timestamp,
-  jsonb,
-  index,
 } from "drizzle-orm/pg-core";
 
 export const pageViews = pgTable(
@@ -26,7 +26,7 @@ export const pageViews = pgTable(
   (table) => [
     index("page_views_path_idx").on(table.path),
     index("page_views_created_at_idx").on(table.createdAt),
-  ]
+  ],
 );
 
 export const newsletterSubscribers = pgTable("newsletter_subscribers", {

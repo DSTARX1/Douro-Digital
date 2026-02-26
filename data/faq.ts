@@ -29,7 +29,7 @@ export const homeFAQ: FAQItem[] = [
   {
     question: "How much does this cost?",
     answer:
-      "Depends what you need. We don't have packages or \"starting at\" pricing that balloons to 3x.\n\nJust project-based pricing:\n\n1. We talk. You tell us what you need.\n2. We scope it. Clear requirements. Fixed timeline.\n3. One price. No surprises. No hidden fees.\n4. You decide.\n\nMost projects range from low to mid five figures.\n\nIf that's out of budget, no hard feelings. We'll tell you what might work better for where you are right now.\n\nNo pressure. No \"limited time offer\" manipulation. Just honest pricing.",
+      'Depends what you need. We don\'t have packages or "starting at" pricing that balloons to 3x.\n\nJust project-based pricing:\n\n1. We talk. You tell us what you need.\n2. We scope it. Clear requirements. Fixed timeline.\n3. One price. No surprises. No hidden fees.\n4. You decide.\n\nMost projects range from low to mid five figures.\n\nIf that\'s out of budget, no hard feelings. We\'ll tell you what might work better for where you are right now.\n\nNo pressure. No "limited time offer" manipulation. Just honest pricing.',
   },
 ];
 

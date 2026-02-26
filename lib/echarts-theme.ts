@@ -1,14 +1,14 @@
-import * as echarts from "echarts/core";
-import { LineChart, BarChart, PieChart } from "echarts/charts";
+import { BarChart, LineChart, PieChart } from "echarts/charts";
 import {
+  GraphicComponent,
   GridComponent,
-  TooltipComponent,
   LegendComponent,
   TitleComponent,
-  GraphicComponent,
+  TooltipComponent,
 } from "echarts/components";
-import { CanvasRenderer } from "echarts/renderers";
+import * as echarts from "echarts/core";
 import { LabelLayout, UniversalTransition } from "echarts/features";
+import { CanvasRenderer } from "echarts/renderers";
 
 echarts.use([
   LineChart,

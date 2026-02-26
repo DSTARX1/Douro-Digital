@@ -1,13 +1,13 @@
-import { aboutPageSchema, faqSchema } from "@/lib/jsonld";
-import { aboutFAQ } from "@/data/faq";
-import Navbar from "@/components/home/Navbar";
+import AboutCTA from "@/components/about/AboutCTA";
 import AboutHero from "@/components/about/AboutHero";
 import AboutIntro from "@/components/about/AboutIntro";
 import AboutServices from "@/components/about/AboutServices";
 import MeetTheTeam from "@/components/about/MeetTheTeam";
-import AboutCTA from "@/components/about/AboutCTA";
 import FAQ from "@/components/faq/FAQ";
 import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
+import { aboutFAQ } from "@/data/faq";
+import { aboutPageSchema, faqSchema } from "@/lib/jsonld";
 
 export const metadata = {
   title: "About \u2014 Douro Digital | AI Agents & Custom Software",
@@ -41,13 +41,26 @@ export default function AboutPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+        }}
       />
-      <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          background: "var(--bg)",
+          marginBottom: "var(--footer-h, 600px)",
+        }}
+      >
         <Navbar />
         <AboutHero />
         <main id="main-content">

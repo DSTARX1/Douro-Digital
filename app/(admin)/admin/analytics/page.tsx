@@ -1,11 +1,11 @@
+import BrowserDonutChart from "@/components/admin/charts/BrowserDonutChart";
+import DeviceDonutChart from "@/components/admin/charts/DeviceDonutChart";
+import TopPagesBarChart from "@/components/admin/charts/TopPagesBarChart";
+import ViewsLineChart from "@/components/admin/charts/ViewsLineChart";
 import { db } from "@/lib/db";
 import { pageViews } from "@/lib/schema";
 import { count, desc, sql } from "drizzle-orm";
 import styles from "../../admin.module.css";
-import ViewsLineChart from "@/components/admin/charts/ViewsLineChart";
-import TopPagesBarChart from "@/components/admin/charts/TopPagesBarChart";
-import DeviceDonutChart from "@/components/admin/charts/DeviceDonutChart";
-import BrowserDonutChart from "@/components/admin/charts/BrowserDonutChart";
 
 export const metadata = {
   title: "Analytics — Douro Digital Admin",
@@ -47,7 +47,7 @@ export default async function AnalyticsPage() {
       .select({ referrer: pageViews.referrer, views: count() })
       .from(pageViews)
       .where(
-        sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`
+        sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`,
       )
       .groupBy(pageViews.referrer)
       .orderBy(desc(count()))
@@ -88,7 +88,7 @@ export default async function AnalyticsPage() {
   const avgDaily = dailyViews.length > 0 ? Math.round(total30d / 30) : 0;
   const peakDay = dailyViews.reduce(
     (best, d) => (d.views > best.views ? d : best),
-    { date: "—", views: 0 }
+    { date: "—", views: 0 },
   );
 
   return (
@@ -103,7 +103,9 @@ export default async function AnalyticsPage() {
         </div>
         <div className={styles.card}>
           <p className={styles.cardLabel}>Today</p>
-          <p className={styles.cardValue}>{todayResult.count.toLocaleString()}</p>
+          <p className={styles.cardValue}>
+            {todayResult.count.toLocaleString()}
+          </p>
         </div>
         <div className={styles.card}>
           <p className={styles.cardLabel}>Avg Daily</p>
@@ -194,6 +196,7 @@ export default async function AnalyticsPage() {
           </thead>
           <tbody>
             {utmBreakdown.map((row, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: UTM rows lack stable unique id
               <tr key={i}>
                 <td>{row.source}</td>
                 <td>{row.medium ?? "—"}</td>

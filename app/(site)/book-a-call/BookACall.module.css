@@ -118,7 +118,9 @@
 
 /* ─── CTA button (reused across sections) ─────────────── */
 @keyframes gradientSpin {
-  to { --gradient-angle: 360deg; }
+  to {
+    --gradient-angle: 360deg;
+  }
 }
 
 .ctaBtn {
@@ -138,11 +140,16 @@
 }
 
 .ctaBtn::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -2px;
   border-radius: 102px;
-  background: conic-gradient(from var(--gradient-angle), #D42918, #E8652C, #D42918);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #d42918,
+    #e8652c,
+    #d42918
+  );
   z-index: -1;
   animation: gradientSpin 4s linear infinite;
 }
@@ -315,7 +322,12 @@
   border-radius: 16px;
   overflow: hidden;
   padding: 2px;
-  background: conic-gradient(from var(--gradient-angle), #D42918, #E8652C, #D42918);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #d42918,
+    #e8652c,
+    #d42918
+  );
   animation: gradientSpin 4s linear infinite;
 }
 

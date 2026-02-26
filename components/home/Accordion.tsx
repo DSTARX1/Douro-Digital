@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
 import { PixelChevronDown } from "@/components/icons/PixelIcons";
+import { useRef, useState } from "react";
 import s from "./Accordion.module.css";
 
 interface AccordionItem {
@@ -30,29 +30,26 @@ export default function Accordion({ items, defaultOpen = 0 }: Props) {
 
         return (
           <div key={item.title} className={s.item}>
-            <div
+            <button
+              type="button"
               className={s.header}
-              role="button"
-              tabIndex={0}
               aria-expanded={isOpen}
               onClick={() => toggle(i)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  toggle(i);
-                }
-              }}
             >
               <span className={s.title}>{item.title}</span>
               <span
                 className={s.arrow}
-                style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}
+                style={{
+                  transform: isOpen ? "rotate(180deg)" : "rotate(0)",
+                }}
               >
                 <PixelChevronDown size={24} />
               </span>
-            </div>
+            </button>
             <div
-              ref={(el) => { contentRefs.current[i] = el; }}
+              ref={(el) => {
+                contentRefs.current[i] = el;
+              }}
               className={s.body}
               style={{
                 maxHeight: isOpen ? `${scrollH}px` : "0",

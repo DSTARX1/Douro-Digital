@@ -28,8 +28,12 @@ export default function CaseStudyGallery({ images }: Props) {
             alt={images[0].alt}
             style={{
               position: "relative",
-              ...(images[0].objectFit ? { objectFit: images[0].objectFit } : {}),
-              ...(images[0].objectPosition ? { objectPosition: images[0].objectPosition } : {}),
+              ...(images[0].objectFit
+                ? { objectFit: images[0].objectFit }
+                : {}),
+              ...(images[0].objectPosition
+                ? { objectPosition: images[0].objectPosition }
+                : {}),
             }}
           />
         </MotionSection>
@@ -44,7 +48,11 @@ export default function CaseStudyGallery({ images }: Props) {
               <img
                 src={img.src}
                 alt={img.alt}
-                style={img.objectPosition ? { objectPosition: img.objectPosition } : undefined}
+                style={
+                  img.objectPosition
+                    ? { objectPosition: img.objectPosition }
+                    : undefined
+                }
               />
             </MotionSection>
           ))}

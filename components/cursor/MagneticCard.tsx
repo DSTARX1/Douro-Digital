@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, type ReactNode, type CSSProperties } from "react";
+import { type CSSProperties, type ReactNode, useEffect, useRef } from "react";
 
 interface Props {
   children: ReactNode;

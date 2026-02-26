@@ -1,39 +1,39 @@
 /* ─── Local Fonts ─────────────────────────────────────────── */
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: "Space Grotesk";
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('/fonts/space-grotesk.woff2') format('woff2');
+  src: url("/fonts/space-grotesk.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Instrument Serif';
+  font-family: "Instrument Serif";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
+  src: url("/fonts/instrument-serif-italic.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Fragment Mono';
+  font-family: "Fragment Mono";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/fragment-mono.woff2') format('woff2');
+  src: url("/fonts/fragment-mono.woff2") format("woff2");
 }
 
 /* ─── Design Tokens ──────────────────────────────────────── */
 :root {
   --bg: #000;
   --fg: #fff;
-  --accent: #D42918;
+  --accent: #d42918;
   --border: rgba(255, 255, 255, 0.1);
   --muted: rgba(255, 255, 255, 0.5);
 
-  --font-sans: 'Space Grotesk', system-ui, sans-serif;
-  --font-serif-italic: 'Instrument Serif', Georgia, serif;
-  --font-mono: 'Fragment Mono', monospace;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-serif-italic: "Instrument Serif", Georgia, serif;
+  --font-mono: "Fragment Mono", monospace;
 }
 
 /* ─── Page-level responsive padding ────────────────────────── */
@@ -101,7 +101,6 @@ a {
   text-decoration: none;
 }
 
-
 button {
   border: none;
   cursor: pointer;
@@ -128,8 +127,8 @@ html {
 [data-animate] {
   opacity: 0;
   transform: translateY(30px) scale(0.97);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
-    transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s
+    cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 [data-animate].is-visible {
@@ -143,8 +142,8 @@ html {
 [data-animate][data-stagger] > * {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
-              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s
+    cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 [data-animate][data-stagger].is-visible > * {
@@ -152,16 +151,36 @@ html {
   transform: translateY(0);
 }
 
-[data-animate][data-stagger].is-visible > *:nth-child(1)  { transition-delay: 0.00s; }
-[data-animate][data-stagger].is-visible > *:nth-child(2)  { transition-delay: 0.10s; }
-[data-animate][data-stagger].is-visible > *:nth-child(3)  { transition-delay: 0.20s; }
-[data-animate][data-stagger].is-visible > *:nth-child(4)  { transition-delay: 0.30s; }
-[data-animate][data-stagger].is-visible > *:nth-child(5)  { transition-delay: 0.40s; }
-[data-animate][data-stagger].is-visible > *:nth-child(6)  { transition-delay: 0.50s; }
-[data-animate][data-stagger].is-visible > *:nth-child(7)  { transition-delay: 0.60s; }
-[data-animate][data-stagger].is-visible > *:nth-child(8)  { transition-delay: 0.70s; }
-[data-animate][data-stagger].is-visible > *:nth-child(9)  { transition-delay: 0.80s; }
-[data-animate][data-stagger].is-visible > *:nth-child(10) { transition-delay: 0.90s; }
+[data-animate][data-stagger].is-visible > *:nth-child(1) {
+  transition-delay: 0.00s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(2) {
+  transition-delay: 0.10s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(3) {
+  transition-delay: 0.20s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(4) {
+  transition-delay: 0.30s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(5) {
+  transition-delay: 0.40s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(6) {
+  transition-delay: 0.50s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(7) {
+  transition-delay: 0.60s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(8) {
+  transition-delay: 0.70s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(9) {
+  transition-delay: 0.80s;
+}
+[data-animate][data-stagger].is-visible > *:nth-child(10) {
+  transition-delay: 0.90s;
+}
 
 .glass {
   background: rgba(255, 255, 255, 0.05);
@@ -190,10 +209,22 @@ html {
   margin-bottom: 1rem;
 }
 
-.prose h1 { font-size: 32px; line-height: 1.2; }
-.prose h2 { font-size: 24px; line-height: 1.3; }
-.prose h3 { font-size: 20px; line-height: 1.4; }
-.prose h4 { font-size: 17px; line-height: 1.4; }
+.prose h1 {
+  font-size: 32px;
+  line-height: 1.2;
+}
+.prose h2 {
+  font-size: 24px;
+  line-height: 1.3;
+}
+.prose h3 {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.prose h4 {
+  font-size: 17px;
+  line-height: 1.4;
+}
 
 .prose p {
   font-size: 17px;
@@ -234,7 +265,9 @@ html {
 }
 
 /* Language label shown above the block */
-.prose figure[data-rehype-pretty-code-figure] > figcaption[data-rehype-pretty-code-title] {
+.prose
+  figure[data-rehype-pretty-code-figure]
+  > figcaption[data-rehype-pretty-code-title] {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--muted);
@@ -341,9 +374,15 @@ html {
 
 /* ─── Skeleton Loading ─────────────────────────────────────── */
 @keyframes skeleton-pulse {
-  0%   { opacity: 0.06; }
-  50%  { opacity: 0.12; }
-  100% { opacity: 0.06; }
+  0% {
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.12;
+  }
+  100% {
+    opacity: 0.06;
+  }
 }
 
 .skeleton-bone {
@@ -409,8 +448,12 @@ html {
 
 /* ─── Initial Page Load ─────────────────────────────────────── */
 @keyframes initialFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 body {
@@ -427,13 +470,29 @@ body {
 }
 
 @keyframes pageOut {
-  from { opacity: 1; transform: translateY(0);    filter: blur(0); }
-  to   { opacity: 0; transform: translateY(-20px); filter: blur(4px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+    filter: blur(4px);
+  }
 }
 
 @keyframes pageIn {
-  from { opacity: 0; transform: translateY(30px); filter: blur(4px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 /* ── Fullscreen cursor fix ───────────────────────────────────── */

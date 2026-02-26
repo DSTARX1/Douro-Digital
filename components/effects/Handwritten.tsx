@@ -13,7 +13,10 @@ interface Props {
 }
 
 // Curved arrow paths for each direction
-const arrowPaths: Record<NonNullable<Exclude<ArrowDirection, false>>, { path: string; viewBox: string; width: number; height: number }> = {
+const arrowPaths: Record<
+  NonNullable<Exclude<ArrowDirection, false>>,
+  { path: string; viewBox: string; width: number; height: number }
+> = {
   down: {
     path: "M5,2 C5,10 15,18 10,28 M10,28 L6,22 M10,28 L14,22",
     viewBox: "0 0 20 32",
@@ -69,7 +72,7 @@ export default function Handwritten({
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(el);
@@ -79,10 +82,7 @@ export default function Handwritten({
   const arrowDef = arrow ? arrowPaths[arrow] : null;
 
   return (
-    <span
-      ref={ref}
-      className={`${styles.handwritten} ${className ?? ""}`}
-    >
+    <span ref={ref} className={`${styles.handwritten} ${className ?? ""}`}>
       {children}
       {arrowDef && (
         <svg

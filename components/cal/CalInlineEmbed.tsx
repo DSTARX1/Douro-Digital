@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
 
 const CAL_LINK = "josh-irizarry-axan3n/30min";
 
@@ -11,7 +11,7 @@ interface CalInlineEmbedProps {
 
 export default function CalInlineEmbed({ className }: CalInlineEmbedProps) {
   useEffect(() => {
-    (async function () {
+    (async () => {
       const cal = await getCalApi({ namespace: "inline" });
       cal("ui", {
         theme: "dark",
@@ -23,7 +23,11 @@ export default function CalInlineEmbed({ className }: CalInlineEmbedProps) {
   }, []);
 
   return (
-    <div className={className} style={{ minHeight: "min(700px, 85vh)" }} data-cursor-hide>
+    <div
+      className={className}
+      style={{ minHeight: "min(700px, 85vh)" }}
+      data-cursor-hide
+    >
       <Cal
         namespace="inline"
         calLink={CAL_LINK}

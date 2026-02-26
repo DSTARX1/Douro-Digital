@@ -1,7 +1,7 @@
-import Link from "next/link";
 import MotionSection from "@/components/animations/MotionSection";
 import { PixelArrowRight } from "@/components/icons/PixelIcons";
 import type { CaseStudy } from "@/data/case-studies";
+import Link from "next/link";
 import styles from "./CaseStudyApproachV2.module.css";
 
 interface BlogLink {
@@ -46,14 +46,17 @@ export default function CaseStudyApproachV2({
           )}
           {blogLinks && blogLinks.length > 0 && (
             <div className={styles.blogLinks}>
-              <span className={styles.blogLinksLabel}>Read more on our blog</span>
+              <span className={styles.blogLinksLabel}>
+                Read more on our blog
+              </span>
               {blogLinks.map((link) => (
                 <Link
                   key={link.slug}
                   href={`/resources/${link.slug}`}
                   className={styles.blogLink}
                 >
-                  {link.title} <PixelArrowRight size={12} color="currentColor" />
+                  {link.title}{" "}
+                  <PixelArrowRight size={12} color="currentColor" />
                 </Link>
               ))}
             </div>

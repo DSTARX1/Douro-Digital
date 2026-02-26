@@ -1,21 +1,24 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import MotionSection from "@/components/animations/MotionSection";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-const CalInlineEmbed = dynamic(() => import("@/components/cal/CalInlineEmbed"), {
-  ssr: false,
-  loading: () => <div style={{ minHeight: 700 }} />,
-});
-import TextScramble from "@/components/effects/TextScramble";
-import Highlight from "@/components/effects/Highlight";
+const CalInlineEmbed = dynamic(
+  () => import("@/components/cal/CalInlineEmbed"),
+  {
+    ssr: false,
+    loading: () => <div style={{ minHeight: 700 }} />,
+  },
+);
 import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
-import { PixelStar, PixelArrowTopRight } from "@/components/icons/PixelIcons";
-import { useAudio } from "@/lib/contexts/AudioContext";
+import Highlight from "@/components/effects/Highlight";
+import TextScramble from "@/components/effects/TextScramble";
+import { PixelArrowTopRight, PixelStar } from "@/components/icons/PixelIcons";
 import MobilePauseOverlay from "@/components/video/MobilePauseOverlay";
+import { useAudio } from "@/lib/contexts/AudioContext";
 import styles from "./BookACall.module.css";
 
 function ArrowIcon() {
@@ -23,9 +26,7 @@ function ArrowIcon() {
 }
 
 function CheckIcon() {
-  return (
-    <PixelStar size={14} color="var(--accent)" />
-  );
+  return <PixelStar size={14} color="var(--accent)" />;
 }
 
 export default function BookACall() {
@@ -108,7 +109,12 @@ export default function BookACall() {
 
         {/* VSL video */}
         <div className={styles.videoWrap}>
-          <div className={styles.videoCard} onClick={handleVideoClick} data-cursor-play {...(isPlaying ? { "data-cursor-playing": "" } : {})}>
+          <div
+            className={styles.videoCard}
+            onClick={handleVideoClick}
+            data-cursor-play
+            {...(isPlaying ? { "data-cursor-playing": "" } : {})}
+          >
             <video
               ref={videoRef}
               className={styles.video}
@@ -122,10 +128,7 @@ export default function BookACall() {
           </div>
         </div>
 
-        <a
-          href="#book"
-          className={styles.ctaBtn}
-        >
+        <a href="#book" className={styles.ctaBtn}>
           <span className={styles.ctaArrow}>
             <ArrowIcon />
           </span>
@@ -161,7 +164,9 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>Leads that <Highlight>vanish into the void</Highlight></h3>
+            <h3 className={styles.painTitle}>
+              Leads that <Highlight>vanish into the void</Highlight>
+            </h3>
             <p className={styles.painDesc}>
               You&rsquo;re spending on ads, traffic is coming in, forms are
               getting filled &mdash; and then nothing. 78% of leads go to
@@ -173,7 +178,9 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>A <Highlight>tool graveyard</Highlight></h3>
+            <h3 className={styles.painTitle}>
+              A <Highlight>tool graveyard</Highlight>
+            </h3>
             <p className={styles.painDesc}>
               CRM. Email platform. Scheduler. Zapier. Analytics dashboard.
               Fourteen subscriptions, zero integrations, and you&rsquo;re still
@@ -185,7 +192,9 @@ export default function BookACall() {
             <div className={styles.painIcon}>
               <PixelStar size={22} color="var(--accent)" />
             </div>
-            <h3 className={styles.painTitle}>40% of business happens after hours</h3>
+            <h3 className={styles.painTitle}>
+              40% of business happens after hours
+            </h3>
             <p className={styles.painDesc}>
               Evenings. Weekends. Holidays. While you&rsquo;re asleep or with
               your family, your phone&rsquo;s going straight to voicemail
@@ -213,8 +222,8 @@ export default function BookACall() {
               </span>
               <br />
               <span className={styles.learnTextMuted}>
-                Missed leads, slow follow-up, broken systems &mdash;
-                we&rsquo;ll find the #1 thing costing you money.
+                Missed leads, slow follow-up, broken systems &mdash; we&rsquo;ll
+                find the #1 thing costing you money.
               </span>
             </p>
           </div>
@@ -246,17 +255,14 @@ export default function BookACall() {
               <br />
               <span className={styles.learnTextMuted}>
                 If we&rsquo;re not, we&rsquo;ll tell you. If we are,
-                you&rsquo;ll get realistic projections based on what
-                we&rsquo;ve built for similar businesses.
+                you&rsquo;ll get realistic projections based on what we&rsquo;ve
+                built for similar businesses.
               </span>
             </p>
           </div>
         </div>
 
-        <a
-          href="#book"
-          className={styles.ctaBtn}
-        >
+        <a href="#book" className={styles.ctaBtn}>
           <span className={styles.ctaArrow}>
             <ArrowIcon />
           </span>
@@ -274,7 +280,8 @@ export default function BookACall() {
         <CalInlineEmbed className={styles.calEmbedInner} />
 
         <p className={styles.scarcity}>
-          We only take on <Highlight>5 new clients per month</Highlight>. Book now to secure your spot.
+          We only take on <Highlight>5 new clients per month</Highlight>. Book
+          now to secure your spot.
         </p>
       </MotionSection>
 
@@ -284,13 +291,10 @@ export default function BookACall() {
           Ready to stop <AnimatedUnderline>leaking revenue</AnimatedUnderline>?
         </h2>
         <p className={styles.finalSub}>
-          Stop losing customers to competitors who respond faster.
-          Let&rsquo;s build a system that actually makes you money.
+          Stop losing customers to competitors who respond faster. Let&rsquo;s
+          build a system that actually makes you money.
         </p>
-        <a
-          href="#book"
-          className={styles.ctaBtn}
-        >
+        <a href="#book" className={styles.ctaBtn}>
           <span className={styles.ctaArrow}>
             <ArrowIcon />
           </span>

@@ -37,7 +37,7 @@ export default function AnimatedUnderline({
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(el);

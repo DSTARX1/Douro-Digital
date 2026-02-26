@@ -1,7 +1,7 @@
+import Footer from "@/components/home/Footer";
 import Navbar from "@/components/home/Navbar";
 import WorkHero from "@/components/work/WorkHero";
 import WorkShowcase from "@/components/work/WorkShowcase";
-import Footer from "@/components/home/Footer";
 
 export const metadata = {
   title: "Work — Douro Digital | AI-Powered Digital Products",
@@ -25,7 +25,14 @@ export const metadata = {
 export default function WorkPage() {
   return (
     <>
-      <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          background: "var(--bg)",
+          marginBottom: "var(--footer-h, 600px)",
+        }}
+      >
         <Navbar />
         <main
           id="main-content"
@@ -36,7 +43,10 @@ export default function WorkPage() {
             gap: 0,
           }}
         >
-          <div className="page-padding" style={{ position: "relative", zIndex: 10 }}>
+          <div
+            className="page-padding"
+            style={{ position: "relative", zIndex: 10 }}
+          >
             <WorkHero />
           </div>
           <WorkShowcase />

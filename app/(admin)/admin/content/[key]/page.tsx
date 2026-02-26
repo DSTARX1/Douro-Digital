@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { getContent } from "@/lib/content";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import ContentEditor from "./ContentEditor";
 import styles from "../../../admin.module.css";
+import ContentEditor from "./ContentEditor";
 
 export const dynamic = "force-dynamic";
 

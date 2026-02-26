@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { getCategoryMeta } from "@/data/blog";
 import { PixelArrowRight } from "@/components/icons/PixelIcons";
+import { getCategoryMeta } from "@/data/blog";
 import type { BlogPostMeta } from "@/lib/blog";
+import Link from "next/link";
 import styles from "./StudioStories.module.css";
 
 interface Props {

@@ -10,9 +10,7 @@ export function organizationSchema() {
     logo: `${SITE_URL}/images/logo.svg`,
     description:
       "We build AI agents, custom software, and go-to-market strategies that drive measurable revenue growth.",
-    sameAs: [
-      "https://www.linkedin.com/company/douro-digital",
-    ],
+    sameAs: ["https://www.linkedin.com/company/douro-digital"],
   };
 }
 
@@ -112,9 +110,7 @@ export function faqSchema(items: { question: string; answer: string }[]) {
   };
 }
 
-export function breadcrumbSchema(
-  items: { name: string; url: string }[]
-) {
+export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

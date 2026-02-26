@@ -1,13 +1,13 @@
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import { articleSchema } from "@/lib/jsonld";
-import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
-import BlogPostHero from "@/components/blog/BlogPostHero";
 import BlogPostBody from "@/components/blog/BlogPostBody";
+import BlogPostHero from "@/components/blog/BlogPostHero";
 import BlogRelated from "@/components/blog/BlogRelated";
-import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
 import { caseStudies } from "@/data/case-studies";
+import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { articleSchema } from "@/lib/jsonld";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -54,7 +54,7 @@ export default async function BlogPostPage({
     .slice(0, 3);
 
   const linkedCaseStudy = caseStudies.find((cs) =>
-    cs.relatedBlogSlugs?.includes(slug)
+    cs.relatedBlogSlugs?.includes(slug),
   );
 
   const jsonLd = articleSchema({
@@ -68,11 +68,25 @@ export default async function BlogPostPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
-      <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          background: "var(--bg)",
+          marginBottom: "var(--footer-h, 600px)",
+        }}
+      >
         <Navbar />
-        <main id="main-content" className="page-padding" style={{ display: "flex", flexDirection: "column" }}>
+        <main
+          id="main-content"
+          className="page-padding"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <BlogPostHero meta={post.meta} />
           <BlogPostBody
             content={post.content}

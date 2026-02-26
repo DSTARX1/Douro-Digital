@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import type { EChartsOption } from "echarts";
 import { echarts } from "@/lib/echarts-theme";
+import type { EChartsOption } from "echarts";
+import { useEffect, useRef } from "react";
 
 export function useEChart(option: EChartsOption | null, theme = "adminDark") {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartInstance = useRef<echarts.ECharts | null>(null);
 
-  // Init chart on mount
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional mount-only init
   useEffect(() => {
     if (!chartRef.current) return;
     // React 19 StrictMode: dispose before re-init

@@ -79,7 +79,9 @@
 
 /* ─── Cal.com inline embed ────────────────── */
 @keyframes gradientSpin {
-  to { --gradient-angle: 360deg; }
+  to {
+    --gradient-angle: 360deg;
+  }
 }
 
 .calEmbed {
@@ -89,7 +91,12 @@
   border-radius: 16px;
   overflow: hidden;
   padding: 2px;
-  background: conic-gradient(from var(--gradient-angle), #D42918, #E8652C, #D42918);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #d42918,
+    #e8652c,
+    #d42918
+  );
   animation: gradientSpin 4s linear infinite;
 }
 

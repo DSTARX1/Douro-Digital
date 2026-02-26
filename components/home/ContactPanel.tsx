@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { useCallback, useEffect, useRef } from "react";
 import styles from "./ContactPanel.module.css";
 
-const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 interface ContactPanelProps {
   open: boolean;
@@ -27,32 +28,37 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
   }, [open]);
 
   // Close on Escape + focus trap
-  const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === "Escape") {
-      onClose();
-      return;
-    }
-    if (e.key === "Tab" && panelRef.current) {
-      const focusable = panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE);
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
       }
-    }
-  }, [onClose]);
+      if (e.key === "Tab" && panelRef.current) {
+        const focusable =
+          panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE);
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    },
+    [onClose],
+  );
 
   useEffect(() => {
     if (!open) return;
     window.addEventListener("keydown", handleKeyDown);
     // Focus the first focusable element in the panel
     const timer = setTimeout(() => {
-      const focusable = panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE);
+      const focusable =
+        panelRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE);
       focusable?.[0]?.focus();
     }, 100);
     return () => {
@@ -63,7 +69,7 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
 
   // Initialize Cal.com embed
   useEffect(() => {
-    (async function () {
+    (async () => {
       const cal = await getCalApi({ namespace: "contact" });
       cal("ui", {
         theme: "dark",
@@ -75,32 +81,50 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
 
   return (
     <>
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: keyboard close handled via Escape listener */}
       <div
         className={`${styles.overlay} ${open ? styles.open : ""}`}
         onClick={onClose}
+        role="presentation"
       />
       <aside
         ref={panelRef}
         className={`${styles.panel} ${open ? styles.open : ""}`}
-        role="dialog"
         aria-modal="true"
         aria-label="Book a call"
       >
-        <button className={styles.close} onClick={onClose} aria-label="Close dialog">
+        <button
+          type="button"
+          className={styles.close}
+          onClick={onClose}
+          aria-label="Close dialog"
+        >
           ✕
         </button>
 
-        <h2 className={styles.heading}>Let&rsquo;s talk (no pressure, we promise)</h2>
+        <h2 className={styles.heading}>
+          Let&rsquo;s talk (no pressure, we promise)
+        </h2>
         <p className={styles.subtitle}>This call covers:</p>
         <ul className={styles.bullets}>
-          <li>Where you&rsquo;re losing revenue (missed leads, slow follow-up, broken systems)</li>
-          <li>What AI or custom software could fix (realistically, not in a perfect world)</li>
-          <li>Whether we&rsquo;re a good fit (if we&rsquo;re not, we&rsquo;ll tell you)</li>
+          <li>
+            Where you&rsquo;re losing revenue (missed leads, slow follow-up,
+            broken systems)
+          </li>
+          <li>
+            What AI or custom software could fix (realistically, not in a
+            perfect world)
+          </li>
+          <li>
+            Whether we&rsquo;re a good fit (if we&rsquo;re not, we&rsquo;ll tell
+            you)
+          </li>
         </ul>
         <p className={styles.antiPressure}>
-          No pitch deck. No &ldquo;sign today&rdquo; pressure. Just a conversation. If it makes sense,
-          we&rsquo;ll send a proposal. If it doesn&rsquo;t, we&rsquo;ll shake hands (virtually) and
-          you&rsquo;ll have learned something useful.
+          No pitch deck. No &ldquo;sign today&rdquo; pressure. Just a
+          conversation. If it makes sense, we&rsquo;ll send a proposal. If it
+          doesn&rsquo;t, we&rsquo;ll shake hands (virtually) and you&rsquo;ll
+          have learned something useful.
         </p>
 
         <div className={styles.calEmbed}>

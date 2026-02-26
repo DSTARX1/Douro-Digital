@@ -10,7 +10,9 @@ const DEFAULT_ITEMS = [
   "Digital Transformation",
 ];
 
-export default function Marquee({ items = DEFAULT_ITEMS }: { items?: string[] }) {
+export default function Marquee({
+  items = DEFAULT_ITEMS,
+}: { items?: string[] }) {
   // Duplicate items to fill the seamless loop
   const repeated = [...items, ...items];
 
@@ -18,6 +20,7 @@ export default function Marquee({ items = DEFAULT_ITEMS }: { items?: string[] })
     <MotionSection as="div" className={styles.wrapper}>
       <div className={styles.track}>
         {repeated.map((item, i) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: static repeated content
           <span key={i}>{item}</span>
         ))}
       </div>

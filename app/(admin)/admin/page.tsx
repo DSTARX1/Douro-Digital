@@ -1,10 +1,10 @@
+import DeviceDonutChart from "@/components/admin/charts/DeviceDonutChart";
+import TopPagesBarChart from "@/components/admin/charts/TopPagesBarChart";
+import ViewsLineChart from "@/components/admin/charts/ViewsLineChart";
 import { db } from "@/lib/db";
 import { pageViews } from "@/lib/schema";
-import { count, sql, desc } from "drizzle-orm";
+import { count, desc, sql } from "drizzle-orm";
 import styles from "../admin.module.css";
-import ViewsLineChart from "@/components/admin/charts/ViewsLineChart";
-import TopPagesBarChart from "@/components/admin/charts/TopPagesBarChart";
-import DeviceDonutChart from "@/components/admin/charts/DeviceDonutChart";
 
 export const metadata = {
   title: "Admin — Douro Digital",
@@ -35,7 +35,9 @@ export default async function AdminPage() {
     db
       .select({ referrer: pageViews.referrer, views: count() })
       .from(pageViews)
-      .where(sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`)
+      .where(
+        sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`,
+      )
       .groupBy(pageViews.referrer)
       .orderBy(desc(count()))
       .limit(1),
@@ -47,7 +49,7 @@ export default async function AdminPage() {
       .select({ count: count() })
       .from(pageViews)
       .where(
-        sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '14 days' AND ${pageViews.createdAt} < CURRENT_DATE - INTERVAL '7 days'`
+        sql`${pageViews.createdAt} >= CURRENT_DATE - INTERVAL '14 days' AND ${pageViews.createdAt} < CURRENT_DATE - INTERVAL '7 days'`,
       ),
     db
       .select({
@@ -103,11 +105,15 @@ export default async function AdminPage() {
         </div>
         <div className={styles.card}>
           <p className={styles.cardLabel}>Today</p>
-          <p className={styles.cardValue}>{todayResult.count.toLocaleString()}</p>
+          <p className={styles.cardValue}>
+            {todayResult.count.toLocaleString()}
+          </p>
         </div>
         <div className={styles.card}>
           <p className={styles.cardLabel}>Unique Pages</p>
-          <p className={styles.cardValue}>{uniquePagesResult.count.toLocaleString()}</p>
+          <p className={styles.cardValue}>
+            {uniquePagesResult.count.toLocaleString()}
+          </p>
         </div>
         <div className={styles.card}>
           <p className={styles.cardLabel}>Top Referrer</p>

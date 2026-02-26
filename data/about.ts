@@ -20,7 +20,7 @@ export const aboutValues: ValueItem[] = [
   {
     title: "We Build It, We Own It",
     description:
-      "When something breaks, you don't get a ticket number and a 48-hour SLA. You get Isaac fixing it before you even notice.\n\nWhen something needs to change, you tell us. We update it. Done. When you have a question, you message us directly.\n\nNo handoffs. No \"let me check with the team.\" Just direct access to the people who wrote the code.",
+      'When something breaks, you don\'t get a ticket number and a 48-hour SLA. You get Isaac fixing it before you even notice.\n\nWhen something needs to change, you tell us. We update it. Done. When you have a question, you message us directly.\n\nNo handoffs. No "let me check with the team." Just direct access to the people who wrote the code.',
   },
   {
     title: "No Retainer Hell",
@@ -30,7 +30,7 @@ export const aboutValues: ValueItem[] = [
   {
     title: "Built for YOUR Business (Not Templates)",
     description:
-      "\"Custom solution\" that's actually a template with your logo. \"Fully customizable\" that means you pick the button color. \"Built specifically for you\" that looks exactly like their last three clients.\n\nWe don't do that. When we say custom, we mean custom. Your customer journey. Your workflow. Your weird edge cases. If your checkout needs seven steps because that's what converts, we build seven steps.\n\nYour business. Your system. Your rules.",
+      '"Custom solution" that\'s actually a template with your logo. "Fully customizable" that means you pick the button color. "Built specifically for you" that looks exactly like their last three clients.\n\nWe don\'t do that. When we say custom, we mean custom. Your customer journey. Your workflow. Your weird edge cases. If your checkout needs seven steps because that\'s what converts, we build seven steps.\n\nYour business. Your system. Your rules.',
   },
 ];
 
@@ -129,8 +129,7 @@ export const teamHighlights: HighlightItem[] = [
   },
   {
     title: "On-time delivery",
-    description:
-      "Every project delivered on time or we eat the cost",
+    description: "Every project delivered on time or we eat the cost",
   },
 ];
 

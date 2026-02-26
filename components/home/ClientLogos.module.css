@@ -59,7 +59,8 @@
 
 .item:first-of-type,
 /* Also remove left border on the very first item */
-.track > .item:first-child {
+  .track
+  > .item:first-child {
   border-left: 1px solid var(--border);
 }
 

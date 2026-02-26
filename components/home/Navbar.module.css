@@ -79,8 +79,7 @@
   width: 0;
   overflow: hidden;
   opacity: 0;
-  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              opacity 0.2s ease;
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -92,11 +91,21 @@
 }
 
 @keyframes bounce {
-  0%   { transform: translateY(0); }
-  30%  { transform: translateY(-4px); }
-  50%  { transform: translateY(0); }
-  70%  { transform: translateY(-2px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* ─── Nav link index number ─────────────────────────────── */
@@ -128,8 +137,7 @@
   width: 0;
   overflow: hidden;
   opacity: 0;
-  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              opacity 0.2s ease;
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
 }
 
 .cta:hover {
@@ -155,12 +163,18 @@
   transition: background 0.2s ease;
   z-index: 101;
   clip-path: polygon(
-    6px 0%, calc(100% - 6px) 0%,
-    calc(100% - 3px) 3px, 100% 6px,
-    100% calc(100% - 6px), calc(100% - 3px) calc(100% - 3px),
-    calc(100% - 6px) 100%, 6px 100%,
-    3px calc(100% - 3px), 0% calc(100% - 6px),
-    0% 6px, 3px 3px
+    6px 0%,
+    calc(100% - 6px) 0%,
+    calc(100% - 3px) 3px,
+    100% 6px,
+    100% calc(100% - 6px),
+    calc(100% - 3px) calc(100% - 3px),
+    calc(100% - 6px) 100%,
+    6px 100%,
+    3px calc(100% - 3px),
+    0% calc(100% - 6px),
+    0% 6px,
+    3px 3px
   );
 }
 
@@ -179,8 +193,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ─── Mobile drawer ─────────────────────────────────────── */

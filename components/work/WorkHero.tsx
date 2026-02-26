@@ -2,8 +2,8 @@
 
 import MotionSection from "@/components/animations/MotionSection";
 import TextReveal from "@/components/animations/TextReveal";
-import Highlight from "@/components/effects/Highlight";
 import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
+import Highlight from "@/components/effects/Highlight";
 import styles from "./WorkHero.module.css";
 
 export default function WorkHero() {
@@ -18,8 +18,8 @@ export default function WorkHero() {
         />
         <div className={styles.subtitle}>
           <p>
-            (Not case studies where we take credit for your entire
-            business &mdash; just the specific thing we built and what it did)
+            (Not case studies where we take credit for your entire business
+            &mdash; just the specific thing we built and what it did)
           </p>
           <p>
             No <Highlight>vanity metrics</Highlight>. No &ldquo;increased
@@ -31,7 +31,9 @@ export default function WorkHero() {
             and made more money or saved more time as a direct result.
           </p>
           <p>
-            <AnimatedUnderline>Revenue up. Costs down. Time saved.</AnimatedUnderline>{" "}
+            <AnimatedUnderline>
+              Revenue up. Costs down. Time saved.
+            </AnimatedUnderline>{" "}
             That&rsquo;s it.
           </p>
         </div>

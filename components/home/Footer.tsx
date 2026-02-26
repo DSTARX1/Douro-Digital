@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import Link from "next/link";
-import { footerDescription, footerContact, footerNav } from "@/data/home";
 import Handwritten from "@/components/effects/Handwritten";
+import { footerContact, footerDescription, footerNav } from "@/data/home";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -14,7 +14,10 @@ export default function Footer() {
     if (!el) return;
 
     const sync = () => {
-      document.documentElement.style.setProperty("--footer-h", `${el.offsetHeight}px`);
+      document.documentElement.style.setProperty(
+        "--footer-h",
+        `${el.offsetHeight}px`,
+      );
     };
 
     sync();
@@ -52,7 +55,10 @@ export default function Footer() {
           </div>
           <div className={styles.column}>
             <span className={styles.colLabel}>Contact</span>
-            <a href={`mailto:${footerContact.email}`} className={styles.colLink}>
+            <a
+              href={`mailto:${footerContact.email}`}
+              className={styles.colLink}
+            >
               {footerContact.email}
             </a>
             <span className={styles.colLink}>{footerContact.phone}</span>
@@ -61,10 +67,14 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <span>&copy; {new Date().getFullYear()} Douro Digital. All rights reserved.</span>
+        <span>
+          &copy; {new Date().getFullYear()} Douro Digital. All rights reserved.
+        </span>
         <span>
           Available worldwide{" "}
-          <Handwritten>(yes, even if you&apos;re in a timezone we have to Google)</Handwritten>
+          <Handwritten>
+            (yes, even if you&apos;re in a timezone we have to Google)
+          </Handwritten>
         </span>
       </div>
     </footer>

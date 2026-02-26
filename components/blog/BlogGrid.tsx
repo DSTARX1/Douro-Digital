@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
 import MotionSection from "@/components/animations/MotionSection";
 import { getCategoryMeta } from "@/data/blog";
 import type { BlogPostMeta } from "@/lib/blog";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./BlogGrid.module.css";
 
 interface Props {

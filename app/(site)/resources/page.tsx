@@ -1,14 +1,14 @@
-import { Suspense } from "react";
-import type { Metadata } from "next";
-import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
-import BlogHero from "@/components/blog/BlogHero";
-import BlogFeatured from "@/components/blog/BlogFeatured";
 import BlogCategoryFilter from "@/components/blog/BlogCategoryFilter";
+import BlogFeatured from "@/components/blog/BlogFeatured";
 import BlogGrid from "@/components/blog/BlogGrid";
+import BlogHero from "@/components/blog/BlogHero";
 import BlogNewsletter from "@/components/blog/BlogNewsletter";
-import { getAllPosts, getFeaturedPosts } from "@/lib/blog";
+import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
 import type { BlogCategory } from "@/data/blog";
+import { getAllPosts, getFeaturedPosts } from "@/lib/blog";
+import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Resources — Douro Digital",
@@ -44,9 +44,20 @@ export default async function ResourcesPage({
 
   return (
     <>
-      <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          background: "var(--bg)",
+          marginBottom: "var(--footer-h, 600px)",
+        }}
+      >
         <Navbar />
-        <main id="main-content" className="page-padding" style={{ display: "flex", flexDirection: "column" }}>
+        <main
+          id="main-content"
+          className="page-padding"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <BlogHero />
           <BlogFeatured posts={featuredPosts} />
           <Suspense fallback={null}>

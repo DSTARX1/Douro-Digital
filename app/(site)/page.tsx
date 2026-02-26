@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
-import { webPageSchema, faqSchema } from "@/lib/jsonld";
-import { homeFAQ } from "@/data/faq";
-import Navbar from "@/components/home/Navbar";
-import Hero from "@/components/home/Hero";
 import Marquee from "@/components/effects/Marquee";
-import MissionServices from "@/components/home/MissionServices";
-import WorkGrid from "@/components/home/WorkGrid";
-import HomeTestimonial from "@/components/home/HomeTestimonial";
-import ClientLogos from "@/components/home/ClientLogos";
-import HomeCTA from "@/components/home/HomeCTA";
 import FAQ from "@/components/faq/FAQ";
+import ClientLogos from "@/components/home/ClientLogos";
 import Footer from "@/components/home/Footer";
+import Hero from "@/components/home/Hero";
+import HomeCTA from "@/components/home/HomeCTA";
+import HomeTestimonial from "@/components/home/HomeTestimonial";
+import MissionServices from "@/components/home/MissionServices";
+import Navbar from "@/components/home/Navbar";
+import WorkGrid from "@/components/home/WorkGrid";
+import { homeFAQ } from "@/data/faq";
+import { faqSchema, webPageSchema } from "@/lib/jsonld";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Douro Digital — AI Agents & Custom Software for Revenue Growth",
@@ -45,17 +45,39 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+        }}
       />
-      <div style={{ position: "relative", zIndex: 1, background: "var(--bg)", marginBottom: "var(--footer-h, 600px)" }}>
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          background: "var(--bg)",
+          marginBottom: "var(--footer-h, 600px)",
+        }}
+      >
         <Navbar />
         <Hero />
         <Marquee />
-        <main id="main-content" className="page-padding" style={{ paddingBottom: 180, display: "flex", flexDirection: "column", gap: 0 }}>
+        <main
+          id="main-content"
+          className="page-padding"
+          style={{
+            paddingBottom: 180,
+            display: "flex",
+            flexDirection: "column",
+            gap: 0,
+          }}
+        >
           <MissionServices />
           <WorkGrid />
           <HomeTestimonial />

@@ -22,7 +22,8 @@ export const blogCategories: BlogCategoryMeta[] = [
   {
     slug: "ai-automation",
     label: "AI Automation",
-    description: "What works, what\u2019s hype, and what\u2019ll actually save you time",
+    description:
+      "What works, what\u2019s hype, and what\u2019ll actually save you time",
     color: "#3B82F6",
   },
   {

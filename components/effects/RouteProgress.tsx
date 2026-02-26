@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useRef } from "react";
 import styles from "./RouteProgress.module.css";
 
 type BarState = "idle" | "loading" | "complete";
@@ -62,11 +62,9 @@ export default function RouteProgress() {
   }, [startLoading]);
 
   // Pathname change means the new page has rendered — mark complete.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentionally only react to pathname changes
   useEffect(() => {
     finishLoading();
-    // We intentionally ignore the initial mount call (stateRef starts "idle")
-    // so this only fires on actual navigations.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   return (
@@ -74,7 +72,6 @@ export default function RouteProgress() {
       ref={barRef}
       className={styles.bar}
       data-state="idle"
-      role="progressbar"
       aria-hidden="true"
     />
   );

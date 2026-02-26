@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { ctaTexts } from "@/data/home";
+import { useEffect, useState } from "react";
 import styles from "./RotatingText.module.css";
 
 export default function RotatingText() {
@@ -33,7 +33,8 @@ export default function RotatingText() {
     const bText = typeof b === "string" ? b : b.text;
     return aText.length > bText.length ? a : b;
   });
-  const longestStr = typeof longestText === "string" ? longestText : longestText.text;
+  const longestStr =
+    typeof longestText === "string" ? longestText : longestText.text;
 
   const longestDesc = ctaTexts.reduce((longest, item) => {
     const desc = typeof item === "string" ? "" : item.description || "";
@@ -44,9 +45,7 @@ export default function RotatingText() {
     <span className={styles.wrapper}>
       {/* Ghost layer — invisible, determines box size */}
       <span aria-hidden="true" style={{ visibility: "hidden" }}>
-        <span className={styles.textLine}>
-          {longestStr}
-        </span>
+        <span className={styles.textLine}>{longestStr}</span>
         {longestDesc && (
           <span
             style={{

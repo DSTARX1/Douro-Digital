@@ -1,10 +1,10 @@
-import CustomCursor from "@/components/cursor/CustomCursor";
-import { AudioProvider } from "@/lib/contexts/AudioContext";
 import MuteToggle from "@/components/audio/MuteToggle";
+import CustomCursor from "@/components/cursor/CustomCursor";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import RouteProgress from "@/components/effects/RouteProgress";
 import ScrollProgress from "@/components/effects/ScrollProgress";
 import SmoothScroll from "@/components/effects/SmoothScroll";
+import { AudioProvider } from "@/lib/contexts/AudioContext";
 
 export default function SiteLayout({
   children,
@@ -21,9 +21,7 @@ export default function SiteLayout({
       <ScrollProgress />
       <CustomCursor />
       <MuteToggle />
-      <SmoothScroll>
-        {children}
-      </SmoothScroll>
+      <SmoothScroll>{children}</SmoothScroll>
     </AudioProvider>
   );
 }

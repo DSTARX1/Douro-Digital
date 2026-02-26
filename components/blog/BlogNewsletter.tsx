@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import MotionSection from "@/components/animations/MotionSection";
+import { type FormEvent, useState } from "react";
 import styles from "./BlogNewsletter.module.css";
 
 export default function BlogNewsletter() {
@@ -40,9 +40,7 @@ export default function BlogNewsletter() {
       setEmail("");
     } catch (err) {
       setStatus("error");
-      setErrorMsg(
-        err instanceof Error ? err.message : "Something went wrong."
-      );
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
     }
   }
 
@@ -50,7 +48,9 @@ export default function BlogNewsletter() {
     return (
       <MotionSection className={styles.section}>
         <span className={styles.label}>Confirmed</span>
-        <h2 className={styles.heading}>You&apos;re <em>in.</em></h2>
+        <h2 className={styles.heading}>
+          You&apos;re <em>in.</em>
+        </h2>
         <p className={styles.sub}>
           Check your inbox (or spam, we won&apos;t judge). First issue drops
           soon.
@@ -90,7 +90,9 @@ export default function BlogNewsletter() {
           className={styles.btn}
           disabled={status === "loading"}
         >
-          {status === "loading" ? "Subscribing..." : "Send me the good stuff..."}
+          {status === "loading"
+            ? "Subscribing..."
+            : "Send me the good stuff..."}
         </button>
       </form>
       {status === "error" && <p className={styles.error}>{errorMsg}</p>}

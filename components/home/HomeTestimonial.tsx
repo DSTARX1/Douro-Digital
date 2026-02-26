@@ -1,12 +1,16 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import MotionSection from "@/components/animations/MotionSection";
 import MagneticCard from "@/components/cursor/MagneticCard";
-import { PixelChevronLeft, PixelChevronRight, PixelStar } from "@/components/icons/PixelIcons";
+import {
+  PixelChevronLeft,
+  PixelChevronRight,
+  PixelStar,
+} from "@/components/icons/PixelIcons";
 import { testimonials, videoTestimonials } from "@/data/home";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./HomeTestimonial.module.css";
 
 const DURATION = 1;
@@ -15,7 +19,7 @@ const INTERVAL = 5000;
 
 function useCarousel(
   count: number,
-  containerRef: React.RefObject<HTMLDivElement | null>
+  containerRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const idx = useRef(0);
   const [active, setActive] = useState(0);
@@ -24,6 +28,7 @@ function useCarousel(
   const paused = useRef(false);
   const wrapIdx = useRef(gsap.utils.wrap(0, count));
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refs are stable, count drives wrapIdx
   const goTo = useCallback(
     (next: number, dir: 1 | -1) => {
       if (busy.current || !containerRef.current || next === idx.current) return;
@@ -55,19 +60,19 @@ function useCarousel(
             duration: DURATION,
             ease: EASE,
           },
-          0
+          0,
         )
         .to(to, { x: "0%", opacity: 1, duration: DURATION, ease: EASE }, 0);
 
       idx.current = next;
       setActive(next);
     },
-    [count, containerRef]
+    [count, containerRef],
   );
 
   const advance = useCallback(
     (dir: 1 | -1) => goTo(wrapIdx.current(idx.current + dir), dir),
-    [goTo]
+    [goTo],
   );
 
   const resetTimer = useCallback(() => {
@@ -93,7 +98,7 @@ function useCarousel(
       goTo(i, i > idx.current ? 1 : -1);
       resetTimer();
     },
-    [goTo, resetTimer]
+    [goTo, resetTimer],
   );
 
   const pause = useCallback(() => {
@@ -121,11 +126,11 @@ function useCarousel(
             el,
             i === 0
               ? { x: "0%", opacity: 1, visibility: "visible" }
-              : { x: "100%", opacity: 0, visibility: "hidden" }
+              : { x: "100%", opacity: 0, visibility: "hidden" },
           );
         });
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return { active, next, prev, jumpTo, pause, play };
@@ -155,6 +160,7 @@ export default function HomeTestimonial() {
 
         <div ref={textRef} className={styles.textSlides}>
           {testimonials.map((t, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: static list
             <div key={i} data-slide className={styles.textSlide}>
               <h3 className={styles.quote}>{t.quote}</h3>
               <div className={styles.author}>
@@ -171,6 +177,8 @@ export default function HomeTestimonial() {
           <div className={styles.dots}>
             {testimonials.map((_, i) => (
               <button
+                type="button"
+                // biome-ignore lint/suspicious/noArrayIndexKey: static list
                 key={i}
                 className={`${styles.dot} ${i === text.active ? styles.dotActive : ""}`}
                 onClick={() => text.jumpTo(i)}
@@ -180,6 +188,7 @@ export default function HomeTestimonial() {
           </div>
           <div className={styles.arrows}>
             <button
+              type="button"
               className={styles.arrow}
               onClick={text.prev}
               aria-label="Previous testimonial"
@@ -187,6 +196,7 @@ export default function HomeTestimonial() {
               <ArrowLeft />
             </button>
             <button
+              type="button"
               className={styles.arrow}
               onClick={text.next}
               aria-label="Next testimonial"
@@ -206,6 +216,7 @@ export default function HomeTestimonial() {
         <MagneticCard maxMove={20} showCursor>
           <div ref={videoRef} className={styles.videoSlides}>
             {videoTestimonials.map((v, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static list
               <div key={i} data-slide className={styles.videoSlide}>
                 <div className={styles.videoCard}>
                   <div className={styles.videoOverlay}>
@@ -224,6 +235,8 @@ export default function HomeTestimonial() {
           <div className={styles.dots}>
             {videoTestimonials.map((_, i) => (
               <button
+                type="button"
+                // biome-ignore lint/suspicious/noArrayIndexKey: static list
                 key={i}
                 className={`${styles.dot} ${i === video.active ? styles.dotActive : ""}`}
                 onClick={() => video.jumpTo(i)}
@@ -233,6 +246,7 @@ export default function HomeTestimonial() {
           </div>
           <div className={styles.arrows}>
             <button
+              type="button"
               className={styles.arrow}
               onClick={video.prev}
               aria-label="Previous video"
@@ -240,6 +254,7 @@ export default function HomeTestimonial() {
               <ArrowLeft />
             </button>
             <button
+              type="button"
               className={styles.arrow}
               onClick={video.next}
               aria-label="Next video"

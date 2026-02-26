@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
 import styles from "../../../admin.module.css";
 
 /* ── Helpers ─────────────────────────────────────────────── */
@@ -20,7 +20,13 @@ function isLongString(val: string): boolean {
 
 function isImageField(key: string): boolean {
   const k = key.toLowerCase();
-  return k === "image" || k === "logo" || k === "src" || k === "icon" || k.endsWith("image");
+  return (
+    k === "image" ||
+    k === "logo" ||
+    k === "src" ||
+    k === "icon" ||
+    k.endsWith("image")
+  );
 }
 
 function isColorField(key: string): boolean {
@@ -77,6 +83,7 @@ function StringField({
   return (
     <div className={styles.formField}>
       {label && (
+        // biome-ignore lint/a11y/noLabelWithoutControl: visually associated with adjacent input
         <label className={styles.formLabel}>
           {humanLabel(label)}
           {isImg && <span className={styles.formHint}>— image path</span>}
@@ -104,7 +111,9 @@ function StringField({
             src={value}
             alt=""
             className={styles.imagePreviewThumb}
-            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
           />
           <span className={styles.imagePreviewPath}>{value}</span>
         </div>
@@ -124,7 +133,10 @@ function NumberField({
 }) {
   return (
     <div className={styles.formField}>
-      {label && <label className={styles.formLabel}>{humanLabel(label)}</label>}
+      {label && (
+        // biome-ignore lint/a11y/noLabelWithoutControl: visually associated with adjacent input
+        <label className={styles.formLabel}>{humanLabel(label)}</label>
+      )}
       <input
         type="number"
         className={styles.formInput}
@@ -147,14 +159,22 @@ function BooleanField({
   onChange: (val: boolean) => void;
 }) {
   return (
-    <div className={styles.formField} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <div
+      className={styles.formField}
+      style={{ display: "flex", alignItems: "center", gap: 10 }}
+    >
       <input
         type="checkbox"
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
         style={{ width: 18, height: 18, accentColor: "#3b82f6" }}
       />
-      {label && <label className={styles.formLabel} style={{ margin: 0 }}>{humanLabel(label)}</label>}
+      {label && (
+        // biome-ignore lint/a11y/noLabelWithoutControl: label is visually associated with adjacent checkbox
+        <label className={styles.formLabel} style={{ margin: 0 }}>
+          {humanLabel(label)}
+        </label>
+      )}
     </div>
   );
 }
@@ -170,13 +190,23 @@ function ColorField({
 }) {
   return (
     <div className={styles.formField}>
-      {label && <label className={styles.formLabel}>{humanLabel(label)}</label>}
+      {label && (
+        // biome-ignore lint/a11y/noLabelWithoutControl: visually associated with adjacent input
+        <label className={styles.formLabel}>{humanLabel(label)}</label>
+      )}
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <input
           type="color"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          style={{ width: 40, height: 36, border: "1px solid #333", borderRadius: 6, background: "#0a0a0a", cursor: "pointer" }}
+          style={{
+            width: 40,
+            height: 36,
+            border: "1px solid #333",
+            borderRadius: 6,
+            background: "#0a0a0a",
+            cursor: "pointer",
+          }}
         />
         <input
           type="text"
@@ -210,7 +240,14 @@ function Field({
     if (fieldKey && isColorField(fieldKey)) {
       return <ColorField label={label} value={value} onChange={onChange} />;
     }
-    return <StringField label={label} value={value} onChange={onChange} fieldKey={fieldKey} />;
+    return (
+      <StringField
+        label={label}
+        value={value}
+        onChange={onChange}
+        fieldKey={fieldKey}
+      />
+    );
   }
 
   // Number
@@ -229,14 +266,18 @@ function Field({
     return (
       <div style={{ marginBottom: depth === 0 ? 24 : 16 }}>
         {label && (
+          // biome-ignore lint/a11y/noLabelWithoutControl: section heading for array items
           <label className={styles.formLabel} style={{ marginBottom: 12 }}>
             {humanLabel(label)}
-            <span className={styles.formHint}>— {value.length} {value.length === 1 ? "item" : "items"}</span>
+            <span className={styles.formHint}>
+              — {value.length} {value.length === 1 ? "item" : "items"}
+            </span>
           </label>
         )}
         {value.map((item, i) => {
           const itemLabel = getItemLabel(item);
           return (
+            // biome-ignore lint/suspicious/noArrayIndexKey: array items have no stable unique id
             <div key={i} className={styles.arrayItem}>
               <div className={styles.arrayItemHeader}>
                 <div>
@@ -304,7 +345,9 @@ function Field({
 
     return (
       <div className={styles.formGroup}>
-        {label && <h3 className={styles.formGroupTitle}>{humanLabel(label)}</h3>}
+        {label && (
+          <h3 className={styles.formGroupTitle}>{humanLabel(label)}</h3>
+        )}
         {content}
       </div>
     );
@@ -313,7 +356,10 @@ function Field({
   // Fallback
   return (
     <div className={styles.formField}>
-      {label && <label className={styles.formLabel}>{humanLabel(label)}</label>}
+      {label && (
+        // biome-ignore lint/a11y/noLabelWithoutControl: visually associated with adjacent input
+        <label className={styles.formLabel}>{humanLabel(label)}</label>
+      )}
       <input
         type="text"
         className={styles.formInput}
@@ -364,7 +410,10 @@ function ValueEditor({
             value={val}
             depth={0}
             onChange={(newVal) => {
-              onChange({ ...(value as Record<string, unknown>), [key]: newVal });
+              onChange({
+                ...(value as Record<string, unknown>),
+                [key]: newVal,
+              });
             }}
           />
         ))}
@@ -428,10 +477,20 @@ export default function ContentEditor({
       <ValueEditor value={value} onChange={setValue} />
 
       <div className={styles.actionsBar}>
-        <button onClick={handleSave} disabled={saving} className={styles.loginButton}>
+        <button
+          type="button"
+          onClick={handleSave}
+          disabled={saving}
+          className={styles.loginButton}
+        >
           {saving ? "Saving..." : "Save Changes"}
         </button>
-        <button onClick={() => router.push("/admin/content")} className={styles.logoutButton} style={{ width: "auto" }}>
+        <button
+          type="button"
+          onClick={() => router.push("/admin/content")}
+          className={styles.logoutButton}
+          style={{ width: "auto" }}
+        >
           Back to Content
         </button>
         {saved && <span className={styles.savedMsg}>Changes saved</span>}

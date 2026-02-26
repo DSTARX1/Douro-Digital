@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
-import type { EChartsOption } from "echarts";
-import { useEChart } from "@/lib/use-echart";
 import styles from "@/app/(admin)/admin.module.css";
+import { useEChart } from "@/lib/use-echart";
+import type { EChartsOption } from "echarts";
+import { useMemo } from "react";
 
 interface Props {
   data: { page: string; views: number }[];
@@ -35,7 +35,7 @@ export default function TopPagesBarChart({ data, title, height = 320 }: Props) {
       yAxis: {
         type: "category" as const,
         data: sorted.map((d) =>
-          d.page.length > 20 ? d.page.slice(0, 20) + "..." : d.page
+          d.page.length > 20 ? `${d.page.slice(0, 20)}...` : d.page,
         ),
         axisLabel: { color: "#94a3b8", fontSize: 12 },
       },

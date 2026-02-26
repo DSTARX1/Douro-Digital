@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useEffect, type ReactNode } from "react";
 import gsap from "gsap";
+import { type ReactNode, useEffect, useRef } from "react";
 import styles from "./MagneticButton.module.css";
 
 interface MagneticButtonProps {
