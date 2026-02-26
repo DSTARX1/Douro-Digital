@@ -78,6 +78,18 @@ export const testimonials = [
     author: "Owner",
     role: "Service Business",
   },
+  {
+    quote:
+      "We hired an agency. Eight months and $40k later, they handed us a 'strategy deck' and a half-built landing page. No product. No system. Just a really expensive PDF.",
+    author: "Founder",
+    role: "Health & Wellness Brand",
+  },
+  {
+    quote:
+      "Every time I onboard a new client, I manually copy data between five different apps. One wrong paste and the whole thing falls apart. I know it's broken, I just don't have time to fix it.",
+    author: "Director",
+    role: "Consulting Firm",
+  },
 ];
 
 export const videoTestimonials = [

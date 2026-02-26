@@ -5,13 +5,15 @@ import MagneticCard from "@/components/cursor/MagneticCard";
 import {
   PixelChevronLeft,
   PixelChevronRight,
-  PixelStar,
+  PixelQuote,
 } from "@/components/icons/PixelIcons";
 import { testimonials, videoTestimonials } from "@/data/home";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./HomeTestimonial.module.css";
+
+const SHOW_VIDEO_TESTIMONIALS = false;
 
 const DURATION = 1;
 const EASE = "power2.inOut";
@@ -155,7 +157,7 @@ export default function HomeTestimonial() {
         onMouseLeave={text.play}
       >
         <div className={styles.quoteIcon}>
-          <PixelStar size={28} color="#D42918" animate />
+          <PixelQuote size={48} color="#D42918" animate />
         </div>
 
         <div ref={textRef} className={styles.textSlides}>
@@ -208,62 +210,64 @@ export default function HomeTestimonial() {
       </div>
 
       {/* Right: video testimonials */}
-      <div
-        className={styles.right}
-        onMouseEnter={video.pause}
-        onMouseLeave={video.play}
-      >
-        <MagneticCard maxMove={20} showCursor>
-          <div ref={videoRef} className={styles.videoSlides}>
-            {videoTestimonials.map((v, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: static list
-              <div key={i} data-slide className={styles.videoSlide}>
-                <div className={styles.videoCard}>
-                  <div className={styles.videoOverlay}>
-                    <p className={styles.videoName}>{v.name}</p>
-                    <p className={styles.videoRole}>
-                      {v.role}, {v.company}
-                    </p>
+      {SHOW_VIDEO_TESTIMONIALS && (
+        <div
+          className={styles.right}
+          onMouseEnter={video.pause}
+          onMouseLeave={video.play}
+        >
+          <MagneticCard maxMove={20} showCursor>
+            <div ref={videoRef} className={styles.videoSlides}>
+              {videoTestimonials.map((v, i) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: static list
+                <div key={i} data-slide className={styles.videoSlide}>
+                  <div className={styles.videoCard}>
+                    <div className={styles.videoOverlay}>
+                      <p className={styles.videoName}>{v.name}</p>
+                      <p className={styles.videoRole}>
+                        {v.role}, {v.company}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </MagneticCard>
+              ))}
+            </div>
+          </MagneticCard>
 
-        <div className={styles.nav}>
-          <div className={styles.dots}>
-            {videoTestimonials.map((_, i) => (
+          <div className={styles.nav}>
+            <div className={styles.dots}>
+              {videoTestimonials.map((_, i) => (
+                <button
+                  type="button"
+                  // biome-ignore lint/suspicious/noArrayIndexKey: static list
+                  key={i}
+                  className={`${styles.dot} ${i === video.active ? styles.dotActive : ""}`}
+                  onClick={() => video.jumpTo(i)}
+                  aria-label={`Video testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+            <div className={styles.arrows}>
               <button
                 type="button"
-                // biome-ignore lint/suspicious/noArrayIndexKey: static list
-                key={i}
-                className={`${styles.dot} ${i === video.active ? styles.dotActive : ""}`}
-                onClick={() => video.jumpTo(i)}
-                aria-label={`Video testimonial ${i + 1}`}
-              />
-            ))}
-          </div>
-          <div className={styles.arrows}>
-            <button
-              type="button"
-              className={styles.arrow}
-              onClick={video.prev}
-              aria-label="Previous video"
-            >
-              <ArrowLeft />
-            </button>
-            <button
-              type="button"
-              className={styles.arrow}
-              onClick={video.next}
-              aria-label="Next video"
-            >
-              <ArrowRight />
-            </button>
+                className={styles.arrow}
+                onClick={video.prev}
+                aria-label="Previous video"
+              >
+                <ArrowLeft />
+              </button>
+              <button
+                type="button"
+                className={styles.arrow}
+                onClick={video.next}
+                aria-label="Next video"
+              >
+                <ArrowRight />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </MotionSection>
   );
 }

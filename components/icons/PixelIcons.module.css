@@ -88,3 +88,23 @@
 .slide {
   animation: pixelSlide 1.8s step-end infinite;
 }
+
+@keyframes pixelPolarize {
+  0%,
+  100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% {
+    filter: hue-rotate(15deg) brightness(1.2);
+  }
+  50% {
+    filter: hue-rotate(-10deg) brightness(0.9);
+  }
+  75% {
+    filter: hue-rotate(5deg) brightness(1.1);
+  }
+}
+
+.polarize {
+  animation: pixelPulse 2s step-end infinite, pixelPolarize 3s step-end infinite;
+}

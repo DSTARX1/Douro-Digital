@@ -1,19 +1,21 @@
 .section {
-  display: grid;
-  grid-template-columns: 55fr 45fr;
-  gap: 48px;
+  display: flex;
+  justify-content: center;
   padding: 80px 48px 60px;
 }
 
-/* ── Left column: text testimonials ── */
+/* ── Text testimonials (centered) ── */
 .left {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .quoteIcon {
   display: flex;
+  justify-content: center;
   gap: 4px;
 }
 
@@ -36,12 +38,14 @@
   font-size: 40px;
   font-weight: 500;
   line-height: 52px;
+  text-align: center;
 }
 
 .author {
   display: flex;
   gap: 24px;
   align-items: center;
+  justify-content: center;
 }
 
 .authorName {
@@ -104,7 +108,8 @@
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 24px;
 }
 
 .dots {
@@ -149,15 +154,31 @@
   transition: background 0.15s step-end, border-color 0.15s step-end;
 }
 
+@keyframes dotPolarize {
+  0%,
+  100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% {
+    filter: hue-rotate(15deg) brightness(1.2);
+  }
+  50% {
+    filter: hue-rotate(-10deg) brightness(0.9);
+  }
+  75% {
+    filter: hue-rotate(5deg) brightness(1.1);
+  }
+}
+
 .dotActive {
   background: var(--fg);
   border-color: var(--fg);
+  animation: dotPolarize 3s step-end infinite;
 }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .section {
-    grid-template-columns: 1fr;
     padding: 48px 24px 40px;
   }
 

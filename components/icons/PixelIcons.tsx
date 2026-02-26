@@ -326,6 +326,35 @@ export function PixelClose({
   );
 }
 
+/** 8-bit opening quotation marks */
+export function PixelQuote({
+  size = 48,
+  color = "currentColor",
+  className = "",
+  animate = false,
+}: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill={color}
+      shapeRendering="crispEdges"
+      className={`${styles.pixelIcon} ${animate ? styles.polarize : ""} ${className}`}
+    >
+      <title>Pixel Quote</title>
+      {/* Left quote mark */}
+      <rect x="1" y="2" width="2" height="2" />
+      <rect x="2" y="4" width="2" height="2" />
+      <rect x="3" y="6" width="2" height="2" />
+      {/* Right quote mark */}
+      <rect x="8" y="2" width="2" height="2" />
+      <rect x="9" y="4" width="2" height="2" />
+      <rect x="10" y="6" width="2" height="2" />
+    </svg>
+  );
+}
+
 /** 8-bit speaker with pixel X (muted) */
 export function PixelVolumeOff({
   size = 16,

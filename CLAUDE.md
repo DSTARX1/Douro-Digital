@@ -1,6 +1,6 @@
 # Douro Digital
 
-**Phase:** About Hero-to-Copy Scroll Transition (Snap Crossfade) - Chunk 1/1
+**Phase:** Testimonial Slideshow Expansion (Replace Video Section) - Chunk 2/2
 
 ## Stack
 - Next.js 16 App Router, React 19, TypeScript

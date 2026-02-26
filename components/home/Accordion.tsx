@@ -1,7 +1,7 @@
 "use client";
 
 import { PixelChevronDown } from "@/components/icons/PixelIcons";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import s from "./Accordion.module.css";
 
 interface AccordionItem {
@@ -16,7 +16,10 @@ interface Props {
 
 export default function Accordion({ items, defaultOpen = 0 }: Props) {
   const [open, setOpen] = useState<number>(defaultOpen);
+  const [mounted, setMounted] = useState(false);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => { setMounted(true); }, []);
 
   function toggle(i: number) {
     setOpen(open === i ? -1 : i);
@@ -52,7 +55,9 @@ export default function Accordion({ items, defaultOpen = 0 }: Props) {
               }}
               className={s.body}
               style={{
-                maxHeight: isOpen ? `${scrollH}px` : "0",
+                maxHeight: isOpen
+                  ? mounted ? `${scrollH}px` : "fit-content"
+                  : "0",
                 opacity: isOpen ? 1 : 0,
               }}
             >
