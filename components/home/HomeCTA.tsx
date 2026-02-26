@@ -49,7 +49,7 @@ export default function HomeCTA() {
           Let&apos;s work on <RotatingText />
         </h2>
         <MagneticButton className={styles.ctaWrap} strength={0.3}>
-          <a href="mailto:hello@dourodigital.com" className={styles.cta}>
+          <a href="mailto:support@wearedouro.com" className={styles.cta}>
             Or just say hello
           </a>
         </MagneticButton>

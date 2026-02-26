@@ -120,8 +120,7 @@ export const footerDescription =
   "Four people who build software that works. No account managers. No retainer hell. No vendor lock-in. Just Isaac, Mario, Danny, and Josh shipping products in 8-12 weeks that replace your subscription circus and actually make you money.";
 
 export const footerContact = {
-  email: "hello@dourodigital.com",
-  phone: "+351 123 456 789",
+  email: "support@wearedouro.com",
   address: "Remote (We work with clients globally)",
 };
 

@@ -140,8 +140,8 @@ export default function ContactPanel({ open, onClose }: ContactPanelProps) {
 
         <p className={styles.phone}>
           Not a phone person? Email us:{" "}
-          <a href="mailto:hello@dourodigital.com" className={styles.phoneLink}>
-            hello@dourodigital.com
+          <a href="mailto:support@wearedouro.com" className={styles.phoneLink}>
+            support@wearedouro.com
           </a>{" "}
           (we get it, some people prefer typing)
         </p>

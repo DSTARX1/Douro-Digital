@@ -61,7 +61,6 @@ export default function Footer() {
             >
               {footerContact.email}
             </a>
-            <span className={styles.colLink}>{footerContact.phone}</span>
           </div>
         </div>
       </div>

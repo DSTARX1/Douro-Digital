@@ -139,5 +139,5 @@ export const aboutCTA = {
   accentPhrase: "Actually Show Up?",
   subtitle:
     "No sales pitch. Just an honest conversation about what you need and whether we're the right fit. If we're not, we'll tell you.",
-  email: "hello@dourodigital.com",
+  email: "support@wearedouro.com",
 };
