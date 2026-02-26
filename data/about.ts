@@ -9,7 +9,7 @@ export const aboutHero = {
 
 /* ─── About Intro ───────────────────────────────────────────── */
 export const aboutIntro =
-  "We're not an agency. We're four people who know how to build software that actually works.\n\nIsaac makes sure it doesn't break at 2am. Mario makes sure it converts. Danny makes sure it looks professional. Josh makes sure we build the right thing.\n\nNo sales team. No account managers. No layers between you and the work.\n\nWe've built Voice Noob, Pocket Agent, Social Bro, and Viral Kid. Real products. Real users. Real revenue. Not consulting projects where we made a roadmap and disappeared.\n\n8-12 weeks. Direct access. Zero bullshit.\n\nIf you're done with developers who ghost, agencies that bleed you dry, and tools that break when you need them most \u2014 you're in the right place.";
+  "We're not an agency. We're four people who know how to build software that actually works.\n\nIsaac makes sure it doesn't break at 2am. Mario makes sure it converts. Danny makes sure it looks professional. Josh makes sure we build the right thing.\n\nNo sales team. No account managers. No layers between you and the work.\n\nWe've built Voice Noob, Pocket Agent, Social Bro, and Viral Kid. Real products. Real users. Real revenue. Not consulting projects where we made a roadmap and disappeared.\n\nDirect access. Zero bullshit.\n\nIf you're done with developers who ghost, agencies that bleed you dry, and tools that break when you need them most \u2014 you're in the right place.";
 
 export interface ValueItem {
   title: string;
@@ -25,7 +25,7 @@ export const aboutValues: ValueItem[] = [
   {
     title: "No Retainer Hell",
     description:
-      "Agencies charge retainers every month whether you need work done or not. You ask for a small change \u2014 \"we'll add that to the sprint.\" Three weeks later: still in the backlog. But the invoice? On time. Every. Single. Month.\n\nWe don't do that. Project-based pricing. Fixed scope. Clear timeline. You know what you're getting, what it costs, and when it'll be done.\n\nNeed updates later? We'll quote it. You decide. No pressure.",
+      "Agencies charge retainers every month whether you need work done or not. You ask for a small change \u2014 \"we'll add that to the sprint.\" Ages later: still in the backlog. But the invoice? On time. Every. Single. Month.\n\nWe don't do that. Project-based pricing. Fixed scope. Clear timeline. You know what you're getting, what it costs, and when it'll be done.\n\nNeed updates later? We'll quote it. You decide. No pressure.",
   },
   {
     title: "Built for YOUR Business (Not Templates)",

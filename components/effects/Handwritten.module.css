@@ -1,6 +1,7 @@
 .handwritten {
-  font-family: var(--font-handwritten), cursive;
-  font-weight: 700;
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
   position: relative;
   display: inline;
 }

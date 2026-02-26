@@ -154,10 +154,13 @@
 
 .title {
   font-size: 64px;
-  font-weight: 700;
-  line-height: 1.05;
+  font-family: var(--font-serif-italic);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.15;
   color: var(--fg);
   letter-spacing: -0.02em;
+  overflow: visible;
 }
 
 .subtitle {

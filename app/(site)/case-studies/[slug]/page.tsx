@@ -5,7 +5,8 @@ import CaseStudyGallery from "@/components/case-study/CaseStudyGallery";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
 import CaseStudyImageGrid from "@/components/case-study/CaseStudyImageGrid";
 import CaseStudyMoreWork from "@/components/case-study/CaseStudyMoreWork";
-import CaseStudyResults from "@/components/case-study/CaseStudyResults";
+// Hidden until we have more accurate client data
+// import CaseStudyResults from "@/components/case-study/CaseStudyResults";
 import CaseStudyTestimonial from "@/components/case-study/CaseStudyTestimonial";
 import Footer from "@/components/home/Footer";
 import Navbar from "@/components/home/Navbar";
@@ -132,8 +133,8 @@ export default async function CaseStudyPage({
               }
             />
           )}
-          {study.cta && <CaseStudyCTA cta={study.cta} />}
-          {study.results && <CaseStudyResults results={study.results} />}
+          {/* Results hidden until we have more accurate client data */}
+          {/* {study.results && <CaseStudyResults results={study.results} />} */}
           {study.testimonial && (
             <CaseStudyTestimonial
               quote={study.testimonial.quote}
@@ -141,6 +142,7 @@ export default async function CaseStudyPage({
               role={study.testimonial.role}
             />
           )}
+          {study.cta && <CaseStudyCTA cta={study.cta} />}
           {study.galleryImages && study.galleryImages.length > 0 && (
             <CaseStudyGallery images={study.galleryImages} />
           )}

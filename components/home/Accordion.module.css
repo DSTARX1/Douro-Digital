@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px 0;
+  padding: 24px 0;
   background: none;
   border: none;
   color: inherit;
@@ -19,8 +19,13 @@
 
 .title {
   font-size: 20px;
-  font-weight: 500;
+  font-family: var(--font-serif-italic);
+  font-weight: 400;
+  font-style: italic;
   line-height: 30px;
+  overflow: visible;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .arrow {

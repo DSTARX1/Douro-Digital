@@ -15,7 +15,7 @@ import styles from "./HomeTestimonial.module.css";
 
 const SHOW_VIDEO_TESTIMONIALS = false;
 
-const DURATION = 1;
+const DURATION = 0.6;
 const EASE = "power2.inOut";
 const INTERVAL = 5000;
 
@@ -26,11 +26,9 @@ function useCarousel(
   const idx = useRef(0);
   const [active, setActive] = useState(0);
   const busy = useRef(false);
-  const timer = useRef<ReturnType<typeof setInterval>>(undefined);
   const paused = useRef(false);
   const wrapIdx = useRef(gsap.utils.wrap(0, count));
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refs are stable, count drives wrapIdx
   const goTo = useCallback(
     (next: number, dir: 1 | -1) => {
       if (busy.current || !containerRef.current || next === idx.current) return;
@@ -69,6 +67,7 @@ function useCarousel(
       idx.current = next;
       setActive(next);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [count, containerRef],
   );
 
@@ -77,46 +76,43 @@ function useCarousel(
     [goTo],
   );
 
-  const resetTimer = useCallback(() => {
-    clearInterval(timer.current);
-    if (!paused.current) {
-      timer.current = setInterval(() => advance(1), INTERVAL);
-    }
-  }, [advance]);
+  // Keep a ref so the interval always calls the latest advance
+  const advanceRef = useRef(advance);
+  advanceRef.current = advance;
 
-  const next = useCallback(() => {
-    advance(1);
-    resetTimer();
-  }, [advance, resetTimer]);
-
-  const prev = useCallback(() => {
-    advance(-1);
-    resetTimer();
-  }, [advance, resetTimer]);
-
+  const next = useCallback(() => advance(1), [advance]);
+  const prev = useCallback(() => advance(-1), [advance]);
   const jumpTo = useCallback(
     (i: number) => {
       if (i === idx.current) return;
       goTo(i, i > idx.current ? 1 : -1);
-      resetTimer();
     },
-    [goTo, resetTimer],
+    [goTo],
   );
 
   const pause = useCallback(() => {
     paused.current = true;
-    clearInterval(timer.current);
   }, []);
 
   const play = useCallback(() => {
     paused.current = false;
-    resetTimer();
-  }, [resetTimer]);
+  }, []);
 
+  // Poll frequently, track elapsed time so busy ticks don't double the wait
+  const lastTick = useRef(Date.now());
   useEffect(() => {
-    timer.current = setInterval(() => advance(1), INTERVAL);
-    return () => clearInterval(timer.current);
-  }, [advance]);
+    const id = setInterval(() => {
+      if (paused.current) {
+        lastTick.current = Date.now();
+        return;
+      }
+      if (!busy.current && Date.now() - lastTick.current >= INTERVAL) {
+        advanceRef.current(1);
+        lastTick.current = Date.now();
+      }
+    }, 500);
+    return () => clearInterval(id);
+  }, []);
 
   useGSAP(
     () => {

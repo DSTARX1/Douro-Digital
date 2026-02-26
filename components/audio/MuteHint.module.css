@@ -1,9 +1,4 @@
 .hint {
-  position: fixed;
-  bottom: 68px;
-  left: 42px;
-  transform: translateX(-50%);
-  z-index: 9998;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +7,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   animation: pixelBounce 0.8s steps(4) infinite;
+  margin-bottom: 8px;
 }
 
 .visible {
@@ -35,16 +31,16 @@
 @keyframes pixelBounce {
   0%,
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   25% {
-    transform: translateX(-50%) translateY(-6px);
+    transform: translateY(-6px);
   }
   50% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   75% {
-    transform: translateX(-50%) translateY(-3px);
+    transform: translateY(-3px);
   }
 }
 

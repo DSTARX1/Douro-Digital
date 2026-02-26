@@ -2,7 +2,7 @@
 
 import MotionSection from "@/components/animations/MotionSection";
 import MagneticCard from "@/components/cursor/MagneticCard";
-import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
+import DrawnCircle from "@/components/effects/DrawnCircle";
 import MobilePauseOverlay from "@/components/video/MobilePauseOverlay";
 import type { CaseStudy } from "@/data/case-studies";
 import { useAudio } from "@/lib/contexts/AudioContext";
@@ -53,12 +53,10 @@ export default function CaseStudyHero({ study }: Props) {
   return (
     <MotionSection className={styles.hero}>
       <span className={styles.subtitle}>{study.subtitle}</span>
-      <h1 className={styles.title}>{study.title}</h1>
-      {study.tagline && (
-        <p className={styles.tagline}>
-          <AnimatedUnderline>{study.tagline}</AnimatedUnderline>
-        </p>
-      )}
+      <h1 className={styles.title}>
+        <DrawnCircle>{study.title}</DrawnCircle>
+      </h1>
+      {study.tagline && <p className={styles.tagline}>{study.tagline}</p>}
       {study.demoVideo && (
         <MagneticCard className={styles.videoWrap} maxMove={20} showCursor>
           <div

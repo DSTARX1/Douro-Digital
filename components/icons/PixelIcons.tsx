@@ -343,14 +343,16 @@ export function PixelQuote({
       className={`${styles.pixelIcon} ${animate ? styles.polarize : ""} ${className}`}
     >
       <title>Pixel Quote</title>
-      {/* Left quote mark */}
-      <rect x="1" y="2" width="2" height="2" />
-      <rect x="2" y="4" width="2" height="2" />
-      <rect x="3" y="6" width="2" height="2" />
-      {/* Right quote mark */}
-      <rect x="8" y="2" width="2" height="2" />
+      {/* Left quote mark — 66 shape */}
+      <rect x="2" y="2" width="2" height="2" />
+      <rect x="1" y="4" width="2" height="2" />
+      <rect x="1" y="6" width="4" height="2" />
+      <rect x="2" y="8" width="2" height="2" />
+      {/* Right quote mark — 66 shape */}
+      <rect x="10" y="2" width="2" height="2" />
       <rect x="9" y="4" width="2" height="2" />
-      <rect x="10" y="6" width="2" height="2" />
+      <rect x="9" y="6" width="4" height="2" />
+      <rect x="10" y="8" width="2" height="2" />
     </svg>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import MuteHint from "@/components/audio/MuteHint";
 import { PixelVolumeOff, PixelVolumeOn } from "@/components/icons/PixelIcons";
 import { useAudio } from "@/lib/contexts/AudioContext";
 import { useCallback, useState } from "react";
@@ -20,14 +21,17 @@ export default function MuteToggle() {
   }, []);
 
   return (
-    <button
-      type="button"
-      className={`${styles.toggle} ${bouncing ? styles.bouncing : ""} ${isMuted ? styles.muted : ""}`}
-      onClick={handleClick}
-      onAnimationEnd={handleAnimationEnd}
-      aria-label={isMuted ? "Unmute" : "Mute"}
-    >
-      {isMuted ? <PixelVolumeOff size={16} /> : <PixelVolumeOn size={16} />}
-    </button>
+    <div className={styles.wrapper}>
+      <MuteHint />
+      <button
+        type="button"
+        className={`${styles.toggle} ${bouncing ? styles.bouncing : ""} ${isMuted ? styles.muted : ""}`}
+        onClick={handleClick}
+        onAnimationEnd={handleAnimationEnd}
+        aria-label={isMuted ? "Unmute" : "Mute"}
+      >
+        {isMuted ? <PixelVolumeOff size={16} /> : <PixelVolumeOn size={16} />}
+      </button>
+    </div>
   );
 }

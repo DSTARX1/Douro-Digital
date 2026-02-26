@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+  display: inline;
+}
+
+.svg {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.path {
+  stroke-dashoffset: var(--path-length);
+}
+
+/* Smooth circling motion — ease-in-out mimics hand acceleration */
+.drawing {
+  animation: trimDraw 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes trimDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

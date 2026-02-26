@@ -8,19 +8,19 @@ export const services: Service[] = [
   {
     title: "Systems That Run Themselves",
     description:
-      "14 subscriptions. None of them talk to each other. We replace your digital chaos with one system.\n\nCustomer comes in? Handled. Payments? Automatic. Follow-ups? Running. No more Zapier duct tape. No more seven dashboards.\n\n- Custom-built for YOUR business (not templates)\n- Handles customer journey start to finish\n- Built in 8-12 weeks\n\nProject-based. Fixed scope.",
+      "14 subscriptions. None of them talk to each other. We replace your digital chaos with one system.\n\nCustomer comes in? Handled. Payments? Automatic. Follow-ups? Running. No more Zapier duct tape. No more seven dashboards.\n\n- Custom-built for YOUR business (not templates)\n- Handles customer journey start to finish\n- Built fast, no bloated timelines\n\nProject-based. Fixed scope.",
     href: "/ai-solutions",
   },
   {
     title: "Custom Builds",
     description:
-      "Shopify. Too limited. WordPress. Too clunky. No-code tools. Hit the ceiling. Freelancer on Upwork. Disappeared.\n\nWe build what off-the-shelf can't:\n\n- Marketplace platforms that don't suck\n- Booking systems with logic Calendly can't handle\n- Checkout flows for complex offers\n- Products that combine three tools into one\n\nBuilt to your specs. 8-12 weeks. Fixed timeline.",
+      "Shopify. Too limited. WordPress. Too clunky. No-code tools. Hit the ceiling. Freelancer on Upwork. Disappeared.\n\nWe build what off-the-shelf can't:\n\n- Marketplace platforms that don't suck\n- Booking systems with logic Calendly can't handle\n- Checkout flows for complex offers\n- Products that combine three tools into one\n\nBuilt to your specs. Fixed scope. No surprises.",
     href: "/custom-development",
   },
   {
     title: "System Audits",
     description:
-      "Something's broken but you can't figure out WHERE. We audit your entire system \u2014 first click to final purchase.\n\nWhere leads leak. Where you're overpaying. Where it's held together with hope and Zapier prayers.\n\nYou get a real roadmap. Not a 50-page consultant report. \"Fix this first. Here's what it costs. Here's what it saves.\"\n\nFixed-price. Two-week turnaround.",
+      "Something's broken but you can't figure out WHERE. We audit your entire system \u2014 first click to final purchase.\n\nWhere leads leak. Where you're overpaying. Where it's held together with hope and Zapier prayers.\n\nYou get a real roadmap. Not a 50-page consultant report. \"Fix this first. Here's what it costs. Here's what it saves.\"\n\nFixed-price. Fast turnaround.",
     href: "/ai-consulting",
   },
 ];

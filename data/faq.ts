@@ -4,12 +4,12 @@ export const homeFAQ: FAQItem[] = [
   {
     question: "How long does a project actually take? (Like, really)",
     answer:
-      "8-12 weeks from kickoff to launch.\n\nWeek 1: Figure out what you actually need.\nWeeks 2-8: Build it. You see progress every week. Real features you can test.\nWeeks 8-12: Testing, polish, making sure nothing breaks.\n\nBigger project? Might take longer. We'll tell you upfront.\n\nNo surprises. No timeline extensions that turn three months into nine. Just honest timelines from people who've shipped enough to know how long things actually take.",
+      "Depends on the project. We'll tell you upfront after we understand what you need.\n\nFirst, we figure out what you actually need. Then we build it. You see progress constantly. Real features you can test. Then testing, polish, making sure nothing breaks.\n\nBigger project? Might take longer. We'll tell you upfront.\n\nNo surprises. No timeline extensions that drag on forever. Just honest estimates from people who've shipped enough to know how long things actually take.",
   },
   {
     question: "What if I need changes after launch?",
     answer:
-      "Tell us what you need. We'll quote it. You decide.\n\nNo retainer required. No minimum commitment. No hostage situation.\n\nSmall change? Might take an hour. Big change? Might take a week. We'll tell you what it costs.\n\nIf something breaks because WE screwed up? We fix it. No charge. Basic responsibility.\n\nThink of it like a good mechanic. They don't charge to fix their own mistakes, but they charge for new parts.",
+      "Tell us what you need. We'll quote it. You decide.\n\nNo retainer required. No minimum commitment. No hostage situation.\n\nSmall change? Might take an hour. Big change? Might take longer. We'll tell you what it costs.\n\nIf something breaks because WE screwed up? We fix it. No charge. Basic responsibility.\n\nThink of it like a good mechanic. They don't charge to fix their own mistakes, but they charge for new parts.",
   },
   {
     question: "Do I own the code or are you holding it hostage?",
@@ -19,12 +19,12 @@ export const homeFAQ: FAQItem[] = [
   {
     question: "What if you disappear mid-project like my last developer?",
     answer:
-      "We won't. But every developer who ghosted you said that too. So here's what's different:\n\n1. Four people with a reputation to protect, not a freelancer juggling 12 clients.\n2. You see progress every week. Actual working features.\n3. We've shipped Voice Noob, Pocket Agent, Social Bro, Viral Kid. Real track record.\n4. Direct access to us. Not an account manager.\n5. We get paid at milestones. Our incentive is finishing, not ghosting.\n\nNot one ghost story. Not one abandoned project. Just finished work.",
+      "We won't. But every developer who ghosted you said that too. So here's what's different:\n\n1. Four people with a reputation to protect, not a freelancer juggling 12 clients.\n2. You see progress constantly. Actual working features.\n3. We've shipped Voice Noob, Pocket Agent, Social Bro, Viral Kid. Real track record.\n4. Direct access to us. Not an account manager.\n5. We get paid at milestones. Our incentive is finishing, not ghosting.\n\nNot one ghost story. Not one abandoned project. Just finished work.",
   },
   {
     question: "I've been burned before. Why should I trust you?",
     answer:
-      "You shouldn't. Not blindly.\n\nLook at what we've built \u2014 Voice Noob, Pocket Agent, Social Bro, Viral Kid. Real products you can Google.\n\nTalk to us. See if we know what we're talking about. Ask hard questions.\n\nCheck if our timeline makes sense. See if we're honest about what we DON'T do. We're not cheap. We're not the fastest. We're not taking every client.\n\nTrust your gut. Not our marketing copy.\n\nYou'll know after one real conversation.",
+      "You shouldn't. Not blindly.\n\nLook at what we've built \u2014 Voice Noob, Pocket Agent, Social Bro, Viral Kid. Real products you can Google.\n\nTalk to us. See if we know what we're talking about. Ask hard questions.\n\nSee if we're honest about what we DON'T do. We're not cheap. We're not the fastest. We're not taking every client.\n\nTrust your gut. Not our marketing copy.\n\nYou'll know after one real conversation.",
   },
   {
     question: "How much does this cost?",

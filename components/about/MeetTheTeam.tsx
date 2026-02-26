@@ -1,10 +1,8 @@
 import MotionSection from "@/components/animations/MotionSection";
 import { PixelArrowTopRight } from "@/components/icons/PixelIcons";
 import {
-  type HighlightItem,
   type ProjectHighlight,
   type TeamMember,
-  teamHighlights as staticTeamHighlights,
   teamIntro as staticTeamIntro,
   teamMembers as staticTeamMembers,
   teamProjects as staticTeamProjects,
@@ -33,10 +31,6 @@ export default async function MeetTheTeam() {
   const teamMembers = await getContentWithFallback<TeamMember[]>(
     "about.team.members",
     staticTeamMembers,
-  );
-  const teamHighlights = await getContentWithFallback<HighlightItem[]>(
-    "about.team.highlights",
-    staticTeamHighlights,
   );
   const teamProjects = await getContentWithFallback<ProjectHighlight[]>(
     "about.team.projects",
@@ -110,16 +104,6 @@ export default async function MeetTheTeam() {
               </span>
             </div>
           </Link>
-        ))}
-      </div>
-
-      {/* Stat highlights */}
-      <div className={styles.highlights}>
-        {teamHighlights.map((h) => (
-          <div key={h.title}>
-            <h4 className={styles.highlightTitle}>{h.title}</h4>
-            <p className={styles.highlightDesc}>{h.description}</p>
-          </div>
         ))}
       </div>
     </MotionSection>

@@ -1,7 +1,15 @@
-.toggle {
+.wrapper {
   position: fixed;
   bottom: 24px;
   left: 24px;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toggle {
+  position: relative;
   z-index: 9998;
   width: 36px;
   height: 36px;

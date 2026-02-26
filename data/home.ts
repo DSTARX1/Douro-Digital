@@ -6,7 +6,7 @@ export const heroHeadline = {
 };
 
 export const missionText =
-  "Look.\n\nYou've got 14 different tools\u2014Shopify, Stripe, Zapier, Calendly, Klaviyo\u2014none of them talk to each other. Your last developer ghosted at 73% complete. Your agency \"partner\" turned into a black hole where $8,500/month goes in and crickets come out.\n\nYou don't need more tools. You need a system that works. That makes money. That runs 24/7 while you sleep.\n\nFour people. Not 40. Just Isaac, Mario, Danny, and Josh. No account managers. No runaround. You talk to us, we build it, it works.\n\nReal products. Real users. Real revenue. No vendor lock-in. No retainer hell.\n\n8-12 weeks. Direct access. We take 4 new projects per quarter.";
+  "Look.\n\nYou've got 14 different tools\u2014Shopify, Stripe, Zapier, Calendly, Klaviyo\u2014none of them talk to each other. Your last developer ghosted at 73% complete. Your agency \"partner\" turned into a black hole where $8,500/month goes in and crickets come out.\n\nYou don't need more tools. You need a system that works. That makes money. That runs 24/7 while you sleep.\n\nFour people. Not 40. Just Isaac, Mario, Danny, and Josh. No account managers. No runaround. You talk to us, we build it, it works.\n\nReal products. Real users. Real revenue. No vendor lock-in. No retainer hell.\n\nDirect access. We take 4 new projects per quarter.";
 
 export interface AboutTopic {
   title: string;
@@ -22,7 +22,7 @@ export const aboutTopics: AboutTopic[] = [
   {
     title: "What Happens When You Work With Us",
     description:
-      "Week 1: We figure out what you ACTUALLY need.\nWeeks 2-8: We build it. You see progress every week. Actual working features you can click on and test.\nWeeks 8-12: We test, polish, and make sure nothing breaks when real people use it.\n\nNo six-month timelines. No scope creep. And when something breaks? You get Isaac fixing it before you even notice.\n\nThat's the difference between four people who care and an agency where you're account number 247.",
+      "First, we figure out what you ACTUALLY need.\nThen we build it. You see progress constantly. Actual working features you can click on and test.\nWe test, polish, and make sure nothing breaks when real people use it.\n\nNo scope creep. And when something breaks? You get Isaac fixing it before you even notice.\n\nThat's the difference between four people who care and an agency where you're account number 247.",
   },
   {
     title: "Products That Work, Not Promises That Don't",
@@ -40,7 +40,7 @@ export const ctaTexts: CtaText[] = [
   {
     text: "One System. Works While You Sleep.",
     description:
-      "You're spending 15 hours a week keeping Zapier from falling apart. That's not scaling. That's suffering.\n\n8-12 weeks. One system. Works while you sleep.",
+      "You're spending hours every day keeping Zapier from falling apart. That's not scaling. That's suffering.\n\nOne system. Works while you sleep.",
   },
   {
     text: "Four People. Direct Access. No Bullshit.",
@@ -62,13 +62,13 @@ export const ctaTexts: CtaText[] = [
 export const testimonials = [
   {
     quote:
-      "I was spending more time managing my tools than running my business. Every week something new broke. I felt like a full-time IT department for my own company.",
+      "I was spending more time managing my tools than running my business. Something new broke constantly. I felt like a full-time IT department for my own company.",
     author: "Founder",
     role: "E-commerce Business",
   },
   {
     quote:
-      "My last developer promised three weeks. Six months later, half a product and a bill for twice what we agreed. Then he just... disappeared. No warning. Just gone.",
+      "My last developer kept promising it was almost done. Months later, half a product and a bill for twice what we agreed. Then he just... disappeared. No warning. Just gone.",
     author: "CEO",
     role: "SaaS Startup",
   },
@@ -117,7 +117,7 @@ export const navLinks = [
 ];
 
 export const footerDescription =
-  "Four people who build software that works. No account managers. No retainer hell. No vendor lock-in. Just Isaac, Mario, Danny, and Josh shipping products in 8-12 weeks that replace your subscription circus and actually make you money.";
+  "Four people who build software that works. No account managers. No retainer hell. No vendor lock-in. Just Isaac, Mario, Danny, and Josh shipping products that replace your subscription circus and actually make you money.";
 
 export const footerContact = {
   email: "support@wearedouro.com",

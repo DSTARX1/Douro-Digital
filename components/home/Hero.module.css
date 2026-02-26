@@ -30,14 +30,17 @@
 
 .heading {
   font-size: 104px;
-  font-weight: 600;
-  line-height: 1.0;
+  font-family: var(--font-serif-italic);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.15;
   letter-spacing: -0.03em;
   text-align: center;
   color: var(--fg);
   text-wrap: balance;
   max-width: 1000px;
   margin: 0 auto;
+  overflow: visible;
 }
 
 .italic {

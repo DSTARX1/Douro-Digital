@@ -84,7 +84,7 @@ export const caseStudies: CaseStudy[] = [
         "Visual if-then logic flows without coding",
       ],
       platform: "B2B SaaS",
-      duration: "12 weeks",
+      duration: "",
     },
     imageGrid: [
       {
@@ -177,7 +177,7 @@ export const caseStudies: CaseStudy[] = [
         "Full conversation context for human handoff",
       ],
       platform: "Web App",
-      duration: "10 weeks",
+      duration: "",
     },
     imageGrid: [
       {
@@ -194,7 +194,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     heroStats: [
-      { label: "Hours Saved / Week", value: "18" },
+      { label: "Hours Saved", value: "18/wk" },
       { label: "Follow-Up Rate", value: "100%" },
       { label: "Cancellation Recovery", value: "73%" },
       { label: "Response Time", value: "<30s" },
@@ -220,7 +220,7 @@ export const caseStudies: CaseStudy[] = [
       heading: "The Results",
       items: [
         {
-          label: "Weekly Admin Hours",
+          label: "Admin Hours",
           before: "18 hrs",
           after: "2 hrs",
         },
@@ -297,7 +297,7 @@ export const caseStudies: CaseStudy[] = [
         "Scripts library and saved search management",
       ],
       platform: "SaaS",
-      duration: "11 weeks",
+      duration: "",
     },
     imageGrid: [
       {
@@ -391,7 +391,7 @@ export const caseStudies: CaseStudy[] = [
         "Multi-account management per platform",
       ],
       platform: "B2B SaaS",
-      duration: "10 weeks",
+      duration: "",
     },
     imageGrid: [
       {

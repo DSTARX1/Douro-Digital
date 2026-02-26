@@ -8,6 +8,8 @@
   vertical-align: bottom;
   /* Small right gap so words don't slam together after splitting on spaces. */
   margin-right: 0.25em;
+  /* Extra space so italic serif glyphs don't clip */
+  padding: 0.15em 0.1em;
 }
 
 /* The actual element that GSAP moves. Sits inside the clip container above. */

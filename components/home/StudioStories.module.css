@@ -8,9 +8,12 @@
 
 .heading {
   font-size: 28px;
-  font-weight: 500;
+  font-family: var(--font-serif-italic);
+  font-weight: 400;
+  font-style: italic;
   line-height: 40px;
   margin-bottom: 4px;
+  overflow: visible;
 }
 
 .card {
