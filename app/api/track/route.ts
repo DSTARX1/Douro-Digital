@@ -1,6 +1,4 @@
-import { db } from "@/lib/db";
 import { checkRateLimit } from "@/lib/rate-limit";
-import { pageViews } from "@/lib/schema";
 import { type NextRequest, NextResponse } from "next/server";
 
 function parseUserAgent(ua: string) {
@@ -38,6 +36,13 @@ export async function POST(request: NextRequest) {
     const ua = request.headers.get("user-agent") || "";
     const { device, browser } = parseUserAgent(ua);
     const country = request.headers.get("x-vercel-ip-country") || null;
+
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ ok: true, skipped: true });
+    }
+
+    const { db } = await import("@/lib/db");
+    const { pageViews } = await import("@/lib/schema");
 
     await db.insert(pageViews).values({
       path: path.slice(0, 2048),

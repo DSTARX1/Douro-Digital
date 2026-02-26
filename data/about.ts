@@ -109,13 +109,13 @@ export const teamProjects: ProjectHighlight[] = [
   },
   {
     title: "Social Bro",
-    description: "Social media management",
+    description: "Content research & repurposing",
     image: "/images/social-bro-product.jpeg",
     link: "/case-studies/social-bro",
   },
   {
     title: "Viral Kid",
-    description: "Content distribution system",
+    description: "AI engagement automation",
     image: "/images/viral-kid-product.jpeg",
     link: "/case-studies/viral-kid",
   },

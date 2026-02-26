@@ -53,8 +53,8 @@ export const workProjects = [
     category: "content",
     thumbnail: "/work/social-bro-thumb.jpg",
     shortDescription:
-      "Social media management that doesn't suck. Schedule, repurpose, and manage engagement without seven tabs open.",
-    tags: ["Social Media", "Content Repurposing", "Engagement"],
+      "Content research and repurposing that doesn't suck. Search any platform, extract transcripts, generate hooks, and repurpose into scripts without seven tabs open.",
+    tags: ["Content Research", "Transcript Extraction", "AI Repurposing"],
     link: "/work/social-bro",
   },
   {
@@ -63,8 +63,8 @@ export const workProjects = [
     category: "content",
     thumbnail: "/work/viral-kid-thumb.jpg",
     shortDescription:
-      "Content distribution system that takes one piece of content and gets it seen across platforms without manual posting everywhere.",
-    tags: ["Distribution", "Multi-Platform", "Content Strategy"],
+      "AI engagement automation that monitors Twitter, YouTube, and Reddit for conversations in your niche and auto-replies using a customizable AI persona.",
+    tags: ["AI Engagement", "Multi-Platform", "Automation"],
     link: "/work/viral-kid",
   },
 ];

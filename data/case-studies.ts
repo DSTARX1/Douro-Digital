@@ -279,22 +279,22 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "social-bro",
     title: "Social Bro",
-    subtitle: "Social Media Management That Doesn't Suck",
+    subtitle: "Content Research and Repurposing That Actually Works",
     color: "#2e1a4e",
     image: "/images/social-bro-product.jpeg",
     objectPosition: "0% 0%",
     tagline:
-      "Social media tools are either too basic or too bloated. Small businesses needed something that actually helps without becoming a full-time job.",
+      "Creating content from scratch is brutal. The best creators don't start from zero — they study what's already working and make it their own.",
     projectDetails: {
       client: "Social Bro",
       year: "2024",
       services: [
-        "Built social media management platform from scratch",
-        "Content repurposing engine across platforms",
-        "Unified engagement inbox for all channels",
-        "Platform-specific content adaptation",
-        "Bulk scheduling and analytics",
-        "Multi-platform optimization",
+        "Built content research and repurposing platform from scratch",
+        "Cross-platform video search (YouTube, Instagram, TikTok)",
+        "Automatic transcript extraction with timestamps",
+        "AI-powered hook generation with alternates",
+        "One-click content repurposing engine",
+        "Scripts library and saved search management",
       ],
       platform: "SaaS",
       duration: "11 weeks",
@@ -313,20 +313,20 @@ export const caseStudies: CaseStudy[] = [
       { label: "Review Generation", value: "+340%" },
     ],
     challenge: {
-      heading: "Social Media Tools Are Either Too Basic or Too Bloated",
+      heading: "Creating Content From Scratch Is a Full-Time Job Nobody Has Time For",
       description:
-        "Social media tools are either too basic (just scheduling, like a glorified calendar) or too bloated (need a manual, cost $300/month, features you'll never touch). Small businesses needed something that helps them post consistently without turning it into a full-time job.\n\nEach platform has different requirements. Managing engagement means checking five apps. And nobody has time to create different content for each platform.",
+        "Creators and businesses know they need consistent content. But starting from a blank page every time is brutal. The alternative? Spend hours watching competitor videos, manually transcribing what works, and trying to reverse-engineer why it performed.\n\nMeanwhile, the best creators aren't reinventing the wheel. They're studying what's already working across YouTube, Instagram, and TikTok — then making it their own. But doing that manually means seven browser tabs, no organization, and zero system.",
     },
     solution: {
-      heading: "One Platform That Makes Social Media Simple Again",
+      heading: "Search Any Platform. Extract the Transcript. Repurpose Instantly.",
       description:
-        "Built Social Bro. Schedule, repurpose, and manage engagement without seven browser tabs. Simple enough to use daily. Powerful enough to matter.\n\nWrite once, system reformats for each platform. Unified inbox for all comments and messages. Repurposing engine that adapts tone per platform automatically.",
+        "Built Social Bro. Search YouTube, Instagram, and TikTok for high-performing content by topic, creator, or URL. Extract transcripts automatically. Generate AI-powered hooks. Repurpose into ready-to-use scripts.\n\nPaste a URL or search by keyword — the system pulls the transcript, generates multiple hook alternatives, and repurposes the content into your own scripts. All stored in one library you can access anytime.",
       features: [
-        "Schedule posts across multiple platforms from one interface",
-        "Content repurposing (one piece becomes platform-specific posts)",
-        "Engagement dashboard (comments and messages in one place)",
-        "Analytics that matter (what's working, no vanity metrics)",
-        "Bulk scheduling (plan your month in one sitting)",
+        "Cross-platform search (YouTube, Instagram, TikTok by topic, creator, or URL)",
+        "Automatic transcript extraction with timestamps and word counts",
+        "AI hook generation (multiple alternates, one-click retry)",
+        "One-click repurposing (transcript becomes ready-to-use scripts)",
+        "Scripts library (all originals and repurposed content in one place)",
       ],
     },
     results: {
@@ -351,7 +351,7 @@ export const caseStudies: CaseStudy[] = [
     },
     cta: {
       heading:
-        "Want to post consistently without making social media your full-time job? Let's talk.",
+        "Tired of staring at a blank page? Let's talk about turning existing content into yours.",
       buttonText: "Book a Call",
       buttonHref: "#",
     },
@@ -373,22 +373,22 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "viral-kid",
     title: "Viral Kid",
-    subtitle: "Content Distribution That Actually Gets Your Stuff Seen",
+    subtitle: "AI Engagement Automation That Finds Your Customers For You",
     color: "#1b131e",
     image: "/images/viral-kid-product.jpeg",
     objectFit: "contain",
     tagline:
-      "Creating content is hard. Getting it seen is harder. Most content dies because distribution is an afterthought.",
+      "Your customers are already talking online. About your industry, your competitors, your exact service. You're just not in the conversation.",
     projectDetails: {
       client: "Viral Kid",
       year: "2026",
       services: [
-        "Built content distribution platform from scratch",
-        "Multi-platform distribution engine",
-        "Platform-specific optimization per algorithm",
-        "Scheduling intelligence for optimal posting",
-        "Cross-promotion automation",
-        "Unified analytics across all platforms",
+        "Built AI engagement automation platform from scratch",
+        "Multi-platform monitoring (Twitter, YouTube, Reddit)",
+        "Keyword-based conversation discovery with engagement filters",
+        "AI-powered auto-replies with customizable persona",
+        "Configurable scheduling and style controls",
+        "Multi-account management per platform",
       ],
       platform: "B2B SaaS",
       duration: "10 weeks",
@@ -407,20 +407,20 @@ export const caseStudies: CaseStudy[] = [
       { label: "Verticals", value: "4" },
     ],
     challenge: {
-      heading: "Great Content, Zero Distribution",
+      heading: "Your Customers Are Already Talking. You're Just Not There.",
       description:
-        "Creating content is hard. Getting it seen is harder. Most content dies with zero reach because distribution is an afterthought. It's like cooking a gourmet meal and eating it alone.\n\nDifferent platforms reward different formats. Manual distribution takes hours. And tracking performance means juggling seven analytics dashboards.",
+        "People are asking for recommendations on Twitter right now. They're commenting on YouTube videos in your niche. They're posting on Reddit about problems you solve. But you're not in those conversations because manually monitoring and replying across platforms is a full-time job nobody has time for.\n\nHiring a social media agency costs $1,500/month and they post three times a week. They never engage with the people actually asking for what you sell.",
     },
     solution: {
-      heading: "One Upload. Every Platform. Smart Distribution.",
+      heading: "Set Your Keywords. Configure Your AI. Let It Engage 24/7.",
       description:
-        "Built Viral Kid. Takes one piece of content and gets it in front of the right people across platforms without manual posting.\n\nPlatform-specific optimization for each algorithm. Upload once, distribution happens automatically. Unified analytics across all platforms in one view.",
+        "Built Viral Kid. Monitors Twitter, YouTube, and Reddit for conversations matching your keywords. Filters by engagement threshold. Auto-replies using AI that sounds human \u2014 not like a bot.\n\nSet your search terms, minimum likes threshold, and schedule. Configure an AI persona with style controls (no hashtags, no emojis, casual grammar). Test responses before going live. The system finds relevant conversations and replies automatically.",
       features: [
-        "Multi-platform distribution (one upload, posts everywhere)",
-        "Platform-specific optimization (adapts for each algorithm)",
-        "Scheduling intelligence (optimal times per platform)",
-        "Cross-promotion automation (strategic content linking)",
-        "Performance tracking (what's working where)",
+        "Keyword monitoring across Twitter, YouTube, and Reddit",
+        "Engagement filters (only target posts above a minimum likes threshold)",
+        "AI auto-replies with customizable system prompt and persona",
+        "Style controls (no hashtags, no emojis, no caps, casual grammar)",
+        "Configurable schedule (every 5 minutes to every hour per platform)",
       ],
     },
     results: {
@@ -445,7 +445,7 @@ export const caseStudies: CaseStudy[] = [
     },
     cta: {
       heading:
-        "Making good content but nobody sees it? Let's talk about distribution.",
+        "Your customers are already asking for what you sell. Let's make sure you're in the conversation.",
       buttonText: "Book a Strategy Sprint",
       buttonHref: "#",
     },

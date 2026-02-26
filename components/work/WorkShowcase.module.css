@@ -149,6 +149,7 @@
   flex-direction: column;
   gap: 8px;
   max-width: 720px;
+  opacity: 0.95;
 }
 
 .title {
@@ -163,7 +164,7 @@
   font-size: 17px;
   font-weight: 500;
   line-height: 1.4;
-  color: var(--muted);
+  color: var(--accent);
   transition: color 0.3s ease;
 }
 
@@ -175,7 +176,7 @@
   font-size: 15px;
   line-height: 1.5;
   color: var(--muted);
-  opacity: 0.8;
+  opacity: 0.92;
   max-width: 480px;
   margin-top: 4px;
   transition: color 0.3s ease;
@@ -301,8 +302,9 @@
   .link:is(:hover, :focus-visible) .overlay {
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.88) 0%,
-      rgba(0, 0, 0, 0.55) 40%,
+      rgba(212, 41, 24, 0.35) 0%,
+      rgba(0, 0, 0, 0.88) 20%,
+      rgba(0, 0, 0, 0.55) 45%,
       rgba(0, 0, 0, 0.12) 70%,
       transparent 100%
     );
@@ -316,8 +318,9 @@
   .overlay {
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.88) 0%,
-      rgba(0, 0, 0, 0.55) 40%,
+      rgba(212, 41, 24, 0.35) 0%,
+      rgba(0, 0, 0, 0.88) 20%,
+      rgba(0, 0, 0, 0.55) 45%,
       rgba(0, 0, 0, 0.12) 70%,
       transparent 100%
     );
@@ -357,11 +360,11 @@
   }
 
   .serviceTag {
-    opacity: 1;
+    opacity: 0.92;
     transform: none;
     transition: none;
     font-size: 10px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.14);
     padding: 3px 8px;
     border-radius: 4px;
     line-height: 1.3;

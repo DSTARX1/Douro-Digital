@@ -17,7 +17,9 @@ export default function CalInlineEmbed({ className }: CalInlineEmbedProps) {
         theme: "dark",
         hideEventTypeDetails: false,
         layout: "month_view",
-        styles: { branding: { brandColor: "#D42918" } },
+        cssVarsPerTheme: {
+          dark: { "cal-brand": "#D42918" },
+        },
       });
     })();
   }, []);

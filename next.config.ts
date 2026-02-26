@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  images: {
+    qualities: [75, 90],
+  },
   transpilePackages: ["echarts", "zrender"],
   async headers() {
     return [
