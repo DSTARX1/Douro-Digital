@@ -83,7 +83,8 @@ export default function TextReveal({
   if (!isMounted) {
     return (
       <Tag
-        ref={containerRef as React.RefObject<HTMLElement>}
+        // biome-ignore lint/suspicious/noExplicitAny: Tag is dynamic (h1-h6/p), ref type varies
+        ref={containerRef as React.RefObject<any>}
         className={className}
       >
         {text}
@@ -94,7 +95,8 @@ export default function TextReveal({
   // Client render: split into per-word clip containers
   return (
     <Tag
-      ref={containerRef as React.RefObject<HTMLElement>}
+      // biome-ignore lint/suspicious/noExplicitAny: Tag is dynamic (h1-h6/p), ref type varies
+      ref={containerRef as React.RefObject<any>}
       className={className}
     >
       {words.map((word, i) => (
