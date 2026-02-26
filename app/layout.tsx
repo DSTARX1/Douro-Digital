@@ -18,6 +18,20 @@ export const metadata: Metadata = {
   },
   description:
     "We build AI solutions, custom software, and digital products for ambitious companies.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Douro Digital",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/og-image.png"],
+  },
 };
 
 export default function RootLayout({
