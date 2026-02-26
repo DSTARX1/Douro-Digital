@@ -6,13 +6,14 @@ import { useCallback, useState } from "react";
 import styles from "./MuteToggle.module.css";
 
 export default function MuteToggle() {
-  const { isMuted, setMuted } = useAudio();
+  const { isMuted, setMuted, markMuteInteracted } = useAudio();
   const [bouncing, setBouncing] = useState(false);
 
   const handleClick = useCallback(() => {
     setMuted(!isMuted);
+    markMuteInteracted();
     setBouncing(true);
-  }, [isMuted, setMuted]);
+  }, [isMuted, setMuted, markMuteInteracted]);
 
   const handleAnimationEnd = useCallback(() => {
     setBouncing(false);

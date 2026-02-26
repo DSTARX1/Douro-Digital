@@ -16,12 +16,16 @@ interface AudioContextValue {
   setMuted: (muted: boolean) => void;
   registerVideo: (video: HTMLVideoElement) => void;
   unregisterVideo: (video: HTMLVideoElement) => void;
+  hasInteractedWithMute: boolean;
+  markMuteInteracted: () => void;
+  videosRef: React.RefObject<Set<HTMLVideoElement>>;
 }
 
 const AudioCtx = createContext<AudioContextValue | null>(null);
 
 export function AudioProvider({ children }: { children: ReactNode }) {
   const [isMuted, setIsMuted] = useState(true);
+  const [hasInteractedWithMute, setHasInteractedWithMute] = useState(false);
   const videosRef = useRef<Set<HTMLVideoElement>>(new Set());
 
   // Keep a ref in sync so registerVideo always applies the latest muted state
@@ -48,6 +52,10 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     [syncMuted],
   );
 
+  const markMuteInteracted = useCallback(() => {
+    setHasInteractedWithMute(true);
+  }, []);
+
   const registerVideo = useCallback((video: HTMLVideoElement) => {
     videosRef.current.add(video);
     video.muted = isMutedRef.current;
@@ -58,8 +66,8 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ isMuted, setMuted, registerVideo, unregisterVideo }),
-    [isMuted, setMuted, registerVideo, unregisterVideo],
+    () => ({ isMuted, setMuted, registerVideo, unregisterVideo, hasInteractedWithMute, markMuteInteracted, videosRef }),
+    [isMuted, setMuted, registerVideo, unregisterVideo, hasInteractedWithMute, markMuteInteracted],
   );
 
   return <AudioCtx.Provider value={value}>{children}</AudioCtx.Provider>;

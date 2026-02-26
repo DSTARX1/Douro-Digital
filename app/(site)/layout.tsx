@@ -1,3 +1,4 @@
+import MuteHint from "@/components/audio/MuteHint";
 import MuteToggle from "@/components/audio/MuteToggle";
 import CustomCursor from "@/components/cursor/CustomCursor";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
@@ -20,6 +21,7 @@ export default function SiteLayout({
       <RouteProgress />
       <ScrollProgress />
       <CustomCursor />
+      <MuteHint />
       <MuteToggle />
       <SmoothScroll>{children}</SmoothScroll>
     </AudioProvider>
