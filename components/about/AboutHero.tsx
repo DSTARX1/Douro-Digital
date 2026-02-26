@@ -1,5 +1,6 @@
 "use client";
 
+import { PixelStar } from "@/components/icons/PixelIcons";
 import { aboutHero } from "@/data/about";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -10,7 +11,6 @@ import styles from "./AboutHero.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutHero() {
-  const pinSpacerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
 
@@ -20,42 +20,64 @@ export default function AboutHero() {
       const heading = headingRef.current;
       if (!section || !heading) return;
 
-      gsap.set(heading, { opacity: 1, y: 0 });
+      const intro = document.querySelector<HTMLElement>("[data-about-intro]");
+      if (!intro) return;
 
-      // Pin + scroll-fade
+      gsap.set(heading, { opacity: 1, y: 0 });
+      gsap.set(intro, { opacity: 0, y: 40 });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=800",
+          end: "+=400",
+          scrub: 0.3,
           pin: true,
-          pinSpacer: pinSpacerRef.current!,
-          scrub: 1,
+          snap: {
+            snapTo: 1,
+            duration: { min: 0.3, max: 0.5 },
+            ease: "power2.inOut",
+          },
         },
       });
 
-      tl.to(heading, { y: -200, opacity: 0, ease: "none" }, 0);
+      tl.to(heading, { opacity: 0, y: -60, ease: "none" }, 0);
+      tl.to(intro, { opacity: 1, y: 0, ease: "none" }, 0.2);
     },
     { scope: sectionRef },
   );
 
   return (
-    <div ref={pinSpacerRef}>
-      <div ref={sectionRef} className={styles.hero} suppressHydrationWarning>
-        <div className={styles.heroInner}>
-          <div ref={headingRef} className={styles.headingWrap}>
-            <h1 className={styles.heading}>
-              {aboutHero.prefix}
-              {aboutHero.italic && (
-                <>
-                  {" "}
-                  <em className={styles.italic}>{aboutHero.italic}</em>
-                </>
-              )}
-              {aboutHero.suffix && <> {aboutHero.suffix}</>}
-            </h1>
-            <p className={styles.subtitle}>{aboutHero.subtitle}</p>
-          </div>
+    <div ref={sectionRef} className={styles.hero} suppressHydrationWarning>
+      <div className={styles.heroInner}>
+        <div ref={headingRef} className={styles.headingWrap}>
+          {[
+            "sparkleDot1",
+            "sparkleDot2",
+            "sparkleDot3",
+            "sparkleDot4",
+            "sparkleDot5",
+            "sparkleDot6",
+          ].map((cls) => (
+            <span
+              key={cls}
+              className={`${styles.sparkleDot} ${styles[cls]}`}
+              aria-hidden="true"
+            >
+              <PixelStar size={20} color="var(--accent)" />
+            </span>
+          ))}
+          <h1 className={styles.heading}>
+            {aboutHero.prefix}
+            {aboutHero.italic && (
+              <>
+                {" "}
+                <em className={styles.italic}>{aboutHero.italic}</em>
+              </>
+            )}
+            {aboutHero.suffix && <> {aboutHero.suffix}</>}
+          </h1>
+          <p className={styles.subtitle}>{aboutHero.subtitle}</p>
         </div>
       </div>
     </div>

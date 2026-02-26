@@ -1,4 +1,9 @@
 .section {
+  position: relative;
+  background: var(--bg);
+  margin-top: -100vh;
+  z-index: 1;
+  opacity: 0;
   padding: 80px 48px 0;
 }
 

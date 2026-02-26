@@ -2,7 +2,6 @@
   position: relative;
   height: 100vh;
   height: 100dvh;
-  margin-bottom: 0;
 }
 
 .heroInner {
@@ -55,6 +54,68 @@
   line-height: 1.5;
 }
 
+/* ─── Pixel Sparkle Burst ────────────────────────────────── */
+@keyframes pixelSparkleBurst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.sparkleDot {
+  position: absolute;
+  line-height: 0;
+  pointer-events: none;
+  animation: pixelSparkleBurst 1.5s steps(4) forwards;
+}
+
+.sparkleDot1 {
+  top: -5%;
+  left: 2%;
+  animation-delay: 0s;
+}
+.sparkleDot2 {
+  top: -8%;
+  left: 60%;
+  animation-delay: 0.15s;
+}
+.sparkleDot3 {
+  top: 15%;
+  right: -2%;
+  animation-delay: 0.3s;
+}
+.sparkleDot4 {
+  bottom: 10%;
+  left: -3%;
+  animation-delay: 0.45s;
+}
+.sparkleDot5 {
+  bottom: -5%;
+  right: 5%;
+  animation-delay: 0.6s;
+}
+.sparkleDot6 {
+  top: 35%;
+  left: 102%;
+  animation-delay: 0.75s;
+}
+
 @media (min-width: 1920px) {
   .heading {
     font-size: 120px;
@@ -81,5 +142,21 @@
 
   .subtitle {
     font-size: 16px;
+  }
+
+  .sparkleDot svg {
+    width: 14px;
+    height: 14px;
+  }
+  .sparkleDot5,
+  .sparkleDot6 {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkleDot {
+    animation: none;
+    display: none;
   }
 }

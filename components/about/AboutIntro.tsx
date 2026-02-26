@@ -1,6 +1,3 @@
-"use client";
-
-import MotionSection from "@/components/animations/MotionSection";
 import AnimatedUnderline from "@/components/effects/AnimatedUnderline";
 import Handwritten from "@/components/effects/Handwritten";
 import Highlight from "@/components/effects/Highlight";
@@ -10,7 +7,7 @@ import styles from "./AboutIntro.module.css";
 
 export default function AboutIntro() {
   return (
-    <MotionSection className={styles.section}>
+    <section className={styles.section} data-about-intro>
       <div className={styles.columns}>
         <div className={styles.left}>
           <p className={styles.label}>About us</p>
@@ -69,6 +66,6 @@ export default function AboutIntro() {
           <Accordion items={aboutValues} defaultOpen={0} />
         </div>
       </div>
-    </MotionSection>
+    </section>
   );
 }

@@ -1,6 +1,6 @@
 # Douro Digital
 
-**Phase:** Implementation — 8-bit Mute Hint - Chunk 1/1
+**Phase:** About Hero-to-Copy Scroll Transition (Snap Crossfade) - Chunk 1/1
 
 ## Stack
 - Next.js 16 App Router, React 19, TypeScript
