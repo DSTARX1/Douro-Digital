@@ -43,9 +43,3 @@
     transform: translateY(-3px);
   }
 }
-
-@media (max-width: 768px) {
-  .hint {
-    display: none;
-  }
-}

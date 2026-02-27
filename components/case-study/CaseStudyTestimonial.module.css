@@ -9,19 +9,6 @@
   position: relative;
 }
 
-.quoteWrap::before {
-  content: "\201C";
-  font-family: var(--font-serif-italic);
-  font-size: 120px;
-  line-height: 1;
-  color: var(--accent);
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
 .quote {
   font-family: var(--font-serif-italic);
   font-style: italic;
@@ -58,10 +45,6 @@
   .quote {
     font-size: 26px;
   }
-  .quoteWrap::before {
-    font-size: 90px;
-    top: -48px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -70,9 +53,5 @@
   }
   .quote {
     font-size: 22px;
-  }
-  .quoteWrap::before {
-    font-size: 72px;
-    top: -36px;
   }
 }
