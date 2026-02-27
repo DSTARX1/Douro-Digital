@@ -6,21 +6,21 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "Systems That Run Themselves",
+    title: "The Money Printer",
     description:
-      "14 subscriptions. None of them talk to each other. We replace your digital chaos with one system.\n\nCustomer comes in? Handled. Payments? Automatic. Follow-ups? Running. No more Zapier duct tape. No more seven dashboards.\n\n- Custom-built for YOUR business (not templates)\n- Handles customer journey start to finish\n- Built fast, no bloated timelines\n\nProject-based. Fixed scope.",
+      "We reverse-engineer how your best customers find and buy from you, then automate the whole damn thing. Think of it like building a vending machine that sells $5k\u2013$50k services instead of Snickers bars.",
     href: "/ai-solutions",
   },
   {
-    title: "Custom Builds",
+    title: "AI That Doesn't Sound Braindead",
     description:
-      "Shopify. Too limited. WordPress. Too clunky. No-code tools. Hit the ceiling. Freelancer on Upwork. Disappeared.\n\nWe build what off-the-shelf can't:\n\n- Marketplace platforms that don't suck\n- Booking systems with logic Calendly can't handle\n- Checkout flows for complex offers\n- Products that combine three tools into one\n\nBuilt to your specs. Fixed scope. No surprises.",
+      "Voice AI that answers calls faster than your competitor's intern can Google the answer. Social media bots that don't sound like they're having a stroke. Systems that actually work (crazy concept, right?).",
     href: "/custom-development",
   },
   {
-    title: "System Audits",
+    title: "The Bleed Audit",
     description:
-      "Something's broken but you can't figure out WHERE. We audit your entire system \u2014 first click to final purchase.\n\nWhere leads leak. Where you're overpaying. Where it's held together with hope and Zapier prayers.\n\nYou get a real roadmap. Not a 50-page consultant report. \"Fix this first. Here's what it costs. Here's what it saves.\"\n\nFixed-price. Fast turnaround.",
+      "We'll tell you exactly where your current setup is hemorrhaging money. No bullshit. No upsell. Just \"here's what's broken and here's how to fix it.\" Like a health checkup, but for your business. Except we won't judge you for ignoring the problem for 18 months.",
     href: "/ai-consulting",
   },
 ];

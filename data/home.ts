@@ -129,4 +129,6 @@ export const footerNav = [
   { label: "Blog", href: "/resources" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/book-a-call" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ];

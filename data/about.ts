@@ -97,25 +97,25 @@ export interface ProjectHighlight {
 export const teamProjects: ProjectHighlight[] = [
   {
     title: "Voice Noob",
-    description: "Voice automation platform",
+    description: "24/7 AI receptionist",
     image: "/images/voice-noob-product.jpeg",
     link: "/case-studies/voice-noob",
   },
   {
     title: "Pocket Agent",
-    description: "24/7 customer service system",
+    description: "Sales process in your pocket",
     image: "/images/pocket-agent-home.png",
     link: "/case-studies/pocket-agent",
   },
   {
     title: "Social Bro",
-    description: "Content research & repurposing",
+    description: "Social media on autopilot",
     image: "/images/social-bro-product.jpeg",
     link: "/case-studies/social-bro",
   },
   {
     title: "Viral Kid",
-    description: "AI engagement automation",
+    description: "Viral content without the cringe",
     image: "/images/viral-kid-product.jpeg",
     link: "/case-studies/viral-kid",
   },

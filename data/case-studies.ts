@@ -67,7 +67,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "voice-noob",
     title: "Voice Noob",
-    subtitle: "Voice Automation Platform That Actually Works",
+    subtitle:
+      "AI voice agent that answers your phone 24/7, qualifies leads while you're asleep, and books them straight into your calendar",
     color: "#2a2a4e",
     image: "/images/voice-noob-product.jpeg",
     tagline:
@@ -160,7 +161,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "pocket-agent",
     title: "Pocket Agent",
-    subtitle: "Customer Service System That Runs While You Sleep",
+    subtitle:
+      "Your entire sales process in your pocket — lead capture, nurture sequences, booking system, follow-ups",
     color: "#1e3348",
     image: "/images/pocket-agent-home.png",
     tagline:
@@ -279,7 +281,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "social-bro",
     title: "Social Bro",
-    subtitle: "Content Research and Repurposing That Actually Works",
+    subtitle:
+      "Automates your social media without making you sound like ChatGPT had a mental breakdown",
     color: "#2e1a4e",
     image: "/images/social-bro-product.jpeg",
     objectPosition: "0% 0%",
@@ -313,12 +316,14 @@ export const caseStudies: CaseStudy[] = [
       { label: "Review Generation", value: "+340%" },
     ],
     challenge: {
-      heading: "Creating Content From Scratch Is a Full-Time Job Nobody Has Time For",
+      heading:
+        "Creating Content From Scratch Is a Full-Time Job Nobody Has Time For",
       description:
         "Creators and businesses know they need consistent content. But starting from a blank page every time is brutal. The alternative? Spend hours watching competitor videos, manually transcribing what works, and trying to reverse-engineer why it performed.\n\nMeanwhile, the best creators aren't reinventing the wheel. They're studying what's already working across YouTube, Instagram, and TikTok — then making it their own. But doing that manually means seven browser tabs, no organization, and zero system.",
     },
     solution: {
-      heading: "Search Any Platform. Extract the Transcript. Repurpose Instantly.",
+      heading:
+        "Search Any Platform. Extract the Transcript. Repurpose Instantly.",
       description:
         "Built Social Bro. Search YouTube, Instagram, and TikTok for high-performing content by topic, creator, or URL. Extract transcripts automatically. Generate AI-powered hooks. Repurpose into ready-to-use scripts.\n\nPaste a URL or search by keyword — the system pulls the transcript, generates multiple hook alternatives, and repurposes the content into your own scripts. All stored in one library you can access anytime.",
       features: [
@@ -373,7 +378,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "viral-kid",
     title: "Viral Kid",
-    subtitle: "AI Engagement Automation That Finds Your Customers For You",
+    subtitle:
+      "We analyze what's actually going viral in your niche, then help you create content that doesn't suck",
     color: "#1b131e",
     image: "/images/viral-kid-product.jpeg",
     objectFit: "contain",

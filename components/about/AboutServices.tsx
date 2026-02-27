@@ -3,20 +3,16 @@ import styles from "./AboutServices.module.css";
 
 const approachSteps = [
   {
-    title: "Discovery",
-    text: "We dig into your business, find where you\u2019re bleeding revenue, and map out exactly what needs to be built.",
+    title: "Map",
+    text: "We map your revenue process \u2014 how people find you, trust you, buy from you.",
   },
   {
-    title: "Build fast",
-    text: "We prototype, test, iterate, and ship. No 18-month roadmaps that turn into vaporware.",
+    title: "Build",
+    text: "We build the automation \u2014 voice, social systems, whatever you need to run 24/7.",
   },
   {
-    title: "Launch",
-    text: "Your system goes live. We train your team. We monitor it closely. We fix anything that breaks.",
-  },
-  {
-    title: "Iterate",
-    text: "Business changes. Tech changes. We adjust. No \u201Csorry that\u2019s not in scope\u201D \u2014 if it makes you money, we build it.",
+    title: "Own",
+    text: "You own it forever. We train you, hand over the keys, then you\u2019re free.",
   },
 ];
 
@@ -30,10 +26,6 @@ export default function AboutServices() {
           <p className={styles.stepText}>{step.text}</p>
         </div>
       ))}
-      <p className={styles.closing}>
-        Fast, focused builds that ship. Not 6-month death marches. Not
-        &quot;we&apos;ll get to it next quarter.&quot;
-      </p>
     </MotionSection>
   );
 }

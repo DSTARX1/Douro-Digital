@@ -97,7 +97,11 @@ export default function BlogNewsletter() {
       </form>
       {status === "error" && <p className={styles.error}>{errorMsg}</p>}
       <p className={styles.privacy}>
-        We hate spam more than you do. Unsubscribe whenever. No hard feelings.
+        By subscribing, you agree to receive our newsletter and accept our{" "}
+        <a href="/privacy" className={styles.privacyLink}>
+          privacy policy
+        </a>
+        . Unsubscribe anytime &mdash; no hard feelings.
       </p>
     </MotionSection>
   );
