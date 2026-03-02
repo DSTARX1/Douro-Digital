@@ -21,15 +21,7 @@ export default function WorkShowcase() {
       const mm = gsap.matchMedia();
 
       /* ── Desktop: pinned stacking cards ─────────────────────── */
-      mm.add(
-        {
-          isDesktop: "(min-width: 769px)",
-          isReducedMotion: "(prefers-reduced-motion: reduce)",
-        },
-        (context) => {
-          const { isDesktop, isReducedMotion } = context.conditions!;
-          if (!isDesktop || isReducedMotion) return;
-
+      mm.add("(min-width: 769px)", () => {
           const sections = containerRef.current?.querySelectorAll<HTMLElement>(
             `.${styles.section}`,
           );
@@ -68,15 +60,7 @@ export default function WorkShowcase() {
       );
 
       /* ── Mobile: fade-in + slide-up on scroll ────────────── */
-      mm.add(
-        {
-          isMobile: "(max-width: 768px)",
-          isReducedMotion: "(prefers-reduced-motion: reduce)",
-        },
-        (context) => {
-          const { isMobile, isReducedMotion } = context.conditions!;
-          if (!isMobile || isReducedMotion) return;
-
+      mm.add("(max-width: 768px)", () => {
           const sections = containerRef.current?.querySelectorAll<HTMLElement>(
             `.${styles.section}`,
           );

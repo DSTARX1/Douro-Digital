@@ -160,6 +160,7 @@
 @media (prefers-reduced-motion: reduce) {
   .sparkleDot {
     animation: none;
-    display: none;
+    transform: scale(1);
+    opacity: 1;
   }
 }
