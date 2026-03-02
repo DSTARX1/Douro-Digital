@@ -137,7 +137,7 @@ export default function Hero() {
                 <video
                   ref={videoRef}
                   className={styles.mediaVideo}
-                  src="/videos/durolanding.mov"
+                  src="/videos/durolanding.mp4"
                   poster="/videos/durolanding-poster.jpg"
                   preload="metadata"
                   loop

@@ -118,7 +118,7 @@ export default function BookACall() {
             <video
               ref={videoRef}
               className={styles.video}
-              src="/videos/durolanding.mov"
+              src="/videos/durolanding.mp4"
               preload="metadata"
               loop
               muted
