@@ -48,7 +48,7 @@ export default function BookACall() {
       if (cancelled) return;
       video.muted = false;
       setMuted(false);
-    });
+    }).catch(() => {});
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
@@ -67,7 +67,7 @@ export default function BookACall() {
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
-      video.play();
+      video.play().catch(() => {});
     } else {
       video.pause();
     }

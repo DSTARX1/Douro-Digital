@@ -1,6 +1,6 @@
 import Analytics from "@/components/Analytics";
 import { organizationSchema, webSiteSchema } from "@/lib/jsonld";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Caveat } from "next/font/google";
 import "./globals.css";
 
@@ -9,6 +9,11 @@ const caveat = Caveat({
   variable: "--font-handwritten",
   weight: ["400", "700"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dourodigital.com"),

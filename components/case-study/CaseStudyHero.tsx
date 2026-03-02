@@ -26,7 +26,7 @@ export default function CaseStudyHero({ study }: Props) {
     registerVideo(video);
     video.muted = true;
     setMuted(true);
-    video.play();
+    video.play().catch(() => {});
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
@@ -44,7 +44,7 @@ export default function CaseStudyHero({ study }: Props) {
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
-      video.play();
+      video.play().catch(() => {});
     } else {
       video.pause();
     }
